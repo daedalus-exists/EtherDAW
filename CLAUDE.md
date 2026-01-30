@@ -22,6 +22,7 @@ npm test                             # Tests
 npx tsx src/cli.ts validate <file>   # Validate EtherScore
 npx tsx src/cli.ts compile <file>    # Compile to MIDI
 npx tsx src/cli.ts repl              # Interactive REPL
+npx tsx src/cli.ts export <file> --format abc --voice-mode melody  # ABC melody export
 open player.html                     # Listen in browser
 ```
 

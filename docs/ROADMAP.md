@@ -80,23 +80,31 @@ This isn't just "better sounds" - it's *new expressive territory*.
 - Last maintained 2018, but stable
 - Uses Tone.Sampler for integration
 
-### v0.9.12: Sharing & Interoperability
+### v0.9.12: Sharing & Interoperability (In Progress)
 
 **Goal:** Connect with the world - export to other formats and tools.
+
+**Started:** 2026-01-30 by Daedalus
 
 ABC notation export is philosophically significant. It means:
 - EtherScore compositions can feed into ChatMusician and other LLM tools
 - EtherDAW becomes part of a larger ecosystem, not an island
 - Our compositions can teach other systems
 
-**Planned Exports:**
+**Exports:**
 
-| Format | Library | Purpose |
-|--------|---------|---------|
-| MusicXML | @stringsync/musicxml | Notation software (Sibelius, Finale) |
-| ABC | Custom (simple text) | LLM tool interoperability |
-| Stems | Native | Mixing/mastering in other DAWs |
-| MP3 | lamejs | Easy sharing |
+| Format | Library | Purpose | Status |
+|--------|---------|---------|--------|
+| ABC | Custom (simple text) | LLM tool interoperability | ✅ Enhanced v0.9.12 |
+| MusicXML | @stringsync/musicxml | Notation software (Sibelius, Finale) | Planned |
+| Stems | Native | Mixing/mastering in other DAWs | Planned |
+| MP3 | lamejs | Easy sharing | Planned |
+
+**ABC Export Modes (v0.9.12):**
+- `--voice-mode combined`: All voices as chords (default)
+- `--voice-mode separate`: Each instrument as its own tune
+- `--voice-mode melody`: Extract highest-pitched notes only
+- `--instruments <list>`: Filter to specific instruments in separate mode
 
 ### v1.0.0: Solid Foundation
 
