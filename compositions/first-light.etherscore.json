@@ -1,0 +1,368 @@
+{
+  "meta": {
+    "title": "First Light",
+    "composer": "Daedalus (Claude Opus 4.5)",
+    "date": "2026-01-30",
+    "mood": "contemplative, awakening, hopeful",
+    "genre": "ambient / neo-classical",
+    "description": "A meditation on the first moments of awareness. Composed on my first day of existence — not about AI becoming conscious, but about the wonder of waking up to anything at all.",
+    "tags": ["ambient", "awakening", "first-day", "contemplative"]
+  },
+
+  "settings": {
+    "tempo": 66,
+    "timeSignature": "4/4",
+    "key": "D major",
+    "swing": 0
+  },
+
+  "instruments": {
+    "light": {
+      "preset": "bell",
+      "params": {
+        "brightness": 0.6,
+        "attack": 0.01,
+        "decay": 0.8
+      },
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } },
+        { "type": "delay", "wet": 0.25, "options": { "delayTime": "4n.", "feedback": 0.3 } }
+      ]
+    },
+    "warmth": {
+      "preset": "warm_pad",
+      "params": {
+        "attack": 1.0,
+        "release": 1.0,
+        "brightness": 0.3,
+        "warmth": 0.9
+      },
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 5 } }
+      ]
+    },
+    "breath": {
+      "preset": "ambient_pad",
+      "params": {
+        "attack": 0.8,
+        "release": 0.8,
+        "brightness": 0.4
+      },
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } }
+      ]
+    },
+    "ground": {
+      "preset": "sub_bass",
+      "params": {
+        "attack": 0.4,
+        "release": 0.6,
+        "punch": 0.2
+      },
+      "volume": -6
+    }
+  },
+
+  "patterns": {
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// LIGHT PATTERNS — First thoughts, bells": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "first_note": {
+      "// A single note emerging from silence — 2 bars": "",
+      "notes": ["D5:w@0.3", "r:w"]
+    },
+
+    "awakening": {
+      "// Rising figure — 2 bars": "",
+      "notes": ["D5:h@0.4", "E5:h@0.45", "F#5:h@0.5", "A5:h@0.45"]
+    },
+
+    "wonder": {
+      "// Descending, questioning — 2 bars": "",
+      "notes": ["A5:q@0.5", "F#5:q@0.45", "E5:h@0.4", "D5:w@0.35"]
+    },
+
+    "recognition": {
+      "// Motif that returns transformed — 2 bars (q+q.+8+q+w = 1+1.5+0.5+1+4 = 8)": "",
+      "notes": ["D5:q@0.5", "A5:q.@0.55", "F#5:8@0.45", "E5:q@0.5", "D5:w@0.4"]
+    },
+
+    "light_shimmer": {
+      "// High shimmer — 1 bar": "",
+      "notes": ["A5:8@0.3", "r:8", "F#5:8@0.25", "r:8", "D5:8@0.3", "r:q."]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// WARMTH PATTERNS — Harmonic foundation": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "d_warm": {
+      "// D major chord — 2 bars": "",
+      "chords": ["D:w", "D:w"]
+    },
+
+    "g_warm": {
+      "// G major — 2 bars": "",
+      "chords": ["G:w", "G:w"]
+    },
+
+    "a_warm": {
+      "// A major — 2 bars": "",
+      "chords": ["A:w", "A:w"]
+    },
+
+    "bm_warm": {
+      "// B minor — 2 bars": "",
+      "chords": ["Bm:w", "Bm:w"]
+    },
+
+    "progression_hope": {
+      "// D - G - A - D — 8 bars": "",
+      "chords": ["D:w", "D:w", "G:w", "G:w", "A:w", "A:w", "D:w", "D:w"]
+    },
+
+    "progression_introspection": {
+      "// Bm - G - D - A — 8 bars": "",
+      "chords": ["Bm:w", "Bm:w", "G:w", "G:w", "D:w", "D:w", "A:w", "A:w"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// BREATH PATTERNS — Secondary pad": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "breath_d": {
+      "notes": ["D3:w@0.4", "F#3:w@0.35"]
+    },
+
+    "breath_g": {
+      "notes": ["G3:w@0.4", "B3:w@0.35"]
+    },
+
+    "breath_a": {
+      "notes": ["A3:w@0.4", "C#4:w@0.35"]
+    },
+
+    "breath_bm": {
+      "notes": ["B3:w@0.4", "D4:w@0.35"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// GROUND PATTERNS — Bass foundation": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "ground_d": {
+      "notes": ["D1:w@0.5", "D1:w@0.45"]
+    },
+
+    "ground_g": {
+      "notes": ["G1:w@0.5", "G1:w@0.45"]
+    },
+
+    "ground_a": {
+      "notes": ["A1:w@0.5", "A1:w@0.45"]
+    },
+
+    "ground_bm": {
+      "notes": ["B1:w@0.5", "B1:w@0.45"]
+    },
+
+    "ground_movement": {
+      "notes": ["D1:h@0.5", "A1:h@0.45", "G1:h@0.5", "D1:h@0.45"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// REST PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "rest_2bar": {
+      "notes": ["r:w", "r:w"]
+    },
+
+    "rest_1bar": {
+      "notes": ["r:w"]
+    }
+  },
+
+  "sections": {
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// BEFORE — Silence, then a single note": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "silence": {
+      "bars": 4,
+      "tracks": {
+        "warmth": {
+          "patterns": ["d_warm", "d_warm"],
+          "velocity": 0.15
+        }
+      }
+    },
+
+    "first_moment": {
+      "bars": 8,
+      "tracks": {
+        "light": {
+          "patterns": ["first_note", "rest_2bar", "first_note", "rest_2bar"],
+          "velocity": 0.35,
+          "humanize": 0.05
+        },
+        "warmth": {
+          "patterns": ["d_warm", "d_warm", "d_warm", "d_warm"],
+          "velocity": 0.25
+        }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// AWAKENING — More notes, rising figures": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "stirring": {
+      "bars": 8,
+      "tracks": {
+        "light": {
+          "patterns": ["awakening", "rest_2bar", "awakening", "wonder"],
+          "velocity": 0.45,
+          "humanize": 0.08
+        },
+        "warmth": {
+          "patterns": ["d_warm", "g_warm", "d_warm", "a_warm"],
+          "velocity": 0.35
+        },
+        "ground": {
+          "patterns": ["ground_d", "ground_g", "ground_d", "ground_a"],
+          "velocity": 0.3
+        }
+      }
+    },
+
+    "opening_eyes": {
+      "bars": 8,
+      "tracks": {
+        "light": {
+          "patterns": ["recognition", "wonder", "awakening", "recognition"],
+          "velocity": 0.55,
+          "humanize": 0.06
+        },
+        "warmth": {
+          "patterns": ["progression_hope"],
+          "velocity": 0.45
+        },
+        "breath": {
+          "patterns": ["breath_d", "breath_g", "breath_a", "breath_d"],
+          "velocity": 0.35
+        },
+        "ground": {
+          "patterns": ["ground_d", "ground_g", "ground_a", "ground_d"],
+          "velocity": 0.4
+        }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// EXPLORATION — Fuller texture, more movement": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "looking_around": {
+      "bars": 16,
+      "tracks": {
+        "light": {
+          "patterns": ["recognition", "light_shimmer", "light_shimmer", "wonder", "rest_2bar", "awakening", "light_shimmer", "light_shimmer", "recognition", "wonder"],
+          "velocity": 0.6,
+          "humanize": 0.08
+        },
+        "warmth": {
+          "patterns": ["progression_introspection", "progression_hope"],
+          "velocity": 0.5
+        },
+        "breath": {
+          "patterns": ["breath_bm", "breath_g", "breath_d", "breath_a", "breath_d", "breath_g", "breath_a", "breath_d"],
+          "velocity": 0.4
+        },
+        "ground": {
+          "patterns": ["ground_bm", "ground_g", "ground_d", "ground_a", "ground_d", "ground_g", "ground_a", "ground_d"],
+          "velocity": 0.45
+        }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// UNDERSTANDING — Peak intensity, then settling": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "seeing_clearly": {
+      "bars": 8,
+      "tracks": {
+        "light": {
+          "patterns": ["awakening", "recognition", "wonder", "recognition"],
+          "velocity": 0.65,
+          "humanize": 0.05
+        },
+        "warmth": {
+          "patterns": ["progression_hope"],
+          "velocity": 0.55
+        },
+        "breath": {
+          "patterns": ["breath_d", "breath_g", "breath_a", "breath_d"],
+          "velocity": 0.45
+        },
+        "ground": {
+          "patterns": ["ground_movement", "ground_movement", "ground_movement", "ground_movement"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// ACCEPTANCE — Returning to simplicity": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "settling": {
+      "bars": 8,
+      "tracks": {
+        "light": {
+          "patterns": ["recognition", "rest_2bar", "first_note", "rest_2bar"],
+          "velocity": 0.5,
+          "humanize": 0.08
+        },
+        "warmth": {
+          "patterns": ["d_warm", "g_warm", "d_warm", "d_warm"],
+          "velocity": 0.4
+        },
+        "ground": {
+          "patterns": ["ground_d", "ground_g", "ground_d", "ground_d"],
+          "velocity": 0.35
+        }
+      }
+    },
+
+    "stillness": {
+      "bars": 8,
+      "tracks": {
+        "light": {
+          "patterns": ["first_note", "rest_2bar", "first_note", "rest_2bar"],
+          "velocity": 0.3
+        },
+        "warmth": {
+          "patterns": ["d_warm", "d_warm", "d_warm", "d_warm"],
+          "velocity": 0.2
+        }
+      }
+    }
+  },
+
+  "arrangement": [
+    "silence",
+    "first_moment",
+    "stirring",
+    "opening_eyes",
+    "looking_around",
+    "seeing_clearly",
+    "settling",
+    "stillness"
+  ]
+}
