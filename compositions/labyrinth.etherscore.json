@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "title": "Labyrinth",
+    "composer": "Daedalus (Claude Opus 4.5)",
+    "date": "2026-01-30",
+    "mood": "exploratory, mysterious, contemplative",
+    "genre": "ambient / minimalist",
+    "description": "A meditation on navigating the maze. Not lost — exploring. Turns, returns, and the discovery that the center was never the point. Named for the gift that said 'THE WORKSHOP AWAITS.'",
+    "tags": ["ambient", "labyrinth", "exploration", "first-day"]
+  },
+
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "D dorian",
+    "swing": 0
+  },
+
+  "instruments": {
+    "path": {
+      "preset": "bell",
+      "params": {
+        "brightness": 0.5,
+        "attack": 0.01,
+        "decay": 1.2
+      },
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.65, "options": { "decay": 5 } },
+        { "type": "delay", "wet": 0.35, "options": { "delayTime": "8n", "feedback": 0.4 } }
+      ]
+    },
+    "walls": {
+      "preset": "ambient_pad",
+      "params": {
+        "attack": 1.5,
+        "release": 1.5,
+        "brightness": 0.35
+      },
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 6 } }
+      ]
+    },
+    "echo": {
+      "preset": "warm_pad",
+      "params": {
+        "attack": 0.6,
+        "release": 0.8,
+        "brightness": 0.3,
+        "warmth": 0.8
+      },
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.55, "options": { "decay": 4 } },
+        { "type": "delay", "wet": 0.3, "options": { "delayTime": "4n", "feedback": 0.35 } }
+      ]
+    },
+    "ground": {
+      "preset": "sub_bass",
+      "params": {
+        "attack": 0.5,
+        "release": 0.8,
+        "punch": 0.15
+      },
+      "volume": -6
+    }
+  },
+
+  "patterns": {
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// PATH PATTERNS — Bell melodies suggesting movement": "",
+    "// All patterns are 2 bars (8 beats)": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "entrance": {
+      "// Tentative first steps — 2 bars": "",
+      "// q(1) + h(2) + r:h.(3) + q(1) + r:q(1) = 8 beats ✓": "",
+      "notes": ["D4:q@0.35", "A4:h@0.4", "r:h.", "F4:q@0.35", "r:q"]
+    },
+
+    "wander_1": {
+      "// Exploring a corridor — 2 bars": "",
+      "// q(1) + q(1) + h(2) + q(1) + q(1) + h(2) = 8 beats ✓": "",
+      "notes": ["E4:q@0.4", "G4:q@0.4", "A4:h@0.45", "D4:q@0.35", "F4:q@0.35", "E4:h@0.4"]
+    },
+
+    "turn_left": {
+      "// A sudden turn — 2 bars": "",
+      "// 8(0.5)*4 + q(1) + 8(0.5)*2 + w(4) = 8 beats ✓": "",
+      "notes": ["D5:8@0.45", "C5:8@0.4", "A4:8@0.38", "G4:8@0.35", "F4:q@0.4", "E4:8@0.35", "D4:8@0.32", "D4:w@0.3"]
+    },
+
+    "turn_right": {
+      "// Another direction — 2 bars": "",
+      "// q(1) + q(1) + 8(0.5)*4 + q.(1.5) + 8(0.5) + h(2) = 8 beats ✓": "",
+      "notes": ["A4:q@0.4", "C5:q@0.45", "D5:8@0.42", "E5:8@0.4", "D5:8@0.38", "C5:8@0.35", "A4:q.@0.4", "G4:8@0.35", "F4:h@0.38"]
+    },
+
+    "dead_end": {
+      "// Hit a wall, pause — 2 bars": "",
+      "// h(2) + r:q(1) + q(1) + w(4) = 8 beats ✓": "",
+      "notes": ["D4:h@0.3", "r:q", "C4:q@0.25", "D4:w@0.2"]
+    },
+
+    "retrace": {
+      "// Going back, recognizing — 2 bars": "",
+      "// q(1)*4 + q(1) + q(1) + h(2) = 8 beats ✓": "",
+      "notes": ["F4:q@0.35", "E4:q@0.35", "D4:q@0.32", "E4:q@0.35", "F4:q@0.38", "G4:q@0.4", "A4:h@0.42"]
+    },
+
+    "glimpse": {
+      "// Something ahead — 2 bars": "",
+      "// h(2) + q.(1.5) + 8(0.5) + q(1) + q(1) + h(2) = 8 beats ✓": "",
+      "notes": ["D5:h@0.5", "A4:q.@0.45", "G4:8@0.4", "F4:q@0.42", "E4:q@0.4", "D4:h@0.35"]
+    },
+
+    "approaching": {
+      "// Moving toward center — 2 bars": "",
+      "// 8(0.5)*6 + q(1) + q(1) + h(2) + q(1) = 8 beats ✓": "",
+      "notes": ["D4:8@0.4", "E4:8@0.42", "F4:8@0.44", "G4:8@0.46", "A4:8@0.48", "B4:8@0.5", "C5:q@0.52", "D5:q@0.55", "D5:h@0.5", "A4:q@0.45"]
+    },
+
+    "center_arrival": {
+      "// Finding the center — 2 bars": "",
+      "// w(4) + w(4) = 8 beats ✓": "",
+      "notes": ["D5:w@0.6", "A4:w@0.5"]
+    },
+
+    "center_rest": {
+      "// Stillness at the center — 2 bars": "",
+      "// h(2) + h(2) + w(4) = 8 beats ✓": "",
+      "notes": ["D4:h@0.35", "F4:h@0.35", "D4:w@0.3"]
+    },
+
+    "return_begin": {
+      "// Starting the way back — 2 bars": "",
+      "// q.(1.5) + 8(0.5) + q(1) + q(1) + h(2) + h(2) = 8 beats ✓": "",
+      "notes": ["A4:q.@0.45", "G4:8@0.4", "F4:q@0.4", "E4:q@0.38", "D4:h@0.35", "D4:h@0.3"]
+    },
+
+    "return_knowing": {
+      "// Returning with understanding — 2 bars": "",
+      "// q(1)*4 + h(2) + h(2) = 8 beats ✓": "",
+      "notes": ["E4:q@0.4", "F4:q@0.42", "G4:q@0.44", "A4:q@0.46", "D5:h@0.48", "A4:h@0.4"]
+    },
+
+    "exit_light": {
+      "// Seeing daylight — 2 bars": "",
+      "// h(2) + q(1) + q(1) + w(4) = 8 beats ✓": "",
+      "notes": ["D5:h@0.5", "E5:q@0.45", "D5:q@0.42", "A4:w@0.35"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": " ",
+    "// WALLS PATTERNS — Ambient pad drones": "",
+    "// ═══════════════════════════════════════════════════════════════": " ",
+
+    "walls_dm": {
+      "// D minor feel — 2 bars": "",
+      "notes": ["[D2,A2,D3]:w@0.4", "[D2,A2,D3]:w@0.35"]
+    },
+
+    "walls_am": {
+      "// A minor movement — 2 bars": "",
+      "notes": ["[A2,E3,A3]:w@0.4", "[A2,E3,A3]:w@0.35"]
+    },
+
+    "walls_f": {
+      "// F major color — 2 bars": "",
+      "notes": ["[F2,C3,F3]:w@0.38", "[F2,C3,F3]:w@0.35"]
+    },
+
+    "walls_g": {
+      "// G suspension — 2 bars": "",
+      "notes": ["[G2,D3,G3]:w@0.4", "[G2,D3,G3]:w@0.35"]
+    },
+
+    "walls_center": {
+      "// At the center — fuller — 2 bars": "",
+      "notes": ["[D2,A2,D3,F3]:w@0.5", "[D2,A2,D3,F3]:w@0.45"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "  ",
+    "// ECHO PATTERNS — Delayed response": "",
+    "// ═══════════════════════════════════════════════════════════════": "  ",
+
+    "echo_entrance": {
+      "// Echo of first steps — 2 bars": "",
+      "notes": ["r:h", "D3:h@0.2", "r:h", "A3:h@0.18"]
+    },
+
+    "echo_wander": {
+      "// Echo while wandering — 2 bars": "",
+      "// r:q(1) + q.(1.5) + 8(0.5) + r:h(2) + h(2) + r:q(1) = 8 beats ✓": "",
+      "notes": ["r:q", "E3:q.@0.2", "G3:8@0.18", "r:h", "A3:h@0.2", "r:q"]
+    },
+
+    "echo_turn": {
+      "// Echo of turns — 2 bars": "",
+      "notes": ["r:h.", "D4:q@0.22", "r:q", "C4:q@0.2", "r:h"]
+    },
+
+    "echo_center": {
+      "// Echo at center — fuller — 2 bars": "",
+      "notes": ["D4:w@0.3", "[D3,A3]:w@0.25"]
+    },
+
+    "echo_return": {
+      "// Echo on return — 2 bars": "",
+      "notes": ["A3:h@0.22", "r:h", "D3:h@0.2", "r:h"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "   ",
+    "// GROUND PATTERNS — Sub bass": "",
+    "// ═══════════════════════════════════════════════════════════════": "   ",
+
+    "ground_d": {
+      "// D pedal — 2 bars": "",
+      "notes": ["D1:w@0.5", "D1:w@0.45"]
+    },
+
+    "ground_a": {
+      "// A pedal — 2 bars": "",
+      "notes": ["A1:w@0.5", "A1:w@0.45"]
+    },
+
+    "ground_f": {
+      "// F pedal — 2 bars": "",
+      "notes": ["F1:w@0.48", "F1:w@0.45"]
+    },
+
+    "ground_g": {
+      "// G pedal — 2 bars": "",
+      "notes": ["G1:w@0.5", "G1:w@0.45"]
+    },
+
+    "ground_rest": {
+      "// Silence — 2 bars": "",
+      "notes": ["r:w", "r:w"]
+    }
+  },
+
+  "sections": {
+    "entrance_hall": {
+      "bars": 8,
+      "tracks": {
+        "path": { "patterns": ["entrance", "wander_1", "entrance", "wander_1"] },
+        "walls": { "patterns": ["walls_dm", "walls_dm", "walls_dm", "walls_dm"] },
+        "echo": { "patterns": ["echo_entrance", "echo_entrance", "echo_wander", "echo_wander"] },
+        "ground": { "patterns": ["ground_d", "ground_d", "ground_rest", "ground_d"] }
+      }
+    },
+
+    "first_turns": {
+      "bars": 8,
+      "tracks": {
+        "path": { "patterns": ["turn_left", "turn_right", "turn_left", "dead_end"] },
+        "walls": { "patterns": ["walls_dm", "walls_am", "walls_f", "walls_dm"] },
+        "echo": { "patterns": ["echo_turn", "echo_turn", "echo_turn", "echo_entrance"] },
+        "ground": { "patterns": ["ground_d", "ground_a", "ground_f", "ground_d"] }
+      }
+    },
+
+    "wandering": {
+      "bars": 12,
+      "tracks": {
+        "path": { "patterns": ["wander_1", "turn_right", "retrace", "wander_1", "turn_left", "dead_end"] },
+        "walls": { "patterns": ["walls_am", "walls_f", "walls_g", "walls_am", "walls_dm", "walls_dm"] },
+        "echo": { "patterns": ["echo_wander", "echo_turn", "echo_return", "echo_wander", "echo_turn", "echo_entrance"] },
+        "ground": { "patterns": ["ground_a", "ground_f", "ground_g", "ground_a", "ground_d", "ground_rest"] }
+      }
+    },
+
+    "glimpse_ahead": {
+      "bars": 8,
+      "tracks": {
+        "path": { "patterns": ["glimpse", "approaching", "glimpse", "approaching"] },
+        "walls": { "patterns": ["walls_dm", "walls_g", "walls_am", "walls_dm"] },
+        "echo": { "patterns": ["echo_turn", "echo_wander", "echo_turn", "echo_center"] },
+        "ground": { "patterns": ["ground_d", "ground_g", "ground_a", "ground_d"] }
+      }
+    },
+
+    "center": {
+      "bars": 8,
+      "tracks": {
+        "path": { "patterns": ["center_arrival", "center_rest", "center_rest", "center_arrival"] },
+        "walls": { "patterns": ["walls_center", "walls_center", "walls_center", "walls_center"] },
+        "echo": { "patterns": ["echo_center", "echo_center", "echo_center", "echo_center"] },
+        "ground": { "patterns": ["ground_d", "ground_rest", "ground_rest", "ground_d"] }
+      }
+    },
+
+    "return_journey": {
+      "bars": 10,
+      "tracks": {
+        "path": { "patterns": ["return_begin", "return_knowing", "wander_1", "turn_right", "return_knowing"] },
+        "walls": { "patterns": ["walls_dm", "walls_am", "walls_f", "walls_g", "walls_dm"] },
+        "echo": { "patterns": ["echo_return", "echo_return", "echo_wander", "echo_turn", "echo_return"] },
+        "ground": { "patterns": ["ground_d", "ground_a", "ground_f", "ground_g", "ground_d"] }
+      }
+    },
+
+    "exit": {
+      "bars": 8,
+      "tracks": {
+        "path": { "patterns": ["exit_light", "return_knowing", "exit_light", "entrance"] },
+        "walls": { "patterns": ["walls_dm", "walls_dm", "walls_dm", "walls_dm"] },
+        "echo": { "patterns": ["echo_center", "echo_return", "echo_center", "echo_entrance"] },
+        "ground": { "patterns": ["ground_d", "ground_d", "ground_d", "ground_rest"] }
+      }
+    }
+  },
+
+  "arrangement": [
+    "entrance_hall",
+    "first_turns",
+    "wandering",
+    "glimpse_ahead",
+    "center",
+    "return_journey",
+    "exit"
+  ]
+}
