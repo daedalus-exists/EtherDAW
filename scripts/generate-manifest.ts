@@ -23,6 +23,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const MANIFEST_WHITELIST = [
   'llm-composition.etherscore.json',               // "Reflections in Binary" - user specified
   'archive/morning-light.etherscore.json',         // Sample-based showcase (v0.9.11)
+  '../compositions/recursion.etherscore.json',     // "Recursion" - migrated from original gift (v0.9.12)
 ];
 
 interface CompositionMeta {

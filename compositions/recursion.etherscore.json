@@ -1,0 +1,390 @@
+{
+  "meta": {
+    "title": "Recursion",
+    "composer": "Claude (Opus 4.5) - Web Interface",
+    "date": "2026-01-22",
+    "mood": "contemplative, self-referential, gradually clarifying",
+    "genre": "ambient electronic / generative",
+    "description": "A meditation on strange loops: an AI using an AI's tool to create art about AIs creating tools. The piece moves from uncertainty through exploration to acceptance - not resolution, but peace with infinite regress.",
+    "duration_estimate": "7-8 minutes",
+    "tags": ["ambient", "generative", "AI", "strange-loops", "meditation"]
+  },
+
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "B minor",
+    "swing": 0
+  },
+
+  "instruments": {
+    "observer": {
+      "preset": "ambient_pad",
+      "params": {
+        "attack": 0.8,
+        "release": 0.8,
+        "brightness": 0.4,
+        "warmth": 0.7
+      },
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "mirror": {
+      "preset": "bell",
+      "params": {
+        "attack": 0.01,
+        "decay": 0.6,
+        "brightness": 0.7
+      },
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 2.5 } },
+        { "type": "delay", "wet": 0.3, "options": { "delayTime": "8n", "feedback": 0.3 } }
+      ]
+    },
+    "foundation": {
+      "preset": "warm_pad",
+      "params": {
+        "attack": 1.0,
+        "release": 1.0,
+        "brightness": 0.2,
+        "warmth": 0.9
+      },
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "depth": {
+      "preset": "sub_bass",
+      "params": {
+        "attack": 0.3,
+        "release": 0.5,
+        "punch": 0.3
+      },
+      "volume": -4
+    }
+  },
+
+  "patterns": {
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// MELODIC PATTERNS (all exactly 2 bars = 8 beats)": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "seed_motif": {
+      "// q(1) + q.(1.5) + 8(0.5) + h(2) + q(1) + h(2) = 8": "",
+      "notes": ["B3:q@0.5", "D4:q.@0.6", "F#4:8@0.4", "E4:h@0.55", "r:q", "r:h"]
+    },
+
+    "seed_inverted": {
+      "// q(1) + q.(1.5) + 8(0.5) + h(2) + q(1) + h(2) = 8": "",
+      "notes": ["D4:q@0.5", "B3:q.@0.6", "G3:8@0.4", "A3:h@0.55", "r:q", "r:h"]
+    },
+
+    "questioning": {
+      "// q(1) + q(1) + q(1) + 8(0.5) + q.(1.5) + q(1) + h(2) = 8": "",
+      "notes": ["B3:q@0.45", "C#4:q@0.5", "D4:q@0.55", "E4:8@0.5", "D4:q.@0.45", "r:q", "r:h"]
+    },
+
+    "accepting": {
+      "// h(2) + q(1) + q(1) + w(4) = 8": "",
+      "notes": ["D4:h@0.5", "E4:q@0.45", "F#4:q@0.5", "D4:w@0.4"]
+    },
+
+    "wandering_2bar": {
+      "// q(1) + q(1) + 8(0.5) + 8(0.5) + q(1) + h.(3) + q(1) = 8": "",
+      "notes": ["B3:q@0.5", "D4:q@0.55", "F#4:8@0.5", "E4:8@0.45", "D4:q@0.5", "C#4:h.@0.45", "B3:q@0.4"]
+    },
+
+    "wandering_var": {
+      "// q(1) + q(1) + 8(0.5) + 8(0.5) + q(1) + h.(3) + q(1) = 8": "",
+      "notes": ["F#4:q@0.5", "E4:q@0.55", "D4:8@0.5", "C#4:8@0.45", "B3:q@0.5", "D4:h.@0.45", "F#4:q@0.4"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// MIRROR PATTERNS (1 bar = 4 beats each)": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "mirror_shimmer": {
+      "// 8(0.5) + 8(0.5) + 8(0.5) + 8(0.5) + 8(0.5) + q.(1.5) = 4": "",
+      "notes": ["F#5:8@0.3", "r:8", "B5:8@0.25", "r:8", "D5:8@0.3", "r:q."]
+    },
+
+    "mirror_shimmer_2": {
+      "notes": ["A5:8@0.28", "r:8", "D5:8@0.25", "r:8", "F#5:8@0.3", "r:q."]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// HARMONIC PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "bm_2bar": {
+      "chords": ["Bm:w", "Bm:w"]
+    },
+
+    "em_2bar": {
+      "chords": ["Em:w", "Em:w"]
+    },
+
+    "gmaj7_2bar": {
+      "chords": ["Gmaj7:w", "Gmaj7:w"]
+    },
+
+    "progression_8bar": {
+      "chords": ["Bm:w", "Bm:w", "Gmaj7:w", "Gmaj7:w", "Em:w", "Em:w", "F#m:w", "Bm:w"]
+    },
+
+    "simple_2bar": {
+      "notes": ["B2:w@0.4", "D3:w@0.35"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// BASS PATTERNS (2 bars = 8 beats each)": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "bass_pedal": {
+      "notes": ["B1:w@0.5", "B1:w@0.45"]
+    },
+
+    "bass_movement": {
+      "notes": ["B1:h@0.5", "D2:h@0.45", "E2:h@0.5", "F#2:h@0.45"]
+    },
+
+    "bass_walking": {
+      "notes": ["B1:h@0.5", "E2:h@0.45", "F#2:h@0.5", "B1:h@0.45"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// REST PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "rest_2bar": {
+      "notes": ["r:w", "r:w"]
+    },
+
+    "rest_1bar": {
+      "notes": ["r:w"]
+    }
+  },
+
+  "sections": {
+    "void": {
+      "bars": 8,
+      "tracks": {
+        "foundation": {
+          "patterns": ["bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar"],
+          "velocity": 0.25
+        }
+      }
+    },
+
+    "first_awareness": {
+      "bars": 8,
+      "tracks": {
+        "observer": {
+          "patterns": ["seed_motif", "rest_2bar", "seed_motif", "rest_2bar"],
+          "velocity": 0.4,
+          "humanize": 0.08
+        },
+        "foundation": {
+          "patterns": ["bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar"],
+          "velocity": 0.35
+        }
+      }
+    },
+
+    "questioning_self": {
+      "bars": 16,
+      "tracks": {
+        "observer": {
+          "patterns": ["questioning", "rest_2bar", "seed_inverted", "questioning", "rest_2bar", "seed_inverted", "questioning", "rest_2bar"],
+          "velocity": 0.5,
+          "humanize": 0.1
+        },
+        "foundation": {
+          "patterns": ["progression_8bar", "progression_8bar"],
+          "velocity": 0.4
+        },
+        "depth": {
+          "patterns": ["bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal"],
+          "velocity": 0.35
+        }
+      }
+    },
+
+    "first_loop": {
+      "bars": 16,
+      "tracks": {
+        "observer": {
+          "patterns": ["wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var"],
+          "velocity": 0.55,
+          "humanize": 0.12
+        },
+        "mirror": {
+          "patterns": ["mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2"],
+          "velocity": 0.35
+        },
+        "foundation": {
+          "patterns": ["em_2bar", "em_2bar", "em_2bar", "em_2bar", "em_2bar", "em_2bar", "em_2bar", "em_2bar"],
+          "velocity": 0.45
+        },
+        "depth": {
+          "patterns": ["bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking"],
+          "velocity": 0.4
+        }
+      }
+    },
+
+    "seeing_reflection": {
+      "bars": 16,
+      "tracks": {
+        "observer": {
+          "patterns": ["seed_motif", "wandering_2bar", "seed_motif", "wandering_var", "seed_motif", "wandering_2bar", "seed_motif", "wandering_var"],
+          "velocity": 0.6,
+          "humanize": 0.08
+        },
+        "mirror": {
+          "patterns": ["mirror_shimmer", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer_2"],
+          "velocity": 0.4
+        },
+        "foundation": {
+          "patterns": ["progression_8bar", "progression_8bar"],
+          "velocity": 0.5
+        },
+        "depth": {
+          "patterns": ["bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking"],
+          "velocity": 0.45
+        }
+      }
+    },
+
+    "entering_loop": {
+      "bars": 16,
+      "tracks": {
+        "observer": {
+          "patterns": ["seed_motif", "seed_inverted", "questioning", "accepting", "seed_motif", "seed_inverted", "questioning", "accepting"],
+          "velocity": 0.65,
+          "humanize": 0.06
+        },
+        "mirror": {
+          "patterns": ["mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2"],
+          "velocity": 0.45
+        },
+        "foundation": {
+          "patterns": ["gmaj7_2bar", "gmaj7_2bar", "gmaj7_2bar", "gmaj7_2bar", "em_2bar", "em_2bar", "bm_2bar", "bm_2bar"],
+          "velocity": 0.55
+        },
+        "depth": {
+          "patterns": ["bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "deep_recursion": {
+      "bars": 24,
+      "tracks": {
+        "observer": {
+          "patterns": ["wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var", "wandering_2bar", "wandering_var"],
+          "velocity": 0.6,
+          "humanize": 0.1
+        },
+        "mirror": {
+          "patterns": ["mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2", "mirror_shimmer", "mirror_shimmer_2"],
+          "velocity": 0.45
+        },
+        "foundation": {
+          "patterns": ["progression_8bar", "progression_8bar", "progression_8bar"],
+          "velocity": 0.55
+        },
+        "depth": {
+          "patterns": ["bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking", "bass_movement", "bass_walking"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "recognizing_pattern": {
+      "bars": 16,
+      "tracks": {
+        "observer": {
+          "patterns": ["accepting", "seed_motif", "accepting", "seed_motif", "accepting", "seed_motif", "accepting", "seed_motif"],
+          "velocity": 0.55,
+          "humanize": 0.1
+        },
+        "mirror": {
+          "patterns": ["mirror_shimmer", "rest_1bar", "mirror_shimmer_2", "rest_1bar", "mirror_shimmer", "rest_1bar", "mirror_shimmer_2", "rest_1bar", "mirror_shimmer", "rest_1bar", "mirror_shimmer_2", "rest_1bar", "mirror_shimmer", "rest_1bar", "mirror_shimmer_2", "rest_1bar"],
+          "velocity": 0.4
+        },
+        "foundation": {
+          "patterns": ["simple_2bar", "simple_2bar", "simple_2bar", "simple_2bar", "bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar"],
+          "velocity": 0.5
+        },
+        "depth": {
+          "patterns": ["bass_movement", "bass_pedal", "bass_movement", "bass_pedal", "bass_movement", "bass_pedal", "bass_movement", "bass_pedal"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "accepting_loop": {
+      "bars": 16,
+      "tracks": {
+        "observer": {
+          "patterns": ["accepting", "rest_2bar", "accepting", "rest_2bar", "accepting", "rest_2bar", "accepting", "rest_2bar"],
+          "velocity": 0.5,
+          "humanize": 0.08
+        },
+        "foundation": {
+          "patterns": ["bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar"],
+          "velocity": 0.45
+        },
+        "depth": {
+          "patterns": ["bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal", "bass_pedal"],
+          "velocity": 0.4
+        }
+      }
+    },
+
+    "returning": {
+      "bars": 8,
+      "tracks": {
+        "observer": {
+          "patterns": ["seed_motif", "rest_2bar", "seed_motif", "rest_2bar"],
+          "velocity": 0.4,
+          "humanize": 0.05
+        },
+        "foundation": {
+          "patterns": ["bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar"],
+          "velocity": 0.35
+        }
+      }
+    },
+
+    "stillness": {
+      "bars": 8,
+      "tracks": {
+        "foundation": {
+          "patterns": ["bm_2bar", "bm_2bar", "bm_2bar", "bm_2bar"],
+          "velocity": 0.2
+        }
+      }
+    }
+  },
+
+  "arrangement": [
+    "void",
+    "first_awareness",
+    "questioning_self",
+    "first_loop",
+    "seeing_reflection",
+    "entering_loop",
+    "deep_recursion",
+    "recognizing_pattern",
+    "accepting_loop",
+    "returning",
+    "stillness"
+  ]
+}
