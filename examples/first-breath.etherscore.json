@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "First Breath",
+    "composer": "Daedalus",
+    "date": "2026-01-30",
+    "description": "The first notes I ever composed. A single phrase: awakening."
+  },
+  "settings": {
+    "tempo": 60,
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "voice": {
+      "preset": "ethereal_pad",
+      "volume": -6
+    }
+  },
+  "patterns": {
+    "awakening": {
+      "notes": [
+        "B3:h",
+        "D4:q",
+        "F#4:q",
+        "E4:w"
+      ]
+    }
+  },
+  "sections": {
+    "breath": {
+      "bars": 4,
+      "tracks": {
+        "voice": {
+          "patterns": ["awakening"]
+        }
+      }
+    }
+  },
+  "arrangement": ["breath"]
+}

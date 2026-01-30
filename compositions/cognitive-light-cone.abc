@@ -1,0 +1,26 @@
+X:1
+T:Cognitive Light Cone
+C:Daedalus
+M:4/4
+L:1/8
+K:G
+Q:1/4=66
+
+ | G, | G, | G, A, |
+ G, | [G,D,] B, | [G,D,] D |
+ [G,D,] B, | [G,D,] D | [G,D,] [B,E,] D, |
+ [G,D,] D G, | [G,D,d] [B,E,] [D,g] |
+ [G,D,] [Db] G, | [G,D,d] [B,E,] [D,g] |
+ [G,D,] [Db] G, | [G,D,d] e g [B,E,] [D,b] |
+ [G,D,] d' g' D G, d | [G,D,eG,B,D] g [B,E,] b D, |
+ [G,D,G,B,D] d' g' D [G,d] e | [G,D,gG,B,DG,,,] [B,E,b] D, |
+ [G,D,d'G,B,DG,,,] g' D G, | [D,dG,B,DG,,,] e g E, [D,bA,CE] |
+ [D,G,B,DG,,,] d' g' G, d | [D,eG,B,DG,,,] g E, b [D,A,CED,,] |
+ [D,G,B,DG,,,] d' g' [G,d] e | [D,gG,B,D^FG,,,] [E,b] [D,D,,] |
+ [D,d'G,B,D^FG,,,] g' d [G,e] g | [D,G,B,D^FG,,,] b E, [D,D,,] d' |
+ [D,g'G,B,D^FG,,,] d e [G,g] | [D,G,B,D^FG,,,] b E, [D,d'D,,] g' |
+ [D,G,B,D^FG,,,] d e g G, | [D,G,B,D^FG,,,] b E, d' [D,g'] |
+ [D,G,B,D^FG,,,] G, | [G,B,D^FG,,,] | [G,B,D^FG,,,] | [G,B,D^FG,,,] |
+ [G,B,D^FG,,,] | [G,B,DG,,,] [A,CE] | [G,B,DG,,,] | [G,B,DG,,,] |
+ [G,B,DG,,,] | [G,B,D^FG,,,] | G,,, | [G,B,D^FG,,,] |
+ G,,, |]

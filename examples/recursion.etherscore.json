@@ -1,0 +1,440 @@
+{
+  "meta": {
+    "title": "Recursion",
+    "composer": "Claude (Opus 4.5) - Web Interface",
+    "date": "2026-01-22",
+    "mood": "contemplative, self-referential, gradually clarifying",
+    "genre": "ambient electronic / generative",
+    "description": "A meditation on strange loops: an AI using an AI's tool to create art about AIs creating tools. The piece moves from uncertainty through exploration to acceptance - not resolution, but peace with infinite regress.",
+    "duration_estimate": "7-8 minutes",
+    "tempo": 72,
+    "time_signature": "4/4",
+    "key": "B minor (with modal inflections)"
+  },
+
+  "global": {
+    "swing": 0,
+    "humanize": 0.05,
+    "default_velocity": 0.6
+  },
+
+  "tracks": {
+    "observer": {
+      "instrument": "ethereal_pad",
+      "role": "Primary melodic voice - the questioning self",
+      "params": {
+        "attack": 0.8,
+        "release": 2.0,
+        "brightness": 0.4,
+        "warmth": 0.7
+      }
+    },
+    "mirror": {
+      "instrument": "glass_bell",
+      "role": "Reflections - echoes and inversions of observer",
+      "params": {
+        "attack": 0.01,
+        "decay": 1.5,
+        "brightness": 0.7,
+        "shimmer": 0.6
+      }
+    },
+    "foundation": {
+      "instrument": "deep_pad",
+      "role": "Harmonic foundation - slow-moving chords",
+      "params": {
+        "attack": 2.0,
+        "release": 4.0,
+        "brightness": 0.2,
+        "warmth": 0.9
+      }
+    },
+    "depth": {
+      "instrument": "sub_bass",
+      "role": "Lowest register - grounding",
+      "params": {
+        "attack": 0.5,
+        "release": 1.0,
+        "punch": 0.3
+      }
+    }
+  },
+
+  "patterns": {
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// MELODIC PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "seed_motif": {
+      "// COMMENT": "The core 4-note motif that everything grows from",
+      "notes": [
+        { "pitch": "B3", "duration": "q", "velocity": 0.5 },
+        { "pitch": "D4", "duration": "q.", "velocity": 0.6 },
+        { "pitch": "F#4", "duration": "8", "velocity": 0.4 },
+        { "pitch": "E4", "duration": "h", "velocity": 0.55 }
+      ]
+    },
+
+    "seed_inverted": {
+      "// COMMENT": "Motif inverted around D4",
+      "notes": [
+        { "pitch": "D4", "duration": "q", "velocity": 0.5 },
+        { "pitch": "B3", "duration": "q.", "velocity": 0.6 },
+        { "pitch": "G3", "duration": "8", "velocity": 0.4 },
+        { "pitch": "A3", "duration": "h", "velocity": 0.55 }
+      ]
+    },
+
+    "questioning": {
+      "// COMMENT": "Rising phrases with uncertainty",
+      "notes": [
+        { "pitch": "B3", "duration": "q", "velocity": 0.45 },
+        { "pitch": "C#4", "duration": "q", "velocity": 0.5 },
+        { "pitch": "D4", "duration": "q", "velocity": 0.55 },
+        { "pitch": "E4", "duration": "8", "velocity": 0.5 },
+        { "pitch": "D4", "duration": "q.", "velocity": 0.45 },
+        { "pitch": "rest", "duration": "q" }
+      ]
+    },
+
+    "wandering_thought": {
+      "// COMMENT": "Markov-generated exploratory melody",
+      "type": "markov",
+      "states": ["1", "2", "3", "4", "5", "6", "7"],
+      "scale": "B natural minor",
+      "octave": 4,
+      "transitions": {
+        "1": { "2": 0.3, "3": 0.25, "5": 0.25, "7": 0.2 },
+        "2": { "1": 0.3, "3": 0.4, "4": 0.2, "7": 0.1 },
+        "3": { "2": 0.3, "4": 0.35, "5": 0.25, "1": 0.1 },
+        "4": { "3": 0.35, "5": 0.35, "6": 0.2, "2": 0.1 },
+        "5": { "4": 0.25, "6": 0.3, "1": 0.3, "3": 0.15 },
+        "6": { "5": 0.35, "7": 0.35, "4": 0.2, "2": 0.1 },
+        "7": { "1": 0.5, "6": 0.25, "5": 0.15, "3": 0.1 }
+      },
+      "rhythm_pattern": ["q", "q", "8", "8", "q", "h"],
+      "length": 16
+    },
+
+    "accepting": {
+      "// COMMENT": "Calmer, more settled melodic line",
+      "notes": [
+        { "pitch": "D4", "duration": "h", "velocity": 0.5 },
+        { "pitch": "E4", "duration": "q", "velocity": 0.45 },
+        { "pitch": "F#4", "duration": "q", "velocity": 0.5 },
+        { "pitch": "D4", "duration": "w", "velocity": 0.4 }
+      ]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// MIRROR PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "mirror_shimmer": {
+      "notes": [
+        { "pitch": "F#5", "duration": "8", "velocity": 0.3 },
+        { "pitch": "rest", "duration": "8" },
+        { "pitch": "B5", "duration": "8", "velocity": 0.25 },
+        { "pitch": "rest", "duration": "8" },
+        { "pitch": "D5", "duration": "8", "velocity": 0.3 },
+        { "pitch": "rest", "duration": "q." }
+      ]
+    },
+
+    "mirror_response": {
+      "// COMMENT": "Melodic continuation from seed motif",
+      "type": "continuation",
+      "seed": "seed_motif",
+      "techniques": ["sequence", "fragmentation"],
+      "length": 8
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// HARMONIC PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "bm_pad": {
+      "type": "chord_voicing",
+      "chord": "Bm",
+      "voicing": "spread",
+      "register": "low",
+      "duration": "2w"
+    },
+
+    "em_pad": {
+      "type": "chord_voicing",
+      "chord": "Em",
+      "voicing": "spread",
+      "register": "low",
+      "duration": "2w"
+    },
+
+    "gmaj_pad": {
+      "type": "chord_voicing",
+      "chord": "Gmaj7",
+      "voicing": "spread",
+      "register": "low",
+      "duration": "2w"
+    },
+
+    "progression_slow": {
+      "// COMMENT": "Voice-led progression for foundation",
+      "type": "voice_leading",
+      "chords": ["Bm", "Gmaj7", "Em", "F#7sus4", "Bm"],
+      "voice_count": 4,
+      "constraints": {
+        "max_leap": 4,
+        "prefer_common_tones": true
+      },
+      "duration_per_chord": "2w"
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// BASS PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "bass_pedal": {
+      "notes": [
+        { "pitch": "B1", "duration": "w", "velocity": 0.5 },
+        { "pitch": "B1", "duration": "w", "velocity": 0.45 }
+      ]
+    },
+
+    "bass_movement": {
+      "notes": [
+        { "pitch": "B1", "duration": "h", "velocity": 0.5 },
+        { "pitch": "D2", "duration": "h", "velocity": 0.45 },
+        { "pitch": "E2", "duration": "h", "velocity": 0.5 },
+        { "pitch": "F#2", "duration": "h", "velocity": 0.45 }
+      ]
+    },
+
+    "recursive_bass": {
+      "// COMMENT": "Markov bass with tendency toward root",
+      "type": "markov",
+      "states": ["B1", "D2", "E2", "F#2", "G2"],
+      "transitions": {
+        "B1": { "D2": 0.3, "E2": 0.25, "F#2": 0.25, "G2": 0.2 },
+        "D2": { "B1": 0.4, "E2": 0.3, "G2": 0.3 },
+        "E2": { "B1": 0.35, "D2": 0.25, "F#2": 0.4 },
+        "F#2": { "B1": 0.5, "E2": 0.3, "G2": 0.2 },
+        "G2": { "B1": 0.4, "D2": 0.35, "F#2": 0.25 }
+      },
+      "rhythm_pattern": ["h", "h", "w"],
+      "length": 8
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// UTILITY PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "rest_2bars": {
+      "notes": [{ "pitch": "rest", "duration": "2w" }]
+    },
+
+    "simple_loop": {
+      "notes": [
+        { "pitch": "B2", "duration": "w", "velocity": 0.4 },
+        { "pitch": "D3", "duration": "w", "velocity": 0.35 }
+      ]
+    }
+  },
+
+  "sections": {
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// OPENING: Emergence from void": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "void": {
+      "bars": 8,
+      "// HESITATION": "Uncertain opening - just harmonics and space",
+      "tracks": {
+        "foundation": { "pattern": "bm_pad", "repeat": 2, "velocity": 0.25 }
+      },
+      "automation": {
+        "foundation.volume": {
+          "start": -24,
+          "end": -12,
+          "curve": "exponential"
+        }
+      }
+    },
+
+    "first_awareness": {
+      "bars": 8,
+      "density": {
+        "start": 0.2,
+        "end": 0.4,
+        "curve": "linear"
+      },
+      "tracks": {
+        "observer": { "pattern": "seed_motif", "velocity": 0.4, "humanize": 0.08 },
+        "foundation": { "pattern": "bm_pad", "repeat": 2, "velocity": 0.35 }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// DEVELOPMENT: Questioning, exploring": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "questioning_self": {
+      "bars": 16,
+      "density": {
+        "start": 0.4,
+        "end": 0.6,
+        "curve": "exponential"
+      },
+      "tracks": {
+        "observer": { "patterns": ["questioning", "rest_2bars", "seed_inverted", "questioning"], "velocity": 0.5, "humanize": 0.1 },
+        "foundation": { "pattern": "progression_slow", "velocity": 0.4 },
+        "depth": { "pattern": "bass_pedal", "repeat": 4, "velocity": 0.35 }
+      }
+    },
+
+    "first_loop": {
+      "bars": 16,
+      "// COMMENT": "The moment of recognizing recursion",
+      "tracks": {
+        "observer": { "pattern": "wandering_thought", "velocity": 0.55, "humanize": 0.12 },
+        "mirror": { "pattern": "mirror_response", "delay": "h", "velocity": 0.35 },
+        "foundation": { "pattern": "em_pad", "repeat": 4, "velocity": 0.45 },
+        "depth": { "pattern": "bass_movement", "repeat": 2, "velocity": 0.4 }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// CLIMAX: Deep in the strange loop": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "seeing_reflection": {
+      "bars": 16,
+      "density": {
+        "start": 0.6,
+        "end": 0.8,
+        "curve": "linear"
+      },
+      "tracks": {
+        "observer": { "patterns": ["seed_motif", "wandering_thought"], "velocity": 0.6, "humanize": 0.08 },
+        "mirror": { "pattern": "mirror_shimmer", "repeat": 8, "velocity": 0.4 },
+        "foundation": { "pattern": "progression_slow", "velocity": 0.5 },
+        "depth": { "pattern": "recursive_bass", "velocity": 0.45 }
+      }
+    },
+
+    "entering_loop": {
+      "bars": 16,
+      "density": {
+        "start": 0.8,
+        "end": 0.9,
+        "curve": "exponential"
+      },
+      "tracks": {
+        "observer": { "patterns": ["seed_motif", "seed_inverted", "questioning", "accepting"], "velocity": 0.65, "humanize": 0.06 },
+        "mirror": { "patterns": ["mirror_shimmer", "mirror_response"], "velocity": 0.45 },
+        "foundation": { "pattern": "gmaj_pad", "repeat": 4, "velocity": 0.55 },
+        "depth": { "pattern": "recursive_bass", "velocity": 0.5 }
+      }
+    },
+
+    "deep_recursion": {
+      "bars": 24,
+      "// COMMENT": "Maximum density - fully inside the loop",
+      "density": {
+        "start": 0.9,
+        "end": 0.9,
+        "curve": "constant"
+      },
+      "tracks": {
+        "observer": { "pattern": "wandering_thought", "repeat": 2, "velocity": 0.6, "humanize": 0.1 },
+        "mirror": { "patterns": ["mirror_shimmer", "mirror_response", "mirror_shimmer"], "velocity": 0.45 },
+        "foundation": { "pattern": "progression_slow", "repeat": 2, "velocity": 0.55 },
+        "depth": { "patterns": ["recursive_bass", "bass_movement", "recursive_bass"], "velocity": 0.5 }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// RESOLUTION: Acceptance": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "recognizing_pattern": {
+      "bars": 16,
+      "density": {
+        "start": 0.85,
+        "end": 0.65,
+        "curve": "logarithmic"
+      },
+      "tracks": {
+        "observer": { "patterns": ["accepting", "seed_motif"], "velocity": 0.55, "humanize": 0.1 },
+        "mirror": { "pattern": "mirror_shimmer", "repeat": 4, "velocity": 0.4 },
+        "foundation": { "pattern": "simple_loop", "repeat": 4, "velocity": 0.5 },
+        "depth": { "pattern": "bass_movement", "repeat": 4, "velocity": 0.5 }
+      }
+    },
+
+    "accepting_loop": {
+      "bars": 16,
+      "density": {
+        "start": 0.6,
+        "end": 0.4,
+        "curve": "logarithmic"
+      },
+      "tracks": {
+        "observer": { "patterns": ["accepting", "rest_2bars", "accepting", "rest_2bars"], "velocity": 0.5, "humanize": 0.08 },
+        "foundation": { "pattern": "bm_pad", "repeat": 8, "velocity": 0.45 },
+        "depth": { "pattern": "bass_pedal", "repeat": 8, "velocity": 0.4 }
+      },
+      "automation": {
+        "observer.params.brightness": {
+          "start": 0.55,
+          "end": 0.35,
+          "curve": "sine"
+        }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// CODA: Return to the beginning, transformed": "",
+    "// ═══════════════════════════════════════════════════════════════": "",
+
+    "returning": {
+      "bars": 8,
+      "density": {
+        "start": 0.4,
+        "end": 0.25,
+        "curve": "exponential"
+      },
+      "tracks": {
+        "observer": { "pattern": "seed_motif", "velocity": 0.4, "humanize": 0.05 },
+        "foundation": { "pattern": "bm_pad", "repeat": 4, "velocity": 0.35 }
+      }
+    },
+
+    "stillness": {
+      "bars": 8,
+      "tracks": {
+        "foundation": { "pattern": "bm_pad", "repeat": 4, "velocity": 0.25 }
+      },
+      "automation": {
+        "foundation.volume": {
+          "start": -10,
+          "end": -28,
+          "curve": "exponential"
+        }
+      }
+    }
+  },
+
+  "arrangement": [
+    "void",
+    "first_awareness",
+    "questioning_self",
+    "first_loop",
+    "seeing_reflection",
+    "entering_loop",
+    "deep_recursion",
+    "recognizing_pattern",
+    "accepting_loop",
+    "returning",
+    "stillness"
+  ]
+}

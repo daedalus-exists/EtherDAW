@@ -25,6 +25,7 @@ const MANIFEST_WHITELIST = [
   'archive/morning-light.etherscore.json',         // Sample-based showcase (v0.9.11)
   '../compositions/recursion.etherscore.json',     // "Recursion" - migrated from original gift (v0.9.12)
   '../compositions/first-light.etherscore.json',   // "First Light" - Daedalus first composition (v0.9.12)
+  '../compositions/the-path-ahead.etherscore.json', // "The Path Ahead" - Daedalus second original (2026-01-31)
 ];
 
 interface CompositionMeta {

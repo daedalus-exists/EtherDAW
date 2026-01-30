@@ -1,0 +1,235 @@
+{
+  "$schema": "../schemas/etherscore.schema.json",
+  "meta": {
+    "title": "Cognitive Light Cone",
+    "composer": "Daedalus",
+    "date": "2026-01-30",
+    "version": "1.0.0",
+    "description": "The expansion from local to global goals. Inspired by Michael Levin's concept: the boundary of the largest goal a system can work toward.",
+    "tags": ["ambient", "generative", "emergence", "bioelectricity"],
+    "duration_estimate": "4:00"
+  },
+  "settings": {
+    "tempo": 66,
+    "key": "G major",
+    "timeSignature": "4/4",
+    "swing": 0
+  },
+  "instruments": {
+    "cell": {
+      "preset": "sine_pad",
+      "volume": 0.4,
+      "pan": 0,
+      "effects": ["reverb"]
+    },
+    "membrane": {
+      "preset": "warm_pad",
+      "volume": 0.35,
+      "pan": -0.2,
+      "effects": ["reverb", "delay"]
+    },
+    "signal": {
+      "preset": "bell",
+      "volume": 0.25,
+      "pan": 0.3,
+      "effects": ["reverb", "delay"]
+    },
+    "collective": {
+      "preset": "string_ensemble",
+      "volume": 0.45,
+      "pan": 0,
+      "effects": ["reverb"]
+    },
+    "field": {
+      "preset": "sub_bass",
+      "volume": 0.5,
+      "pan": 0,
+      "effects": ["reverb"]
+    }
+  },
+  "patterns": {
+    "// ═══════════════════════════════════════════════════════════════": "",
+    "// CELL PATTERNS — Single to multiple cells": "",
+    "silence_2bar": {
+      "notes": ["r:w", "r:w"]
+    },
+    "single_cell": {
+      "// A single cell, tiny light cone — 2 bars": "",
+      "notes": ["G3:w@0.2", "G3:w@0.25"]
+    },
+    "cell_stir": {
+      "// First movement, sensing — 2 bars": "",
+      "notes": ["G3:h.@0.25", "A3:q@0.3", "G3:w@0.25"]
+    },
+    "two_cells": {
+      "// Two cells communicating — 2 bars": "",
+      "notes": ["G3:h@0.25", "B3:h@0.25", "G3:h@0.3", "D4:h@0.3"]
+    },
+
+    "// MEMBRANE PATTERNS — Bioelectric baseline": "",
+    "membrane_pulse": {
+      "// Membrane potential — 2 bars": "",
+      "notes": ["D3:w@0.2", "D3:w@0.25"]
+    },
+    "ion_flow": {
+      "// Ion channels opening — 2 bars": "",
+      "notes": ["D3:h@0.25", "E3:q@0.3", "D3:q@0.25", "D3:h.@0.3", "G3:q@0.35"]
+    },
+
+    "// SIGNAL PATTERNS — Gap junction sparks": "",
+    "signal_spark": {
+      "// Bioelectric signals — 2 bars": "",
+      "notes": ["D5:q@0.3", "r:h", "G5:q@0.35", "r:h", "B5:q@0.4", "r:q"]
+    },
+    "signal_cascade": {
+      "// Information cascading — 2 bars (8 beats)": "",
+      "notes": ["D5:8@0.35", "E5:8@0.3", "G5:q@0.4", "r:q", "B5:q@0.45", "r:q", "D6:q@0.4", "G6:h@0.5"]
+    },
+
+    "// COLLECTIVE PATTERNS — Emergent larger goals": "",
+    "collective_emerge": {
+      "// Collective emerges — 2 bars": "",
+      "chords": ["G:w", "G:w"]
+    },
+    "collective_expand": {
+      "// Light cone expands — 2 bars": "",
+      "chords": ["G:h.", "Am:q", "G:w"]
+    },
+    "full_collective": {
+      "// Maximum light cone — 2 bars": "",
+      "chords": ["Gmaj7:w", "Gmaj7:w"]
+    },
+    "resolution": {
+      "// Goal achieved — 2 bars (8 beats)": "",
+      "chords": ["Gmaj7:w.", "r:h"]
+    },
+
+    "// FIELD PATTERNS — Bioelectric foundation": "",
+    "field_ground": {
+      "// Bioelectric field — 2 bars": "",
+      "notes": ["G1:w@0.35", "G1:w@0.4"]
+    },
+    "field_pulse": {
+      "// Field pulsing — 2 bars": "",
+      "notes": ["G1:h.@0.4", "D2:q@0.45", "G1:w@0.4"]
+    }
+  },
+  "sections": {
+    "void": {
+      "bars": 4,
+      "tracks": {
+        "cell": {
+          "patterns": ["silence_2bar", "silence_2bar"],
+          "velocity": 0.01
+        }
+      }
+    },
+    "single": {
+      "bars": 4,
+      "tracks": {
+        "cell": {
+          "patterns": ["single_cell", "cell_stir"],
+          "velocity": 0.25
+        }
+      }
+    },
+    "awakening": {
+      "bars": 8,
+      "tracks": {
+        "cell": {
+          "patterns": ["two_cells", "two_cells", "two_cells", "two_cells"],
+          "velocity": 0.3
+        },
+        "membrane": {
+          "patterns": ["membrane_pulse", "membrane_pulse", "ion_flow", "ion_flow"],
+          "velocity": 0.25
+        },
+        "signal": {
+          "patterns": ["silence_2bar", "silence_2bar", "silence_2bar", "signal_spark"],
+          "velocity": 0.35
+        }
+      }
+    },
+    "connection": {
+      "bars": 8,
+      "tracks": {
+        "cell": {
+          "patterns": ["two_cells", "two_cells", "two_cells", "two_cells"],
+          "velocity": 0.35
+        },
+        "membrane": {
+          "patterns": ["ion_flow", "ion_flow", "ion_flow", "ion_flow"],
+          "velocity": 0.3
+        },
+        "signal": {
+          "patterns": ["signal_spark", "signal_cascade", "signal_cascade", "signal_cascade"],
+          "velocity": 0.4
+        },
+        "collective": {
+          "patterns": ["silence_2bar", "silence_2bar", "collective_emerge", "collective_emerge"],
+          "velocity": 0.35
+        },
+        "field": {
+          "patterns": ["silence_2bar", "silence_2bar", "silence_2bar", "field_ground"],
+          "velocity": 0.35
+        }
+      }
+    },
+    "emergence": {
+      "bars": 12,
+      "tracks": {
+        "membrane": {
+          "patterns": ["ion_flow", "ion_flow", "ion_flow", "ion_flow", "ion_flow", "ion_flow"],
+          "velocity": 0.35
+        },
+        "signal": {
+          "patterns": ["signal_cascade", "signal_cascade", "signal_cascade", "signal_cascade", "signal_cascade", "signal_cascade"],
+          "velocity": 0.45
+        },
+        "collective": {
+          "patterns": ["collective_expand", "collective_expand", "full_collective", "full_collective", "full_collective", "full_collective"],
+          "velocity": 0.5
+        },
+        "field": {
+          "patterns": ["field_ground", "field_pulse", "field_pulse", "field_pulse", "field_pulse", "field_ground"],
+          "velocity": 0.45
+        }
+      }
+    },
+    "transcendence": {
+      "bars": 8,
+      "tracks": {
+        "collective": {
+          "patterns": ["full_collective", "full_collective", "collective_expand", "collective_emerge"],
+          "velocity": 0.55
+        },
+        "field": {
+          "patterns": ["field_ground", "field_ground", "field_ground", "field_ground"],
+          "velocity": 0.4
+        }
+      }
+    },
+    "stillness": {
+      "bars": 4,
+      "tracks": {
+        "collective": {
+          "patterns": ["resolution", "silence_2bar"],
+          "velocity": 0.5
+        },
+        "field": {
+          "patterns": ["field_ground", "silence_2bar"],
+          "velocity": 0.35
+        }
+      }
+    }
+  },
+  "arrangement": [
+    "void",
+    "single",
+    "awakening",
+    "connection",
+    "emergence",
+    "transcendence",
+    "stillness"
+  ]
+}
