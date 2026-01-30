@@ -1,6 +1,9 @@
 /**
  * ABC notation export for EtherDAW
  * ABC is a text-based music notation format widely used for folk music
+ * and increasingly for LLM music interoperability (ChatMusician, etc.)
+ *
+ * v0.9.12: Added voice separation and melody extraction options
  */
 
 import type { Timeline, NoteEvent, EtherScore } from '../schema/types.js';
@@ -21,7 +24,19 @@ export interface AbcExportOptions {
   includeChords?: boolean;
   /** Line width in notes before wrapping */
   lineWidth?: number;
+  /**
+   * Voice mode (v0.9.12):
+   * - 'combined': All voices as chords (default, original behavior)
+   * - 'separate': Each instrument as separate ABC tune
+   * - 'melody': Extract only the highest-pitched voice
+   */
+  voiceMode?: 'combined' | 'separate' | 'melody';
+  /** When voiceMode='separate', limit to specific instruments */
+  instruments?: string[];
 }
+
+/** Store timeline reference for noteToAbc duration calculations */
+let currentTimeline: Timeline;
 
 /**
  * Export a timeline to ABC notation
@@ -29,6 +44,40 @@ export interface AbcExportOptions {
 export function exportToAbc(
   timeline: Timeline,
   options: AbcExportOptions = {}
+): string {
+  const {
+    title = 'Untitled',
+    composer,
+    referenceNumber = 1,
+    lineWidth = 8,
+    voiceMode = 'combined',
+    instruments,
+  } = options;
+
+  // Store timeline for duration calculations
+  currentTimeline = timeline;
+
+  // Get all notes
+  const allNotes = getAllNotes(timeline);
+
+  // Handle different voice modes
+  if (voiceMode === 'separate') {
+    return exportSeparateVoices(timeline, allNotes, options);
+  } else if (voiceMode === 'melody') {
+    return exportMelodyOnly(timeline, allNotes, options);
+  }
+
+  // Default: combined mode (original behavior)
+  return exportCombinedVoices(timeline, allNotes, options);
+}
+
+/**
+ * Export all voices combined as chords (original behavior)
+ */
+function exportCombinedVoices(
+  timeline: Timeline,
+  notes: NoteEvent[],
+  options: AbcExportOptions
 ): string {
   const {
     title = 'Untitled',
@@ -46,35 +95,159 @@ export function exportToAbc(
     lines.push(`C:${composer}`);
   }
 
-  // Meter (time signature)
+  // Meter, default note length, key, tempo
   const timeSignature = timeline.settings.timeSignature || '4/4';
   lines.push(`M:${timeSignature}`);
-
-  // Default note length (1/8 note)
   lines.push('L:1/8');
-
-  // Key
   const key = timeline.settings.key || 'C major';
-  const abcKey = keyToAbc(key);
-  lines.push(`K:${abcKey}`);
-
-  // Tempo
+  lines.push(`K:${keyToAbc(key)}`);
   lines.push(`Q:1/4=${timeline.settings.tempo}`);
-
-  // Empty line before music
   lines.push('');
 
-  // Get notes and convert to ABC
-  const notes = getAllNotes(timeline);
-
-  // Group notes by time for chord detection
+  // Convert notes to ABC
   const notesByTime = groupNotesByTime(notes);
+  const musicLines = generateMusicLines(notesByTime, timeSignature, lineWidth);
+  lines.push(...musicLines);
 
-  // Convert to ABC notation
+  return lines.join('\n');
+}
+
+/**
+ * Export each instrument as a separate ABC tune (v0.9.12)
+ */
+function exportSeparateVoices(
+  timeline: Timeline,
+  allNotes: NoteEvent[],
+  options: AbcExportOptions
+): string {
+  const {
+    title = 'Untitled',
+    composer,
+    lineWidth = 8,
+    instruments: filterInstruments,
+  } = options;
+
+  // Group notes by instrument
+  const notesByInstrument = new Map<string, NoteEvent[]>();
+  for (const note of allNotes) {
+    const inst = note.instrument;
+    if (!notesByInstrument.has(inst)) {
+      notesByInstrument.set(inst, []);
+    }
+    notesByInstrument.get(inst)!.push(note);
+  }
+
+  // Filter to specific instruments if requested
+  const instrumentList = filterInstruments || [...notesByInstrument.keys()];
+
+  const tunes: string[] = [];
+  let refNum = 1;
+
+  for (const instrument of instrumentList) {
+    const notes = notesByInstrument.get(instrument);
+    if (!notes || notes.length === 0) continue;
+
+    const lines: string[] = [];
+
+    // Header for this voice
+    lines.push(`X:${refNum}`);
+    lines.push(`T:${title} - ${instrument}`);
+    if (composer) {
+      lines.push(`C:${composer}`);
+    }
+
+    const timeSignature = timeline.settings.timeSignature || '4/4';
+    lines.push(`M:${timeSignature}`);
+    lines.push('L:1/8');
+    const key = timeline.settings.key || 'C major';
+    lines.push(`K:${keyToAbc(key)}`);
+    lines.push(`Q:1/4=${timeline.settings.tempo}`);
+    lines.push(`%%voice ${instrument}`);
+    lines.push('');
+
+    // Convert notes to ABC (no chord grouping for single voice)
+    const notesByTime = groupNotesByTime(notes);
+    const musicLines = generateMusicLines(notesByTime, timeSignature, lineWidth);
+    lines.push(...musicLines);
+
+    tunes.push(lines.join('\n'));
+    refNum++;
+  }
+
+  return tunes.join('\n\n');
+}
+
+/**
+ * Export only the melody (highest-pitched notes) (v0.9.12)
+ */
+function exportMelodyOnly(
+  timeline: Timeline,
+  allNotes: NoteEvent[],
+  options: AbcExportOptions
+): string {
+  const {
+    title = 'Untitled',
+    composer,
+    referenceNumber = 1,
+    lineWidth = 8,
+  } = options;
+
+  // Group notes by time and extract highest pitch at each time
+  const notesByTime = groupNotesByTime(allNotes);
+  const melodyNotes: NoteEvent[] = [];
+
+  for (const [time, noteGroup] of notesByTime) {
+    // Find the highest pitched note
+    const highest = noteGroup.reduce((a, b) => {
+      return pitchToMidi(a.pitch) > pitchToMidi(b.pitch) ? a : b;
+    });
+    melodyNotes.push(highest);
+  }
+
+  const lines: string[] = [];
+
+  // Header
+  lines.push(`X:${referenceNumber}`);
+  lines.push(`T:${title} (Melody)`);
+  if (composer) {
+    lines.push(`C:${composer}`);
+  }
+
+  const timeSignature = timeline.settings.timeSignature || '4/4';
+  lines.push(`M:${timeSignature}`);
+  lines.push('L:1/8');
+  const key = timeline.settings.key || 'C major';
+  lines.push(`K:${keyToAbc(key)}`);
+  lines.push(`Q:1/4=${timeline.settings.tempo}`);
+  lines.push('');
+
+  // Convert melody notes (no chords)
+  const melodyByTime = new Map<number, NoteEvent[]>();
+  for (const note of melodyNotes) {
+    const quantizedTime = Math.round(note.time * 8) / 8;
+    melodyByTime.set(quantizedTime, [note]);
+  }
+
+  const musicLines = generateMusicLines(melodyByTime, timeSignature, lineWidth);
+  lines.push(...musicLines);
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate ABC music lines from grouped notes
+ */
+function generateMusicLines(
+  notesByTime: Map<number, NoteEvent[]>,
+  timeSignature: string,
+  lineWidth: number
+): string[] {
+  const lines: string[] = [];
+  const ts = parseTimeSignature(timeSignature);
+
   let currentBar = 0;
   let notesInLine = 0;
   let musicLine = '';
-  const ts = parseTimeSignature(timeSignature);
 
   for (const [time, noteGroup] of notesByTime) {
     const bar = Math.floor(time / ts.beatsPerBar);
@@ -97,7 +270,7 @@ export function exportToAbc(
     if (noteGroup.length === 1) {
       musicLine += ' ' + noteToAbc(noteGroup[0]);
     } else {
-      // Chord
+      // Chord notation
       musicLine += ' [' + noteGroup.map(noteToAbc).join('') + ']';
     }
 
@@ -109,7 +282,7 @@ export function exportToAbc(
     lines.push(musicLine + ' |]');
   }
 
-  return lines.join('\n');
+  return lines;
 }
 
 /**
@@ -121,8 +294,12 @@ function keyToAbc(key: string): string {
 
   const [, root, mode] = match;
 
-  // Convert root note
-  let abcRoot = root.replace('#', '^').replace('b', '_');
+  // Convert accidentals for ABC
+  let abcRoot = root.charAt(0).toUpperCase();
+  if (root.length > 1) {
+    if (root.charAt(1) === '#') abcRoot += '#';
+    if (root.charAt(1) === 'b') abcRoot += 'b';
+  }
 
   // Add mode
   if (mode && mode.toLowerCase().startsWith('min')) {
@@ -170,7 +347,7 @@ function noteToAbc(note: NoteEvent): string {
   // Duration
   // ABC uses: 1 = eighth, 2 = quarter, 4 = half, 8 = whole
   // (when L:1/8 is set)
-  const durationMultiplier = note.durationSeconds * (timeline.settings.tempo / 60) * 2;
+  const durationMultiplier = note.durationSeconds * (currentTimeline.settings.tempo / 60) * 2;
   if (durationMultiplier !== 1) {
     if (durationMultiplier === Math.floor(durationMultiplier)) {
       abcNote += Math.floor(durationMultiplier);
@@ -178,14 +355,37 @@ function noteToAbc(note: NoteEvent): string {
       abcNote += '/2';
     } else if (durationMultiplier === 0.25) {
       abcNote += '/4';
+    } else if (durationMultiplier === 1.5) {
+      abcNote += '3/2';
+    } else if (durationMultiplier === 0.75) {
+      abcNote += '3/4';
     }
   }
 
   return abcNote;
 }
 
-// Helper to access timeline settings in noteToAbc
-let timeline: Timeline;
+/**
+ * Convert pitch string to MIDI number for comparison
+ */
+function pitchToMidi(pitch: string): number {
+  const match = pitch.match(/^([A-G])([#b]?)(-?\d+)$/);
+  if (!match) return 60; // default to middle C
+
+  const [, noteName, accidental, octaveStr] = match;
+  const noteValues: Record<string, number> = {
+    'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11
+  };
+
+  let midi = noteValues[noteName] || 0;
+  if (accidental === '#') midi += 1;
+  if (accidental === 'b') midi -= 1;
+
+  const octave = parseInt(octaveStr, 10);
+  midi += (octave + 1) * 12;
+
+  return midi;
+}
 
 /**
  * Group notes that occur at the same time (for chords)
@@ -215,8 +415,8 @@ export function exportScoreToAbc(
   scoreTimeline: Timeline,
   options: AbcExportOptions = {}
 ): string {
-  // Store timeline reference for noteToAbc
-  timeline = scoreTimeline;
+  // Store timeline reference for duration calculations
+  currentTimeline = scoreTimeline;
 
   return exportToAbc(scoreTimeline, {
     title: score.meta?.title || options.title,

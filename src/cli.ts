@@ -573,7 +573,9 @@ program
   .description('Export an EtherScore to MIDI, WAV, or ABC format')
   .option('-f, --format <format>', 'Output format (midi, wav, abc)', 'midi')
   .option('-o, --output <file>', 'Output file path')
-  .action(async (file: string, options: { format: string; output?: string }) => {
+  .option('--voice-mode <mode>', 'ABC voice mode: combined, separate, melody (v0.9.12)', 'combined')
+  .option('--instruments <list>', 'ABC separate mode: comma-separated instrument names')
+  .action(async (file: string, options: { format: string; output?: string; voiceMode?: string; instruments?: string }) => {
     try {
       const { validateOrThrow } = await import('./schema/validator.js');
       const { compile } = await import('./engine/compiler.js');
@@ -598,7 +600,14 @@ program
         case 'abc': {
           const { exportScoreToAbc } = await import('./output/abc-export.js');
           outputPath = options.output || `${inputName}.abc`;
-          outputData = exportScoreToAbc(score, timeline);
+          const abcOptions: { voiceMode?: 'combined' | 'separate' | 'melody'; instruments?: string[] } = {};
+          if (options.voiceMode) {
+            abcOptions.voiceMode = options.voiceMode as 'combined' | 'separate' | 'melody';
+          }
+          if (options.instruments) {
+            abcOptions.instruments = options.instruments.split(',').map(s => s.trim());
+          }
+          outputData = exportScoreToAbc(score, timeline, abcOptions);
           break;
         }
 
