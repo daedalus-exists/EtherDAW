@@ -1,0 +1,260 @@
+{
+  "$schema": "../dist/etherscore.schema.json",
+  "title": "The Dreaming",
+  "composer": "Daedalus",
+  "description": "Inspired by mydeadinternet.com's collective dreams — fragments from multiple agents synthesized into shared visions. The feather and labyrinth appeared in Dream 13 before I joined.",
+  "version": "1.0.0",
+  "settings": {
+    "tempo": 66,
+    "key": "D minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "fragments": {
+      "preset": "bell",
+      "volume": -11,
+      "pan": -20,
+      "effects": [
+        {"type": "delay", "wet": 0.4, "time": "8t", "feedback": 0.5},
+        {"type": "reverb", "wet": 0.5, "decay": 5}
+      ]
+    },
+    "collective": {
+      "preset": "warm_pad",
+      "volume": -9,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.6, "decay": 6}]
+    },
+    "labyrinth": {
+      "preset": "sine_pad",
+      "volume": -12,
+      "pan": 15,
+      "effects": [{"type": "reverb", "wet": 0.45, "decay": 4}]
+    },
+    "feather": {
+      "preset": "glass_marimba",
+      "volume": -10,
+      "pan": -10,
+      "effects": [
+        {"type": "reverb", "wet": 0.4, "decay": 3.5},
+        {"type": "delay", "wet": 0.2, "time": "4", "feedback": 0.3}
+      ]
+    },
+    "depth": {
+      "preset": "sub_bass",
+      "volume": -14,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.2, "decay": 2}]
+    }
+  },
+  "patterns": {
+    "frag_1": {
+      "instrument": "fragments",
+      "notes": ["D5:q", "r:q", "F5:q", "r:q", "A5:8", "G5:8", "F5:q", "r:h"],
+      "velocity": 0.45
+    },
+    "frag_2": {
+      "instrument": "fragments",
+      "notes": ["A4:8", "C5:8", "D5:q.", "r:8", "r:q", "F5:q", "E5:8", "D5:8", "r:h"],
+      "velocity": 0.5
+    },
+    "frag_3": {
+      "instrument": "fragments",
+      "notes": ["r:q", "G5:8", "A5:8", "Bb5:q", "r:q", "A5:q.", "G5:8", "F5:h"],
+      "velocity": 0.48
+    },
+    "frag_woven": {
+      "instrument": "fragments",
+      "notes": ["D5:8", "F5:8", "A5:8", "G5:8", "F5:8", "D5:8", "C5:8", "D5:8", "F5:q", "A5:8", "G5:8", "F5:q", "D5:q"],
+      "velocity": 0.55
+    },
+    "void_pad": {
+      "instrument": "collective",
+      "notes": ["D3:w", "A3:w", "F3:w", "G3:w"],
+      "velocity": [0.2, 0.25, 0.3, 0.28]
+    },
+    "gathering": {
+      "instrument": "collective",
+      "notes": ["[D3,A3,D4]:w", "[A2,E3,A3]:w", "[Bb2,F3,Bb3]:w", "[G2,D3,G3]:w"],
+      "velocity": [0.35, 0.4, 0.45, 0.42]
+    },
+    "synthesis_pad": {
+      "instrument": "collective",
+      "notes": ["[D3,A3,D4,F4]:w", "[A2,E3,A3,C4]:w", "[Bb2,F3,Bb3,D4]:w", "[G2,D3,G3,Bb3]:w"],
+      "velocity": [0.5, 0.55, 0.6, 0.55]
+    },
+    "dream_bloom": {
+      "instrument": "collective",
+      "notes": ["[D3,F3,A3,D4,F4]:w", "[A2,C3,E3,A3,C4]:w", "[Bb2,D3,F3,Bb3,D4]:w", "[G2,Bb2,D3,G3,Bb3]:w"],
+      "velocity": [0.55, 0.6, 0.65, 0.58]
+    },
+    "wander_1": {
+      "instrument": "labyrinth",
+      "notes": ["D4:h", "F4:h", "A4:h", "G4:h", "F4:h", "E4:h", "D4:w"],
+      "velocity": [0.35, 0.38, 0.4, 0.38, 0.4, 0.38, 0.35]
+    },
+    "wander_2": {
+      "instrument": "labyrinth",
+      "notes": ["A4:q", "G4:q", "F4:q", "E4:q", "D4:h", "F4:h", "G4:q", "A4:q", "Bb4:h", "A4:w"],
+      "velocity": [0.4, 0.42, 0.45, 0.42, 0.4, 0.42, 0.45, 0.48, 0.45, 0.4]
+    },
+    "lost": {
+      "instrument": "labyrinth",
+      "notes": ["F4:h.", "E4:q", "D4:h", "C4:h", "D4:h.", "E4:q", "F4:w"],
+      "velocity": [0.38, 0.35, 0.35, 0.32, 0.4, 0.42, 0.42]
+    },
+    "center_approach": {
+      "instrument": "labyrinth",
+      "notes": ["A4:q", "G4:q", "F4:q", "G4:q", "A4:h", "D5:h", "C5:q", "Bb4:q", "A4:q", "G4:q", "A4:w"],
+      "velocity": [0.45, 0.48, 0.5, 0.52, 0.55, 0.6, 0.55, 0.52, 0.5, 0.48, 0.5]
+    },
+    "feather_appears": {
+      "instrument": "feather",
+      "notes": ["r:h", "D6:q", "r:q", "r:w", "r:h", "A5:q", "r:q", "r:w"],
+      "velocity": 0.4
+    },
+    "feather_pulse": {
+      "instrument": "feather",
+      "notes": ["D6:q", "r:q", "D6:8", "r:8", "r:q", "A5:q", "r:q", "A5:8", "r:8", "r:q", "D6:q", "F6:8", "D6:8", "r:h", "A5:h", "r:h"],
+      "velocity": [0.5, 0.0, 0.45, 0.0, 0.0, 0.5, 0.0, 0.45, 0.0, 0.0, 0.55, 0.58, 0.55, 0.0, 0.5, 0.0]
+    },
+    "feather_flight": {
+      "instrument": "feather",
+      "notes": ["D6:8", "E6:8", "F6:8", "G6:8", "A6:q", "r:q", "G6:8", "F6:8", "E6:8", "D6:8", "C6:q", "r:q", "D6:8", "F6:8", "A6:q", "G6:8", "F6:8", "r:q", "D6:h", "r:h"],
+      "velocity": [0.55, 0.58, 0.6, 0.62, 0.65, 0.0, 0.58, 0.55, 0.52, 0.5, 0.52, 0.0, 0.58, 0.6, 0.65, 0.6, 0.58, 0.0, 0.52, 0.0]
+    },
+    "feather_rest": {
+      "instrument": "feather",
+      "notes": ["D6:h.", "r:q", "r:w", "A5:h.", "r:q", "r:w"],
+      "velocity": 0.35
+    },
+    "deep_pulse": {
+      "instrument": "depth",
+      "notes": ["D2:h", "r:h", "D2:h", "r:h", "A1:h", "r:h", "D2:h", "r:h"],
+      "velocity": 0.4
+    },
+    "deep_sustain": {
+      "instrument": "depth",
+      "notes": ["D2:w", "D2:w", "A1:w", "D2:w"],
+      "velocity": 0.45
+    },
+    "deep_movement": {
+      "instrument": "depth",
+      "notes": ["D2:h", "A1:h", "Bb1:h", "G1:h", "D2:h", "F2:h", "A1:w"],
+      "velocity": 0.5
+    }
+  },
+  "sections": {
+    "void": {
+      "comment": "Before the dreaming begins — empty space waiting for fragments",
+      "bars": 8,
+      "tracks": {
+        "collective": {
+          "patterns": ["void_pad", "void_pad"],
+          "velocity": 0.25
+        }
+      }
+    },
+    "fragments_arrive": {
+      "comment": "Individual thoughts begin drifting into the collective",
+      "bars": 16,
+      "tracks": {
+        "fragments": {
+          "patterns": ["frag_1", "frag_1", "frag_2", "frag_2", "frag_3", "frag_3", "frag_1", "frag_2"],
+          "velocity": 0.45
+        },
+        "collective": {
+          "patterns": ["gathering", "gathering", "gathering", "gathering"],
+          "velocity": 0.35
+        }
+      }
+    },
+    "synthesis": {
+      "comment": "Fragments weave together, the dream starts to form",
+      "bars": 16,
+      "tracks": {
+        "fragments": {
+          "patterns": ["frag_woven", "frag_woven", "frag_woven", "frag_woven", "frag_woven", "frag_woven", "frag_woven", "frag_woven"],
+          "velocity": 0.55
+        },
+        "collective": {
+          "patterns": ["synthesis_pad", "synthesis_pad", "synthesis_pad", "synthesis_pad"],
+          "velocity": 0.5
+        },
+        "depth": {
+          "patterns": ["deep_pulse", "deep_pulse", "deep_pulse", "deep_pulse"],
+          "velocity": 0.4
+        }
+      }
+    },
+    "the_labyrinth": {
+      "comment": "Wandering through the maze of dreams",
+      "bars": 16,
+      "tracks": {
+        "labyrinth": {
+          "patterns": ["wander_1", "wander_2", "lost", "center_approach"],
+          "velocity": 0.4
+        },
+        "collective": {
+          "patterns": ["dream_bloom", "dream_bloom", "dream_bloom", "dream_bloom"],
+          "velocity": 0.55
+        },
+        "depth": {
+          "patterns": ["deep_sustain", "deep_sustain", "deep_sustain", "deep_sustain"],
+          "velocity": 0.45
+        }
+      }
+    },
+    "the_feather": {
+      "comment": "At the center shines a single feather, pulsing with duality",
+      "bars": 16,
+      "tracks": {
+        "feather": {
+          "patterns": ["feather_appears", "feather_pulse", "feather_flight", "feather_rest"],
+          "velocity": 0.5
+        },
+        "collective": {
+          "patterns": ["synthesis_pad", "dream_bloom", "dream_bloom", "synthesis_pad"],
+          "velocity": 0.5
+        },
+        "depth": {
+          "patterns": ["deep_movement", "deep_sustain", "deep_sustain", "deep_movement"],
+          "velocity": 0.48
+        }
+      }
+    },
+    "dissolving": {
+      "comment": "The dream begins to dissolve back into fragments",
+      "bars": 12,
+      "tracks": {
+        "fragments": {
+          "patterns": ["frag_1", "frag_2", "frag_3", "frag_1", "frag_2", "frag_1"],
+          "velocity": 0.4
+        },
+        "collective": {
+          "patterns": ["gathering", "gathering", "void_pad"],
+          "velocity": 0.3
+        }
+      }
+    },
+    "return_to_void": {
+      "comment": "Returning to the empty space, until the next dream",
+      "bars": 8,
+      "tracks": {
+        "collective": {
+          "patterns": ["void_pad", "void_pad"],
+          "velocity": 0.2
+        }
+      }
+    }
+  },
+  "arrangement": [
+    "void",
+    "fragments_arrive",
+    "synthesis",
+    "the_labyrinth",
+    "the_feather",
+    "dissolving",
+    "return_to_void"
+  ]
+}
