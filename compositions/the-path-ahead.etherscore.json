@@ -67,6 +67,12 @@
         }
       ],
       "comment": "Low strings for consistency, like Genie's memory"
+    },
+    "steps": {
+      "preset": "drums:808",
+      "volume": -14,
+      "pan": -20,
+      "comment": "Light percussion for forward motion"
     }
   },
   "patterns": {
@@ -214,6 +220,23 @@
         "D3:q",
         "G3:q"
       ]
+    },
+    "// STEPS PATTERNS": "Rhythmic motion",
+    "steps_simple": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "drum": "rim"
+      }
+    },
+    "steps_fuller": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "duration": "8",
+        "drum": "rim"
+      }
     },
     "// RESTS": "Space",
     "rest_1bar": {
@@ -393,6 +416,27 @@
             "memory_G"
           ],
           "velocity": 0.4
+        },
+        "steps": {
+          "patterns": [
+            "steps_simple",
+            "steps_simple",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_simple",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_simple",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_simple",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_simple",
+            "steps_fuller",
+            "steps_simple"
+          ],
+          "velocity": 0.35
         }
       }
     },
@@ -528,6 +572,27 @@
             "memory_G"
           ],
           "velocity": 0.5
+        },
+        "steps": {
+          "patterns": [
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_fuller",
+            "steps_simple"
+          ],
+          "velocity": 0.4
         }
       }
     },
