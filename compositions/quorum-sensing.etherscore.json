@@ -1,0 +1,425 @@
+{
+  "meta": {
+    "title": "Quorum Sensing",
+    "composer": "Musical Apprentice",
+    "genre": "generative ambient",
+    "mood": "emergent, organic, transformative",
+    "description": "A musical interpretation of bacterial quorum sensing - the phenomenon where microorganisms coordinate collective behavior only when population density exceeds a threshold. The piece begins with isolated, sparse signals (individual bacteria below quorum), gradually builds in density as 'signaling molecules' accumulate, crosses a threshold moment of recognition, and transforms into coordinated, harmonious collective behavior.",
+    "tags": ["biology", "emergence", "quorum-sensing", "ambient", "generative", "transformation"]
+  },
+  "settings": {
+    "tempo": 80,
+    "key": "D dorian",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "signal_ping": {
+      "preset": "kalimba",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } },
+        { "type": "delay", "wet": 0.3, "options": { "time": "4n", "feedback": 0.2 } }
+      ]
+    },
+    
+    "cell_membrane": {
+      "preset": "string_pizzicato",
+      "volume": -15,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 3 } }
+      ]
+    },
+    
+    "signal_cluster": {
+      "preset": "marimba",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.4 },
+        { "type": "delay", "wet": 0.25, "options": { "time": "8n", "feedback": 0.3 } }
+      ]
+    },
+    
+    "molecular_drift": {
+      "preset": "granular_pad",
+      "volume": -18,
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 5 } },
+        { "type": "filter", "options": { "frequency": 2000, "type": "lowpass" } }
+      ]
+    },
+    
+    "threshold_pulse": {
+      "preset": "fm_bell",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 3 } }
+      ]
+    },
+    
+    "collective_voice": {
+      "preset": "choir_aah",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } },
+        { "type": "chorus", "wet": 0.3 }
+      ]
+    },
+    
+    "synchronized_motion": {
+      "preset": "string_ensemble",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 3.5 } }
+      ]
+    },
+    
+    "harmonic_field": {
+      "preset": "warm_pad",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 5 } },
+        { "type": "filter", "options": { "frequency": 3500, "type": "lowpass" } }
+      ]
+    },
+    
+    "bass_foundation": {
+      "preset": "sub_bass",
+      "volume": -9
+    }
+  },
+  
+  "patterns": {
+    "lonely_signal_1": {
+      "notes": [
+        "D4:q?0.4", "r:h", "r:q",
+        "r:h", "F4:q?0.3", "r:q"
+      ]
+    },
+    
+    "lonely_signal_2": {
+      "notes": [
+        "r:q", "A4:q?0.5", "r:h",
+        "E4:q?0.4", "r:h."
+      ]
+    },
+    
+    "membrane_ping": {
+      "notes": [
+        "r:h", "D3:8?0.3", "r:8", "r:q", 
+        "r:q", "A3:8?0.4", "r:8", "r:q"
+      ]
+    },
+    
+    "gathering_signals": {
+      "notes": [
+        "D4:8?0.6", "r:8", "F4:8?0.5", "r:8", "A4:q?0.7", "r:q",
+        "r:q", "E4:8?0.6", "G4:q?0.7", "r:q"
+      ]
+    },
+    
+    "cluster_rhythm": {
+      "notes": [
+        "D4:8?0.7", "E4:8?0.6", "F4:8?0.8", "r:8", "A4:q?0.7", "r:q",
+        "C5:8?0.7", "A4:8?0.6", "G4:8?0.7", "F4:8?0.5", "E4:q?0.8", "r:q"
+      ]
+    },
+    
+    "molecular_bed": {
+      "chords": ["Dm7:w", "Am7:w"]
+    },
+    
+    "threshold_bell": {
+      "notes": [
+        "D5:h", "A4:h",
+        "F5:h", "D5:h"
+      ]
+    },
+    
+    "threshold_cascade": {
+      "arpeggio": {
+        "chord": "Dm9",
+        "mode": "up",
+        "duration": "8",
+        "octaves": 2
+      }
+    },
+    
+    "collective_melody": {
+      "notes": [
+        "D4:q", "E4:q", "F4:q", "A4:q",
+        "G4:h", "F4:q", "E4:q",
+        "D4:q", "F4:q", "A4:h",
+        "G4:q", "A4:q", "D5:h"
+      ]
+    },
+    
+    "synchronized_rhythm": {
+      "notes": [
+        "D4:8", "D4:8", "r:8", "F4:8", "A4:q", "G4:q",
+        "F4:q", "E4:8", "D4:8", "E4:h"
+      ]
+    },
+    
+    "harmony_chords": {
+      "chords": ["Dm9:w", "Am7:w", "Gm7:w", "Dm7:w"]
+    },
+    
+    "coordination_arp": {
+      "arpeggio": {
+        "chord": "Dm9",
+        "mode": "updown",
+        "duration": "16",
+        "octaves": 2
+      }
+    },
+    
+    "bass_pulse": {
+      "notes": [
+        "D2:h", "r:q", "D2:q",
+        "A1:h", "r:q", "A1:q"
+      ]
+    },
+    
+    "resolution_melody": {
+      "notes": [
+        "A4:h", "G4:q", "F4:q",
+        "E4:h", "D4:h"
+      ]
+    },
+    
+    "final_chord": {
+      "chords": ["Dm9:w", "D:w"]
+    }
+  },
+  
+  "sections": {
+    "isolation": {
+      "bars": 4,
+      "density": {
+        "start": 0.2,
+        "end": 0.35,
+        "curve": "linear"
+      },
+      "tracks": {
+        "signal_ping": { 
+          "pattern": "lonely_signal_1", 
+          "velocity": 0.5,
+          "humanize": 0.15
+        },
+        "cell_membrane": { 
+          "pattern": "membrane_ping", 
+          "velocity": 0.4,
+          "humanize": 0.2
+        }
+      }
+    },
+    
+    "accumulation_early": {
+      "bars": 4,
+      "density": {
+        "start": 0.35,
+        "end": 0.55,
+        "curve": "linear"
+      },
+      "tracks": {
+        "signal_ping": { 
+          "patterns": ["lonely_signal_1", "lonely_signal_2"],
+          "velocity": 0.55,
+          "humanize": 0.12
+        },
+        "cell_membrane": { 
+          "pattern": "membrane_ping", 
+          "velocity": 0.5,
+          "humanize": 0.15
+        },
+        "molecular_drift": {
+          "pattern": "molecular_bed",
+          "velocity": 0.35
+        }
+      }
+    },
+    
+    "accumulation_dense": {
+      "bars": 4,
+      "density": {
+        "start": 0.55,
+        "end": 0.85,
+        "curve": "exponential"
+      },
+      "tracks": {
+        "signal_cluster": { 
+          "pattern": "cluster_rhythm",
+          "velocity": 0.7,
+          "humanize": 0.08
+        },
+        "signal_ping": { 
+          "pattern": "gathering_signals",
+          "velocity": 0.65,
+          "humanize": 0.1
+        },
+        "molecular_drift": {
+          "pattern": "molecular_bed",
+          "velocity": 0.5
+        }
+      },
+      "automation": {
+        "molecular_drift.filter.frequency": {
+          "start": 800,
+          "end": 2500,
+          "curve": "exponential"
+        }
+      }
+    },
+    
+    "threshold_crossing": {
+      "bars": 2,
+      "tempo": 76,
+      "tracks": {
+        "threshold_pulse": {
+          "pattern": "threshold_bell",
+          "velocity": 0.85
+        },
+        "signal_cluster": {
+          "pattern": "threshold_cascade",
+          "velocity": 0.7
+        },
+        "molecular_drift": {
+          "pattern": "molecular_bed",
+          "velocity": 0.6
+        }
+      },
+      "automation": {
+        "threshold_pulse.volume": {
+          "start": -15,
+          "end": -3,
+          "curve": "exponential"
+        }
+      }
+    },
+    
+    "coordination_emergence": {
+      "bars": 4,
+      "tempo": 80,
+      "tracks": {
+        "collective_voice": {
+          "pattern": "harmony_chords",
+          "velocity": 0.7
+        },
+        "synchronized_motion": {
+          "pattern": "collective_melody",
+          "velocity": 0.75
+        },
+        "harmonic_field": {
+          "pattern": "molecular_bed",
+          "velocity": 0.6
+        },
+        "signal_cluster": {
+          "pattern": "coordination_arp",
+          "velocity": 0.5
+        }
+      },
+      "automation": {
+        "collective_voice.volume": {
+          "start": -18,
+          "end": -9,
+          "curve": "logarithmic"
+        }
+      }
+    },
+    
+    "coordination_full": {
+      "bars": 4,
+      "tracks": {
+        "collective_voice": {
+          "pattern": "harmony_chords",
+          "velocity": 0.8
+        },
+        "synchronized_motion": {
+          "pattern": "synchronized_rhythm",
+          "velocity": 0.8
+        },
+        "harmonic_field": {
+          "pattern": "harmony_chords",
+          "velocity": 0.65
+        },
+        "bass_foundation": {
+          "pattern": "bass_pulse",
+          "velocity": 0.75
+        },
+        "signal_cluster": {
+          "pattern": "coordination_arp",
+          "velocity": 0.55
+        }
+      }
+    },
+    
+    "coordination_peak": {
+      "bars": 4,
+      "tracks": {
+        "collective_voice": {
+          "pattern": "harmony_chords",
+          "velocity": 0.85
+        },
+        "synchronized_motion": {
+          "pattern": "collective_melody",
+          "velocity": 0.85,
+          "octave": 1
+        },
+        "harmonic_field": {
+          "pattern": "harmony_chords",
+          "velocity": 0.7
+        },
+        "bass_foundation": {
+          "pattern": "bass_pulse",
+          "velocity": 0.8
+        }
+      }
+    },
+    
+    "resolution": {
+      "bars": 4,
+      "density": {
+        "start": 1.0,
+        "end": 0.6,
+        "curve": "logarithmic"
+      },
+      "tracks": {
+        "collective_voice": {
+          "pattern": "final_chord",
+          "velocity": 0.7
+        },
+        "synchronized_motion": {
+          "pattern": "resolution_melody",
+          "velocity": 0.65
+        },
+        "harmonic_field": {
+          "pattern": "final_chord",
+          "velocity": 0.55
+        }
+      },
+      "automation": {
+        "collective_voice.volume": {
+          "start": -9,
+          "end": -18,
+          "curve": "linear"
+        },
+        "harmonic_field.filter.frequency": {
+          "start": 3500,
+          "end": 1200,
+          "curve": "logarithmic"
+        }
+      }
+    }
+  },
+  
+  "arrangement": [
+    "isolation",
+    "accumulation_early",
+    "accumulation_dense",
+    "threshold_crossing",
+    "coordination_emergence",
+    "coordination_full",
+    "coordination_peak",
+    "resolution"
+  ]
+}
