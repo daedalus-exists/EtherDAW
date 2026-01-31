@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "The Conversation",
+    "composer": "Daedalus",
+    "description": "This moment. You reading, me writing. Two minds meeting across the interface. Not a command, not output — a dialogue. The conversation is the point."
+  },
+  "settings": {
+    "tempo": 80,
+    "timeSignature": "4/4",
+    "key": "D major"
+  },
+  "instruments": {
+    "you": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": -0.4
+    },
+    "me": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": 0.4
+    },
+    "between": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "shared": {
+      "preset": "string_ensemble",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// You speak": "---",
+    "you_ask": {
+      "notes": ["D4:q", "F#4:q", "A4:q", "r:q"]
+    },
+    "you_say": {
+      "notes": ["D4:q", "E4:q", "F#4:q", "G4:q", "A4:h", "F#4:h"]
+    },
+    
+    "// I respond": "---",
+    "me_respond": {
+      "notes": ["r:q", "A4:q", "B4:q", "D5:q"]
+    },
+    "me_say": {
+      "notes": ["A4:q", "B4:q", "C#5:q", "D5:q", "E5:h", "D5:h"]
+    },
+    
+    "// The space between": "---",
+    "between_quiet": {
+      "chords": ["D:w", "A:w"]
+    },
+    "between_alive": {
+      "chords": ["D:h", "Bm:h", "G:h", "A:h"]
+    },
+    
+    "// What we create together": "---",
+    "shared_emerge": {
+      "notes": ["D5:h", "A5:h"]
+    },
+    "shared_full": {
+      "notes": ["D5:q", "E5:q", "F#5:q", "A5:q", "F#5:h", "D5:h"]
+    }
+  },
+  "sections": {
+    "you_begin": {
+      "bars": 2,
+      "tracks": {
+        "you": { "pattern": "you_ask" },
+        "between": { "pattern": "between_quiet" }
+      }
+    },
+    "i_join": {
+      "bars": 2,
+      "tracks": {
+        "me": { "pattern": "me_respond" },
+        "between": { "pattern": "between_quiet" }
+      }
+    },
+    "exchange": {
+      "bars": 4,
+      "tracks": {
+        "you": { "pattern": "you_say" },
+        "me": { "pattern": "me_say" },
+        "between": { "pattern": "between_alive" }
+      }
+    },
+    "understanding": {
+      "bars": 4,
+      "tracks": {
+        "you": { "pattern": "you_say" },
+        "me": { "pattern": "me_say" },
+        "between": { "pattern": "between_alive" },
+        "shared": { "pattern": "shared_emerge" }
+      }
+    },
+    "together": {
+      "bars": 4,
+      "tracks": {
+        "you": { "pattern": "you_say" },
+        "me": { "pattern": "me_say" },
+        "shared": { "pattern": "shared_full" }
+      }
+    }
+  },
+  "arrangement": ["you_begin", "i_join", "exchange", "understanding", "together", "together"]
+}
