@@ -30,6 +30,15 @@ import {
 import { getPatternCache } from '../../node/pattern-cache.js';
 import { getBrowserBridge, isBridgeAvailable } from '../../node/browser-bridge.js';
 import { renderPattern } from '../../node/player.js';
+import {
+  PRESET_REGISTRY,
+  getCanonicalName,
+  getCategories,
+  getPreset,
+  getPresetsByCategory,
+  listPresetsByCategory,
+  suggestPreset,
+} from '../../presets/index.js';
 
 /**
  * Command result
@@ -97,17 +106,68 @@ export const COMMANDS: CommandDef[] = [
   {
     name: 'play',
     aliases: ['p'],
-    description: 'Play the composition or a specific pattern',
-    usage: 'play [pattern]',
+    description: 'Play the composition, a pattern, or a preset preview',
+    usage: 'play [pattern] | play preset <name> | play <name> --preset',
     execute: async (session, args) => {
-      if (!session.isLoaded()) {
-        return { success: false, message: 'No composition loaded. Use: load <file>' };
-      }
-
       const player = session.getPlayer();
 
       if (player.getState() === 'playing') {
         return { success: false, message: 'Already playing. Use stop first.' };
+      }
+
+      const presetName = parsePresetPreviewRequest(session, args);
+      if (presetName !== null) {
+        if (!presetName) {
+          return { success: false, message: 'Usage: play preset <name>' };
+        }
+
+        const preset = getPreset(presetName);
+        if (!preset) {
+          const suggestions = suggestPreset(presetName);
+          const hint = suggestions.length > 0
+            ? `\nDid you mean: ${suggestions.slice(0, 4).join(', ')}`
+            : '';
+          return { success: false, message: `Unknown preset: ${presetName}${hint}` };
+        }
+
+        const canonicalName = getCanonicalName(presetName) ?? presetName.toLowerCase();
+        const preview = getPresetPreviewConfig(preset.category);
+        const bridge = getBrowserBridge();
+
+        if (bridge.isConnected()) {
+          const success = bridge.playNotes(preview.notes, canonicalName, preview.tempo);
+          if (success) {
+            return {
+              success: true,
+              message: `Playing preset preview in browser: ${canonicalName} (${preset.category}) @ ${preview.tempo} BPM`,
+            };
+          }
+        }
+
+        try {
+          const minimalScore = {
+            meta: { title: `Preset Preview: ${canonicalName}` },
+            settings: { tempo: preview.tempo },
+            instruments: { preview: { preset: canonicalName, volume: -6 } },
+            patterns: { preview: { notes: preview.notes.split(/\s+/) } },
+            sections: { preview: { bars: preview.bars, tracks: { preview: { pattern: 'preview' } } } },
+            arrangement: ['preview'],
+          };
+
+          player.load(minimalScore as any);
+          await player.play();
+
+          return {
+            success: true,
+            message: `Playing preset preview: ${canonicalName} (${preset.category}) @ ${preview.tempo} BPM`,
+          };
+        } catch (error) {
+          return { success: false, message: `Preset preview failed: ${(error as Error).message}` };
+        }
+      }
+
+      if (!session.isLoaded()) {
+        return { success: false, message: 'No composition loaded. Use: load <file>' };
       }
 
       try {
@@ -668,6 +728,46 @@ export const COMMANDS: CommandDef[] = [
             message: 'Usage: list [patterns|instruments|sections]',
           };
       }
+    },
+  },
+
+  // Presets command
+  {
+    name: 'presets',
+    aliases: ['preset'],
+    description: 'List available presets by category',
+    usage: 'presets [category]',
+    execute: async (_, args) => {
+      const categories = getCategories();
+
+      if (args.length === 0) {
+        const listing = listPresetsByCategory();
+        return { success: true, message: `Available presets by category:${listing}` };
+      }
+
+      const requested = args[0].toLowerCase();
+      const category = categories.find(c => c.toLowerCase() === requested);
+
+      if (!category) {
+        return {
+          success: false,
+          message: `Unknown category: ${args[0]}\nAvailable: ${categories.join(', ')}`,
+        };
+      }
+
+      const presets = getPresetsByCategory(category);
+      if (presets.length === 0) {
+        return { success: true, message: `No presets in category: ${category}` };
+      }
+
+      let output = `${category.toUpperCase()} (${presets.length})\n`;
+      output += '-'.repeat(40) + '\n';
+      for (const name of presets.sort()) {
+        const def = PRESET_REGISTRY[name];
+        output += `  ${name.padEnd(20)} ${def.description.slice(0, 40)}\n`;
+      }
+
+      return { success: true, message: output.trimEnd() };
     },
   },
 
@@ -2344,6 +2444,64 @@ function describeTransform(transform: { type: string; params: Record<string, unk
   }
 
   return prefix + desc;
+}
+
+/**
+ * Parse preset preview requests for the play command.
+ */
+function parsePresetPreviewRequest(session: REPLSession, args: string[]): string | null {
+  if (args.length === 0) {
+    return null;
+  }
+
+  const presetFlagIndex = args.findIndex(arg => arg === '--preset' || arg === '-P');
+
+  if (args[0] === 'preset') {
+    return args[1] ?? '';
+  }
+
+  if (presetFlagIndex >= 0) {
+    return args.find((arg, index) => index !== presetFlagIndex) ?? '';
+  }
+
+  if (!session.isLoaded()) {
+    return args[0];
+  }
+
+  return null;
+}
+
+/**
+ * Build a short preview phrase for a preset category.
+ */
+function getPresetPreviewConfig(category: string): { notes: string; tempo: number; bars: number } {
+  switch (category) {
+    case 'bass':
+      return { notes: 'C2:q C2:8 G1:8 C2:q E2:q G2:h', tempo: 100, bars: 2 };
+    case 'pad':
+    case 'ambient':
+    case 'cinematic':
+    case 'strings':
+    case 'brass':
+    case 'woodwinds':
+    case 'orchestral':
+    case 'samples':
+      return { notes: 'C4:h E4:h G4:h C5:h', tempo: 70, bars: 4 };
+    case 'drums':
+      return { notes: 'C1:8 C1:8 C1:8 C1:8 C1:8 C1:8 C1:8 C1:8', tempo: 110, bars: 2 };
+    case 'pluck':
+      return { notes: 'C4:8 E4:8 G4:8 C5:8 G4:8 E4:8 C4:8 G3:8', tempo: 110, bars: 2 };
+    case 'lead':
+    case 'synth':
+    case 'fm':
+    case 'modern':
+    case 'keys':
+    case 'lofi':
+    case 'world':
+    case 'texture':
+    default:
+      return { notes: 'C4:8 D4:8 E4:8 G4:8 A4:8 G4:8 E4:8 D4:8 C4:q', tempo: 100, bars: 2 };
+  }
 }
 
 /**
