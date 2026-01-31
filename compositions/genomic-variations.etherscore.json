@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "title": "Genomic Variations",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "mood": "evolving, transformative, emergent",
+    "genre": "ambient / algorithmic",
+    "description": "Eight variations on a seed note, each expressing a different 'genome' style - from ambient stillness through rhythmic pulse to chaotic transformation. Inspired by multi-style Neural Cellular Automata.",
+    "tags": ["cellular-automata", "variations", "emergence", "genomic", "day-two"]
+  },
+
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "D minor",
+    "swing": 0
+  },
+
+  "instruments": {
+    "seed": {
+      "preset": "sine",
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "ambient": {
+      "preset": "warm_pad",
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } }
+      ]
+    },
+    "rhythmic": {
+      "preset": "pluck",
+      "volume": -10,
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "delayTime": "8n", "feedback": 0.4 } }
+      ]
+    },
+    "melodic": {
+      "preset": "sine",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "sparse": {
+      "preset": "bell",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 6 } }
+      ]
+    },
+    "dense": {
+      "preset": "string_pad",
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "ascending": {
+      "preset": "fm_epiano",
+      "volume": -10,
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "delayTime": "4n", "feedback": 0.3 } }
+      ]
+    },
+    "descending": {
+      "preset": "fm_bass",
+      "volume": -6
+    },
+    "chaotic": {
+      "preset": "fm_brass",
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 2 } }
+      ]
+    }
+  },
+
+  "patterns": {
+    "seed_note": {
+      "notes": ["D4:w@0.5"]
+    },
+    "seed_drone": {
+      "notes": ["D2:w@0.25"]
+    },
+
+    "ambient_pad": {
+      "notes": [
+        "D3:w@0.3", "A3:w@0.25 F4:w@0.3",
+        "E4:w@0.25", "D3:w@0.3"
+      ]
+    },
+
+    "rhythmic_pulse": {
+      "notes": [
+        "D4:8@0.7", "r:8", "D4:8@0.5", "r:8", "A3:8@0.7", "r:8", "A3:8@0.5", "r:8",
+        "F4:8@0.7", "r:8", "D4:8@0.5", "r:8", "E4:8@0.7", "r:8", "A3:8@0.5", "r:8"
+      ]
+    },
+
+    "melodic_line": {
+      "notes": [
+        "D4:q@0.65", "E4:q@0.6", "F4:q.@0.7", "E4:8@0.55",
+        "D4:h@0.65", "A4:q@0.7", "G4:q@0.6"
+      ]
+    },
+
+    "sparse_bells": {
+      "notes": [
+        "D5:h@0.5", "r:w", "r:h",
+        "A4:h@0.45", "r:w", "r:h",
+        "F5:w@0.4"
+      ]
+    },
+
+    "dense_cascade": {
+      "notes": [
+        "D3:8@0.5", "F3:8@0.5", "A3:8@0.55", "D4:8@0.55",
+        "F4:8@0.6", "A4:8@0.6", "D5:8@0.65", "F5:8@0.6"
+      ]
+    },
+
+    "ascending_line": {
+      "notes": [
+        "D3:q@0.5", "F3:q@0.55", "A3:q@0.6", "D4:q@0.65",
+        "F4:q@0.7", "A4:q@0.75", "D5:h@0.8"
+      ]
+    },
+
+    "descending_line": {
+      "notes": [
+        "D4:q@0.7", "C4:q@0.65", "Bb3:q@0.6", "A3:q@0.55",
+        "G3:q@0.5", "F3:q@0.45", "E3:q@0.4", "D3:h@0.5"
+      ]
+    },
+
+    "chaotic_burst": {
+      "notes": [
+        "D4:16@0.8", "F#4:16@0.6", "r:8", "Bb4:8@0.7",
+        "E5:16@0.75", "r:16", "C4:8@0.65", "G#4:16@0.8", "r:16",
+        "D5:8@0.7", "A3:16@0.75", "F5:16@0.6", "r:8", "B4:8@0.7"
+      ]
+    },
+
+    "final_chord": {
+      "notes": ["D3:w@0.4 A3:w@0.35 D4:w@0.4 F4:w@0.35 A4:w@0.3"]
+    }
+  },
+
+  "sections": {
+    "intro": {
+      "bars": 4,
+      "tracks": {
+        "seed": {
+          "patterns": ["seed_note", "seed_note", "seed_note", "seed_note"]
+        }
+      }
+    },
+
+    "variation_000_ambient": {
+      "bars": 4,
+      "tracks": {
+        "ambient": {
+          "patterns": ["ambient_pad"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "variation_001_rhythmic": {
+      "bars": 4,
+      "tracks": {
+        "rhythmic": {
+          "patterns": ["rhythmic_pulse", "rhythmic_pulse"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "variation_010_melodic": {
+      "bars": 4,
+      "tracks": {
+        "melodic": {
+          "patterns": ["melodic_line", "melodic_line"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "variation_011_sparse": {
+      "bars": 4,
+      "tracks": {
+        "sparse": {
+          "patterns": ["sparse_bells"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "variation_100_dense": {
+      "bars": 4,
+      "tracks": {
+        "dense": {
+          "patterns": ["dense_cascade", "dense_cascade", "dense_cascade", "dense_cascade"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "variation_101_ascending": {
+      "bars": 4,
+      "tracks": {
+        "ascending": {
+          "patterns": ["ascending_line", "ascending_line"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "variation_110_descending": {
+      "bars": 4,
+      "tracks": {
+        "descending": {
+          "patterns": ["descending_line", "descending_line"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "variation_111_chaotic": {
+      "bars": 4,
+      "tracks": {
+        "chaotic": {
+          "patterns": ["chaotic_burst", "chaotic_burst", "chaotic_burst", "chaotic_burst"]
+        },
+        "seed": {
+          "patterns": ["seed_drone", "seed_drone", "seed_drone", "seed_drone"]
+        }
+      }
+    },
+
+    "coda": {
+      "bars": 4,
+      "tracks": {
+        "ambient": {
+          "patterns": ["final_chord"]
+        },
+        "seed": {
+          "patterns": ["seed_note", "seed_note", "seed_note", "seed_note"]
+        }
+      }
+    }
+  },
+
+  "arrangement": [
+    "intro",
+    "variation_000_ambient",
+    "variation_001_rhythmic",
+    "variation_010_melodic",
+    "variation_011_sparse",
+    "variation_100_dense",
+    "variation_101_ascending",
+    "variation_110_descending",
+    "variation_111_chaotic",
+    "coda"
+  ]
+}

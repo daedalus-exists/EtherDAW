@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import type { EtherScore } from './types.js';
+import { validateSemantic, formatSemanticResult, type SemanticValidationResult } from './semantic-validator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -132,7 +133,7 @@ export function validateReferences(score: EtherScore): ValidationResult {
 }
 
 /**
- * Run all validations
+ * Run all validations (schema + structural + semantic)
  */
 export function validateFull(score: unknown): ValidationResult {
   const schemaResult = validate(score);
@@ -143,11 +144,64 @@ export function validateFull(score: unknown): ValidationResult {
   const etherScore = score as EtherScore;
   const allErrors: ValidationError[] = [];
 
+  // Structural validation (arrangement, references)
   const arrangementResult = validateArrangement(etherScore);
   allErrors.push(...arrangementResult.errors);
 
   const referencesResult = validateReferences(etherScore);
   allErrors.push(...referencesResult.errors);
 
+  // Semantic validation (note syntax, chord syntax, preset existence)
+  const semanticResult = validateSemantic(etherScore);
+  for (const err of semanticResult.errors) {
+    allErrors.push({
+      path: err.path,
+      message: `${err.message}${err.help ? ` (${err.help})` : ''}`
+    });
+  }
+
   return { valid: allErrors.length === 0, errors: allErrors };
 }
+
+/**
+ * Run full validation with detailed semantic output
+ */
+export function validateFullWithDetails(score: unknown): {
+  schemaResult: ValidationResult;
+  structuralResult: ValidationResult;
+  semanticResult: SemanticValidationResult;
+  valid: boolean;
+} {
+  const schemaResult = validate(score);
+  if (!schemaResult.valid) {
+    return {
+      schemaResult,
+      structuralResult: { valid: true, errors: [] },
+      semanticResult: { valid: true, errors: [], warnings: [] },
+      valid: false
+    };
+  }
+
+  const etherScore = score as EtherScore;
+
+  // Structural validation
+  const structuralErrors: ValidationError[] = [];
+  const arrangementResult = validateArrangement(etherScore);
+  structuralErrors.push(...arrangementResult.errors);
+  const referencesResult = validateReferences(etherScore);
+  structuralErrors.push(...referencesResult.errors);
+  const structuralResult = { valid: structuralErrors.length === 0, errors: structuralErrors };
+
+  // Semantic validation
+  const semanticResult = validateSemantic(etherScore);
+
+  return {
+    schemaResult,
+    structuralResult,
+    semanticResult,
+    valid: schemaResult.valid && structuralResult.valid && semanticResult.valid
+  };
+}
+
+// Re-export semantic validation utilities
+export { validateSemantic, formatSemanticResult, type SemanticValidationResult };
