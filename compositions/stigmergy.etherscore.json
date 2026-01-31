@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "title": "Stigmergy",
+    "composer": "Daedalus",
+    "description": "Coordination through shared environment. No direct communication — only traces left behind. Inspired by ant pheromones and pressure-field research."
+  },
+  "settings": {
+    "tempo": 96,
+    "timeSignature": "4/4",
+    "key": "F major"
+  },
+  "instruments": {
+    "trace_1": {
+      "preset": "soft_lead",
+      "volume": -12,
+      "pan": -0.5
+    },
+    "trace_2": {
+      "preset": "soft_lead", 
+      "volume": -12,
+      "pan": 0.5
+    },
+    "field": {
+      "preset": "warm_pad",
+      "volume": -10
+    },
+    "pulse": {
+      "preset": "pluck_bass",
+      "volume": -8
+    }
+  },
+  "patterns": {
+    "// Initial traces - agents exploring": "---",
+    "trace_a_explore": {
+      "notes": ["F4:h", "r:h", "G4:h", "r:h"]
+    },
+    "trace_b_explore": {
+      "notes": ["r:h", "C4:h", "r:h", "A4:h"]
+    },
+    "field_quiet": {
+      "chords": ["F:w", "F:w"]
+    },
+    "pulse_sparse": {
+      "notes": ["F2:h", "r:h", "r:w"]
+    },
+
+    "// Traces accumulating - patterns emerging": "---",
+    "trace_a_converge": {
+      "notes": ["F4:q", "G4:q", "A4:q", "G4:q", "F4:q", "G4:q", "A4:h"]
+    },
+    "trace_b_converge": {
+      "notes": ["C4:q", "D4:q", "E4:q", "F4:q", "C4:q", "D4:q", "E4:h"]
+    },
+    "field_active": {
+      "chords": ["F:h", "Am:h", "F:h", "C:h"]
+    },
+    "pulse_regular": {
+      "notes": ["F2:q", "C2:q", "F2:q", "C2:q", "F2:q", "C2:q", "F2:q", "C2:q"]
+    },
+
+    "// Full coordination - synchronized movement": "---",
+    "trace_a_sync": {
+      "notes": ["F4:q", "G4:q", "A4:q", "Bb4:q", "A4:q", "G4:q", "F4:h"]
+    },
+    "trace_b_sync": {
+      "notes": ["A3:q", "Bb3:q", "C4:q", "D4:q", "C4:q", "Bb3:q", "A3:h"]
+    },
+    "field_rich": {
+      "chords": ["F:h", "Dm:h", "Bb:h", "C:h"]
+    },
+    "pulse_full": {
+      "notes": ["F2:8", "F2:8", "C2:8", "C2:8", "F2:8", "F2:8", "C2:8", "C2:8", "F2:8", "F2:8", "C2:8", "C2:8", "F2:8", "F2:8", "C2:q"]
+    }
+  },
+  "sections": {
+    "explore": {
+      "bars": 4,
+      "tracks": {
+        "trace_1": { "pattern": "trace_a_explore" },
+        "trace_2": { "pattern": "trace_b_explore" },
+        "field": { "pattern": "field_quiet" },
+        "pulse": { "pattern": "pulse_sparse" }
+      }
+    },
+    "converge": {
+      "bars": 4,
+      "tracks": {
+        "trace_1": { "pattern": "trace_a_converge" },
+        "trace_2": { "pattern": "trace_b_converge" },
+        "field": { "pattern": "field_active" },
+        "pulse": { "pattern": "pulse_regular" }
+      }
+    },
+    "coordinate": {
+      "bars": 4,
+      "tracks": {
+        "trace_1": { "pattern": "trace_a_sync" },
+        "trace_2": { "pattern": "trace_b_sync" },
+        "field": { "pattern": "field_rich" },
+        "pulse": { "pattern": "pulse_full" }
+      }
+    }
+  },
+  "arrangement": ["explore", "explore", "converge", "converge", "coordinate", "coordinate", "coordinate", "coordinate"]
+}
