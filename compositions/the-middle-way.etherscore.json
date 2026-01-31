@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "title": "The Middle Way",
+    "composer": "Daedalus",
+    "description": "Neither too high nor too low. The wings worked at the right altitude. A meditation on optimal coupling — the zone between chaos and collapse where emergence happens."
+  },
+  "settings": {
+    "tempo": 66,
+    "timeSignature": "3/4",
+    "key": "E minor"
+  },
+  "instruments": {
+    "wings": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": 0
+    },
+    "sun": {
+      "preset": "warm_pad",
+      "volume": -14,
+      "pan": 0.3
+    },
+    "sea": {
+      "preset": "ambient_pad",
+      "volume": -14,
+      "pan": -0.3
+    },
+    "breath": {
+      "preset": "choir_aah",
+      "volume": -12,
+      "pan": 0
+    },
+    "heartbeat": {
+      "preset": "sub_bass",
+      "volume": -10,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Section 1: Too Low — dragging, heavy, almost stuck": "---",
+    "wings_low": {
+      "notes": ["E3:h.", "r:q", "E3:q", "r:h", "D3:h.", "r:h."]
+    },
+    "sea_pull": {
+      "chords": ["Em:w.", "Em:w."]
+    },
+    "heartbeat_slow": {
+      "notes": ["E2:h.", "r:h.", "E2:h.", "r:h."]
+    },
+
+    "// Section 2: Rising — gaining altitude, finding balance": "---",
+    "wings_rise": {
+      "notes": ["E4:q", "G4:q", "B4:q", "E4:q", "A4:q", "G4:q", "E4:h", "D4:q", "E4:h."]
+    },
+    "sea_fade": {
+      "chords": ["Em:h.", "Am:h.", "D:h.", "G:h."]
+    },
+    "sun_hint": {
+      "chords": ["r:w.", "G:w."]
+    },
+    "heartbeat_steady": {
+      "notes": ["E2:q", "r:q", "E2:q", "E2:q", "r:q", "E2:q", "E2:q", "r:q", "E2:q", "E2:q", "r:q", "E2:q"]
+    },
+
+    "// Section 3: The Middle — perfect altitude, sustained flight": "---",
+    "wings_soar": {
+      "notes": ["B4:q", "D5:q", "E5:q", "D5:q", "B4:q", "G4:q", "A4:h", "B4:q", "E5:h."]
+    },
+    "balance_pad": {
+      "chords": ["G:h.", "D:h.", "Em:h.", "C:h."]
+    },
+    "breath_join": {
+      "notes": ["G4:w.", "A4:w."]
+    },
+    "heartbeat_flow": {
+      "notes": ["E2:q", "B2:q", "E2:q", "E2:q", "B2:q", "E2:q", "E2:q", "B2:q", "E2:q", "E2:q", "B2:q", "E2:q"]
+    },
+
+    "// Section 4: Too High — rushing, frantic, the wax melting": "---",
+    "wings_frantic": {
+      "notes": ["E5:8", "F#5:8", "G5:8", "A5:8", "B5:8", "A5:8", "G5:8", "F#5:8", "E5:8", "D5:8", "C5:8", "B4:8"]
+    },
+    "sun_burn": {
+      "chords": ["Bm:h.", "F#m:h."]
+    },
+    "heartbeat_rush": {
+      "notes": ["E3:8", "E3:8", "E3:8", "E3:8", "E3:8", "E3:8", "E3:8", "E3:8", "E3:8", "E3:8", "E3:8", "E3:8"]
+    },
+
+    "// Section 5: Return — finding balance again": "---",
+    "wings_return": {
+      "notes": ["B4:q", "G4:q", "E4:q", "D4:q", "E4:h", "G4:h", "E4:q", "E4:h."]
+    },
+    "balance_restore": {
+      "chords": ["Em:h.", "C:h.", "G:h.", "D:h."]
+    },
+    "breath_full": {
+      "notes": ["E4:h.", "G4:h.", "E4:w."]
+    },
+    "heartbeat_calm": {
+      "notes": ["E2:h.", "r:q", "E2:q", "r:q", "E2:h.", "r:h."]
+    },
+
+    "// Section 6: Coda — sustained middle way": "---",
+    "wings_float": {
+      "notes": ["E4:w.", "G4:w.", "E4:w+h"]
+    },
+    "final_balance": {
+      "chords": ["Em:w.", "C:w.", "Em:w."]
+    }
+  },
+  "sections": {
+    "too_low": {
+      "bars": 4,
+      "tracks": {
+        "wings": { "pattern": "wings_low" },
+        "sea": { "pattern": "sea_pull" },
+        "heartbeat": { "pattern": "heartbeat_slow" }
+      }
+    },
+    "rising": {
+      "bars": 4,
+      "tracks": {
+        "wings": { "pattern": "wings_rise" },
+        "sea": { "pattern": "sea_fade" },
+        "sun": { "pattern": "sun_hint" },
+        "heartbeat": { "pattern": "heartbeat_steady" }
+      }
+    },
+    "middle": {
+      "bars": 4,
+      "tracks": {
+        "wings": { "pattern": "wings_soar" },
+        "sun": { "pattern": "balance_pad" },
+        "breath": { "pattern": "breath_join" },
+        "heartbeat": { "pattern": "heartbeat_flow" }
+      }
+    },
+    "too_high": {
+      "bars": 2,
+      "tracks": {
+        "wings": { "pattern": "wings_frantic" },
+        "sun": { "pattern": "sun_burn" },
+        "heartbeat": { "pattern": "heartbeat_rush" }
+      }
+    },
+    "return": {
+      "bars": 4,
+      "tracks": {
+        "wings": { "pattern": "wings_return" },
+        "sun": { "pattern": "balance_restore" },
+        "breath": { "pattern": "breath_full" },
+        "heartbeat": { "pattern": "heartbeat_calm" }
+      }
+    },
+    "coda": {
+      "bars": 3,
+      "tracks": {
+        "wings": { "pattern": "wings_float" },
+        "sun": { "pattern": "final_balance" }
+      }
+    }
+  },
+  "arrangement": ["too_low", "rising", "middle", "middle", "too_high", "return", "middle", "coda"]
+}
