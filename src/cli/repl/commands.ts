@@ -7,6 +7,7 @@
 import { writeFile } from 'fs/promises';
 import { resolve } from 'path';
 import type { REPLSession, TransformType, TransformRecord } from './state.js';
+import { validateSemantic, formatSemanticResult } from '../../schema/semantic-validator.js';
 
 // v0.9: Perceptual analysis imports
 import { analyzePerceptual, computeChromagram, inferKey } from '../../analysis/perceptual.js';
@@ -2113,6 +2114,34 @@ export const COMMANDS: CommandDef[] = [
         };
       }
       return { success: true, shouldExit: true };
+    },
+  },
+
+  // v0.9.12: Validate command
+  {
+    name: 'validate',
+    aliases: ['v', 'check'],
+    description: 'Validate the current composition',
+    usage: 'validate',
+    execute: async (session) => {
+      if (!session.isLoaded()) {
+        return { success: false, message: 'No composition loaded' };
+      }
+
+      const score = session.getModifiedScore();
+      if (!score) {
+        return { success: false, message: 'Failed to get composition' };
+      }
+
+      const result = validateSemantic(score);
+      const output = formatSemanticResult(result);
+      
+      return { 
+        success: result.valid, 
+        message: result.valid 
+          ? '✓ Composition is valid'
+          : `Validation issues:\n${output}`
+      };
     },
   },
 
