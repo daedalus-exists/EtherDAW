@@ -32,6 +32,7 @@ import { getBrowserBridge, isBridgeAvailable } from '../../node/browser-bridge.j
 import { renderPattern } from '../../node/player.js';
 import {
   PRESET_REGISTRY,
+  findPresets,
   getCanonicalName,
   getCategories,
   getPreset,
@@ -39,6 +40,34 @@ import {
   listPresetsByCategory,
   suggestPreset,
 } from '../../presets/index.js';
+
+/**
+ * Get emoji icon for a preset category
+ */
+function getCategoryIcon(category: string): string {
+  const icons: Record<string, string> = {
+    bass: '🎸',
+    lead: '🎹',
+    pad: '🌊',
+    keys: '🎹',
+    synth: '🔊',
+    pluck: '✨',
+    fm: '📻',
+    texture: '🌫️',
+    drums: '🥁',
+    lofi: '📼',
+    cinematic: '🎬',
+    world: '🌍',
+    ambient: '🌙',
+    modern: '⚡',
+    strings: '🎻',
+    brass: '🎺',
+    woodwinds: '🪕',
+    orchestral: '🎼',
+    samples: '🎤',
+  };
+  return icons[category.toLowerCase()] || '🎵';
+}
 
 /**
  * Command result
@@ -731,27 +760,166 @@ export const COMMANDS: CommandDef[] = [
     },
   },
 
-  // Presets command
+  // Presets command - Interactive preset browser
   {
     name: 'presets',
-    aliases: ['preset'],
-    description: 'List available presets by category',
-    usage: 'presets [category]',
+    aliases: ['preset', 'sounds'],
+    description: 'Browse and search available presets',
+    usage: 'presets [category|search <term>|info <name>]',
     execute: async (_, args) => {
       const categories = getCategories();
+      const totalCount = Object.keys(PRESET_REGISTRY).length;
 
+      // No args: show category overview
       if (args.length === 0) {
-        const listing = listPresetsByCategory();
-        return { success: true, message: `Available presets by category:${listing}` };
+        let output = `🎹 Preset Browser (${totalCount} presets)\n`;
+        output += '═'.repeat(50) + '\n\n';
+        output += 'Categories:\n';
+
+        for (const cat of categories) {
+          const presets = getPresetsByCategory(cat);
+          const icon = getCategoryIcon(cat);
+          output += `  ${icon} ${cat.padEnd(14)} ${String(presets.length).padStart(3)} presets\n`;
+        }
+
+        output += '\n' + '─'.repeat(50) + '\n';
+        output += 'Usage:\n';
+        output += '  presets bass           Filter by category\n';
+        output += '  presets search warm    Search all presets\n';
+        output += '  presets info fm_epiano Show preset details\n';
+        output += '  play preset fm_epiano  Preview a preset\n';
+
+        return { success: true, message: output };
       }
 
-      const requested = args[0].toLowerCase();
-      const category = categories.find(c => c.toLowerCase() === requested);
+      const subcommand = args[0].toLowerCase();
+
+      // Search subcommand
+      if (subcommand === 'search' || subcommand === 's') {
+        if (args.length < 2) {
+          return { success: false, message: 'Usage: presets search <term>' };
+        }
+        const searchTerm = args.slice(1).join(' ').toLowerCase();
+        const results = findPresets({ search: searchTerm });
+
+        if (results.length === 0) {
+          const suggestions = suggestPreset(searchTerm, 3);
+          let msg = `No presets matching "${searchTerm}"`;
+          if (suggestions.length > 0) {
+            msg += `\n\nDid you mean: ${suggestions.join(', ')}?`;
+          }
+          return { success: true, message: msg };
+        }
+
+        let output = `🔍 Search: "${searchTerm}" (${results.length} results)\n`;
+        output += '─'.repeat(50) + '\n';
+
+        // Group results by category for readability
+        const grouped: Record<string, typeof results> = {};
+        for (const r of results.slice(0, 20)) {
+          const cat = r.definition.category;
+          if (!grouped[cat]) grouped[cat] = [];
+          grouped[cat].push(r);
+        }
+
+        for (const [cat, items] of Object.entries(grouped)) {
+          const icon = getCategoryIcon(cat);
+          output += `\n${icon} ${cat.toUpperCase()}\n`;
+          for (const { name, definition } of items) {
+            const tags = definition.tags?.slice(0, 3).join(', ') || '';
+            output += `  ${name.padEnd(22)} ${definition.description.slice(0, 30)}\n`;
+            if (tags) {
+              output += `  ${''.padEnd(22)} [${tags}]\n`;
+            }
+          }
+        }
+
+        if (results.length > 20) {
+          output += `\n... and ${results.length - 20} more results`;
+        }
+
+        return { success: true, message: output };
+      }
+
+      // Info subcommand
+      if (subcommand === 'info' || subcommand === 'i') {
+        if (args.length < 2) {
+          return { success: false, message: 'Usage: presets info <name>' };
+        }
+        const presetName = args[1].toLowerCase();
+        const preset = getPreset(presetName);
+
+        if (!preset) {
+          const suggestions = suggestPreset(presetName, 3);
+          let msg = `Unknown preset: ${presetName}`;
+          if (suggestions.length > 0) {
+            msg += `\n\nDid you mean: ${suggestions.join(', ')}?`;
+          }
+          return { success: false, message: msg };
+        }
+
+        const canonical = getCanonicalName(presetName) || presetName;
+        const icon = getCategoryIcon(preset.category);
+
+        let output = `${icon} ${preset.name}\n`;
+        output += '═'.repeat(50) + '\n\n';
+        output += `${preset.description}\n\n`;
+        output += `ID:       ${canonical}\n`;
+        output += `Category: ${preset.category}\n`;
+        output += `Type:     ${preset.type}\n`;
+
+        if (preset.tags && preset.tags.length > 0) {
+          output += `Tags:     ${preset.tags.join(', ')}\n`;
+        }
+
+        if (preset.semanticDefaults) {
+          output += '\nCharacter:\n';
+          for (const [key, value] of Object.entries(preset.semanticDefaults)) {
+            const bar = '█'.repeat(Math.round((value as number) * 10)).padEnd(10, '░');
+            output += `  ${key.padEnd(12)} ${bar} ${((value as number) * 100).toFixed(0)}%\n`;
+          }
+        }
+
+        output += '\n' + '─'.repeat(50) + '\n';
+        output += `Try: play preset ${canonical}`;
+
+        return { success: true, message: output };
+      }
+
+      // Category filter (with fuzzy matching)
+      const requested = subcommand;
+
+      // Exact match first
+      let category = categories.find(c => c.toLowerCase() === requested);
+
+      // Partial/fuzzy match
+      if (!category) {
+        category = categories.find(c => c.toLowerCase().startsWith(requested));
+      }
+      if (!category) {
+        category = categories.find(c => c.toLowerCase().includes(requested));
+      }
 
       if (!category) {
+        // Check if it might be a preset name instead
+        const preset = getPreset(requested);
+        if (preset) {
+          // Redirect to info
+          const canonical = getCanonicalName(requested) || requested;
+          const icon = getCategoryIcon(preset.category);
+          let output = `${icon} ${preset.name} (${canonical})\n`;
+          output += `${preset.description}\n`;
+          output += `Category: ${preset.category} | Type: ${preset.type}\n`;
+          if (preset.tags) {
+            output += `Tags: ${preset.tags.join(', ')}\n`;
+          }
+          output += `\nTip: Use "presets info ${canonical}" for full details`;
+          return { success: true, message: output };
+        }
+
         return {
           success: false,
-          message: `Unknown category: ${args[0]}\nAvailable: ${categories.join(', ')}`,
+          message: `Unknown category: ${args[0]}\n\nAvailable categories: ${categories.join(', ')}\n\nOr try: presets search ${args[0]}`,
         };
       }
 
@@ -760,14 +928,23 @@ export const COMMANDS: CommandDef[] = [
         return { success: true, message: `No presets in category: ${category}` };
       }
 
-      let output = `${category.toUpperCase()} (${presets.length})\n`;
-      output += '-'.repeat(40) + '\n';
+      const icon = getCategoryIcon(category);
+      let output = `${icon} ${category.toUpperCase()} (${presets.length} presets)\n`;
+      output += '═'.repeat(50) + '\n\n';
+
       for (const name of presets.sort()) {
         const def = PRESET_REGISTRY[name];
-        output += `  ${name.padEnd(20)} ${def.description.slice(0, 40)}\n`;
+        const tags = def.tags?.slice(0, 2).join(', ') || '';
+        output += `  ${name.padEnd(22)} ${def.description.slice(0, 35)}\n`;
+        if (tags) {
+          output += `  ${''.padEnd(22)} [${tags}]\n`;
+        }
       }
 
-      return { success: true, message: output.trimEnd() };
+      output += '\n' + '─'.repeat(50) + '\n';
+      output += `Tip: "presets info <name>" for details, "play preset <name>" to preview`;
+
+      return { success: true, message: output };
     },
   },
 
