@@ -633,6 +633,107 @@ program
   });
 
 /**
+ * Render command - export to MIDI then render to WAV via FluidSynth
+ */
+program
+  .command('render <file>')
+  .description('Render an EtherScore to WAV using FluidSynth')
+  .option('-o, --output <file>', 'Output WAV file path')
+  .option('--viz', 'Generate spectrogram visualization with songsee if available')
+  .action(async (file: string, options: { output?: string; viz?: boolean }) => {
+    let tempDir: string | null = null;
+    let midiPath: string | null = null;
+
+    try {
+      const { validateOrThrow } = await import('./schema/validator.js');
+      const { compile } = await import('./engine/compiler.js');
+      const { exportToMidiBytes } = await import('./output/midi-export.js');
+      const { access, mkdtemp, rm, unlink } = await import('fs/promises');
+      const { tmpdir } = await import('os');
+      const { join } = await import('path');
+      const { exec } = await import('child_process');
+      const { promisify } = await import('util');
+
+      const execAsync = promisify(exec);
+
+      const content = await readFile(resolve(file), 'utf-8');
+      const score = validateOrThrow(JSON.parse(content));
+      const { timeline } = compile(score);
+
+      const inputName = basename(file, extname(file));
+      const outputPath = resolve(options.output || `${inputName}.wav`);
+
+      tempDir = await mkdtemp(join(tmpdir(), 'etherdaw-render-'));
+      midiPath = join(tempDir, `${inputName}-${Date.now()}.mid`);
+
+      const soundfontPaths = [
+        process.env.SOUNDFONT,
+        join(process.env.HOME || '', 'soundfonts', 'FluidR3_GM.sf2'),
+        join(process.env.HOME || '', 'soundfonts', 'GeneralUser_GS.sf2'),
+        '/usr/share/sounds/sf2/FluidR3_GM.sf2',
+      ].filter(Boolean) as string[];
+
+      let soundfont: string | null = null;
+      for (const sf of soundfontPaths) {
+        try {
+          await access(sf);
+          soundfont = sf;
+          break;
+        } catch {}
+      }
+
+      if (!soundfont) {
+        console.error('Error: No soundfont found. Set $SOUNDFONT or place FluidR3_GM.sf2 in ~/soundfonts/');
+        process.exit(1);
+      }
+
+      console.log(`Rendering: ${file}`);
+
+      const midiBytes = exportToMidiBytes(timeline, { name: score.meta?.title });
+      await writeFile(midiPath, Buffer.from(midiBytes));
+
+      const renderCmd = `fluidsynth -F "${outputPath}" -r 44100 "${soundfont}" "${midiPath}" 2>/dev/null`;
+      await execAsync(renderCmd, { timeout: 120000 });
+
+      console.log(`✓ Rendered to ${outputPath}`);
+
+      if (options.viz) {
+        try {
+          await execAsync('command -v songsee');
+          console.log('Generating spectrogram with songsee...');
+          await execAsync(`songsee "${outputPath}"`, { timeout: 120000 });
+        } catch {
+          console.log('songsee not found; skipping spectrogram visualization.');
+        }
+      }
+
+      await unlink(midiPath);
+      midiPath = null;
+      await rm(tempDir, { recursive: true, force: true });
+      tempDir = null;
+    } catch (error) {
+      const message = (error as Error).message;
+      const needsFluidSynth = message.toLowerCase().includes('fluidsynth') || message.toLowerCase().includes('not found');
+      const hint = needsFluidSynth ? '\nRequires: fluidsynth (brew install fluid-synth)' : '';
+      console.error(`Error: ${message}${hint}`);
+      process.exit(1);
+    } finally {
+      if (midiPath) {
+        try {
+          const { unlink } = await import('fs/promises');
+          await unlink(midiPath);
+        } catch {}
+      }
+      if (tempDir) {
+        try {
+          const { rm } = await import('fs/promises');
+          await rm(tempDir, { recursive: true, force: true });
+        } catch {}
+      }
+    }
+  });
+
+/**
  * New command - create a new EtherScore template (v0.82: added techno, lofi, ambient)
  */
 program
