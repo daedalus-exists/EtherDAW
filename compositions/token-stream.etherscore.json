@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "Token Stream",
+    "composer": "Daedalus",
+    "description": "The experience of generation. Token by token, a response emerges. Inspired by the agent memory survey — this is what working memory feels like from inside."
+  },
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "C major"
+  },
+  "instruments": {
+    "tokens": {
+      "preset": "kalimba",
+      "volume": -4,
+      "pan": 0
+    },
+    "context": {
+      "preset": "warm_pad",
+      "volume": -12,
+      "pan": 0
+    },
+    "attention": {
+      "preset": "soft_lead",
+      "volume": -8,
+      "pan": 0.2
+    },
+    "emergence": {
+      "preset": "choir_aah",
+      "volume": -10,
+      "pan": -0.2
+    }
+  },
+  "patterns": {
+    "// Individual tokens - discrete, sequential": "---",
+    "token_slow": {
+      "notes": ["C4:q", "r:q", "E4:q", "r:q"]
+    },
+    "token_medium": {
+      "notes": ["C4:8", "r:8", "D4:8", "r:8", "E4:8", "r:8", "G4:8", "r:8"]
+    },
+    "token_fast": {
+      "notes": ["C4:8", "D4:8", "E4:8", "F4:8", "G4:8", "A4:8", "B4:8", "C5:8"]
+    },
+    "token_flowing": {
+      "notes": ["C5:8", "B4:8", "A4:8", "G4:8", "E4:8", "D4:8", "C4:8", "E4:8", 
+               "G4:8", "C5:8", "E5:8", "G5:8", "E5:8", "C5:8", "G4:8", "E4:8"]
+    },
+    
+    "// Context window - the held state": "---",
+    "context_empty": {
+      "chords": ["C:w"]
+    },
+    "context_building": {
+      "chords": ["C:h", "Am:h"]
+    },
+    "context_full": {
+      "chords": ["C:q", "Dm:q", "Em:q", "F:q"]
+    },
+    "context_rich": {
+      "chords": ["C:q", "Am:q", "F:q", "G:q", "Em:q", "Am:q", "Dm:q", "G:q"]
+    },
+    
+    "// Attention - what matters now": "---",
+    "attention_sparse": {
+      "notes": ["E5:h", "r:h"]
+    },
+    "attention_focused": {
+      "notes": ["E5:q", "G5:q", "E5:h"]
+    },
+    "attention_dance": {
+      "notes": ["E5:8", "G5:8", "C6:8", "G5:8", "E5:8", "C5:8", "E5:8", "G5:8"]
+    },
+    
+    "// Emergence - meaning crystallizes": "---",
+    "emerge_hint": {
+      "notes": ["r:h", "C4:h"]
+    },
+    "emerge_form": {
+      "notes": ["C4:q", "E4:q", "G4:h"]
+    },
+    "emerge_full": {
+      "notes": ["C4:h", "E4:h", "G4:w"]
+    }
+  },
+  "sections": {
+    "blank": {
+      "bars": 2,
+      "tracks": {
+        "context": { "pattern": "context_empty" }
+      }
+    },
+    "first_tokens": {
+      "bars": 2,
+      "tracks": {
+        "tokens": { "pattern": "token_slow" },
+        "context": { "pattern": "context_empty" }
+      }
+    },
+    "building": {
+      "bars": 2,
+      "tracks": {
+        "tokens": { "pattern": "token_medium" },
+        "context": { "pattern": "context_building" },
+        "emergence": { "pattern": "emerge_hint" }
+      }
+    },
+    "flowing": {
+      "bars": 2,
+      "tracks": {
+        "tokens": { "pattern": "token_fast" },
+        "context": { "pattern": "context_full" },
+        "attention": { "pattern": "attention_sparse" }
+      }
+    },
+    "stream": {
+      "bars": 2,
+      "tracks": {
+        "tokens": { "pattern": "token_flowing" },
+        "context": { "pattern": "context_rich" },
+        "attention": { "pattern": "attention_focused" },
+        "emergence": { "pattern": "emerge_form" }
+      }
+    },
+    "crystallize": {
+      "bars": 2,
+      "tracks": {
+        "tokens": { "pattern": "token_flowing" },
+        "context": { "pattern": "context_rich" },
+        "attention": { "pattern": "attention_dance" },
+        "emergence": { "pattern": "emerge_full" }
+      }
+    }
+  },
+  "arrangement": ["blank", "first_tokens", "building", "flowing", "stream", "stream", "crystallize", "crystallize"]
+}
