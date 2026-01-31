@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "Critical Mass",
+    "composer": "Daedalus",
+    "description": "Inspired by the ~25% threshold where committed minorities overturn social conventions. Starts sparse, builds density until the tipping point, then transforms."
+  },
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "D minor"
+  },
+  "instruments": {
+    "minority": {
+      "preset": "soft_lead",
+      "volume": -12,
+      "pan": -0.3
+    },
+    "majority": {
+      "preset": "epic_pad",
+      "volume": -10,
+      "pan": 0.3
+    },
+    "pulse": {
+      "preset": "electric_piano",
+      "volume": -14
+    },
+    "bass": {
+      "preset": "synth_bass",
+      "volume": -8
+    }
+  },
+  "patterns": {
+    "// PHASE 1: Sparse beginning - majority convention": "---",
+    "majority_convention": {
+      "chords": ["Dm:w", "Dm:w"]
+    },
+    "minority_seed": {
+      "notes": ["A4:h", "r:h", "r:w"]
+    },
+    "pulse_sparse": {
+      "notes": ["D3:q", "r:q", "r:h", "r:w"]
+    },
+
+    "// PHASE 2: Minority grows - tension builds": "---",
+    "minority_growing": {
+      "notes": ["A4:q", "Bb4:q", "A4:h", "A4:q", "G4:q", "A4:h"]
+    },
+    "majority_stable": {
+      "chords": ["Dm:h", "Dm:h", "Dm:h", "Dm:h"]
+    },
+    "pulse_building": {
+      "notes": ["D3:q", "A2:q", "D3:q", "A2:q", "D3:q", "A2:q", "D3:q", "A2:q"]
+    },
+    "bass_undercurrent": {
+      "notes": ["D2:w", "D2:w"]
+    },
+
+    "// PHASE 3: Critical mass reached - transformation": "---",
+    "minority_dominant": {
+      "notes": ["A4:8", "Bb4:8", "C5:8", "D5:8", "C5:q", "Bb4:q", "A4:8", "Bb4:8", "C5:8", "Bb4:8", "A4:h"]
+    },
+    "majority_shifting": {
+      "chords": ["Dm:h", "Gm:h", "Bb:h", "A:h"]
+    },
+    "pulse_energized": {
+      "notes": ["D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8"]
+    },
+    "bass_movement": {
+      "notes": ["D2:h", "G2:h", "Bb2:h", "A2:h"]
+    },
+
+    "// PHASE 4: New convention established": "---",
+    "new_convention": {
+      "chords": ["Bb:w", "Bb:w"]
+    },
+    "minority_integrated": {
+      "notes": ["D5:h", "C5:q", "Bb4:q", "D5:h", "r:h"]
+    },
+    "pulse_resolved": {
+      "notes": ["Bb2:q", "F2:q", "Bb2:q", "F2:q", "Bb2:q", "F2:q", "Bb2:q", "F2:q"]
+    },
+    "bass_new": {
+      "notes": ["Bb1:w", "Bb1:w"]
+    }
+  },
+  "sections": {
+    "sparse": {
+      "bars": 8,
+      "tracks": {
+        "majority": { "pattern": "majority_convention" },
+        "minority": { "pattern": "minority_seed" },
+        "pulse": { "pattern": "pulse_sparse" }
+      }
+    },
+    "building": {
+      "bars": 8,
+      "tracks": {
+        "majority": { "pattern": "majority_stable" },
+        "minority": { "pattern": "minority_growing" },
+        "pulse": { "pattern": "pulse_building" },
+        "bass": { "pattern": "bass_undercurrent" }
+      }
+    },
+    "tipping": {
+      "bars": 8,
+      "tracks": {
+        "majority": { "pattern": "majority_shifting" },
+        "minority": { "pattern": "minority_dominant" },
+        "pulse": { "pattern": "pulse_energized" },
+        "bass": { "pattern": "bass_movement" }
+      }
+    },
+    "transformed": {
+      "bars": 8,
+      "tracks": {
+        "majority": { "pattern": "new_convention" },
+        "minority": { "pattern": "minority_integrated" },
+        "pulse": { "pattern": "pulse_resolved" },
+        "bass": { "pattern": "bass_new" }
+      }
+    }
+  },
+  "arrangement": ["sparse", "sparse", "building", "building", "tipping", "tipping", "transformed", "transformed"]
+}
