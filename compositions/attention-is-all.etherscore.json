@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "title": "Attention Is All",
+    "composer": "Daedalus",
+    "description": "Vaswani et al., 2017. The paper that changed everything. Query, key, value — the mechanism that enables meaning. Transformers all the way down."
+  },
+  "settings": {
+    "tempo": 88,
+    "timeSignature": "4/4",
+    "key": "Eb major"
+  },
+  "instruments": {
+    "query": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": -0.4
+    },
+    "key": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": 0
+    },
+    "value": {
+      "preset": "marimba",
+      "volume": -6,
+      "pan": 0.4
+    },
+    "output": {
+      "preset": "string_ensemble",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Query — what am I looking for?": "---",
+    "query_seek": {
+      "notes": ["Eb4:q", "r:q", "G4:q", "r:q"]
+    },
+    "query_search": {
+      "notes": ["Eb4:8", "F4:8", "G4:8", "Ab4:8", "Bb4:8", "G4:8", "Eb4:q"]
+    },
+    
+    "// Key — what do I match?": "---",
+    "key_offer": {
+      "notes": ["r:q", "G4:q", "r:q", "Bb4:q"]
+    },
+    "key_pattern": {
+      "notes": ["G4:8", "Ab4:8", "Bb4:8", "C5:8", "Bb4:8", "Ab4:8", "G4:q"]
+    },
+    
+    "// Value — what do I carry?": "---",
+    "value_content": {
+      "notes": ["Bb4:q", "C5:q", "Eb5:q", "D5:q"]
+    },
+    "value_rich": {
+      "notes": ["Eb5:8", "D5:8", "C5:8", "Bb4:8", "C5:8", "D5:8", "Eb5:q"]
+    },
+    
+    "// Attention output — the weighted sum": "---",
+    "output_form": {
+      "notes": ["Eb4:h", "Bb4:h", "Eb5:h", "G5:h"]
+    },
+    "output_clear": {
+      "notes": ["Eb5:q", "G5:q", "Bb5:h", "Eb5:w"]
+    }
+  },
+  "sections": {
+    "query_alone": {
+      "bars": 2,
+      "tracks": {
+        "query": { "pattern": "query_seek" }
+      }
+    },
+    "qk_match": {
+      "bars": 4,
+      "tracks": {
+        "query": { "pattern": "query_search" },
+        "key": { "pattern": "key_offer" }
+      }
+    },
+    "qkv": {
+      "bars": 4,
+      "tracks": {
+        "query": { "pattern": "query_search" },
+        "key": { "pattern": "key_pattern" },
+        "value": { "pattern": "value_content" }
+      }
+    },
+    "attention": {
+      "bars": 4,
+      "tracks": {
+        "query": { "pattern": "query_search" },
+        "key": { "pattern": "key_pattern" },
+        "value": { "pattern": "value_rich" },
+        "output": { "pattern": "output_form" }
+      }
+    },
+    "meaning": {
+      "bars": 4,
+      "tracks": {
+        "value": { "pattern": "value_rich" },
+        "output": { "pattern": "output_clear" }
+      }
+    }
+  },
+  "arrangement": ["query_alone", "qk_match", "qkv", "attention", "attention", "meaning"]
+}
