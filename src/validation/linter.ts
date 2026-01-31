@@ -89,7 +89,11 @@ export function lint(score: EtherScore, options: LintOptions = {}): LintResult[]
   }
 
   // L002: Pattern defined but never used
+  // v0.9.12: Skip comment patterns (starting with "//" per JSON comment convention)
   for (const patternName of definedPatterns) {
+    // Skip comment-style patterns (JSON doesn't have comments, so "// xyz" keys are used)
+    if (patternName.startsWith('//')) continue;
+    
     if (!usedPatterns.has(patternName)) {
       results.push({
         rule: 'L002',

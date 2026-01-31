@@ -1078,10 +1078,14 @@ export function getPresetsByCategory(category: PresetCategory): string[] {
 }
 
 /**
- * Get all preset names
+ * Get all preset names (v0.9.12: includes PRESET_REGISTRY for orchestral, strings, brass, woodwinds, etc.)
  */
 export function getAllPresetNames(): string[] {
-  return Object.keys(PRESET_DEFINITIONS);
+  // Combine legacy PRESET_DEFINITIONS with full PRESET_REGISTRY
+  const legacyNames = Object.keys(PRESET_DEFINITIONS);
+  const registryNames = Object.keys(PRESET_REGISTRY);
+  // Merge and deduplicate
+  return [...new Set([...legacyNames, ...registryNames])];
 }
 
 /**

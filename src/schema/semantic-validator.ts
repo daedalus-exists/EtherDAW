@@ -11,7 +11,7 @@
  */
 
 import type { EtherScore, Pattern, DrumPattern } from './types.js';
-import { parseNote, parseRest } from '../parser/note-parser.js';
+import { parseNote, parseRest, isBracketChord, parseBracketChord } from '../parser/note-parser.js';
 import { parseChord } from '../parser/chord-parser.js';
 import { errors, formatError, findSimilar, formatSuggestion, VALID_DURATIONS, DRUM_NAMES } from '../errors/messages.js';
 import { getAllPresetNames } from '../synthesis/presets.js';
@@ -72,6 +72,22 @@ function validateNoteString(note: string, path: string): SemanticError | null {
       if (err) return err;
     }
     return null;
+  }
+  
+  // v0.9.12: Check for bracket chord notation [C4,E4,G4]:q
+  if (isBracketChord(trimmed)) {
+    try {
+      parseBracketChord(trimmed);
+      return null;
+    } catch (e: any) {
+      return {
+        code: 'E003',
+        path,
+        message: e.message || `Invalid bracket chord: '${trimmed}'`,
+        help: 'Bracket chord format: [pitch1,pitch2,...]:duration. Examples: [C4,E4,G4]:q, [A3,C4]:h@0.5',
+        docs: 'docs/ETHERSCORE_FORMAT.md#bracket-chord-notation'
+      };
+    }
   }
   
   // Parse note

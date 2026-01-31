@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "title": "Deep Dive Exploration v2",
+    "composer": "Daedalus",
+    "description": "Exploring EtherDAW features with proper timing: voice leading, jazz articulations, groove templates, Markov chains, orchestral presets",
+    "tags": ["exploration", "orchestral", "jazz", "experimental"]
+  },
+  "settings": {
+    "tempo": 88,
+    "key": "Bb major",
+    "timeSignature": "4/4",
+    "swing": 0.1
+  },
+  "instruments": {
+    "trumpet": {
+      "preset": "trumpet",
+      "volume": -4,
+      "pan": 0.2,
+      "effects": [{ "type": "reverb", "wet": 0.25, "options": { "decay": 1.8 } }]
+    },
+    "muted_trumpet": {
+      "preset": "muted_trumpet",
+      "volume": -3,
+      "pan": -0.2,
+      "effects": [{ "type": "reverb", "wet": 0.3, "options": { "decay": 2 } }]
+    },
+    "french_horn": {
+      "preset": "french_horn",
+      "volume": -5,
+      "pan": -0.3,
+      "effects": [{ "type": "reverb", "wet": 0.35, "options": { "decay": 2.2 } }]
+    },
+    "strings": {
+      "preset": "string_ensemble",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 2.5 } }]
+    },
+    "pizz": {
+      "preset": "string_pizzicato",
+      "volume": -4,
+      "pan": 0.4
+    },
+    "piano": {
+      "preset": "acoustic_piano",
+      "volume": -3,
+      "effects": [{ "type": "reverb", "wet": 0.2, "options": { "decay": 1.5 } }]
+    },
+    "bass": {
+      "preset": "contrabass",
+      "volume": -2
+    },
+    "perc": {
+      "preset": "drums:acoustic",
+      "volume": -4
+    }
+  },
+
+  "patterns": {
+    "// Jazz articulations (4 beats each)": "---",
+    
+    "jazz_falls": {
+      "notes": ["Bb4:q.fall@mf", "D5:8", "F5:8", "G5:q.doit", "F5:q"]
+    },
+    
+    "jazz_bends": {
+      "notes": ["Bb4:h.bend+2@f", "G4:q", "F4:q"]
+    },
+    
+    "jazz_scoops": {
+      "notes": ["D5:q.scoop", "Eb5:8", "F5:8", "G5:q.fall", "Bb4:q"]
+    },
+
+    "// Voice leading - Bach style (4 beats)": "---",
+    
+    "chorale_4beat": {
+      "voiceLead": {
+        "progression": ["Bbmaj7", "Gm7"],
+        "voices": 4,
+        "style": "bach"
+      }
+    },
+    
+    "chorale_cadence": {
+      "voiceLead": {
+        "progression": ["Cm7", "F7"],
+        "voices": 4,
+        "style": "bach"
+      }
+    },
+
+    "// Markov chain patterns (4 beats each)": "---",
+    
+    "walking_4": {
+      "markov": {
+        "states": ["1", "3", "5", "7"],
+        "preset": "walking_bass",
+        "steps": 4,
+        "duration": "q",
+        "octave": 2,
+        "seed": 42
+      }
+    },
+
+    "// Pattern transforms - theme is exactly 4 beats": "---",
+    
+    "theme_4": {
+      "notes": ["Bb4:q", "C5:8", "D5:8", "Eb5:q", "D5:q"]
+    },
+    
+    "theme_inv": {
+      "transform": {
+        "source": "theme_4",
+        "operation": "invert",
+        "params": { "axis": "D5" }
+      }
+    },
+    
+    "theme_retro": {
+      "transform": {
+        "source": "theme_4",
+        "operation": "retrograde"
+      }
+    },
+
+    "// Ornaments (4 beats)": "---",
+    
+    "ornament_line": {
+      "notes": ["Bb4:q.tr", "D5:q.mord", "F5:q.turn", "G5:q"]
+    },
+
+    "// Tuplets (4 beats)": "---",
+    
+    "triplets": {
+      "notes": [
+        "Bb4:8t3", "C5:8t3", "D5:8t3",
+        "Eb5:8t3", "F5:8t3", "G5:8t3",
+        "F5:q", "Eb5:q"
+      ]
+    },
+
+    "// Euclidean (4 beats)": "---",
+    
+    "euclidean_rim": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "drum": "rim"
+      }
+    },
+
+    "// Bracket chords (4 beats)": "---",
+    
+    "bracket_voicings": {
+      "notes": [
+        "[Bb3,D4,F4]:q",
+        "[G3,Bb3,D4]:q",
+        "[C3,Eb3,G3]:q",
+        "[F3,A3,C4]:q"
+      ]
+    },
+
+    "// Supporting (4 beats each)": "---",
+    
+    "pad_Bb": {
+      "chords": ["Bbmaj7:w"]
+    },
+    
+    "pad_Gm": {
+      "chords": ["Gm7:w"]
+    },
+    
+    "pad_Cm": {
+      "chords": ["Cm7:w"]
+    },
+    
+    "pad_F7": {
+      "chords": ["F7:w"]
+    },
+    
+    "pizz_4": {
+      "notes": ["Bb3:8", "r:8", "D4:8", "r:8", "F4:8", "r:8", "Bb3:8", "r:8"]
+    },
+    
+    "brush": {
+      "type": "drums",
+      "kit": "acoustic",
+      "kick":  "x.......x.......",
+      "snare": "....x.......x...",
+      "hihat": "x.x.x.x.x.x.x.x."
+    }
+  },
+
+  "sections": {
+    "intro_jazz": {
+      "bars": 4,
+      "tracks": {
+        "muted_trumpet": { 
+          "patterns": ["jazz_falls", "jazz_bends", "jazz_scoops", "jazz_falls"],
+          "expression": "jazzy"
+        },
+        "piano": { 
+          "patterns": ["bracket_voicings", "bracket_voicings", "bracket_voicings", "bracket_voicings"],
+          "expression": "natural"
+        },
+        "bass": { 
+          "patterns": ["walking_4", "walking_4", "walking_4", "walking_4"],
+          "groove": "dilla"
+        },
+        "perc": { 
+          "patterns": ["brush", "brush", "brush", "brush"],
+          "groove": "dilla"
+        }
+      }
+    },
+    
+    "chorale": {
+      "bars": 4,
+      "tracks": {
+        "strings": {
+          "patterns": ["chorale_4beat", "chorale_cadence", "chorale_4beat", "chorale_cadence"]
+        },
+        "french_horn": {
+          "patterns": ["theme_4", "theme_inv", "theme_retro", "theme_4"],
+          "expression": "romantic"
+        }
+      },
+      "automation": {
+        "strings.params.brightness": {
+          "start": 0.3,
+          "end": 0.7,
+          "curve": "sine"
+        }
+      }
+    },
+    
+    "ornamental": {
+      "bars": 4,
+      "tracks": {
+        "trumpet": {
+          "patterns": ["ornament_line", "triplets", "ornament_line", "triplets"],
+          "expression": "natural"
+        },
+        "pizz": {
+          "patterns": ["pizz_4", "pizz_4", "pizz_4", "pizz_4"]
+        },
+        "strings": {
+          "patterns": ["pad_Bb", "pad_Gm", "pad_Cm", "pad_F7"]
+        },
+        "perc": {
+          "parallel": ["euclidean_rim"]
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 1.0,
+        "curve": "exponential"
+      }
+    },
+    
+    "finale": {
+      "bars": 4,
+      "tracks": {
+        "trumpet": {
+          "patterns": ["theme_4", "theme_inv", "theme_retro", "theme_4"]
+        },
+        "french_horn": {
+          "patterns": ["theme_inv", "theme_4", "theme_inv", "theme_retro"]
+        },
+        "strings": {
+          "patterns": ["chorale_4beat", "chorale_cadence", "chorale_4beat", "chorale_cadence"]
+        },
+        "bass": {
+          "patterns": ["walking_4", "walking_4", "walking_4", "walking_4"]
+        }
+      },
+      "velocityAutomation": {
+        "start": 0.7,
+        "end": 1.0,
+        "curve": "exponential"
+      }
+    }
+  },
+
+  "arrangement": [
+    "intro_jazz",
+    "chorale",
+    "ornamental",
+    "finale"
+  ]
+}

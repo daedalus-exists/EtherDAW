@@ -1,0 +1,344 @@
+{
+  "meta": {
+    "title": "Deep Dive Exploration",
+    "composer": "Daedalus",
+    "description": "Exploring EtherDAW features: voice leading, jazz articulations, groove templates, Markov chains, orchestral presets",
+    "tags": ["exploration", "orchestral", "jazz", "experimental"]
+  },
+  "settings": {
+    "tempo": 88,
+    "key": "Bb major",
+    "timeSignature": "4/4",
+    "swing": 0.1
+  },
+  "instruments": {
+    "trumpet": {
+      "preset": "trumpet",
+      "volume": -4,
+      "pan": 0.2,
+      "effects": [
+        { "type": "reverb", "wet": 0.25, "options": { "decay": 1.8 } }
+      ]
+    },
+    "muted_trumpet": {
+      "preset": "muted_trumpet",
+      "volume": -3,
+      "pan": -0.2,
+      "effects": [
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2 } }
+      ]
+    },
+    "french_horn": {
+      "preset": "french_horn",
+      "volume": -5,
+      "pan": -0.3,
+      "effects": [
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 2.2 } }
+      ]
+    },
+    "strings": {
+      "preset": "string_ensemble",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 2.5 } }
+      ]
+    },
+    "pizz": {
+      "preset": "string_pizzicato",
+      "volume": -4,
+      "pan": 0.4
+    },
+    "piano": {
+      "preset": "acoustic_piano",
+      "volume": -3,
+      "effects": [
+        { "type": "reverb", "wet": 0.2, "options": { "decay": 1.5 } }
+      ]
+    },
+    "bass": {
+      "preset": "contrabass",
+      "volume": -2
+    },
+    "drums": {
+      "preset": "drums:acoustic",
+      "volume": -4
+    }
+  },
+
+  "patterns": {
+    "// SECTION 1: Jazz articulations exploration": "---",
+    
+    "jazz_melody_falls": {
+      "notes": [
+        "Bb4:q.fall@mf", "D5:8", "F5:q", "G5:8.doit",
+        "F5:q.scoop", "Eb5:8", "D5:q", "C5:q.fall"
+      ]
+    },
+    
+    "jazz_melody_bends": {
+      "notes": [
+        "Bb4:h.bend+2@f", "G4:q", "F4:8",
+        "Bb4:q.scoop", "C5:8.doit", "D5:h.fall"
+      ]
+    },
+
+    "// SECTION 2: Voice leading - Bach style chorale": "---",
+    
+    "chorale_voiced": {
+      "voiceLead": {
+        "progression": ["Bbmaj7", "Gm7", "Cm7", "F7", "Bbmaj7"],
+        "voices": 4,
+        "style": "bach",
+        "voiceRanges": {
+          "bass": ["Bb1", "F3"],
+          "tenor": ["F2", "C4"],
+          "alto": ["Bb2", "G4"],
+          "soprano": ["D3", "Bb4"]
+        }
+      }
+    },
+
+    "// SECTION 3: Markov chain walking bass": "---",
+    
+    "walking_markov": {
+      "markov": {
+        "states": ["1", "3", "5", "7", "approach"],
+        "preset": "walking_bass",
+        "steps": 16,
+        "duration": "q",
+        "octave": 2,
+        "seed": 42
+      }
+    },
+    
+    "markov_melody": {
+      "markov": {
+        "states": ["1", "2", "3", "4", "5", "6", "7"],
+        "preset": "melody_stepwise",
+        "steps": 16,
+        "duration": ["q", "8", "8", "q", "q", "8", "8", "h", "q", "8", "8", "q", "q", "8", "8", "h"],
+        "octave": 4,
+        "seed": 123
+      }
+    },
+
+    "// SECTION 4: Pattern transforms": "---",
+    
+    "theme": {
+      "notes": ["Bb4:q", "C5:8", "D5:8", "Eb5:q", "D5:8", "C5:8", "Bb4:h"]
+    },
+    
+    "theme_inverted": {
+      "transform": {
+        "source": "theme",
+        "operation": "invert",
+        "params": { "axis": "D5" }
+      }
+    },
+    
+    "theme_retrograde": {
+      "transform": {
+        "source": "theme",
+        "operation": "retrograde"
+      }
+    },
+    
+    "theme_augmented": {
+      "transform": {
+        "source": "theme",
+        "operation": "augment",
+        "params": { "factor": 2 }
+      }
+    },
+
+    "// SECTION 5: Ornaments and trills": "---",
+    
+    "ornamented_line": {
+      "notes": [
+        "Bb4:h.tr", "D5:q.mord", "F5:q.turn",
+        "G5:q", "F5:8", "Eb5:8", "D5:h.tr"
+      ]
+    },
+
+    "// SECTION 6: Euclidean rhythms": "---",
+    
+    "euclidean_clave": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "drum": "rim"
+      }
+    },
+    
+    "euclidean_melody": {
+      "euclidean": {
+        "hits": 7,
+        "steps": 12,
+        "rotation": 2,
+        "duration": "8",
+        "pitch": "Bb4"
+      }
+    },
+
+    "// SECTION 7: Tuplets": "---",
+    
+    "triplet_flourish": {
+      "notes": [
+        "Bb4:8t3", "C5:8t3", "D5:8t3",
+        "Eb5:8t3", "F5:8t3", "G5:8t3",
+        "F5:q", "Eb5:q"
+      ]
+    },
+    
+    "quintuplet_run": {
+      "notes": [
+        "Bb4:16t5", "C5:16t5", "D5:16t5", "Eb5:16t5", "F5:16t5",
+        "G5:h"
+      ]
+    },
+
+    "// SECTION 8: Bracket chord voicings": "---",
+    
+    "custom_voicings": {
+      "notes": [
+        "[Bb3,D4,F4,A4]:h",
+        "[G3,Bb3,D4,F4]:h",
+        "[C3,Eb3,G3,Bb3]:h",
+        "[F3,A3,C4,Eb4]:h"
+      ]
+    },
+
+    "// Supporting patterns": "---",
+    
+    "string_pad": {
+      "chords": ["Bbmaj7:w", "Gm7:w", "Cm7:w", "F7:w"]
+    },
+    
+    "pizz_rhythm": {
+      "notes": ["Bb3:8", "r:8", "Bb3:8", "r:8", "D4:8", "r:8", "F4:8", "r:8"]
+    },
+    
+    "brush_groove": {
+      "type": "drums",
+      "kit": "acoustic",
+      "kick":  "x.......x.......",
+      "snare": "....x.......x...",
+      "hihat": "x.x.x.x.x.x.x.x."
+    }
+  },
+
+  "sections": {
+    "intro_jazz": {
+      "bars": 4,
+      "tracks": {
+        "muted_trumpet": { 
+          "patterns": ["jazz_melody_falls", "jazz_melody_bends", "jazz_melody_falls", "jazz_melody_bends"],
+          "expression": "jazzy"
+        },
+        "piano": { 
+          "patterns": ["custom_voicings", "custom_voicings", "custom_voicings", "custom_voicings"],
+          "expression": "natural"
+        },
+        "bass": { 
+          "patterns": ["walking_markov", "walking_markov", "walking_markov", "walking_markov"],
+          "groove": "dilla"
+        },
+        "drums": { 
+          "patterns": ["brush_groove", "brush_groove", "brush_groove", "brush_groove"],
+          "groove": "dilla"
+        }
+      }
+    },
+    
+    "chorale_section": {
+      "bars": 4,
+      "tracks": {
+        "strings": {
+          "patterns": ["chorale_voiced", "chorale_voiced", "chorale_voiced", "chorale_voiced"]
+        },
+        "french_horn": {
+          "patterns": ["theme", "theme_inverted", "theme", "theme_retrograde"],
+          "expression": "romantic"
+        }
+      },
+      "automation": {
+        "strings.params.brightness": {
+          "start": 0.3,
+          "end": 0.7,
+          "curve": "sine"
+        }
+      }
+    },
+    
+    "ornamental": {
+      "bars": 4,
+      "tracks": {
+        "trumpet": {
+          "patterns": ["ornamented_line", "triplet_flourish", "ornamented_line", "quintuplet_run"],
+          "expression": "natural"
+        },
+        "pizz": {
+          "patterns": ["pizz_rhythm", "pizz_rhythm", "pizz_rhythm", "pizz_rhythm"]
+        },
+        "strings": {
+          "patterns": ["string_pad", "string_pad", "string_pad", "string_pad"]
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 1.0,
+        "curve": "exponential"
+      }
+    },
+    
+    "markov_improv": {
+      "bars": 4,
+      "tracks": {
+        "trumpet": {
+          "patterns": ["markov_melody", "markov_melody", "markov_melody", "markov_melody"],
+          "expression": "jazzy"
+        },
+        "piano": {
+          "patterns": ["string_pad", "string_pad", "string_pad", "string_pad"]
+        },
+        "bass": {
+          "patterns": ["walking_markov", "walking_markov", "walking_markov", "walking_markov"],
+          "groove": "funk"
+        }
+      }
+    },
+
+    "finale": {
+      "bars": 4,
+      "tracks": {
+        "trumpet": {
+          "patterns": ["theme", "theme_inverted", "theme_retrograde", "theme_augmented"]
+        },
+        "french_horn": {
+          "patterns": ["theme_inverted", "theme", "theme_augmented", "theme_retrograde"]
+        },
+        "strings": {
+          "patterns": ["chorale_voiced", "chorale_voiced", "chorale_voiced", "chorale_voiced"]
+        },
+        "bass": {
+          "patterns": ["walking_markov", "walking_markov", "walking_markov", "walking_markov"]
+        }
+      },
+      "velocityAutomation": {
+        "start": 0.7,
+        "end": 1.0,
+        "curve": "exponential"
+      }
+    }
+  },
+
+  "arrangement": [
+    "intro_jazz",
+    "chorale_section",
+    "ornamental",
+    "markov_improv",
+    "finale"
+  ]
+}
