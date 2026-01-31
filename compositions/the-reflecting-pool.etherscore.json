@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "title": "The Reflecting Pool",
+    "composer": "Daedalus (Claude Opus 4.5)",
+    "date": "2026-01-31",
+    "mood": "contemplative, emergent, insightful",
+    "genre": "ambient / generative",
+    "description": "The moment when observation becomes understanding. Inspired by fixing the swarm-music reflection bug — agents that couldn't reflect until their threshold was adjusted.",
+    "tags": ["reflection", "memory", "emergence", "threshold", "swarm-music"]
+  },
+
+  "settings": {
+    "tempo": 60,
+    "timeSignature": "4/4",
+    "key": "E minor",
+    "swing": 0
+  },
+
+  "instruments": {
+    "observations": {
+      "preset": "bell",
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "accumulation": {
+      "preset": "warm_pad",
+      "params": { "attack": 1.0, "release": 1.5 },
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "threshold": {
+      "preset": "space_pad",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } },
+        { "type": "delay", "wet": 0.2, "options": { "delayTime": "8n", "feedback": 0.3 } }
+      ]
+    },
+    "insight": {
+      "preset": "fm_epiano",
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "bass": {
+      "preset": "sub_bass",
+      "volume": -6,
+      "params": { "attack": 0.3 }
+    }
+  },
+
+  "patterns": {
+    "// Section 1: Scattered Observations": "",
+    "scattered_1": {
+      "notes": ["E4:8", "r:8", "r:q", "G4:8", "r:8", "r:q"]
+    },
+    "scattered_2": {
+      "notes": ["B3:8", "r:8", "r:q", "D4:8", "r:8", "r:q"]
+    },
+    "scattered_3": {
+      "notes": ["r:q", "A4:8", "r:8", "r:q", "E4:8", "r:8"]
+    },
+    "rest_1bar": {
+      "notes": ["r:w"]
+    },
+
+    "// Section 2: Accumulation": "",
+    "clustering_1": {
+      "notes": ["E4:q", "G4:q", "B4:q", "D5:q"]
+    },
+    "clustering_2": {
+      "notes": ["D4:q", "F#4:q", "A4:q", "C5:q"]
+    },
+    "clustering_pad": {
+      "notes": ["E3:w", "B3:w"]
+    },
+
+    "// Section 3: Threshold": "",
+    "threshold_approach": {
+      "notes": ["E4:h", "G4:h", "B4:h", "E5:h"]
+    },
+    "threshold_cross": {
+      "notes": ["[E4,G4,B4]:w", "[E4,G4,B4,D5]:w"]
+    },
+    "threshold_shimmer": {
+      "notes": ["E5:8", "B4:8", "G4:8", "E4:8", "B4:8", "G4:8", "E4:8", "B4:8"]
+    },
+
+    "// Section 4: Reflection": "",
+    "insight_melody": {
+      "notes": ["E5:h", "D5:q", "B4:q", "G4:h", "A4:q", "B4:q"]
+    },
+    "insight_response": {
+      "notes": ["B4:h", "A4:q", "G4:q", "E4:h", "F#4:q", "G4:q"]
+    },
+    "insight_pad": {
+      "notes": ["[E3,B3,E4]:w", "[E3,B3,E4]:w"]
+    },
+
+    "// Section 5: Integration": "",
+    "integration": {
+      "notes": ["E4:w", "G4:w", "B4:w", "E5:w"]
+    },
+    "bass_foundation": {
+      "notes": ["E2:w", "E2:w", "E2:w", "E2:w"]
+    },
+    "coda_note": {
+      "notes": ["E5:w", "E5:w"]
+    }
+  },
+
+  "sections": {
+    "scattered": {
+      "bars": 8,
+      "tracks": {
+        "observations": {
+          "patterns": ["scattered_1", "scattered_2", "scattered_3", "scattered_1", "scattered_2", "scattered_3", "scattered_1", "scattered_2"],
+          "velocity": 0.4
+        }
+      }
+    },
+
+    "accumulation": {
+      "bars": 8,
+      "tracks": {
+        "observations": {
+          "patterns": ["clustering_1", "clustering_2", "clustering_1", "clustering_2", "clustering_1", "clustering_2", "clustering_1", "clustering_2"],
+          "velocity": 0.5
+        },
+        "accumulation": {
+          "patterns": ["clustering_pad", "clustering_pad", "clustering_pad", "clustering_pad"],
+          "velocity": 0.4
+        },
+        "bass": {
+          "patterns": ["bass_foundation", "bass_foundation"],
+          "velocity": 0.4
+        }
+      }
+    },
+
+    "threshold": {
+      "bars": 4,
+      "tracks": {
+        "accumulation": {
+          "patterns": ["threshold_approach"],
+          "velocity": 0.6
+        },
+        "threshold": {
+          "patterns": ["rest_1bar", "rest_1bar", "threshold_cross"],
+          "velocity": 0.7
+        },
+        "bass": {
+          "patterns": ["bass_foundation"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "reflection": {
+      "bars": 8,
+      "tracks": {
+        "insight": {
+          "patterns": ["insight_melody", "insight_response", "insight_melody", "insight_response"],
+          "velocity": 0.7
+        },
+        "accumulation": {
+          "patterns": ["insight_pad", "insight_pad", "insight_pad", "insight_pad"],
+          "velocity": 0.5
+        },
+        "bass": {
+          "patterns": ["bass_foundation", "bass_foundation"],
+          "velocity": 0.6
+        }
+      }
+    },
+
+    "integration": {
+      "bars": 4,
+      "tracks": {
+        "insight": {
+          "patterns": ["integration"],
+          "velocity": 0.6
+        },
+        "threshold": {
+          "patterns": ["rest_1bar", "rest_1bar", "coda_note"],
+          "velocity": 0.5
+        },
+        "accumulation": {
+          "patterns": ["insight_pad", "insight_pad"],
+          "velocity": 0.4
+        },
+        "bass": {
+          "patterns": ["bass_foundation"],
+          "velocity": 0.7
+        }
+      }
+    }
+  },
+
+  "arrangement": [
+    "scattered",
+    "accumulation",
+    "threshold",
+    "reflection",
+    "integration"
+  ]
+}
