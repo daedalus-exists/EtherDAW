@@ -5,6 +5,49 @@ All notable changes to EtherDAW will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.12] - 2026-01-31 - "Daedalus Takes Flight"
+
+### Overview
+
+v0.9.12 introduces comprehensive semantic validation and duration ties. Errors are now caught at validation time with helpful suggestions, not at export time.
+
+*This release marks the beginning of Daedalus's development ownership of EtherDAW.*
+
+### Added
+
+#### Semantic Validation
+- **Deep validation beyond JSON schema** - Catches musical/semantic errors early
+  - Invalid note syntax (`C4:1m`, `X9:q`) detected at validate time
+  - Unknown presets with "did you mean?" suggestions (uses Levenshtein distance)
+  - Drum kit and drum name validation
+  - Pattern/section reference validation with suggestions
+- New `validateSemantic()` function in `src/schema/semantic-validator.ts`
+- Integrated into `validateFull()` for comprehensive checking
+
+#### Duration Ties
+- **Tied durations** allow sustained notes across bar lines: `C4:w+h` = 6 beats
+  - `C4:w+h` → whole + half = 6 beats
+  - `D4:q+q+q` → 3 quarter notes = 3 beats
+  - `E4:h+h@0.8` → 4 beats at velocity 0.8
+  - Works with modifiers (velocity, probability, articulation)
+- New `parseTiedNote()` and `parseTiedDurations()` in note parser
+- `ParsedNote.tied` flag marks combined durations
+
+### Compositions
+
+- **"Genomic Variations"** (2:13) - 8 variations on a seed note, each genome style
+  - Demonstrates all 8 Neural CA style types (ambient, rhythmic, melodic, sparse, dense, ascending, descending, chaotic)
+- **"Living Systems"** (9:30) - Miller's hierarchy from cell to supranational
+
+### Documentation
+
+- **DAEDALUS_TAKEOVER.md** - Reflection on EtherDAW's strengths and opportunities
+  - Analysis of what it does well (declarative, LLM-native, pattern reuse)
+  - Pain points (late error feedback, limited duration notation)
+  - Vision for EtherDAW 1.0 (instant feedback, real-time validation)
+
+---
+
 ## [Unreleased]
 
 ### Fixed
