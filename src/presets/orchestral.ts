@@ -155,6 +155,54 @@ export const ORCHESTRAL_PRESETS: Record<string, PresetDefinition> = {
   },
 
   /**
+   * Ethereal Choir
+   *
+   * Airy, halo-like choir texture with long tails.
+   * Designed for cinematic, floating pads.
+   */
+  ethereal_choir: {
+    name: 'Ethereal Choir',
+    category: 'orchestral',
+    description: 'Airy, halo-like choir with slow bloom and long release.',
+    type: 'fmsynth',
+    base: {
+      harmonicity: 0.35,
+      modulationIndex: 1.8,
+      oscillator: { type: 'sine' },
+      envelope: {
+        attack: 0.7,
+        decay: 0.5,
+        sustain: 0.8,
+        release: 1.4,
+      },
+      modulation: { type: 'sine' },
+      modulationEnvelope: {
+        attack: 0.8,
+        decay: 0.7,
+        sustain: 0.35,
+        release: 1.0,
+      },
+    },
+    semanticDefaults: {
+      brightness: 0.3,
+      warmth: 0.85,
+      richness: 0.6,
+      attack: 0.8,
+      sustain: 0.8,
+      release: 0.8,
+      space: 0.9,
+      movement: 0.4,
+    },
+    semanticMappings: {
+      brightness: { param: 'modulationIndex', min: 0.8, max: 3.2 },
+      warmth: { param: 'harmonicity', min: 0.2, max: 0.8 },
+      attack: { param: 'envelope.attack', min: 0.4, max: 1.2 },
+      release: { param: 'envelope.release', min: 0.9, max: 2.5 },
+    },
+    tags: ['choir', 'ethereal', 'airy', 'ambient', 'orchestral', 'voices', 'halo'],
+  },
+
+  /**
    * Mixed Choir
    *
    * Blended vowels for general choral sound.

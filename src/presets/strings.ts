@@ -198,6 +198,38 @@ export const STRINGS_PRESETS: Record<string, PresetDefinition> = {
     tags: ['ensemble', 'section', 'strings', 'orchestral', 'lush', 'pad', 'cinematic'],
   },
 
+  warm_strings: {
+    name: 'Warm Strings',
+    category: 'strings',
+    description: 'Velvety string bed with gentle bowing and soft highs',
+    type: 'polysynth',
+    base: {
+      oscillator: { type: 'sawtooth' },
+      envelope: {
+        attack: 0.4,
+        decay: 0.5,
+        sustain: 0.85,
+        release: 1.8,
+      },
+    },
+    semanticDefaults: {
+      brightness: 0.35,
+      warmth: 0.85,
+      richness: 0.75,
+      attack: 0.65,
+      sustain: 0.85,
+      release: 0.85,
+      space: 0.4,
+    },
+    semanticMappings: {
+      brightness: { param: 'filterEnvelope.baseFrequency', min: 900, max: 3200 },
+      warmth: { param: 'filterEnvelope.octaves', min: 1, max: 2.5 },
+      attack: { param: 'envelope.attack', min: 0.2, max: 0.9 },
+      release: { param: 'envelope.release', min: 0.8, max: 3.0 },
+    },
+    tags: ['warm', 'strings', 'orchestral', 'lush', 'soft', 'pad'],
+  },
+
   /**
    * String Pizzicato
    *

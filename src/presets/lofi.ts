@@ -41,6 +41,26 @@ export const LOFI_PRESETS: Record<string, PresetDefinition> = {
     tags: ['lofi', 'pad', 'tape', 'warm', 'saturated'],
   },
 
+  tape_wobble: {
+    name: 'Tape Wobble',
+    category: 'lofi',
+    description: 'Worn tape pad with soft pitch drift and hazy air',
+    type: 'polysynth',
+    base: {
+      oscillator: { type: 'triangle' },
+      envelope: { attack: 0.7, decay: 0.6, sustain: 0.7, release: 1.6 },
+    },
+    semanticDefaults: {
+      brightness: 0.2,
+      warmth: 0.9,
+      movement: 0.7,
+      space: 0.6,
+      attack: 0.7,
+      release: 0.7,
+    },
+    tags: ['lofi', 'tape', 'wobble', 'hazy', 'drift'],
+  },
+
   vinyl_texture: {
     name: 'Vinyl Texture',
     category: 'lofi',

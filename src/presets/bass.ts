@@ -66,6 +66,27 @@ export const BASS_PRESETS: Record<string, PresetDefinition> = {
     tags: ['plucky', 'staccato', 'short'],
   },
 
+  acid_bass: {
+    name: 'Acid Bass',
+    category: 'bass',
+    description: 'Squelchy, resonant 303-style bass with snappy filter',
+    type: 'monosynth',
+    base: {
+      oscillator: { type: 'sawtooth' },
+      envelope: { attack: 0.005, decay: 0.2, sustain: 0.2, release: 0.12 },
+      filterEnvelope: {
+        attack: 0.005,
+        decay: 0.22,
+        sustain: 0.15,
+        release: 0.15,
+        baseFrequency: 180,
+        octaves: 4.2,
+      },
+    },
+    semanticDefaults: { brightness: 0.8, punch: 0.85, movement: 0.6, decay: 0.3 },
+    tags: ['acid', '303', 'squelch', 'resonant', 'electronic'],
+  },
+
   fm_bass: {
     name: 'FM Bass',
     category: 'bass',

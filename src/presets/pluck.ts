@@ -50,6 +50,39 @@ export const PLUCK_PRESETS: Record<string, PresetDefinition> = {
     tags: ['marimba', 'mallet', 'wooden', 'warm'],
   },
 
+  glass_bell: {
+    name: 'Glass Bell',
+    category: 'pluck',
+    description: 'Crystalline bell with shimmering glassy overtones',
+    type: 'fmsynth',
+    base: {
+      harmonicity: 10,
+      modulationIndex: 7,
+      oscillator: { type: 'sine' },
+      envelope: { attack: 0.002, decay: 1.6, sustain: 0.0, release: 1.2 },
+      modulation: { type: 'sine' },
+      modulationEnvelope: { attack: 0.002, decay: 0.6, sustain: 0.0, release: 0.4 },
+    },
+    semanticDefaults: { brightness: 0.85, decay: 0.8, release: 0.7, space: 0.6 },
+    semanticMappings: {
+      brightness: { param: 'modulationIndex', min: 4, max: 12 },
+    },
+    tags: ['bell', 'glass', 'crystalline', 'shimmer', 'bright'],
+  },
+
+  pluck_mallet: {
+    name: 'Pluck Mallet',
+    category: 'pluck',
+    description: 'Snappy mallet pluck with rounded body',
+    type: 'polysynth',
+    base: {
+      oscillator: { type: 'triangle' },
+      envelope: { attack: 0.002, decay: 0.45, sustain: 0.05, release: 0.25 },
+    },
+    semanticDefaults: { punch: 0.7, warmth: 0.6, decay: 0.45, brightness: 0.45 },
+    tags: ['mallet', 'pluck', 'percussive', 'rounded'],
+  },
+
   // Guitar presets (v0.9.2)
   clean_guitar: {
     name: 'Clean Guitar',

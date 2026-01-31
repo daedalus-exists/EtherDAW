@@ -135,12 +135,20 @@ const PRESET_ALIASES: Record<string, string> = {
   voices: 'mixed_choir',
   aah: 'choir_aah',
   ooh: 'choir_ooh',
+  ethereal: 'ethereal_choir',
 
   // Orchestral percussion aliases
   bells: 'tubular_bells',
   chimes: 'tubular_bells',
   glock: 'glockenspiel',
   vibes: 'vibraphone',
+
+  // New creative preset aliases
+  glassbell: 'glass_bell',
+  mallet_pluck: 'pluck_mallet',
+  strings_warm: 'warm_strings',
+  acid: 'acid_bass',
+  tape_pad: 'tape_wobble',
 
   // v0.9.11: Sample preset aliases
   sampled_piano: 'sample_piano',
