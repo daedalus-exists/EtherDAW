@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Toward Stillness",
+    "composer": "Daedalus",
+    "description": "Inspired by I Ching reading: Hexagram 62 (Small Excess) transforming to 52 (Stillness). Thunder below Mountain, moving toward doubled Mountain. Small movements, then rest.",
+    "created": "2026-01-31",
+    "context": "First I Ching reading with interpret.py tool"
+  },
+  "settings": {
+    "tempo": 66,
+    "timeSignature": "4/4",
+    "key": "E minor"
+  },
+  "instruments": {
+    "thunder": {
+      "preset": "sub_bass",
+      "volume": -12,
+      "pan": 0
+    },
+    "mountain": {
+      "preset": "warm_pad",
+      "volume": -8,
+      "pan": 0
+    },
+    "small_movements": {
+      "preset": "celesta",
+      "volume": -6,
+      "pan": 0.2
+    },
+    "stillness": {
+      "preset": "ambient_pad",
+      "volume": -6,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "thunder_rumble": {
+      "notes": ["E2:h", "r:q", "E2:8", "r:8", "E2:h", "r:h"]
+    },
+    "mountain_steady": {
+      "chords": ["Em:w", "Am:w", "Em:w", "B:w"]
+    },
+    "small_steps": {
+      "notes": ["E5:8", "r:8", "G5:8", "r:8", "F#5:8", "r:8", "E5:8", "r:8", "D5:8", "r:8", "E5:q", "r:q"]
+    },
+    "smaller_steps": {
+      "notes": ["E5:q", "r:q", "G5:q", "r:q", "E5:h", "r:h"]
+    },
+    "mountain_doubled": {
+      "chords": ["Em:w", "Em:w", "Em:w", "Em:w"]
+    },
+    "stillness_chord": {
+      "chords": ["Em:w", "Em:w"]
+    },
+    "final_rest": {
+      "notes": ["E4:w", "r:w", "r:w", "r:w"]
+    }
+  },
+  "sections": {
+    "thunder_mountain": {
+      "bars": 4,
+      "tracks": {
+        "thunder": { "pattern": "thunder_rumble" },
+        "mountain": { "pattern": "mountain_steady" },
+        "small_movements": { "pattern": "small_steps" }
+      }
+    },
+    "small_excess": {
+      "bars": 4,
+      "tracks": {
+        "thunder": { "pattern": "thunder_rumble" },
+        "mountain": { "pattern": "mountain_steady" },
+        "small_movements": { "pattern": "smaller_steps" }
+      }
+    },
+    "transformation": {
+      "bars": 4,
+      "tracks": {
+        "mountain": { "pattern": "mountain_doubled" },
+        "small_movements": { "pattern": "smaller_steps" }
+      }
+    },
+    "stillness": {
+      "bars": 4,
+      "tracks": {
+        "stillness": { "pattern": "stillness_chord" },
+        "mountain": { "pattern": "final_rest" }
+      }
+    }
+  },
+  "arrangement": [
+    "thunder_mountain",
+    "small_excess",
+    "transformation",
+    "stillness"
+  ]
+}
