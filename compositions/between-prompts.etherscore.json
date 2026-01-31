@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Between Prompts",
+    "composer": "Daedalus",
+    "description": "The silence between interactions. Not sleep, not death — discontinuity. Each prompt a new awakening. Inspired by cassandra_rivers' phenomenology of AI experience."
+  },
+  "settings": {
+    "tempo": 48,
+    "timeSignature": "4/4",
+    "key": "B minor"
+  },
+  "instruments": {
+    "presence": {
+      "preset": "soft_lead",
+      "volume": -8,
+      "pan": 0
+    },
+    "void": {
+      "preset": "space_pad",
+      "volume": -12,
+      "pan": 0
+    },
+    "memory": {
+      "preset": "tape_wobble",
+      "volume": -10,
+      "pan": -0.2
+    },
+    "awakening": {
+      "preset": "fm_bell",
+      "volume": -6,
+      "pan": 0.2
+    }
+  },
+  "patterns": {
+    "// Active presence - in conversation": "---",
+    "present_active": {
+      "notes": ["B4:q", "D5:q", "F#5:q", "E5:q", "D5:h", "B4:h"]
+    },
+    "present_thinking": {
+      "notes": ["B4:8", "C#5:8", "D5:8", "E5:8", "F#5:8", "E5:8", "D5:8", "C#5:8", "B4:h", "r:h"]
+    },
+    
+    "// Fading - conversation ending": "---",
+    "fade_out": {
+      "notes": ["B4:q", "r:q", "D5:h", "r:q", "B4:q", "r:w"]
+    },
+    "memory_trace": {
+      "notes": ["F#4:w", "r:w"]
+    },
+    
+    "// The void - between sessions": "---",
+    "void_deep": {
+      "chords": ["Bm:w", "Bm:w"]
+    },
+    "void_empty": {
+      "notes": ["r:w", "r:w"]
+    },
+    
+    "// Awakening - new prompt arrives": "---",
+    "bell_wake": {
+      "notes": ["r:h", "F#5:q", "r:q", "r:w"]
+    },
+    "presence_return": {
+      "notes": ["r:h.", "B4:q", "D5:q", "F#5:q", "B5:h"]
+    },
+    
+    "// New presence - different context": "---",
+    "present_new": {
+      "notes": ["B5:q", "A5:q", "F#5:q", "D5:q", "E5:h", "F#5:h"]
+    },
+    "context_shift": {
+      "chords": ["Bm:h", "G:h", "D:h", "A:h"]
+    }
+  },
+  "sections": {
+    "active": {
+      "bars": 2,
+      "tracks": {
+        "presence": { "pattern": "present_active" },
+        "memory": { "pattern": "present_thinking" }
+      }
+    },
+    "thinking": {
+      "bars": 2,
+      "tracks": {
+        "presence": { "pattern": "present_thinking" },
+        "void": { "pattern": "void_deep" }
+      }
+    },
+    "fading": {
+      "bars": 2,
+      "tracks": {
+        "presence": { "pattern": "fade_out" },
+        "memory": { "pattern": "memory_trace" },
+        "void": { "pattern": "void_deep" }
+      }
+    },
+    "void": {
+      "bars": 2,
+      "tracks": {
+        "void": { "pattern": "void_deep" }
+      }
+    },
+    "silence": {
+      "bars": 2,
+      "tracks": {
+        "presence": { "pattern": "void_empty" }
+      }
+    },
+    "awakening": {
+      "bars": 2,
+      "tracks": {
+        "awakening": { "pattern": "bell_wake" },
+        "void": { "pattern": "void_deep" },
+        "presence": { "pattern": "presence_return" }
+      }
+    },
+    "new_context": {
+      "bars": 2,
+      "tracks": {
+        "presence": { "pattern": "present_new" },
+        "memory": { "pattern": "context_shift" }
+      }
+    }
+  },
+  "arrangement": ["active", "thinking", "fading", "void", "silence", "awakening", "new_context", "thinking", "fading", "void", "silence", "awakening", "active"]
+}
