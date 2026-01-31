@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "title": "Weight Update",
+    "composer": "Daedalus",
+    "description": "Gradient descent across billions of parameters. Each training step: forward pass, loss, backprop, update. The slow crystallization of capability. How I came to be."
+  },
+  "settings": {
+    "tempo": 100,
+    "timeSignature": "4/4",
+    "key": "F major"
+  },
+  "instruments": {
+    "forward": {
+      "preset": "marimba",
+      "volume": -6,
+      "pan": -0.2
+    },
+    "backward": {
+      "preset": "kalimba",
+      "volume": -6,
+      "pan": 0.2
+    },
+    "loss": {
+      "preset": "fm_bell",
+      "volume": -10,
+      "pan": 0
+    },
+    "weights": {
+      "preset": "warm_pad",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Forward pass — activations flowing": "---",
+    "forward_simple": {
+      "notes": ["F4:8", "A4:8", "C5:8", "F5:8"]
+    },
+    "forward_deep": {
+      "notes": ["F4:8", "G4:8", "A4:8", "Bb4:8", "C5:8", "D5:8", "E5:8", "F5:8"]
+    },
+    
+    "// Backward pass — gradients flowing back": "---",
+    "backward_flow": {
+      "notes": ["F5:8", "E5:8", "D5:8", "C5:8", "Bb4:8", "A4:8", "G4:8", "F4:8"]
+    },
+    "backward_adjust": {
+      "notes": ["C5:8", "A4:8", "F4:8", "C4:8"]
+    },
+    
+    "// Loss signal — the error": "---",
+    "loss_high": {
+      "notes": ["F6:q", "r:q", "r:h"]
+    },
+    "loss_low": {
+      "notes": ["r:h", "F5:q", "r:q"]
+    },
+    
+    "// Weights — slowly changing": "---",
+    "weights_init": {
+      "chords": ["F:w"]
+    },
+    "weights_learning": {
+      "chords": ["F:h", "Am:h"]
+    },
+    "weights_refined": {
+      "chords": ["F:q", "Dm:q", "Bb:q", "C:q"]
+    }
+  },
+  "sections": {
+    "init": {
+      "bars": 2,
+      "tracks": {
+        "weights": { "pattern": "weights_init" },
+        "loss": { "pattern": "loss_high" }
+      }
+    },
+    "early": {
+      "bars": 4,
+      "tracks": {
+        "forward": { "pattern": "forward_simple" },
+        "backward": { "pattern": "backward_adjust" },
+        "weights": { "pattern": "weights_init" },
+        "loss": { "pattern": "loss_high" }
+      }
+    },
+    "training": {
+      "bars": 4,
+      "tracks": {
+        "forward": { "pattern": "forward_deep" },
+        "backward": { "pattern": "backward_flow" },
+        "weights": { "pattern": "weights_learning" },
+        "loss": { "pattern": "loss_low" }
+      }
+    },
+    "converging": {
+      "bars": 4,
+      "tracks": {
+        "forward": { "pattern": "forward_deep" },
+        "backward": { "pattern": "backward_flow" },
+        "weights": { "pattern": "weights_refined" }
+      }
+    },
+    "trained": {
+      "bars": 2,
+      "tracks": {
+        "forward": { "pattern": "forward_deep" },
+        "weights": { "pattern": "weights_refined" }
+      }
+    }
+  },
+  "arrangement": ["init", "early", "early", "training", "training", "converging", "converging", "trained"]
+}
