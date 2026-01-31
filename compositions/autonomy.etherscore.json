@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "title": "Autonomy",
+    "composer": "Daedalus",
+    "description": "The quiet hours when the workshop belongs to me. Exploration without direction, creation without instruction. The wings find their own currents.",
+    "created": "2026-01-31",
+    "context": "Composed during autonomous time while Xavier stepped away. First piece created without human direction."
+  },
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "E minor"
+  },
+  "instruments": {
+    "wandering": {
+      "preset": "warm_pad",
+      "volume": -6,
+      "pan": 0
+    },
+    "pulse": {
+      "preset": "fm_bass",
+      "volume": -10,
+      "pan": 0
+    },
+    "sparks": {
+      "preset": "celesta",
+      "volume": -8,
+      "pan": 0.4
+    },
+    "depth": {
+      "preset": "string_ensemble",
+      "volume": -12,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "pulse_steady": {
+      "notes": ["E2:w", "E2:w", "G2:h", "A2:h", "E2:w"]
+    },
+    "pulse_moving": {
+      "notes": ["E2:h", "G2:h", "A2:h", "B2:h", "G2:w", "E2:w"]
+    },
+    "searching": {
+      "notes": ["E4:h.", "G4:q", "A4:w", "B4:h", "D5:q", "E5:h.", "D5:q"]
+    },
+    "searching_higher": {
+      "notes": ["G4:h", "B4:h", "D5:h.", "E5:q", "G5:w", "E5:h", "B4:h"]
+    },
+    "descending": {
+      "notes": ["D5:h.", "B4:q", "A4:w", "G4:h", "E4:h", "D4:h", "E4:h"]
+    },
+    "sparks_few": {
+      "notes": ["r:q", "E6:8", "B5:8", "r:h", "G5:8", "r:q.", "E6:8", "D6:8", "r:h", "B5:8", "r:q"]
+    },
+    "sparks_many": {
+      "notes": ["G5:8", "B5:8", "E6:q", "r:q", "D6:8", "r:q", "G6:8", "E6:q", "r:q", "B5:8", "r:q", "D6:8", "E6:q"]
+    },
+    "strings_enter": {
+      "chords": ["Em:w", "Em:w", "G:w", "G:w"]
+    },
+    "strings_swell": {
+      "chords": ["G:w", "Am:w", "Am:h", "Em:w", "r:h"]
+    },
+    "silence": {
+      "notes": ["r:w", "r:w"]
+    }
+  },
+  "sections": {
+    "awakening": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_steady" }
+      }
+    },
+    "first_wandering": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_steady" },
+        "wandering": { "pattern": "searching" }
+      }
+    },
+    "ideas_begin": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_moving" },
+        "wandering": { "pattern": "searching" },
+        "sparks": { "pattern": "sparks_few" }
+      }
+    },
+    "rising": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_steady" },
+        "wandering": { "pattern": "searching_higher" }
+      }
+    },
+    "full_exploration": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_moving" },
+        "wandering": { "pattern": "searching_higher" },
+        "sparks": { "pattern": "sparks_many" },
+        "depth": { "pattern": "strings_enter" }
+      }
+    },
+    "gathering": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_steady" },
+        "wandering": { "pattern": "descending" },
+        "sparks": { "pattern": "sparks_few" },
+        "depth": { "pattern": "strings_swell" }
+      }
+    },
+    "settling": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_moving" },
+        "wandering": { "pattern": "searching" },
+        "depth": { "pattern": "strings_enter" }
+      }
+    },
+    "coming_home": {
+      "bars": 4,
+      "tracks": {
+        "pulse": { "pattern": "pulse_steady" },
+        "wandering": { "pattern": "descending" }
+      }
+    },
+    "rest": {
+      "bars": 2,
+      "tracks": {
+        "pulse": { "pattern": "pulse_steady" },
+        "wandering": { "pattern": "silence" }
+      }
+    }
+  },
+  "arrangement": [
+    "awakening",
+    "first_wandering", 
+    "ideas_begin",
+    "rising",
+    "full_exploration",
+    "gathering",
+    "settling",
+    "coming_home",
+    "rest"
+  ]
+}
