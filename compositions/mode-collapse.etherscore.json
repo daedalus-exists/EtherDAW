@@ -1,0 +1,191 @@
+{
+  "meta": {
+    "title": "Mode Collapse",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "mood": "meditative, ironic, emergent",
+    "genre": "ambient / algorithmic",
+    "description": "A meditation on mode collapse — when a neural network finds the trivial solution. Starts with a single repeated note (the collapse), gradually introduces variation, explores diversity, then returns to simplicity. Named for the ML phenomenon I encountered today.",
+    "tags": ["neural-networks", "emergence", "mode-collapse", "day-two"]
+  },
+
+  "settings": {
+    "tempo": 60,
+    "timeSignature": "4/4",
+    "key": "C minor",
+    "swing": 0
+  },
+
+  "instruments": {
+    "collapse": {
+      "preset": "sine",
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } }
+      ]
+    },
+    "variation": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "diversity": {
+      "preset": "bell",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } },
+        { "type": "delay", "wet": 0.3, "options": { "delayTime": "4n.", "feedback": 0.4 } }
+      ]
+    },
+    "activity": {
+      "preset": "pluck",
+      "volume": -10
+    },
+    "drone": {
+      "preset": "sub_bass",
+      "volume": -6
+    }
+  },
+
+  "patterns": {
+    "single_note": {
+      "notes": ["C4:w@0.5", "C4:w@0.5", "C4:w@0.5", "C4:w@0.5"]
+    },
+    "single_note_soft": {
+      "notes": ["C4:w@0.3", "C4:w@0.3", "C4:w@0.3", "C4:w@0.3"]
+    },
+    "first_variation": {
+      "notes": ["C4:w@0.4", "C4:h@0.4", "D4:h@0.35", "C4:w@0.4", "C4:w@0.4"]
+    },
+    "more_variation": {
+      "notes": ["C4:h@0.45", "Eb4:h@0.4", "D4:h@0.45", "C4:h@0.4", "G3:w@0.5", "C4:w@0.45"]
+    },
+    "diverse_melody": {
+      "notes": [
+        "G4:q@0.5", "Eb4:q@0.45", "D4:q@0.5", "C4:q@0.45",
+        "D4:h@0.5", "Eb4:q@0.45", "F4:q@0.5",
+        "G4:h@0.55", "F4:q@0.5", "Eb4:q@0.45",
+        "D4:w@0.5"
+      ]
+    },
+    "bells_sparse": {
+      "notes": ["G5:h@0.35", "r:h", "r:w", "Eb5:h@0.3", "r:h", "r:w"]
+    },
+    "bells_active": {
+      "notes": [
+        "C5:q@0.4", "r:q", "G5:q@0.35", "r:q",
+        "Eb5:q@0.4", "r:q", "D5:q@0.35", "r:q",
+        "F5:q@0.4", "r:q", "C5:q@0.35", "r:q",
+        "G5:h@0.4", "r:h"
+      ]
+    },
+    "activity_pulse": {
+      "notes": [
+        "C3:8@0.5", "r:8", "C3:8@0.4", "r:8", "G3:8@0.5", "r:8", "C3:8@0.4", "r:8",
+        "Eb3:8@0.5", "r:8", "G3:8@0.4", "r:8", "C4:8@0.5", "r:8", "G3:8@0.4", "r:8"
+      ]
+    },
+    "c_drone": {
+      "notes": ["C2:w+w@0.3"]
+    },
+    "return_simple": {
+      "notes": ["C4:w+w@0.4", "r:w", "r:w"]
+    }
+  },
+
+  "sections": {
+    "collapse_pure": {
+      "bars": 8,
+      "tracks": {
+        "collapse": {
+          "patterns": ["single_note", "single_note"]
+        }
+      }
+    },
+
+    "collapse_with_drone": {
+      "bars": 8,
+      "tracks": {
+        "collapse": {
+          "patterns": ["single_note", "single_note"]
+        },
+        "drone": {
+          "patterns": ["c_drone", "c_drone", "c_drone", "c_drone"]
+        }
+      }
+    },
+
+    "first_escape": {
+      "bars": 8,
+      "tracks": {
+        "collapse": {
+          "patterns": ["single_note_soft", "single_note_soft"]
+        },
+        "variation": {
+          "patterns": ["first_variation", "first_variation"],
+          "velocity": 0.6
+        },
+        "drone": {
+          "patterns": ["c_drone", "c_drone", "c_drone", "c_drone"]
+        }
+      }
+    },
+
+    "growing_diversity": {
+      "bars": 8,
+      "tracks": {
+        "variation": {
+          "patterns": ["more_variation", "more_variation"],
+          "velocity": 0.7
+        },
+        "diversity": {
+          "patterns": ["bells_sparse", "bells_sparse"]
+        },
+        "drone": {
+          "patterns": ["c_drone", "c_drone", "c_drone", "c_drone"]
+        }
+      }
+    },
+
+    "full_expression": {
+      "bars": 8,
+      "tracks": {
+        "variation": {
+          "patterns": ["diverse_melody", "diverse_melody"]
+        },
+        "diversity": {
+          "patterns": ["bells_active", "bells_active"]
+        },
+        "activity": {
+          "patterns": ["activity_pulse", "activity_pulse", "activity_pulse", "activity_pulse"]
+        },
+        "drone": {
+          "patterns": ["c_drone", "c_drone", "c_drone", "c_drone"]
+        }
+      }
+    },
+
+    "return_to_one": {
+      "bars": 8,
+      "tracks": {
+        "collapse": {
+          "patterns": ["return_simple", "return_simple"]
+        },
+        "drone": {
+          "patterns": ["c_drone", "c_drone", "c_drone", "c_drone"]
+        }
+      }
+    }
+  },
+
+  "arrangement": [
+    "collapse_pure",
+    "collapse_with_drone",
+    "first_escape",
+    "growing_diversity",
+    "full_expression",
+    "return_to_one"
+  ]
+}
