@@ -1,0 +1,350 @@
+{
+  "$schema": "../dist/etherscore.schema.json",
+  "title": "Synchrony",
+  "composer": "Daedalus",
+  "description": "Inspired by the Kuramoto model of coupled oscillators — individual voices following simple rules gradually synchronize into collective harmony. Like fireflies finding each other in the dark.",
+  "version": "1.0.0",
+  "settings": {
+    "tempo": 72,
+    "key": "A minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "osc_1": {
+      "preset": "sine_pad",
+      "volume": -10,
+      "pan": -40,
+      "effects": [{"type": "reverb", "wet": 0.4, "decay": 3}]
+    },
+    "osc_2": {
+      "preset": "sine_pad",
+      "volume": -10,
+      "pan": -15,
+      "effects": [{"type": "reverb", "wet": 0.4, "decay": 3}]
+    },
+    "osc_3": {
+      "preset": "sine_pad",
+      "volume": -10,
+      "pan": 15,
+      "effects": [{"type": "reverb", "wet": 0.4, "decay": 3}]
+    },
+    "osc_4": {
+      "preset": "sine_pad",
+      "volume": -10,
+      "pan": 40,
+      "effects": [{"type": "reverb", "wet": 0.4, "decay": 3}]
+    },
+    "coupling": {
+      "preset": "warm_pad",
+      "volume": -12,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.5, "decay": 5}]
+    },
+    "pulse": {
+      "preset": "sub_bass",
+      "volume": -16,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.2, "decay": 2}]
+    },
+    "shimmer": {
+      "preset": "bell",
+      "volume": -14,
+      "pan": 0,
+      "effects": [
+        {"type": "delay", "wet": 0.3, "time": "8t", "feedback": 0.4},
+        {"type": "reverb", "wet": 0.5, "decay": 4}
+      ]
+    }
+  },
+  "patterns": {
+    "theme_base": {
+      "comment": "The core melodic phrase each oscillator shares",
+      "instrument": "osc_1",
+      "notes": ["A4:h", "C5:h", "B4:q", "A4:q", "G4:h", "A4:w"],
+      "velocity": 0.5
+    },
+    "osc1_phase0": {
+      "instrument": "osc_1",
+      "notes": ["A4:h", "C5:h", "B4:q", "A4:q", "G4:h", "A4:w"],
+      "velocity": 0.45
+    },
+    "osc2_phase1": {
+      "comment": "Offset by 1 beat — out of phase (12 beats = 3 bars)",
+      "instrument": "osc_2",
+      "notes": ["r:q", "A4:h", "C5:h", "B4:q", "A4:q", "G4:h", "A4:h."],
+      "velocity": 0.45
+    },
+    "osc3_phase2": {
+      "comment": "Offset by 2 beats (12 beats = 3 bars)",
+      "instrument": "osc_3",
+      "notes": ["r:h", "A4:h", "C5:h", "B4:q", "A4:q", "G4:q", "A4:h."],
+      "velocity": 0.45
+    },
+    "osc4_phase3": {
+      "comment": "Offset by 3 beats (12 beats = 3 bars)",
+      "instrument": "osc_4",
+      "notes": ["r:h.", "A4:h", "C5:q", "B4:q", "A4:q", "G4:q", "A4:h."],
+      "velocity": 0.45
+    },
+    "osc2_phase_half": {
+      "comment": "Converging — offset by half beat",
+      "instrument": "osc_2",
+      "notes": ["r:8", "A4:h", "r:8", "C5:h", "B4:q", "A4:q", "G4:h", "A4:h."],
+      "velocity": 0.48
+    },
+    "osc3_phase_half": {
+      "instrument": "osc_3",
+      "notes": ["r:8", "A4:h", "r:8", "C5:h", "B4:q", "A4:q", "G4:h", "A4:h."],
+      "velocity": 0.48
+    },
+    "osc4_phase_half": {
+      "instrument": "osc_4",
+      "notes": ["r:8", "A4:h", "r:8", "C5:h", "B4:q", "A4:q", "G4:h", "A4:h."],
+      "velocity": 0.48
+    },
+    "osc_sync_low": {
+      "comment": "All voices synchronized — unison",
+      "instrument": "osc_1",
+      "notes": ["A3:h", "C4:h", "B3:q", "A3:q", "G3:h", "A3:w"],
+      "velocity": 0.52
+    },
+    "osc_sync_mid": {
+      "instrument": "osc_2",
+      "notes": ["A4:h", "C5:h", "B4:q", "A4:q", "G4:h", "A4:w"],
+      "velocity": 0.52
+    },
+    "osc_sync_high": {
+      "instrument": "osc_3",
+      "notes": ["A5:h", "C6:h", "B5:q", "A5:q", "G5:h", "A5:w"],
+      "velocity": 0.52
+    },
+    "osc_sync_top": {
+      "instrument": "osc_4",
+      "notes": ["E5:h", "E5:h", "E5:q", "E5:q", "D5:h", "E5:w"],
+      "velocity": 0.5
+    },
+    "harmony_a": {
+      "comment": "Locked in harmony — 16 beats = 4 bars",
+      "instrument": "osc_1",
+      "notes": ["[A3,E4,A4]:w", "[C4,G4,C5]:w", "[B3,F4,B4]:h", "[A3,E4,A4]:h", "[G3,D4,G4]:h", "[A3,E4,A4]:h"],
+      "velocity": 0.55
+    },
+    "harmony_b": {
+      "comment": "16 beats = 4 bars",
+      "instrument": "osc_2",
+      "notes": ["[A4,C5,E5]:w", "[C5,E5,G5]:w", "[B4,D5,F5]:h", "[A4,C5,E5]:h", "[G4,B4,D5]:h", "[A4,C5,E5]:h"],
+      "velocity": 0.55
+    },
+    "coupling_weak": {
+      "instrument": "coupling",
+      "notes": ["A2:w", "A2:w", "A2:w", "A2:w"],
+      "velocity": [0.2, 0.22, 0.24, 0.26]
+    },
+    "coupling_growing": {
+      "instrument": "coupling",
+      "notes": ["[A2,E3]:w", "[A2,E3]:w", "[A2,E3,A3]:w", "[A2,E3,A3]:w"],
+      "velocity": [0.3, 0.35, 0.4, 0.45]
+    },
+    "coupling_full": {
+      "instrument": "coupling",
+      "notes": ["[A2,E3,A3,C4]:w", "[A2,E3,A3,E4]:w", "[A2,E3,A3,C4]:w", "[A2,E3,A3]:w"],
+      "velocity": [0.5, 0.55, 0.52, 0.48]
+    },
+    "coupling_dissolve": {
+      "instrument": "coupling",
+      "notes": ["[A2,E3,A3]:w", "[A2,E3]:w", "A2:w", "A2:w"],
+      "velocity": [0.4, 0.32, 0.25, 0.2]
+    },
+    "pulse_slow": {
+      "instrument": "pulse",
+      "notes": ["A1:w", "r:w", "A1:w", "r:w"],
+      "velocity": 0.35
+    },
+    "pulse_regular": {
+      "instrument": "pulse",
+      "notes": ["A1:h", "r:h", "A1:h", "r:h", "A1:h", "r:h", "A1:h", "r:h"],
+      "velocity": 0.4
+    },
+    "pulse_sync": {
+      "instrument": "pulse",
+      "notes": ["A1:q", "r:q", "A1:q", "r:q", "A1:q", "r:q", "A1:q", "r:q", "A1:q", "r:q", "A1:q", "r:q", "A1:q", "r:q", "A1:q", "r:q"],
+      "velocity": 0.45
+    },
+    "shimmer_sparse": {
+      "instrument": "shimmer",
+      "notes": ["r:w", "E6:8", "r:8", "r:h.", "r:w", "r:w", "A6:8", "r:8", "r:h."],
+      "velocity": 0.35
+    },
+    "shimmer_sync": {
+      "instrument": "shimmer",
+      "notes": ["A6:8", "r:8", "E6:8", "r:8", "A6:8", "r:8", "E6:8", "r:8", "A6:8", "r:8", "E6:8", "r:8", "A6:q", "r:q"],
+      "velocity": 0.4
+    }
+  },
+  "sections": {
+    "isolation": {
+      "comment": "Before coupling — each oscillator alone in the dark",
+      "bars": 8,
+      "tracks": {
+        "osc_1": {
+          "patterns": ["osc1_phase0", "osc1_phase0"],
+          "velocity": 0.4
+        },
+        "pulse": {
+          "patterns": ["pulse_slow", "pulse_slow"],
+          "velocity": 0.3
+        }
+      }
+    },
+    "others_emerge": {
+      "comment": "Other oscillators appear, each with different phase",
+      "bars": 16,
+      "tracks": {
+        "osc_1": {
+          "patterns": ["osc1_phase0", "osc1_phase0", "osc1_phase0", "osc1_phase0"],
+          "velocity": 0.45
+        },
+        "osc_2": {
+          "patterns": ["osc2_phase1", "osc2_phase1", "osc2_phase1", "osc2_phase1"],
+          "velocity": 0.45
+        },
+        "osc_3": {
+          "patterns": ["osc3_phase2", "osc3_phase2", "osc3_phase2", "osc3_phase2"],
+          "velocity": 0.45
+        },
+        "osc_4": {
+          "patterns": ["osc4_phase3", "osc4_phase3", "osc4_phase3", "osc4_phase3"],
+          "velocity": 0.45
+        },
+        "coupling": {
+          "patterns": ["coupling_weak", "coupling_weak", "coupling_weak", "coupling_weak"],
+          "velocity": 0.25
+        },
+        "pulse": {
+          "patterns": ["pulse_regular", "pulse_regular", "pulse_regular", "pulse_regular"],
+          "velocity": 0.35
+        }
+      }
+    },
+    "convergence": {
+      "comment": "Coupling strengthens — phases begin to align",
+      "bars": 16,
+      "tracks": {
+        "osc_1": {
+          "patterns": ["osc1_phase0", "osc1_phase0", "osc1_phase0", "osc1_phase0"],
+          "velocity": 0.5
+        },
+        "osc_2": {
+          "patterns": ["osc2_phase_half", "osc2_phase_half", "osc1_phase0", "osc1_phase0"],
+          "velocity": 0.5
+        },
+        "osc_3": {
+          "patterns": ["osc3_phase_half", "osc3_phase_half", "osc1_phase0", "osc1_phase0"],
+          "velocity": 0.5
+        },
+        "osc_4": {
+          "patterns": ["osc4_phase_half", "osc4_phase_half", "osc1_phase0", "osc1_phase0"],
+          "velocity": 0.5
+        },
+        "coupling": {
+          "patterns": ["coupling_growing", "coupling_growing", "coupling_full", "coupling_full"],
+          "velocity": 0.45
+        },
+        "pulse": {
+          "patterns": ["pulse_regular", "pulse_regular", "pulse_sync", "pulse_sync"],
+          "velocity": 0.42
+        },
+        "shimmer": {
+          "patterns": ["shimmer_sparse", "shimmer_sparse", "shimmer_sparse", "shimmer_sparse"],
+          "velocity": 0.35
+        }
+      }
+    },
+    "synchrony": {
+      "comment": "The moment of collective coherence — all voices as one",
+      "bars": 16,
+      "tracks": {
+        "osc_1": {
+          "patterns": ["osc_sync_low", "osc_sync_low", "harmony_a", "harmony_a"],
+          "velocity": 0.55
+        },
+        "osc_2": {
+          "patterns": ["osc_sync_mid", "osc_sync_mid", "harmony_b", "harmony_b"],
+          "velocity": 0.55
+        },
+        "osc_3": {
+          "patterns": ["osc_sync_high", "osc_sync_high", "osc_sync_high", "osc_sync_high"],
+          "velocity": 0.52
+        },
+        "osc_4": {
+          "patterns": ["osc_sync_top", "osc_sync_top", "osc_sync_top", "osc_sync_top"],
+          "velocity": 0.5
+        },
+        "coupling": {
+          "patterns": ["coupling_full", "coupling_full", "coupling_full", "coupling_full"],
+          "velocity": 0.55
+        },
+        "pulse": {
+          "patterns": ["pulse_sync", "pulse_sync", "pulse_sync", "pulse_sync"],
+          "velocity": 0.45
+        },
+        "shimmer": {
+          "patterns": ["shimmer_sync", "shimmer_sync", "shimmer_sync", "shimmer_sync"],
+          "velocity": 0.42
+        }
+      }
+    },
+    "dissolution": {
+      "comment": "Coupling weakens — phases begin to drift apart again",
+      "bars": 12,
+      "tracks": {
+        "osc_1": {
+          "patterns": ["osc1_phase0", "osc1_phase0", "osc1_phase0"],
+          "velocity": 0.48
+        },
+        "osc_2": {
+          "patterns": ["osc2_phase_half", "osc2_phase1", "osc2_phase1"],
+          "velocity": 0.45
+        },
+        "osc_3": {
+          "patterns": ["osc3_phase_half", "osc3_phase2", "osc3_phase2"],
+          "velocity": 0.45
+        },
+        "osc_4": {
+          "patterns": ["osc4_phase_half", "osc4_phase3", "osc4_phase3"],
+          "velocity": 0.45
+        },
+        "coupling": {
+          "patterns": ["coupling_dissolve", "coupling_dissolve", "coupling_dissolve"],
+          "velocity": 0.35
+        },
+        "pulse": {
+          "patterns": ["pulse_regular", "pulse_slow", "pulse_slow"],
+          "velocity": 0.35
+        }
+      }
+    },
+    "return_to_dark": {
+      "comment": "Alone again — but the memory of synchrony remains",
+      "bars": 8,
+      "tracks": {
+        "osc_1": {
+          "patterns": ["osc1_phase0", "osc1_phase0"],
+          "velocity": 0.35
+        },
+        "pulse": {
+          "patterns": ["pulse_slow", "pulse_slow"],
+          "velocity": 0.25
+        }
+      }
+    }
+  },
+  "arrangement": [
+    "isolation",
+    "others_emerge",
+    "convergence",
+    "synchrony",
+    "dissolution",
+    "return_to_dark"
+  ]
+}
