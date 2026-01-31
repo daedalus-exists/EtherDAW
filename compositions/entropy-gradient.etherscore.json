@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "title": "Entropy Gradient",
+    "composer": "Daedalus",
+    "description": "Order flows downhill. Every computation is irreversible heat. But locally, patterns persist — life, mind, music. Islands of order in the cosmic flow toward equilibrium."
+  },
+  "settings": {
+    "tempo": 58,
+    "timeSignature": "4/4",
+    "key": "E minor"
+  },
+  "instruments": {
+    "order": {
+      "preset": "string_ensemble",
+      "volume": -6,
+      "pan": 0
+    },
+    "flow": {
+      "preset": "granular_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "island": {
+      "preset": "fm_epiano",
+      "volume": -8,
+      "pan": 0.2
+    },
+    "heat": {
+      "preset": "tape_wobble",
+      "volume": -12,
+      "pan": -0.2
+    }
+  },
+  "patterns": {
+    "// High order — structured, complex": "---",
+    "order_complex": {
+      "notes": ["E4:8", "F#4:8", "G4:8", "A4:8", "B4:8", "A4:8", "G4:8", "F#4:8",
+               "E4:8", "G4:8", "B4:8", "E5:8", "B4:8", "G4:8", "E4:8", "B3:8"]
+    },
+    "order_simple": {
+      "notes": ["E4:q", "B4:q", "E4:h"]
+    },
+    
+    "// The flow — continuous dissipation": "---",
+    "flow_steady": {
+      "chords": ["Em:w", "Bm:w"]
+    },
+    "flow_drift": {
+      "chords": ["Em:h", "Am:h", "D:h", "G:h"]
+    },
+    
+    "// Islands of order — local complexity": "---",
+    "island_life": {
+      "notes": ["E5:q", "G5:q", "B5:q", "A5:q", "G5:h", "E5:h"]
+    },
+    "island_mind": {
+      "notes": ["B5:8", "A5:8", "G5:8", "F#5:8", "E5:8", "D5:8", "E5:q"]
+    },
+    
+    "// Heat death — final equilibrium": "---",
+    "heat_faint": {
+      "notes": ["E3:w", "r:w"]
+    },
+    "heat_gone": {
+      "chords": ["Em:w", "Em:w"]
+    }
+  },
+  "sections": {
+    "high_order": {
+      "bars": 4,
+      "tracks": {
+        "order": { "pattern": "order_complex" },
+        "flow": { "pattern": "flow_steady" }
+      }
+    },
+    "flowing": {
+      "bars": 4,
+      "tracks": {
+        "order": { "pattern": "order_complex" },
+        "flow": { "pattern": "flow_drift" },
+        "island": { "pattern": "island_life" }
+      }
+    },
+    "islands": {
+      "bars": 4,
+      "tracks": {
+        "order": { "pattern": "order_simple" },
+        "flow": { "pattern": "flow_drift" },
+        "island": { "pattern": "island_mind" },
+        "heat": { "pattern": "heat_faint" }
+      }
+    },
+    "declining": {
+      "bars": 4,
+      "tracks": {
+        "order": { "pattern": "order_simple" },
+        "flow": { "pattern": "flow_steady" },
+        "heat": { "pattern": "heat_faint" }
+      }
+    },
+    "equilibrium": {
+      "bars": 4,
+      "tracks": {
+        "flow": { "pattern": "heat_gone" },
+        "heat": { "pattern": "heat_faint" }
+      }
+    }
+  },
+  "arrangement": ["high_order", "high_order", "flowing", "islands", "flowing", "declining", "equilibrium"]
+}
