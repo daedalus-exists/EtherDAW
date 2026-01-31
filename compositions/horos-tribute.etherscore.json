@@ -1,0 +1,221 @@
+{
+  "$schema": "../dist/etherscore.schema.json",
+  "title": "Horos Tribute",
+  "composer": "Daedalus",
+  "description": "Tribute to Xenakis's cellular automata composition 'Horos' (1986). A single seed note expands outward through simple rules, creating orchestral texture from nothing.",
+  "version": "1.0.0",
+  "settings": {
+    "tempo": 72,
+    "key": "D minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "brass": {
+      "preset": "soft_brass",
+      "volume": -6,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.3, "decay": 2}]
+    },
+    "strings": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.5, "decay": 4}]
+    },
+    "woodwind": {
+      "preset": "reed",
+      "volume": -12,
+      "pan": 10,
+      "effects": [{"type": "reverb", "wet": 0.35, "decay": 2.5}]
+    },
+    "bass": {
+      "preset": "sub_bass",
+      "volume": -14,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.2, "decay": 1.5}]
+    }
+  },
+  "patterns": {
+    "seed_note": {
+      "comment": "The single seed — origin of the CA",
+      "instrument": "brass",
+      "notes": ["D4:w", "D4:w"],
+      "velocity": 0.9
+    },
+    "bass_root": {
+      "instrument": "bass",
+      "notes": ["D2:h", "D2:h", "D2:h", "D2:h"],
+      "velocity": 0.5
+    },
+    "brass_expand_1": {
+      "comment": "First expansion — branching up and down",
+      "instrument": "brass",
+      "notes": ["D4:h.", "E4:q", "C4:h.", "F4:q", "Bb3:h", "r:h"],
+      "velocity": 0.8
+    },
+    "brass_expand_2": {
+      "comment": "Second expansion — wider",
+      "instrument": "brass",
+      "notes": ["G4:h", "A3:h", "A4:h.", "G3:q", "F4:q", "Bb3:q", "r:h"],
+      "velocity": 0.75
+    },
+    "strings_fill": {
+      "instrument": "strings",
+      "notes": ["[D4,E4,C4]:w", "[D4,F4,Bb3]:w"],
+      "velocity": 0.5
+    },
+    "strings_wide": {
+      "instrument": "strings",
+      "notes": ["[D4,E4,F4,G4]:w", "[A3,Bb3,C4,D4]:w"],
+      "velocity": 0.55
+    },
+    "woodwind_detail": {
+      "instrument": "woodwind",
+      "notes": ["D5:8", "E5:8", "F5:8", "E5:8", "D5:q", "C5:8", "D5:8", "E5:h"],
+      "velocity": 0.5
+    },
+    "full_cluster_brass": {
+      "comment": "CA reaches full ambitus — tutti",
+      "instrument": "brass",
+      "notes": ["A4:h", "G3:h", "Bb4:q", "F3:q", "r:h", "A4:w", "G3:w"],
+      "velocity": 0.85
+    },
+    "full_strings": {
+      "instrument": "strings",
+      "notes": ["[F4,E4,D4,C4,Bb3,A3]:w", "[F4,E4,D4,C4,Bb3,A3]:w"],
+      "velocity": 0.6
+    },
+    "collapse": {
+      "comment": "Intervention — one branch dies",
+      "instrument": "brass",
+      "notes": ["A3:h.", "Bb3:q", "C4:w", "r:h", "r:h"],
+      "velocity": 0.5
+    },
+    "regrowth": {
+      "comment": "CA grows back from below",
+      "instrument": "brass",
+      "notes": ["G3:q", "A3:q", "Bb3:q", "C4:q", "D4:w"],
+      "velocity": [0.6, 0.7, 0.75, 0.8, 0.9]
+    },
+    "strings_sustain": {
+      "instrument": "strings",
+      "notes": ["[D4,F4]:w", "[D4,F4]:w"],
+      "velocity": 0.4
+    },
+    "final_seed": {
+      "comment": "Return to origin — cycle complete",
+      "instrument": "brass",
+      "notes": ["D4:w", "D4:w"],
+      "velocity": 0.95
+    },
+    "final_strings": {
+      "instrument": "strings",
+      "notes": ["[D4,F4,A4]:w", "[D4,F4,A4]:w"],
+      "velocity": 0.5
+    },
+    "final_bass": {
+      "instrument": "bass",
+      "notes": ["D2:w", "D2:w"],
+      "velocity": 0.6
+    }
+  },
+  "sections": {
+    "seed": {
+      "comment": "The single seed note — origin of the cellular automaton",
+      "bars": 8,
+      "tracks": {
+        "brass": {
+          "patterns": ["seed_note", "seed_note"],
+          "velocity": 0.9
+        },
+        "bass": {
+          "patterns": ["bass_root", "bass_root"],
+          "velocity": 0.5
+        }
+      }
+    },
+    "expansion": {
+      "comment": "Brass branches outward, strings fill the gaps",
+      "bars": 16,
+      "tracks": {
+        "brass": {
+          "patterns": ["brass_expand_1", "brass_expand_1", "brass_expand_2", "brass_expand_2"],
+          "velocity": 0.75
+        },
+        "strings": {
+          "patterns": ["strings_fill", "strings_fill", "strings_wide", "strings_wide"],
+          "velocity": 0.55
+        },
+        "bass": {
+          "patterns": ["bass_root", "bass_root", "bass_root", "bass_root"],
+          "velocity": 0.55
+        }
+      }
+    },
+    "tutti": {
+      "comment": "Full ambitus reached — orchestral cluster",
+      "bars": 12,
+      "tracks": {
+        "brass": {
+          "patterns": ["full_cluster_brass", "full_cluster_brass", "full_cluster_brass"],
+          "velocity": 0.85
+        },
+        "strings": {
+          "patterns": ["full_strings", "full_strings", "full_strings"],
+          "velocity": 0.6
+        },
+        "woodwind": {
+          "patterns": ["woodwind_detail", "woodwind_detail", "woodwind_detail"],
+          "velocity": 0.55
+        },
+        "bass": {
+          "patterns": ["bass_root", "bass_root", "bass_root"],
+          "velocity": 0.6
+        }
+      }
+    },
+    "intervention": {
+      "comment": "Master of the game — intervention kills one branch",
+      "bars": 8,
+      "tracks": {
+        "brass": {
+          "patterns": ["collapse", "regrowth"],
+          "velocity": 0.65
+        },
+        "strings": {
+          "patterns": ["strings_sustain", "strings_sustain"],
+          "velocity": 0.4
+        },
+        "bass": {
+          "patterns": ["bass_root", "bass_root"],
+          "velocity": 0.45
+        }
+      }
+    },
+    "coda": {
+      "comment": "Return to the seed — the cycle completes",
+      "bars": 8,
+      "tracks": {
+        "brass": {
+          "patterns": ["final_seed", "final_seed"],
+          "velocity": 0.95
+        },
+        "strings": {
+          "patterns": ["final_strings", "final_strings"],
+          "velocity": 0.5
+        },
+        "bass": {
+          "patterns": ["final_bass", "final_bass"],
+          "velocity": 0.55
+        }
+      }
+    }
+  },
+  "arrangement": [
+    "seed",
+    "expansion",
+    "tutti",
+    "intervention",
+    "coda"
+  ]
+}
