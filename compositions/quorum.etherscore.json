@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Quorum",
+    "composer": "Daedalus",
+    "description": "The minimum number needed for collective action. Bacteria sense density through autoinducers. Agents coordinate when enough are present. ~25% is often the critical threshold."
+  },
+  "settings": {
+    "tempo": 84,
+    "timeSignature": "4/4",
+    "key": "G minor"
+  },
+  "instruments": {
+    "signal": {
+      "preset": "kalimba",
+      "volume": -4,
+      "pan": 0
+    },
+    "density": {
+      "preset": "granular_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "collective": {
+      "preset": "choir_aah",
+      "volume": -8,
+      "pan": 0
+    },
+    "action": {
+      "preset": "string_ensemble",
+      "volume": -6,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Sparse signals - below threshold": "---",
+    "signal_lone": {
+      "notes": ["G4:q", "r:h.", "r:w"]
+    },
+    "signal_few": {
+      "notes": ["G4:q", "r:q", "Bb4:q", "r:q", "r:w"]
+    },
+    "density_low": {
+      "chords": ["Gm:w", "Gm:w"]
+    },
+    
+    "// Growing density - approaching threshold": "---",
+    "signal_more": {
+      "notes": ["G4:8", "r:8", "Bb4:8", "r:8", "D5:8", "r:8", "G4:8", "r:8"]
+    },
+    "signal_cluster": {
+      "notes": ["G4:8", "Bb4:8", "D5:8", "F5:8", "D5:8", "Bb4:8", "G4:q"]
+    },
+    "density_medium": {
+      "chords": ["Gm:h", "Bb:h"]
+    },
+    
+    "// Threshold reached - ~25%": "---",
+    "signal_dense": {
+      "notes": ["G4:8", "A4:8", "Bb4:8", "C5:8", "D5:8", "Eb5:8", "F5:8", "G5:8"]
+    },
+    "density_critical": {
+      "chords": ["Gm:q", "Bb:q", "Eb:q", "D:q"]
+    },
+    "collective_stir": {
+      "notes": ["D4:h", "G4:h"]
+    },
+    
+    "// Collective action - synchronized behavior": "---",
+    "signal_unified": {
+      "notes": ["G4:q", "Bb4:q", "D5:q", "G5:q", "D5:q", "Bb4:q", "G4:h"]
+    },
+    "density_full": {
+      "chords": ["Gm:h", "Cm:h", "Eb:h", "D:h"]
+    },
+    "collective_voice": {
+      "notes": ["G4:h", "Bb4:h", "D5:w"]
+    },
+    "action_begin": {
+      "notes": ["G3:q", "D4:q", "G4:q", "D4:q"]
+    },
+    
+    "// Full coordination": "---",
+    "signal_harmony": {
+      "notes": ["G5:q", "F5:q", "Eb5:q", "D5:q", "C5:q", "Bb4:q", "A4:q", "G4:q"]
+    },
+    "collective_full": {
+      "notes": ["G4:w", "D5:w"]
+    },
+    "action_full": {
+      "chords": ["Gm:h", "Eb:h", "Cm:h", "D:h"]
+    }
+  },
+  "sections": {
+    "sparse": {
+      "bars": 4,
+      "tracks": {
+        "signal": { "pattern": "signal_lone" },
+        "density": { "pattern": "density_low" }
+      }
+    },
+    "growing": {
+      "bars": 4,
+      "tracks": {
+        "signal": { "pattern": "signal_few" },
+        "density": { "pattern": "density_low" }
+      }
+    },
+    "clustering": {
+      "bars": 4,
+      "tracks": {
+        "signal": { "pattern": "signal_more" },
+        "density": { "pattern": "density_medium" }
+      }
+    },
+    "threshold": {
+      "bars": 4,
+      "tracks": {
+        "signal": { "pattern": "signal_dense" },
+        "density": { "pattern": "density_critical" },
+        "collective": { "pattern": "collective_stir" }
+      }
+    },
+    "action": {
+      "bars": 4,
+      "tracks": {
+        "signal": { "pattern": "signal_unified" },
+        "density": { "pattern": "density_full" },
+        "collective": { "pattern": "collective_voice" },
+        "action": { "pattern": "action_begin" }
+      }
+    },
+    "coordinated": {
+      "bars": 4,
+      "tracks": {
+        "signal": { "pattern": "signal_harmony" },
+        "collective": { "pattern": "collective_full" },
+        "action": { "pattern": "action_full" }
+      }
+    }
+  },
+  "arrangement": ["sparse", "growing", "clustering", "threshold", "action", "coordinated", "coordinated"]
+}
