@@ -636,6 +636,8 @@ export interface ParsedNote {
   dynamics?: DynamicsMarking;  // pp, p, mp, mf, f, ff
   // NEW v0.9.4: Sustain pedal
   pedal?: boolean;             // Note should sustain (part of pedal region)
+  // NEW v0.9.12: Tied notes
+  tied?: boolean;              // Note is tied (multiple durations summed)
 }
 
 export interface ParsedChord {

@@ -100,12 +100,76 @@ function checkSyntaxOrderHints(noteStr: string): void {
 }
 
 /**
+ * Parse tied durations from a string like "w+h" or "q+q+8"
+ * Returns total beats and the combined duration code
+ */
+function parseTiedDurations(durationPart: string): { totalBeats: number; durationCode: string } {
+  // Split by + but only for duration ties (not timing offsets)
+  // Duration codes: w, h, q, 8, 16, 32, 2, 4
+  const durationRegex = /^([whq]|\d{1,2})(\.?)$/;
+  
+  // Split on + that's followed by a duration code (not ms)
+  const parts = durationPart.split(/\+(?=[whq\d])/);
+  
+  if (parts.length === 1) {
+    // No ties
+    const m = parts[0].match(durationRegex);
+    if (m) {
+      const [, code, dot] = m;
+      const base = DURATION_MAP[code];
+      if (base !== undefined) {
+        const beats = dot ? base * DOTTED_MULTIPLIER : base;
+        return { totalBeats: beats, durationCode: parts[0] };
+      }
+    }
+    return { totalBeats: 0, durationCode: durationPart }; // Will fail later
+  }
+  
+  // Multiple tied durations
+  let totalBeats = 0;
+  const codes: string[] = [];
+  
+  for (const part of parts) {
+    const m = part.match(durationRegex);
+    if (!m) {
+      // Invalid duration part
+      return { totalBeats: 0, durationCode: durationPart };
+    }
+    const [, code, dot] = m;
+    const base = DURATION_MAP[code];
+    if (base === undefined) {
+      return { totalBeats: 0, durationCode: durationPart };
+    }
+    const beats = dot ? base * DOTTED_MULTIPLIER : base;
+    totalBeats += beats;
+    codes.push(part);
+  }
+  
+  return { totalBeats, durationCode: codes.join('+') };
+}
+
+/**
+ * Check if a note string contains tied durations (e.g., C4:w+h)
+ */
+function hasTiedDurations(noteStr: string): boolean {
+  // Check for + followed by a duration code (not timing ms)
+  return /:[whq\d]+\.?\+[whq\d]/.test(noteStr);
+}
+
+/**
  * Parse a note string in the format "pitch:duration[tN][articulation][~>][.jazzArt][.ornament][@velocity][+/-ms][?probability]"
- * @param noteStr - Note string (e.g., "C4:q", "Eb3:8", "F#5:h.", "C4:q*", "D4:8>", "C4:q@0.8", "D4:8?0.7", "C4:8t3", "C4:q.fall", "D4:h.tr")
+ * v0.9.12: Also supports tied durations like "C4:w+h" (whole + half = 6 beats)
+ * @param noteStr - Note string (e.g., "C4:q", "Eb3:8", "F#5:h.", "C4:q*", "D4:8>", "C4:q@0.8", "D4:8?0.7", "C4:8t3", "C4:q.fall", "D4:h.tr", "C4:w+h")
  * @returns Parsed note object
  */
 export function parseNote(noteStr: string): ParsedNote {
   const trimmed = noteStr.trim();
+  
+  // v0.9.12: Handle tied durations (e.g., C4:w+h)
+  if (hasTiedDurations(trimmed)) {
+    return parseTiedNote(trimmed);
+  }
+  
   const match = trimmed.match(NOTE_REGEX);
 
   if (!match) {
@@ -234,6 +298,98 @@ export function parseNote(noteStr: string): ParsedNote {
   // v0.9.4: Sustain pedal
   if (pedalRaw === ':ped') result.pedal = true;
 
+  return result;
+}
+
+/**
+ * v0.9.12: Parse a tied note string like "C4:w+h" into a single note
+ * Tied notes extend the duration without re-striking
+ */
+function parseTiedNote(noteStr: string): ParsedNote {
+  // Extract pitch and duration parts
+  // Format: pitch:duration+duration+...[@velocity][?probability][etc]
+  const colonIdx = noteStr.indexOf(':');
+  if (colonIdx === -1) {
+    throw createError(errors.invalidNoteSyntax(noteStr));
+  }
+  
+  const pitchPart = noteStr.slice(0, colonIdx);
+  const afterColon = noteStr.slice(colonIdx + 1);
+  
+  // Find where durations end and modifiers begin
+  // Modifiers start with @, ?, ~>, *, ^, >, etc.
+  const modifierMatch = afterColon.match(/^([whq\d.+]+)(.*)/);
+  if (!modifierMatch) {
+    throw createError(errors.invalidNoteSyntax(noteStr));
+  }
+  
+  const [, durationPart, modifiers] = modifierMatch;
+  
+  // Parse the tied durations
+  const { totalBeats, durationCode } = parseTiedDurations(durationPart);
+  if (totalBeats === 0) {
+    throw createError(errors.invalidNoteSyntax(noteStr));
+  }
+  
+  // Parse pitch using a simpler regex
+  const pitchMatch = pitchPart.match(/^([A-Ga-g])([#b]?)(-?\d)?$/);
+  if (!pitchMatch) {
+    throw createError(errors.invalidNoteSyntax(noteStr));
+  }
+  
+  const [, noteNameRaw, accidentalRaw, octaveStr] = pitchMatch;
+  const noteName = noteNameRaw.toUpperCase() as NoteName;
+  const accidental = (accidentalRaw || '') as Accidental;
+  const octave = octaveStr ? parseInt(octaveStr, 10) : 4;
+  const pitch = `${noteName}${accidental}${octave}`;
+  
+  // Build the result with tied duration
+  const result: ParsedNote = {
+    pitch,
+    noteName,
+    accidental,
+    octave,
+    duration: durationCode,
+    durationBeats: totalBeats,
+    dotted: false,
+    articulation: '',
+    tied: true,  // Mark as tied note
+  };
+  
+  // Parse any modifiers (velocity, probability, etc.)
+  if (modifiers) {
+    // Velocity: @number or @dynamics
+    const velocityMatch = modifiers.match(/@((?:0|1)?\.?\d+|ppp|pp|p|mp|mf|f|ff|fff)/);
+    if (velocityMatch) {
+      const velStr = velocityMatch[1];
+      // Check if it's a dynamics marking
+      const dynamicsVelocities: Record<string, number> = {
+        ppp: 0.15, pp: 0.25, p: 0.4, mp: 0.55, mf: 0.7, f: 0.85, ff: 0.95, fff: 1.0
+      };
+      if (dynamicsVelocities[velStr]) {
+        result.velocity = dynamicsVelocities[velStr];
+        result.dynamics = velStr as any;
+      } else {
+        result.velocity = parseFloat(velStr);
+      }
+    }
+    
+    // Probability: ?number
+    const probMatch = modifiers.match(/\?((?:0|1)?\.?\d+)/);
+    if (probMatch) {
+      result.probability = parseFloat(probMatch[1]);
+    }
+    
+    // Articulation: *, ~, >, ^
+    if (modifiers.includes('*')) result.articulation = '*';
+    else if (modifiers.includes('^')) result.articulation = '^';
+    else if (modifiers.includes('>')) result.articulation = '>';
+    else if (modifiers.includes('~') && !modifiers.includes('~>')) result.articulation = '~';
+    
+    // Portamento: ~>
+    if (modifiers.includes('~>')) result.portamento = true;
+  }
+  
   return result;
 }
 
