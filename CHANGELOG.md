@@ -5,6 +5,33 @@ All notable changes to EtherDAW will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+#### REPL `render` Command
+- **FluidSynth-based audio rendering** from the REPL without browser
+  - `render` — Renders and plays the composition
+  - `render output.wav` — Saves to specific file
+  - `render --no-play` — Renders without playing
+  - Aliases: `r`, `audio`
+- Auto-detects soundfont from `$SOUNDFONT`, `~/soundfonts/FluidR3_GM.sf2`, or `~/soundfonts/GeneralUser_GS.sf2`
+- Uses `afplay` (macOS) or `aplay` (Linux) for playback
+
+#### FluidSynth Render Script
+- `scripts/render.sh` — One-liner EtherScore → WAV
+  - Usage: `./scripts/render.sh composition.etherscore.json [output.wav]`
+  - Exports to MIDI, renders via FluidSynth
+
+### Compositions
+
+- **"Critical Mass"** (3:36) — Inspired by research on emergent conventions in LLM collectives
+  - Represents the ~25% threshold where minorities overturn social conventions
+  - Structure: sparse → building → tipping point → transformed
+  - Key progression: D minor → B♭ major
+
+---
+
 ## [0.9.12] - 2026-01-31 - "Daedalus Takes Flight"
 
 ### Overview
