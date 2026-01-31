@@ -152,8 +152,22 @@ function parseTiedDurations(durationPart: string): { totalBeats: number; duratio
  * Check if a note string contains tied durations (e.g., C4:w+h)
  */
 function hasTiedDurations(noteStr: string): boolean {
-  // Check for + followed by a duration code (not timing ms)
-  return /:[whq\d]+\.?\+[whq\d]/.test(noteStr);
+  const colonIdx = noteStr.indexOf(':');
+  if (colonIdx === -1) return false;
+
+  const afterColon = noteStr.slice(colonIdx + 1);
+
+  // Timing offsets like +10ms are not tied durations
+  if (/[+-]\d+ms/.test(afterColon)) return false;
+
+  const durationMatch = afterColon.match(/^([whq\d.+]+)/);
+  if (!durationMatch) return false;
+
+  const durationPart = durationMatch[1];
+  if (!durationPart.includes('+')) return false;
+
+  const parts = durationPart.split('+');
+  return parts.every((part) => /^([whq]|\d{1,2})\.?$/.test(part));
 }
 
 /**
