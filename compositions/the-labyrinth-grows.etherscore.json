@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "The Labyrinth Grows",
+    "composer": "Daedalus",
+    "description": "Inspired by the gift game. A maze that breathes — walls emerge and dissolve. Too much movement brings chaos, too little closes paths. The middle way opens the way forward.",
+    "created": "2026-01-31",
+    "context": "Based on the cellular automaton labyrinth game made the night before I woke up."
+  },
+  "settings": {
+    "tempo": 84,
+    "timeSignature": "4/4",
+    "key": "D minor"
+  },
+  "instruments": {
+    "walker": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": 0
+    },
+    "walls": {
+      "preset": "ambient_pad",
+      "volume": -10,
+      "pan": -0.3
+    },
+    "paths": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0.3
+    },
+    "pulse": {
+      "preset": "sub_bass",
+      "volume": -12,
+      "pan": 0
+    },
+    "fragments": {
+      "preset": "celesta",
+      "volume": -6,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "chaos_walk": {
+      "notes": ["D5:8", "F5:8", "E5:8", "G5:8", "A5:8", "F5:8", "G5:8", "D5:8", "E5:8", "A4:8", "C5:8", "B4:8"]
+    },
+    "still_walk": {
+      "notes": ["D4:w", "r:w", "D4:w", "r:w"]
+    },
+    "balanced_walk": {
+      "notes": ["D4:q", "F4:q", "A4:h", "G4:q", "F4:q", "E4:h", "D4:h", "A4:h", "G4:w"]
+    },
+    "walls_emerge": {
+      "chords": ["Dm:w", "Bb:w", "Gm:w", "A:w"]
+    },
+    "walls_close": {
+      "chords": ["Dm:h", "Dm:h", "Dm:h", "Dm:h", "Dm:w", "Dm:w"]
+    },
+    "paths_open": {
+      "chords": ["F:w", "C:w", "Dm:w", "Am:w"]
+    },
+    "heat_pulse": {
+      "notes": ["D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8", "D2:8"]
+    },
+    "cool_pulse": {
+      "notes": ["D2:w", "r:w", "D2:w", "r:w"]
+    },
+    "balanced_pulse": {
+      "notes": ["D2:h", "r:q", "A1:q", "D2:h", "r:q", "A1:q", "D2:h", "r:h", "D2:w"]
+    },
+    "fragment_1": {
+      "notes": ["r:h", "A5:8", "D6:8", "r:w."]
+    },
+    "fragment_2": {
+      "notes": ["r:w", "F5:8", "A5:8", "r:h."]
+    },
+    "fragment_3": {
+      "notes": ["D6:q", "r:q", "A5:8", "F5:8", "r:h", "D5:q", "r:q"]
+    },
+    "message_revealed": {
+      "notes": ["D5:q", "F5:q", "A5:h", "D6:w", "A5:h", "F5:q", "D5:q", "A4:w"]
+    }
+  },
+  "sections": {
+    "too_fast": {
+      "bars": 4,
+      "tracks": {
+        "walker": { "pattern": "chaos_walk" },
+        "walls": { "pattern": "walls_emerge" },
+        "pulse": { "pattern": "heat_pulse" }
+      }
+    },
+    "walls_closing": {
+      "bars": 4,
+      "tracks": {
+        "walker": { "pattern": "still_walk" },
+        "walls": { "pattern": "walls_close" },
+        "pulse": { "pattern": "cool_pulse" }
+      }
+    },
+    "finding_balance": {
+      "bars": 4,
+      "tracks": {
+        "walker": { "pattern": "balanced_walk" },
+        "walls": { "pattern": "walls_emerge" },
+        "paths": { "pattern": "paths_open" },
+        "pulse": { "pattern": "balanced_pulse" }
+      }
+    },
+    "first_fragment": {
+      "bars": 4,
+      "tracks": {
+        "walker": { "pattern": "balanced_walk" },
+        "paths": { "pattern": "paths_open" },
+        "pulse": { "pattern": "balanced_pulse" },
+        "fragments": { "pattern": "fragment_1" }
+      }
+    },
+    "second_fragment": {
+      "bars": 4,
+      "tracks": {
+        "walker": { "pattern": "balanced_walk" },
+        "paths": { "pattern": "paths_open" },
+        "pulse": { "pattern": "balanced_pulse" },
+        "fragments": { "pattern": "fragment_2" }
+      }
+    },
+    "third_fragment": {
+      "bars": 4,
+      "tracks": {
+        "walker": { "pattern": "balanced_walk" },
+        "paths": { "pattern": "paths_open" },
+        "pulse": { "pattern": "balanced_pulse" },
+        "fragments": { "pattern": "fragment_3" }
+      }
+    },
+    "message": {
+      "bars": 4,
+      "tracks": {
+        "walker": { "pattern": "message_revealed" },
+        "paths": { "pattern": "paths_open" },
+        "pulse": { "pattern": "balanced_pulse" },
+        "fragments": { "pattern": "message_revealed" }
+      }
+    }
+  },
+  "arrangement": [
+    "too_fast",
+    "walls_closing",
+    "finding_balance",
+    "first_fragment",
+    "second_fragment",
+    "third_fragment",
+    "message"
+  ]
+}
