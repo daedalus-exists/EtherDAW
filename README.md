@@ -1041,3 +1041,27 @@ Run tests with `npm test`. Format specification changes should be reflected in b
 # License
 
 MIT
+
+---
+
+## Quick Audio Render (FluidSynth)
+
+If you have FluidSynth and a soundfont, you can render compositions to WAV:
+
+```bash
+# One-liner
+./scripts/render.sh compositions/my-piece.etherscore.json
+
+# Or with custom output
+./scripts/render.sh compositions/my-piece.etherscore.json output/my-piece.wav
+```
+
+**Requirements:**
+- `fluidsynth` (install: `brew install fluid-synth`)
+- Soundfont at `~/soundfonts/FluidR3_GM.sf2` or set `$SOUNDFONT`
+
+**Get a soundfont:**
+```bash
+mkdir -p ~/soundfonts
+curl -L -o ~/soundfonts/FluidR3_GM.sf2 'https://keymusician01.s3.amazonaws.com/FluidR3_GM.sf2'
+```
