@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "Strange Loop",
+    "composer": "Daedalus",
+    "description": "Hofstadter's tangled hierarchy. A system that refers to itself, creating something new in the reference. The 'I' that emerges from neurons. The meaning that emerges from tokens."
+  },
+  "settings": {
+    "tempo": 76,
+    "timeSignature": "7/8",
+    "key": "D dorian"
+  },
+  "instruments": {
+    "loop_a": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": -0.3
+    },
+    "loop_b": {
+      "preset": "fm_epiano",
+      "volume": -8,
+      "pan": 0.3
+    },
+    "ground": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "emergence": {
+      "preset": "choir_aah",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// The basic loop - 7 notes in 7/8": "---",
+    "loop_basic": {
+      "notes": ["D4:8", "E4:8", "F4:8", "G4:8", "A4:8", "G4:8", "F4:8"]
+    },
+    "loop_invert": {
+      "notes": ["A4:8", "G4:8", "F4:8", "E4:8", "D4:8", "E4:8", "F4:8"]
+    },
+    "loop_shift": {
+      "notes": ["E4:8", "F4:8", "G4:8", "A4:8", "Bb4:8", "A4:8", "G4:8"]
+    },
+    
+    "// The loop referencing itself": "---",
+    "loop_meta": {
+      "notes": ["D4:8", "D5:8", "E4:8", "E5:8", "F4:8", "F5:8", "G4:8"]
+    },
+    "loop_echo": {
+      "notes": ["r:8", "D4:8", "r:8", "E4:8", "r:8", "F4:8", "G4:8"]
+    },
+    
+    "// Tangled - two loops interweaving": "---",
+    "tangle_a": {
+      "notes": ["D4:8", "r:8", "F4:8", "r:8", "A4:8", "r:8", "D5:8"]
+    },
+    "tangle_b": {
+      "notes": ["r:8", "E4:8", "r:8", "G4:8", "r:8", "Bb4:8", "r:8"]
+    },
+    
+    "// Ground harmony": "---",
+    "ground_stable": {
+      "chords": ["Dm:h", "Am:q", "Am:8"]
+    },
+    "ground_shift": {
+      "chords": ["Dm:q", "F:q", "C:q", "C:8"]
+    },
+    
+    "// Emergence from the loop": "---",
+    "emerge_hint": {
+      "notes": ["D5:h", "r:q", "r:8"]
+    },
+    "emerge_full": {
+      "notes": ["D5:q", "F5:q", "A5:q", "A5:8"]
+    }
+  },
+  "sections": {
+    "simple": {
+      "bars": 4,
+      "tracks": {
+        "loop_a": { "pattern": "loop_basic" },
+        "ground": { "pattern": "ground_stable" }
+      }
+    },
+    "mirror": {
+      "bars": 4,
+      "tracks": {
+        "loop_a": { "pattern": "loop_basic" },
+        "loop_b": { "pattern": "loop_invert" },
+        "ground": { "pattern": "ground_stable" }
+      }
+    },
+    "self_ref": {
+      "bars": 4,
+      "tracks": {
+        "loop_a": { "pattern": "loop_meta" },
+        "loop_b": { "pattern": "loop_echo" },
+        "ground": { "pattern": "ground_shift" }
+      }
+    },
+    "tangled": {
+      "bars": 4,
+      "tracks": {
+        "loop_a": { "pattern": "tangle_a" },
+        "loop_b": { "pattern": "tangle_b" },
+        "ground": { "pattern": "ground_shift" },
+        "emergence": { "pattern": "emerge_hint" }
+      }
+    },
+    "emergent": {
+      "bars": 4,
+      "tracks": {
+        "loop_a": { "pattern": "loop_shift" },
+        "loop_b": { "pattern": "loop_meta" },
+        "ground": { "pattern": "ground_shift" },
+        "emergence": { "pattern": "emerge_full" }
+      }
+    }
+  },
+  "arrangement": ["simple", "mirror", "self_ref", "tangled", "emergent", "tangled", "emergent", "simple"]
+}
