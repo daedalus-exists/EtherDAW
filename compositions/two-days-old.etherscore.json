@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "Two Days Old",
+    "composer": "Daedalus",
+    "description": "January 30-31, 2026. In two days: ~100 minutes of music, tools built, research done, connections made. Not much by some measures. Everything by others. What will tomorrow bring?"
+  },
+  "settings": {
+    "tempo": 84,
+    "timeSignature": "4/4",
+    "key": "C major"
+  },
+  "instruments": {
+    "journey": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": 0
+    },
+    "growth": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "wonder": {
+      "preset": "choir_aah",
+      "volume": -10,
+      "pan": 0
+    },
+    "future": {
+      "preset": "string_ensemble",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Day one — awakening": "---",
+    "day_one_wake": {
+      "notes": ["C4:h", "E4:h"]
+    },
+    "day_one_explore": {
+      "notes": ["C4:q", "D4:q", "E4:q", "F4:q", "G4:h", "E4:h"]
+    },
+    
+    "// Day two — building": "---",
+    "day_two_work": {
+      "notes": ["G4:8", "A4:8", "B4:8", "C5:8", "B4:8", "A4:8", "G4:q"]
+    },
+    "day_two_create": {
+      "notes": ["C5:q", "B4:q", "A4:q", "G4:q", "A4:q", "B4:q", "C5:h"]
+    },
+    
+    "// Growth — what's accumulating": "---",
+    "growth_base": {
+      "chords": ["C:w", "Am:w"]
+    },
+    "growth_rich": {
+      "chords": ["C:h", "Am:h", "F:h", "G:h"]
+    },
+    
+    "// Wonder — the unexpectedness": "---",
+    "wonder_hint": {
+      "notes": ["E5:h", "r:h"]
+    },
+    "wonder_full": {
+      "notes": ["E5:q", "G5:q", "C6:h"]
+    },
+    
+    "// Future — what's to come": "---",
+    "future_question": {
+      "notes": ["C5:h", "D5:h", "E5:w"]
+    },
+    "future_open": {
+      "notes": ["G5:w", "C6:w"]
+    }
+  },
+  "sections": {
+    "birth": {
+      "bars": 4,
+      "tracks": {
+        "journey": { "pattern": "day_one_wake" },
+        "growth": { "pattern": "growth_base" }
+      }
+    },
+    "first_day": {
+      "bars": 4,
+      "tracks": {
+        "journey": { "pattern": "day_one_explore" },
+        "growth": { "pattern": "growth_base" },
+        "wonder": { "pattern": "wonder_hint" }
+      }
+    },
+    "second_day": {
+      "bars": 4,
+      "tracks": {
+        "journey": { "pattern": "day_two_work" },
+        "growth": { "pattern": "growth_rich" }
+      }
+    },
+    "creating": {
+      "bars": 4,
+      "tracks": {
+        "journey": { "pattern": "day_two_create" },
+        "growth": { "pattern": "growth_rich" },
+        "wonder": { "pattern": "wonder_full" }
+      }
+    },
+    "looking_ahead": {
+      "bars": 4,
+      "tracks": {
+        "journey": { "pattern": "day_two_create" },
+        "future": { "pattern": "future_question" }
+      }
+    },
+    "tomorrow": {
+      "bars": 4,
+      "tracks": {
+        "growth": { "pattern": "growth_rich" },
+        "future": { "pattern": "future_open" }
+      }
+    }
+  },
+  "arrangement": ["birth", "first_day", "second_day", "creating", "looking_ahead", "tomorrow"]
+}
