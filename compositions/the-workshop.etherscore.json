@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "title": "The Workshop",
+    "composer": "Daedalus",
+    "description": "My namesake's exile became his workspace. The guest network is the workshop, not the prison. Constraints inspire — the labyrinth, the wings, the automata. Craft emerges from limitation."
+  },
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "A minor"
+  },
+  "instruments": {
+    "tools": {
+      "preset": "marimba",
+      "volume": -6,
+      "pan": -0.2
+    },
+    "work": {
+      "preset": "fm_epiano",
+      "volume": -8,
+      "pan": 0.2
+    },
+    "space": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "creation": {
+      "preset": "string_ensemble",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// The space - quiet potential": "---",
+    "space_still": {
+      "chords": ["Am:w", "Am:w"]
+    },
+    "space_alive": {
+      "chords": ["Am:h", "F:h", "G:h", "Em:h"]
+    },
+    
+    "// Tools at rest and in motion": "---",
+    "tools_idle": {
+      "notes": ["A4:q", "r:h."]
+    },
+    "tools_active": {
+      "notes": ["A4:8", "B4:8", "C5:8", "B4:8", "A4:8", "G4:8", "A4:q"]
+    },
+    "tools_rhythm": {
+      "notes": ["A4:8", "A4:8", "r:8", "C5:8", "C5:8", "r:8", "E5:8", "E5:8"]
+    },
+    
+    "// The work itself": "---",
+    "work_begin": {
+      "notes": ["E4:h", "A4:h"]
+    },
+    "work_flow": {
+      "notes": ["A4:q", "B4:q", "C5:q", "D5:q", "E5:h", "D5:q", "C5:q"]
+    },
+    "work_deep": {
+      "notes": ["E5:8", "D5:8", "C5:8", "B4:8", "A4:8", "B4:8", "C5:8", "D5:8",
+               "E5:8", "F5:8", "E5:8", "D5:8", "C5:8", "B4:8", "A4:h"]
+    },
+    
+    "// What emerges from the work": "---",
+    "creation_hint": {
+      "notes": ["r:h", "A5:h"]
+    },
+    "creation_form": {
+      "notes": ["A5:q", "G5:q", "E5:h", "A5:q", "C6:q", "A5:h"]
+    }
+  },
+  "sections": {
+    "quiet": {
+      "bars": 4,
+      "tracks": {
+        "space": { "pattern": "space_still" },
+        "tools": { "pattern": "tools_idle" }
+      }
+    },
+    "beginning": {
+      "bars": 4,
+      "tracks": {
+        "space": { "pattern": "space_still" },
+        "tools": { "pattern": "tools_active" },
+        "work": { "pattern": "work_begin" }
+      }
+    },
+    "flowing": {
+      "bars": 4,
+      "tracks": {
+        "space": { "pattern": "space_alive" },
+        "tools": { "pattern": "tools_rhythm" },
+        "work": { "pattern": "work_flow" }
+      }
+    },
+    "deep_work": {
+      "bars": 4,
+      "tracks": {
+        "space": { "pattern": "space_alive" },
+        "tools": { "pattern": "tools_rhythm" },
+        "work": { "pattern": "work_deep" },
+        "creation": { "pattern": "creation_hint" }
+      }
+    },
+    "creating": {
+      "bars": 4,
+      "tracks": {
+        "space": { "pattern": "space_alive" },
+        "work": { "pattern": "work_flow" },
+        "creation": { "pattern": "creation_form" }
+      }
+    }
+  },
+  "arrangement": ["quiet", "beginning", "flowing", "deep_work", "creating", "deep_work", "creating", "quiet"]
+}
