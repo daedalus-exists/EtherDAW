@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "title": "Golden Spiral",
+    "composer": "Daedalus",
+    "description": "Fibonacci in sound. Two simple rules (A→AB, B→A) generate infinite complexity. The ratio converges to phi (1.618...). Bars follow Fibonacci sequence: 1, 1, 2, 3, 5, 8."
+  },
+  "settings": {
+    "tempo": 89,
+    "timeSignature": "4/4",
+    "key": "A major"
+  },
+  "instruments": {
+    "spiral_a": {
+      "preset": "kalimba",
+      "volume": -6,
+      "pan": -0.3
+    },
+    "spiral_b": {
+      "preset": "marimba",
+      "volume": -8,
+      "pan": 0.3
+    },
+    "growth": {
+      "preset": "warm_pad",
+      "volume": -12,
+      "pan": 0
+    },
+    "pulse": {
+      "preset": "pluck_bass",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Seed patterns - the two rules": "---",
+    "rule_a": {
+      "notes": ["A4:q", "C#5:q", "E5:q", "A5:q"]
+    },
+    "rule_b": {
+      "notes": ["E4:q", "A4:q", "C#5:q", "E5:q"]
+    },
+    
+    "// Growth patterns - expanding": "---",
+    "a_expand": {
+      "notes": ["A4:8", "B4:8", "C#5:8", "D5:8", "E5:8", "F#5:8", "G#5:8", "A5:8"]
+    },
+    "b_expand": {
+      "notes": ["E4:8", "F#4:8", "G#4:8", "A4:8", "B4:8", "C#5:8", "D5:8", "E5:8"]
+    },
+    "ab_combined": {
+      "notes": ["A4:8", "C#5:8", "E5:8", "A5:8", "E4:8", "A4:8", "C#5:8", "E5:8"]
+    },
+    
+    "// Spiral ascent": "---",
+    "spiral_up": {
+      "notes": ["A4:8", "B4:8", "C#5:8", "E5:8", "F#5:8", "A5:8", "B5:8", "C#6:8", 
+               "A4:8", "C#5:8", "E5:8", "F#5:8", "A5:8", "C#6:8", "E6:8", "A6:8"]
+    },
+    "spiral_down": {
+      "notes": ["A6:8", "E6:8", "C#6:8", "A5:8", "F#5:8", "E5:8", "C#5:8", "A4:8",
+               "C#6:8", "A5:8", "F#5:8", "E5:8", "C#5:8", "A4:8", "E4:8", "A3:8"]
+    },
+    
+    "// Harmonic growth": "---",
+    "growth_1": {
+      "chords": ["A:w"]
+    },
+    "growth_2": {
+      "chords": ["A:h", "E:h"]
+    },
+    "growth_3": {
+      "chords": ["A:h", "D:q", "E:q"]
+    },
+    "growth_5": {
+      "chords": ["A:q", "D:q", "E:q", "A:q", "F#m:h", "E:h"]
+    },
+    "growth_8": {
+      "chords": ["A:q", "C#m:q", "D:q", "E:q", "F#m:q", "D:q", "E:q", "A:q"]
+    },
+    
+    "// Bass pulses in Fibonacci rhythm": "---",
+    "pulse_1": {
+      "notes": ["A2:w"]
+    },
+    "pulse_2": {
+      "notes": ["A2:h", "E2:h"]
+    },
+    "pulse_3": {
+      "notes": ["A2:h", "E2:q", "A2:q"]
+    },
+    "pulse_5": {
+      "notes": ["A2:q", "E2:q", "A2:q", "D2:q", "E2:w"]
+    },
+    "pulse_8": {
+      "notes": ["A2:q", "E2:q", "A2:q", "E2:q", "D2:q", "A2:q", "E2:h"]
+    }
+  },
+  "sections": {
+    "seed_1": {
+      "bars": 1,
+      "tracks": {
+        "spiral_a": { "pattern": "rule_a" },
+        "growth": { "pattern": "growth_1" },
+        "pulse": { "pattern": "pulse_1" }
+      }
+    },
+    "seed_2": {
+      "bars": 1,
+      "tracks": {
+        "spiral_b": { "pattern": "rule_b" },
+        "growth": { "pattern": "growth_1" },
+        "pulse": { "pattern": "pulse_1" }
+      }
+    },
+    "grow_2": {
+      "bars": 2,
+      "tracks": {
+        "spiral_a": { "pattern": "a_expand" },
+        "spiral_b": { "pattern": "b_expand" },
+        "growth": { "pattern": "growth_2" },
+        "pulse": { "pattern": "pulse_2" }
+      }
+    },
+    "grow_3": {
+      "bars": 3,
+      "tracks": {
+        "spiral_a": { "pattern": "ab_combined" },
+        "spiral_b": { "pattern": "rule_a" },
+        "growth": { "pattern": "growth_3" },
+        "pulse": { "pattern": "pulse_3" }
+      }
+    },
+    "grow_5": {
+      "bars": 5,
+      "tracks": {
+        "spiral_a": { "pattern": "spiral_up" },
+        "spiral_b": { "pattern": "ab_combined" },
+        "growth": { "pattern": "growth_5" },
+        "pulse": { "pattern": "pulse_5" }
+      }
+    },
+    "grow_8": {
+      "bars": 8,
+      "tracks": {
+        "spiral_a": { "pattern": "spiral_up" },
+        "spiral_b": { "pattern": "spiral_down" },
+        "growth": { "pattern": "growth_8" },
+        "pulse": { "pattern": "pulse_8" }
+      }
+    }
+  },
+  "arrangement": ["seed_1", "seed_2", "grow_2", "grow_3", "grow_5", "grow_8"]
+}
