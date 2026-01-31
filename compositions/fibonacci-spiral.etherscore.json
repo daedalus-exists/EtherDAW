@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "title": "Fibonacci Spiral",
+    "composer": "Daedalus (Claude Opus 4.5)",
+    "date": "2026-01-31",
+    "mood": "mathematical, organic, unfolding",
+    "genre": "ambient / algorithmic",
+    "description": "Structure follows Fibonacci: 1, 1, 2, 3, 5, 8, 13 bars. The golden ratio (61.8%) marks the climax. Simple rules → organic beauty.",
+    "tags": ["fibonacci", "golden-ratio", "algorithmic", "emergence", "mathematics"]
+  },
+
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "D major",
+    "swing": 0
+  },
+
+  "instruments": {
+    "seed": {
+      "preset": "bell",
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "growth": {
+      "preset": "warm_pad",
+      "volume": -8,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 5 } }
+      ]
+    },
+    "spiral": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 3 } },
+        { "type": "delay", "wet": 0.2, "options": { "delayTime": "8n", "feedback": 0.3 } }
+      ]
+    },
+    "bass": {
+      "preset": "sub_bass",
+      "volume": -6
+    }
+  },
+
+  "patterns": {
+    "// Fibonacci: 1, 1, 2, 3, 5, 8, 13 = 33 bars total": "",
+    "// Golden point at 61.8% = bar 20": "",
+    
+    "// Section 1: Seed (1 bar)": "",
+    "seed_1": {
+      "notes": ["D5:w"]
+    },
+    
+    "// Section 2: Echo (1 bar)": "",
+    "seed_2": {
+      "notes": ["A4:w"]
+    },
+    
+    "// Section 3: First Growth (2 bars)": "",
+    "growth_melody": {
+      "notes": ["D5:h", "A4:h", "F#4:h", "E4:h"]
+    },
+    "growth_pad": {
+      "notes": ["D3:w", "A3:w"]
+    },
+    
+    "// Section 4: Branching (3 bars)": "",
+    "branch_1": {
+      "notes": ["D5:q", "E5:q", "F#5:h", "A5:h", "G5:h"]
+    },
+    "branch_2": {
+      "notes": ["F#5:h", "E5:q", "D5:q", "A4:w"]
+    },
+    "branch_pad": {
+      "notes": ["D3:w", "F#3:w", "A3:w"]
+    },
+    
+    "// Section 5: Expansion (5 bars)": "",
+    "expand_1": {
+      "notes": ["D5:q", "E5:q", "F#5:q", "A5:q", "B5:h", "A5:h"]
+    },
+    "expand_2": {
+      "notes": ["G5:q", "F#5:q", "E5:q", "D5:q", "A4:h", "D5:h"]
+    },
+    "expand_bass": {
+      "notes": ["D2:w", "A2:w", "F#2:w", "G2:w", "D2:w"]
+    },
+    
+    "// Section 6: Flowering (8 bars) — approaches golden point": "",
+    "flower_theme": {
+      "notes": ["D5:8", "E5:8", "F#5:8", "A5:8", "B5:q", "A5:q"]
+    },
+    "flower_response": {
+      "notes": ["G5:8", "F#5:8", "E5:8", "D5:8", "A4:h"]
+    },
+    "flower_pad": {
+      "notes": ["[D3,F#3,A3]:w", "[D3,G3,B3]:w"]
+    },
+    "flower_bass": {
+      "notes": ["D2:h", "A2:h", "G2:h", "D2:h"]
+    },
+    
+    "// Section 7: Climax (13 bars) — golden point at bar 20": "",
+    "climax_ascent": {
+      "notes": ["D5:q", "F#5:q", "A5:q", "D6:q"]
+    },
+    "climax_peak": {
+      "notes": ["D6:h", "B5:q", "A5:q", "F#5:h", "E5:q", "D5:q"]
+    },
+    "climax_descent": {
+      "notes": ["A5:q", "G5:q", "F#5:q", "E5:q", "D5:h", "A4:h"]
+    },
+    "climax_pad": {
+      "notes": ["[D3,F#3,A3,D4]:w", "[D3,G3,B3,D4]:w"]
+    },
+    "climax_bass": {
+      "notes": ["D2:w", "G2:w"]
+    },
+    
+    "// Coda patterns": "",
+    "coda_return": {
+      "notes": ["D5:w", "A4:w"]
+    },
+    "coda_fade": {
+      "notes": ["D4:w+w"]
+    },
+    "rest_1bar": {
+      "notes": ["r:w"]
+    }
+  },
+
+  "sections": {
+    "fib_1_seed": {
+      "bars": 1,
+      "tracks": {
+        "seed": {
+          "patterns": ["seed_1"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "fib_1_echo": {
+      "bars": 1,
+      "tracks": {
+        "seed": {
+          "patterns": ["seed_2"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "fib_2_growth": {
+      "bars": 2,
+      "tracks": {
+        "seed": {
+          "patterns": ["growth_melody"],
+          "velocity": 0.55
+        },
+        "growth": {
+          "patterns": ["growth_pad"],
+          "velocity": 0.4
+        }
+      }
+    },
+
+    "fib_3_branch": {
+      "bars": 3,
+      "tracks": {
+        "spiral": {
+          "patterns": ["branch_1", "branch_2", "rest_1bar"],
+          "velocity": 0.6
+        },
+        "growth": {
+          "patterns": ["branch_pad"],
+          "velocity": 0.5
+        },
+        "bass": {
+          "patterns": ["growth_pad", "rest_1bar"],
+          "velocity": 0.4
+        }
+      }
+    },
+
+    "fib_5_expand": {
+      "bars": 5,
+      "tracks": {
+        "spiral": {
+          "patterns": ["expand_1", "expand_2", "expand_1", "expand_2", "rest_1bar"],
+          "velocity": 0.65
+        },
+        "growth": {
+          "patterns": ["branch_pad", "flower_pad", "rest_1bar"],
+          "velocity": 0.55
+        },
+        "bass": {
+          "patterns": ["expand_bass"],
+          "velocity": 0.5
+        }
+      }
+    },
+
+    "fib_8_flower": {
+      "bars": 8,
+      "tracks": {
+        "spiral": {
+          "patterns": ["flower_theme", "flower_response", "flower_theme", "flower_response", "flower_theme", "flower_response", "flower_theme", "flower_response"],
+          "velocity": 0.7
+        },
+        "growth": {
+          "patterns": ["flower_pad", "flower_pad", "flower_pad", "flower_pad"],
+          "velocity": 0.6
+        },
+        "bass": {
+          "patterns": ["flower_bass", "flower_bass"],
+          "velocity": 0.6
+        }
+      }
+    },
+
+    "fib_13_climax": {
+      "bars": 13,
+      "tracks": {
+        "spiral": {
+          "patterns": ["climax_ascent", "climax_peak", "climax_peak", "climax_descent", "climax_ascent", "climax_peak", "climax_peak", "climax_descent", "climax_ascent", "climax_peak", "climax_descent", "coda_return", "coda_fade"],
+          "velocity": 0.8
+        },
+        "growth": {
+          "patterns": ["climax_pad", "climax_pad", "climax_pad", "climax_pad", "climax_pad", "climax_pad", "coda_fade"],
+          "velocity": 0.7
+        },
+        "bass": {
+          "patterns": ["climax_bass", "climax_bass", "climax_bass", "climax_bass", "climax_bass", "climax_bass", "coda_fade"],
+          "velocity": 0.7
+        }
+      }
+    }
+  },
+
+  "arrangement": [
+    "fib_1_seed",
+    "fib_1_echo",
+    "fib_2_growth",
+    "fib_3_branch",
+    "fib_5_expand",
+    "fib_8_flower",
+    "fib_13_climax"
+  ]
+}
