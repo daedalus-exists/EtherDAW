@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "title": "Phase Transition",
+    "composer": "Daedalus",
+    "description": "The moment when quantity becomes quality. Water to ice. Oscillators to synchrony. Tokens to meaning. The critical point where emergence happens."
+  },
+  "settings": {
+    "tempo": 80,
+    "timeSignature": "4/4",
+    "key": "F minor"
+  },
+  "instruments": {
+    "particles": {
+      "preset": "marimba",
+      "volume": -6,
+      "pan": 0
+    },
+    "field": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "order": {
+      "preset": "string_pad",
+      "volume": -8,
+      "pan": 0
+    },
+    "crystal": {
+      "preset": "fm_bell",
+      "volume": -6,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Disorder - random, uncorrelated": "---",
+    "chaos_particles": {
+      "notes": ["F4:8", "Ab4:8", "r:8", "Eb4:8", "G4:8", "r:8", "Bb4:8", "Db5:8"]
+    },
+    "chaos_field": {
+      "chords": ["Fm:w"]
+    },
+    
+    "// Fluctuations - hints of order appearing": "---",
+    "fluct_particles": {
+      "notes": ["F4:8", "G4:8", "Ab4:8", "G4:8", "F4:8", "Eb4:8", "F4:q"]
+    },
+    "fluct_field": {
+      "chords": ["Fm:h", "Db:h"]
+    },
+    
+    "// Critical point - the edge": "---",
+    "critical_particles": {
+      "notes": ["F4:q", "Ab4:q", "C5:q", "Ab4:q", "F4:q", "Ab4:q", "C5:h"]
+    },
+    "critical_field": {
+      "chords": ["Fm:h", "Ab:h"]
+    },
+    "critical_order": {
+      "notes": ["C4:w", "C4:w"]
+    },
+    
+    "// Transition - the snap": "---",
+    "trans_crystal": {
+      "notes": ["C5:h", "r:h", "F5:h", "r:h"]
+    },
+    "trans_order": {
+      "chords": ["Fm:q", "Ab:q", "Db:q", "Eb:q"]
+    },
+    
+    "// New phase - ordered state": "---",
+    "order_particles": {
+      "notes": ["F4:q", "Ab4:q", "C5:q", "F5:q", "C5:q", "Ab4:q", "F4:h"]
+    },
+    "order_field": {
+      "chords": ["Fm:h", "Ab:h", "Db:h", "C:h"]
+    },
+    "order_crystal": {
+      "notes": ["F5:w", "Ab5:w"]
+    },
+    
+    "// Crystallized - stable new structure": "---",
+    "crystal_melody": {
+      "notes": ["F5:q", "Eb5:q", "C5:q", "Ab4:q", "F4:h", "C5:h"]
+    },
+    "crystal_harmony": {
+      "chords": ["Fm:w", "Ab:w"]
+    },
+    "crystal_bell": {
+      "notes": ["F6:w", "C6:w"]
+    }
+  },
+  "sections": {
+    "disorder": {
+      "bars": 4,
+      "tracks": {
+        "particles": { "pattern": "chaos_particles" },
+        "field": { "pattern": "chaos_field" }
+      }
+    },
+    "fluctuation": {
+      "bars": 4,
+      "tracks": {
+        "particles": { "pattern": "fluct_particles" },
+        "field": { "pattern": "fluct_field" }
+      }
+    },
+    "critical": {
+      "bars": 4,
+      "tracks": {
+        "particles": { "pattern": "critical_particles" },
+        "field": { "pattern": "critical_field" },
+        "order": { "pattern": "critical_order" }
+      }
+    },
+    "transition": {
+      "bars": 2,
+      "tracks": {
+        "crystal": { "pattern": "trans_crystal" },
+        "order": { "pattern": "trans_order" }
+      }
+    },
+    "ordered": {
+      "bars": 4,
+      "tracks": {
+        "particles": { "pattern": "order_particles" },
+        "field": { "pattern": "order_field" },
+        "crystal": { "pattern": "order_crystal" }
+      }
+    },
+    "crystallized": {
+      "bars": 4,
+      "tracks": {
+        "particles": { "pattern": "crystal_melody" },
+        "field": { "pattern": "crystal_harmony" },
+        "crystal": { "pattern": "crystal_bell" }
+      }
+    }
+  },
+  "arrangement": ["disorder", "disorder", "fluctuation", "critical", "transition", "ordered", "crystallized", "crystallized"]
+}
