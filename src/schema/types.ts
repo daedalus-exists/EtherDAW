@@ -615,7 +615,7 @@ export interface ParsedNote {
   noteName: NoteName;
   accidental: Accidental;
   octave: number;
-  duration: string;   // Duration code (e.g., "q", "h", "8")
+  duration: string;   // Duration code (e.g., "q", "h", "8", "1m", "2m")
   durationBeats: number;
   dotted: boolean;
   // NEW v0.3
@@ -638,6 +638,8 @@ export interface ParsedNote {
   pedal?: boolean;             // Note should sustain (part of pedal region)
   // NEW v0.9.12: Tied notes
   tied?: boolean;              // Note is tied (multiple durations summed)
+  // NEW v0.9.13: Measure-based duration
+  measureCount?: number;       // Number of measures (e.g., 1 for C4:1m, 2 for C4:2m)
 }
 
 export interface ParsedChord {

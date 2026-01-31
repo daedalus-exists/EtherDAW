@@ -543,3 +543,214 @@ describe('Bracket Chord Notation (v0.9.2)', () => {
     });
   });
 });
+
+// ============================================================================
+// v0.9.13: Measure Duration Notation Tests
+// ============================================================================
+
+import { 
+  resolveMeasureDuration, 
+  parseTimeSignatureBeats, 
+  resolveMeasureNote,
+  isMeasureDuration 
+} from './note-parser.js';
+
+describe('Measure Duration Notation (v0.9.13)', () => {
+  describe('parseNote with measure durations', () => {
+    it('parses one measure duration (C4:1m)', () => {
+      const note = parseNote('C4:1m');
+      expect(note.pitch).toBe('C4');
+      expect(note.duration).toBe('1m');
+      expect(note.measureCount).toBe(1);
+      // Default assumes 4/4 time = 4 beats
+      expect(note.durationBeats).toBe(4);
+    });
+
+    it('parses two measure duration (C4:2m)', () => {
+      const note = parseNote('C4:2m');
+      expect(note.pitch).toBe('C4');
+      expect(note.duration).toBe('2m');
+      expect(note.measureCount).toBe(2);
+      expect(note.durationBeats).toBe(8); // 2 measures × 4 beats in 4/4
+    });
+
+    it('parses multi-measure duration (D4:4m)', () => {
+      const note = parseNote('D4:4m');
+      expect(note.measureCount).toBe(4);
+      expect(note.durationBeats).toBe(16); // 4 measures × 4 beats
+    });
+
+    it('parses measure duration with velocity', () => {
+      const note = parseNote('E4:1m@0.7');
+      expect(note.measureCount).toBe(1);
+      expect(note.velocity).toBe(0.7);
+    });
+
+    it('parses measure duration with articulation', () => {
+      const note = parseNote('F4:1m*');
+      expect(note.measureCount).toBe(1);
+      expect(note.articulation).toBe('*');
+    });
+
+    it('parses measure duration with probability', () => {
+      const note = parseNote('G4:1m?0.5');
+      expect(note.measureCount).toBe(1);
+      expect(note.probability).toBe(0.5);
+    });
+
+    it('parses measure duration with pedal', () => {
+      const note = parseNote('A4:1m:ped');
+      expect(note.measureCount).toBe(1);
+      expect(note.pedal).toBe(true);
+    });
+
+    it('parses measure duration with all modifiers', () => {
+      const note = parseNote('B4:2m*@0.8?0.9:ped');
+      expect(note.measureCount).toBe(2);
+      expect(note.articulation).toBe('*');
+      expect(note.velocity).toBe(0.8);
+      expect(note.probability).toBe(0.9);
+      expect(note.pedal).toBe(true);
+    });
+
+    it('throws on dotted measure duration', () => {
+      expect(() => parseNote('C4:1m.')).toThrow('Dotted measure durations are not supported');
+    });
+
+    it('throws on tuplet measure duration', () => {
+      expect(() => parseNote('C4:1mt3')).toThrow('Tuplet measure durations are not supported');
+    });
+
+    it('throws on invalid measure count', () => {
+      expect(() => parseNote('C4:0m')).toThrow();
+      expect(() => parseNote('C4:100m')).toThrow('Must be 1-99');
+    });
+
+    it('returns undefined measureCount for standard durations', () => {
+      const note = parseNote('C4:q');
+      expect(note.measureCount).toBeUndefined();
+    });
+  });
+
+  describe('parseRest with measure durations', () => {
+    it('parses one measure rest in 4/4', () => {
+      const beats = parseRest('r:1m', '4/4');
+      expect(beats).toBe(4);
+    });
+
+    it('parses one measure rest in 3/4', () => {
+      const beats = parseRest('r:1m', '3/4');
+      expect(beats).toBe(3);
+    });
+
+    it('parses two measure rest in 4/4', () => {
+      const beats = parseRest('r:2m', '4/4');
+      expect(beats).toBe(8);
+    });
+
+    it('parses measure rest in 6/8', () => {
+      const beats = parseRest('r:1m', '6/8');
+      expect(beats).toBe(3); // 6 eighth notes = 3 quarter note beats
+    });
+
+    it('defaults to 4/4 when time signature not provided', () => {
+      const beats = parseRest('r:1m');
+      expect(beats).toBe(4);
+    });
+
+    it('throws on dotted measure rest', () => {
+      expect(() => parseRest('r:1m.')).toThrow('Dotted measure durations are not supported');
+    });
+  });
+
+  describe('parseTimeSignatureBeats', () => {
+    it('parses 4/4 time', () => {
+      expect(parseTimeSignatureBeats('4/4')).toBe(4);
+    });
+
+    it('parses 3/4 time', () => {
+      expect(parseTimeSignatureBeats('3/4')).toBe(3);
+    });
+
+    it('parses 6/8 time', () => {
+      expect(parseTimeSignatureBeats('6/8')).toBe(3); // 6 eighths = 3 quarters
+    });
+
+    it('parses 2/4 time', () => {
+      expect(parseTimeSignatureBeats('2/4')).toBe(2);
+    });
+
+    it('parses 5/4 time', () => {
+      expect(parseTimeSignatureBeats('5/4')).toBe(5);
+    });
+
+    it('parses 7/8 time', () => {
+      expect(parseTimeSignatureBeats('7/8')).toBe(3.5); // 7 eighths = 3.5 quarters
+    });
+
+    it('parses 2/2 time (cut time)', () => {
+      expect(parseTimeSignatureBeats('2/2')).toBe(4); // 2 half notes = 4 quarter note beats
+    });
+
+    it('throws on invalid time signature', () => {
+      expect(() => parseTimeSignatureBeats('invalid')).toThrow('Invalid time signature');
+      expect(() => parseTimeSignatureBeats('4')).toThrow('Invalid time signature');
+    });
+  });
+
+  describe('resolveMeasureDuration', () => {
+    it('resolves 1 measure in 4/4 to 4 beats', () => {
+      expect(resolveMeasureDuration(1, '4/4')).toBe(4);
+    });
+
+    it('resolves 1 measure in 3/4 to 3 beats', () => {
+      expect(resolveMeasureDuration(1, '3/4')).toBe(3);
+    });
+
+    it('resolves 2 measures in 4/4 to 8 beats', () => {
+      expect(resolveMeasureDuration(2, '4/4')).toBe(8);
+    });
+
+    it('resolves 2 measures in 6/8 to 6 beats', () => {
+      expect(resolveMeasureDuration(2, '6/8')).toBe(6); // 2 × 3 quarter note beats
+    });
+  });
+
+  describe('resolveMeasureNote', () => {
+    it('resolves measure duration to actual beats', () => {
+      const note = parseNote('C4:1m');
+      const resolved = resolveMeasureNote(note, '3/4');
+      expect(resolved.durationBeats).toBe(3);
+      expect(resolved.measureCount).toBe(1); // Original measureCount preserved
+    });
+
+    it('returns unchanged note for standard durations', () => {
+      const note = parseNote('C4:q');
+      const resolved = resolveMeasureNote(note, '3/4');
+      expect(resolved.durationBeats).toBe(1);
+      expect(resolved).toEqual(note);
+    });
+
+    it('resolves multi-measure in 5/4', () => {
+      const note = parseNote('D4:2m');
+      const resolved = resolveMeasureNote(note, '5/4');
+      expect(resolved.durationBeats).toBe(10); // 2 measures × 5 beats
+    });
+  });
+
+  describe('isMeasureDuration', () => {
+    it('identifies measure durations', () => {
+      expect(isMeasureDuration('1m')).toBe(true);
+      expect(isMeasureDuration('2m')).toBe(true);
+      expect(isMeasureDuration('10m')).toBe(true);
+    });
+
+    it('rejects non-measure durations', () => {
+      expect(isMeasureDuration('q')).toBe(false);
+      expect(isMeasureDuration('h')).toBe(false);
+      expect(isMeasureDuration('8')).toBe(false);
+      expect(isMeasureDuration('m')).toBe(false); // Just 'm' without number
+      expect(isMeasureDuration('1')).toBe(false); // Just number without 'm'
+    });
+  });
+});

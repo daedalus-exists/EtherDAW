@@ -58,7 +58,7 @@ function validateNoteString(note: string, path: string): SemanticError | null {
         code: 'E003',
         path,
         message: e.message || `Invalid rest: '${trimmed}'`,
-        help: 'Rest format: r:<duration>. Examples: r:q (quarter rest), r:h (half rest)',
+        help: 'Rest format: r:<duration>. Examples: r:q (quarter rest), r:h (half rest), r:1m (one measure rest)',
         docs: 'docs/ETHERSCORE_FORMAT.md#notes'
       };
     }
@@ -99,7 +99,7 @@ function validateNoteString(note: string, path: string): SemanticError | null {
       code: e.code || 'E003',
       path,
       message: e.message || `Invalid note: '${trimmed}'`,
-      help: e.help || 'Note format: <pitch>:<duration>. Examples: C4:q, F#5:h, Bb3:8',
+      help: e.help || 'Note format: <pitch>:<duration>. Examples: C4:q, F#5:h, Bb3:8, C4:1m (one measure)',
       docs: e.docs || 'docs/ETHERSCORE_FORMAT.md#notes'
     };
   }

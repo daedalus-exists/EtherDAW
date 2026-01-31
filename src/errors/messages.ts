@@ -38,8 +38,10 @@ export function formatSuggestion(similar: string[]): string | undefined {
 
 /**
  * Valid note durations
+ * Includes: w (whole), h (half), q (quarter), 8 (eighth), 16 (sixteenth), 32 (thirty-second),
+ * t (triplet modifier), m (measure duration suffix, e.g., 1m, 2m)
  */
-export const VALID_DURATIONS = ['w', 'h', 'q', '8', '16', '32', 't'];
+export const VALID_DURATIONS = ['w', 'h', 'q', '8', '16', '32', 't', 'm'];
 
 /**
  * Valid drum names
@@ -66,7 +68,7 @@ export const errors = {
   invalidDuration: (note: string, duration: string): ErrorInfo => ({
     code: 'E001',
     message: `Invalid note '${note}' - unknown duration '${duration}'`,
-    help: `Valid durations: w (whole), h (half), q (quarter), 8 (eighth), 16 (sixteenth), 32 (thirty-second), t (triplet modifier)`,
+    help: `Valid durations: w (whole), h (half), q (quarter), 8 (eighth), 16 (sixteenth), 32 (thirty-second), t (triplet modifier), Nm (measure, e.g., 1m, 2m)`,
     docs: 'docs/ETHERSCORE_FORMAT.md#durations'
   }),
 

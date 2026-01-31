@@ -12,6 +12,7 @@ import { errors, createError, VALID_DURATIONS } from '../errors/messages.js';
  * v0.7 Examples: C4:8t3 (triplet), D4:qt3, E4:16t5 (quintuplet)
  * v0.8 Examples: C4:q.fall, D4:h.doit, E4:q.tr, F4:q@mf, G4:q.bend+2
  * v0.9.4 Examples: C4:q:ped (sustain pedal)
+ * v0.9.13 Examples: C4:1m (one measure), C4:2m (two measures)
  *
  * Articulations: * (staccato), ~ (legato), > (accent), ^ (marcato)
  * Portamento: ~> (glide to next note)
@@ -22,12 +23,13 @@ import { errors, createError, VALID_DURATIONS } from '../errors/messages.js';
  * Timing: +/-Nms (timing offset in milliseconds)
  * Probability: ?0.0-1.0 (chance of note playing)
  * Sustain Pedal (v0.9.4): :ped (note sustains until pedal lifts)
+ * Measure Duration (v0.9.13): Nm (duration in measures, e.g., 1m, 2m)
  *
  * Capture groups:
  * 1: Note name (A-G)
  * 2: Accidental (#, b, or empty)
  * 3: Octave (optional, default 4)
- * 4: Duration code
+ * 4: Duration code (includes measure notation like "1m", "2m")
  * 5: Dot (optional)
  * 6: Tuplet ratio (number after 't')
  * 7: Articulation (*>^) - staccato, accent, marcato
@@ -43,14 +45,15 @@ import { errors, createError, VALID_DURATIONS } from '../errors/messages.js';
  * 17: Sustain pedal (:ped)
  */
 // Note: Portamento (~>) can appear either before or after velocity/timing modifiers
-const NOTE_REGEX = /^([A-Ga-g])([#b]?)(-?\d)?:(\d+|[whq])(\.?)(?:t(\d+))?(?:([*>^])|(~>)|(~))?(?:\.(fall|doit|scoop|bend)(?:\+(\d+))?)?(?:\.(tr|mord|turn))?(?:@((?:0|1)?\.?\d+|ppp|pp|p|mp|mf|f|ff|fff))?(?:([+-]\d+)ms)?(?:\?((?:0|1)?\.?\d+))?(~>)?(:ped)?$/;
+// Duration can be: standard (w, h, q, 8, 16, 32, 2, 4) or measure-based (1m, 2m, etc.)
+const NOTE_REGEX = /^([A-Ga-g])([#b]?)(-?\d)?:(\d+m?|[whq])(\.?)(?:t(\d+))?(?:([*>^])|(~>)|(~))?(?:\.(fall|doit|scoop|bend)(?:\+(\d+))?)?(?:\.(tr|mord|turn))?(?:@((?:0|1)?\.?\d+|ppp|pp|p|mp|mf|f|ff|fff))?(?:([+-]\d+)ms)?(?:\?((?:0|1)?\.?\d+))?(~>)?(:ped)?$/;
 
 /**
  * Regular expression for parsing rest notation
  * Format: r:{duration}
- * Examples: r:q, r:h, r:8
+ * Examples: r:q, r:h, r:8, r:1m (one measure rest)
  */
-const REST_REGEX = /^r:(\d+|[whq])(\.?)$/i;
+const REST_REGEX = /^r:(\d+m?|[whq])(\.?)$/i;
 
 /**
  * v0.9.9: Check for common syntax order mistakes and throw helpful errors
@@ -268,21 +271,45 @@ export function parseNote(noteStr: string): ParsedNote {
     throw new Error(`Invalid bend amount ${bendAmount} in "${noteStr}". Must be 1-12 semitones`);
   }
 
-  const baseDuration = DURATION_MAP[durationCode];
-  if (baseDuration === undefined) {
-    throw createError(errors.invalidDuration(noteStr, durationCode));
-  }
+  // v0.9.13: Check for measure-based duration (e.g., "1m", "2m")
+  const measureMatch = durationCode.match(/^(\d+)m$/);
+  let durationBeats: number;
+  let measureCount: number | undefined;
+  
+  if (measureMatch) {
+    // Measure-based duration: store the measure count, durationBeats will be resolved later
+    measureCount = parseInt(measureMatch[1], 10);
+    if (measureCount < 1 || measureCount > 99) {
+      throw new Error(`Invalid measure count ${measureCount} in "${noteStr}". Must be 1-99`);
+    }
+    // Default to 4/4 time (4 beats per measure) for initial calculation
+    // This will be resolved properly when time signature context is available
+    durationBeats = measureCount * 4;
+    if (isDotted) {
+      throw new Error(`Dotted measure durations are not supported in "${noteStr}". Use tied durations instead (e.g., C4:1m+h)`);
+    }
+    if (tupletRatio) {
+      throw new Error(`Tuplet measure durations are not supported in "${noteStr}"`);
+    }
+  } else {
+    // Standard duration lookup
+    const baseDuration = DURATION_MAP[durationCode];
+    if (baseDuration === undefined) {
+      throw createError(errors.invalidDuration(noteStr, durationCode));
+    }
 
-  // Calculate duration with dotted and tuplet adjustments
-  // Tuplet: duration * (base/ratio) where base is typically 2 for standard tuplets
-  // e.g., triplet (t3): 3 notes in the space of 2, so each note is 2/3 the duration
-  let durationBeats = isDotted ? baseDuration * DOTTED_MULTIPLIER : baseDuration;
-  if (tupletRatio) {
-    // Standard tuplet: N notes in the space of (N-1) for odd ratios, or N in space of (N/2*2) for even
-    // Simplified: for common tuplets, use 2/N scaling (triplet = 2/3, quintuplet = 2/5, etc.)
-    const tupletBase = tupletRatio % 2 === 0 ? tupletRatio / 2 : Math.floor(tupletRatio / 2) + 1;
-    durationBeats = durationBeats * tupletBase / tupletRatio;
+    // Calculate duration with dotted and tuplet adjustments
+    // Tuplet: duration * (base/ratio) where base is typically 2 for standard tuplets
+    // e.g., triplet (t3): 3 notes in the space of 2, so each note is 2/3 the duration
+    durationBeats = isDotted ? baseDuration * DOTTED_MULTIPLIER : baseDuration;
+    if (tupletRatio) {
+      // Standard tuplet: N notes in the space of (N-1) for odd ratios, or N in space of (N/2*2) for even
+      // Simplified: for common tuplets, use 2/N scaling (triplet = 2/3, quintuplet = 2/5, etc.)
+      const tupletBase = tupletRatio % 2 === 0 ? tupletRatio / 2 : Math.floor(tupletRatio / 2) + 1;
+      durationBeats = durationBeats * tupletBase / tupletRatio;
+    }
   }
+  
   const pitch = `${noteName}${accidental}${octave}`;
 
   // Build result object, only including optional fields if they were specified
@@ -311,6 +338,8 @@ export function parseNote(noteStr: string): ParsedNote {
   if (dynamics) result.dynamics = dynamics;
   // v0.9.4: Sustain pedal
   if (pedalRaw === ':ped') result.pedal = true;
+  // v0.9.13: Measure-based duration
+  if (measureCount !== undefined) result.measureCount = measureCount;
 
   return result;
 }
@@ -429,17 +458,40 @@ export function getArticulationModifiers(articulation: Articulation | undefined)
 
 /**
  * Parse a rest string in the format "r:duration"
- * @param restStr - Rest string (e.g., "r:q", "r:h")
+ * @param restStr - Rest string (e.g., "r:q", "r:h", "r:1m")
+ * @param timeSignature - Optional time signature for measure-based rests (default: "4/4")
  * @returns Duration in beats
  */
-export function parseRest(restStr: string): number {
+export function parseRest(restStr: string, timeSignature = '4/4'): number {
   const match = restStr.trim().match(REST_REGEX);
 
   if (!match) {
-    throw new Error(`Invalid rest format: "${restStr}". Expected format: r:{duration} (e.g., "r:q", "r:h")`);
+    throw new Error(`Invalid rest format: "${restStr}". Expected format: r:{duration} (e.g., "r:q", "r:h", "r:1m")`);
   }
 
   const [, durationCode, dotted] = match;
+  
+  // v0.9.13: Check for measure-based duration
+  const measureMatch = durationCode.match(/^(\d+)m$/);
+  if (measureMatch) {
+    const measureCount = parseInt(measureMatch[1], 10);
+    if (measureCount < 1 || measureCount > 99) {
+      throw new Error(`Invalid measure count ${measureCount} in "${restStr}". Must be 1-99`);
+    }
+    if (dotted === '.') {
+      throw new Error(`Dotted measure durations are not supported in "${restStr}"`);
+    }
+    // Parse time signature to get beats per measure
+    const tsMatch = timeSignature.match(/^(\d+)\/(\d+)$/);
+    if (!tsMatch) {
+      throw new Error(`Invalid time signature: "${timeSignature}"`);
+    }
+    const numerator = parseInt(tsMatch[1], 10);
+    const denominator = parseInt(tsMatch[2], 10);
+    const beatsPerMeasure = numerator * (4 / denominator);
+    return measureCount * beatsPerMeasure;
+  }
+  
   const baseDuration = DURATION_MAP[durationCode];
 
   if (baseDuration === undefined) {
@@ -682,4 +734,80 @@ export function parseBracketChord(chordStr: string): ParsedBracketChord {
     dotted: isDotted,
     velocity,
   };
+}
+
+// ============================================================================
+// NEW v0.9.13: Measure Duration Resolution
+// ============================================================================
+
+/**
+ * Parse a time signature string into beats per measure
+ * @param timeSignature - Time signature string (e.g., "4/4", "3/4", "6/8")
+ * @returns Number of beats per measure (numerator value, adjusted for compound meters)
+ */
+export function parseTimeSignatureBeats(timeSignature: string): number {
+  const match = timeSignature.match(/^(\d+)\/(\d+)$/);
+  if (!match) {
+    throw new Error(`Invalid time signature: "${timeSignature}". Expected format: numerator/denominator (e.g., "4/4", "3/4")`);
+  }
+  
+  const [, numeratorStr, denominatorStr] = match;
+  const numerator = parseInt(numeratorStr, 10);
+  const denominator = parseInt(denominatorStr, 10);
+  
+  // For compound meters (6/8, 9/8, 12/8), beats are grouped
+  // But for duration purposes, we count actual beats where quarter = 1
+  // In 6/8: 6 eighth notes = 3 quarter note beats
+  // In 4/4: 4 quarter notes = 4 quarter note beats
+  
+  // Convert to quarter note beats
+  // denominator 4 = quarter notes, so multiply by 1
+  // denominator 8 = eighth notes, so multiply by 0.5
+  // denominator 2 = half notes, so multiply by 2
+  const beatMultiplier = 4 / denominator;
+  return numerator * beatMultiplier;
+}
+
+/**
+ * Resolve a measure-based duration to actual beats
+ * @param measureCount - Number of measures
+ * @param timeSignature - Time signature string (e.g., "4/4", "3/4")
+ * @returns Duration in beats
+ * 
+ * @example
+ * resolveMeasureDuration(1, "4/4") // 4 beats
+ * resolveMeasureDuration(1, "3/4") // 3 beats
+ * resolveMeasureDuration(2, "6/8") // 6 beats (2 measures × 3 quarter-note beats per measure)
+ */
+export function resolveMeasureDuration(measureCount: number, timeSignature: string): number {
+  const beatsPerMeasure = parseTimeSignatureBeats(timeSignature);
+  return measureCount * beatsPerMeasure;
+}
+
+/**
+ * Resolve measure-based durations in a parsed note
+ * Creates a new ParsedNote with durationBeats calculated from the time signature
+ * @param note - Parsed note (may have measureCount set)
+ * @param timeSignature - Time signature string (e.g., "4/4", "3/4")
+ * @returns ParsedNote with resolved durationBeats
+ */
+export function resolveMeasureNote(note: ParsedNote, timeSignature: string): ParsedNote {
+  if (note.measureCount === undefined) {
+    return note; // Not a measure-based duration, return unchanged
+  }
+  
+  const resolvedBeats = resolveMeasureDuration(note.measureCount, timeSignature);
+  return {
+    ...note,
+    durationBeats: resolvedBeats,
+  };
+}
+
+/**
+ * Check if a duration string is a measure-based duration
+ * @param duration - Duration string (e.g., "q", "h", "1m", "2m")
+ * @returns true if duration is measure-based
+ */
+export function isMeasureDuration(duration: string): boolean {
+  return /^\d+m$/.test(duration);
 }
