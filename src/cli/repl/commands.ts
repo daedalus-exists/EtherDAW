@@ -2317,6 +2317,112 @@ export const COMMANDS: CommandDef[] = [
     },
   },
 
+  // Render command (FluidSynth-based audio rendering)
+  {
+    name: 'render',
+    aliases: ['r', 'audio'],
+    description: 'Render composition to audio via FluidSynth and play it',
+    usage: 'render [output.wav] | render --no-play',
+    execute: async (session, args) => {
+      if (!session.isLoaded()) {
+        return { success: false, message: 'No composition loaded. Use: load <file>' };
+      }
+
+      const { exec } = await import('child_process');
+      const { promisify } = await import('util');
+      const { writeFile: writeFileAsync, unlink, access } = await import('fs/promises');
+      const { tmpdir } = await import('os');
+      const { join } = await import('path');
+      const execAsync = promisify(exec);
+
+      const noPlay = args.includes('--no-play');
+      const outputArg = args.find(a => a.endsWith('.wav'));
+      const tempDir = tmpdir();
+      const timestamp = Date.now();
+      const midiPath = join(tempDir, `etherdaw-${timestamp}.mid`);
+      const wavPath = outputArg || join(tempDir, `etherdaw-${timestamp}.wav`);
+
+      // Find soundfont
+      const soundfontPaths = [
+        process.env.SOUNDFONT,
+        join(process.env.HOME || '', 'soundfonts', 'FluidR3_GM.sf2'),
+        join(process.env.HOME || '', 'soundfonts', 'GeneralUser_GS.sf2'),
+        '/usr/share/sounds/sf2/FluidR3_GM.sf2',
+      ].filter(Boolean) as string[];
+
+      let soundfont: string | null = null;
+      for (const sf of soundfontPaths) {
+        try {
+          await access(sf);
+          soundfont = sf;
+          break;
+        } catch {}
+      }
+
+      if (!soundfont) {
+        return {
+          success: false,
+          message: 'No soundfont found. Set $SOUNDFONT or place FluidR3_GM.sf2 in ~/soundfonts/',
+        };
+      }
+
+      try {
+        // Export to MIDI
+        const { exportToMidiBytes } = await import('../../output/midi-export.js');
+        const player = session.getPlayer();
+        const score = player.getScore();
+        const timeline = player.getTimeline();
+        if (!timeline) {
+          return { success: false, message: 'Failed to generate timeline' };
+        }
+
+        const midiBytes = exportToMidiBytes(timeline, { name: score?.meta?.title });
+        await writeFileAsync(midiPath, Buffer.from(midiBytes));
+
+        // Render with FluidSynth
+        const renderCmd = `fluidsynth -F "${wavPath}" -r 44100 "${soundfont}" "${midiPath}" 2>/dev/null`;
+        await execAsync(renderCmd, { timeout: 120000 });
+
+        // Cleanup temp MIDI
+        try { await unlink(midiPath); } catch {}
+
+        // Get duration
+        let duration = '?';
+        try {
+          const { stdout } = await execAsync(
+            `ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${wavPath}"`
+          );
+          duration = parseFloat(stdout.trim()).toFixed(1);
+        } catch {}
+
+        if (noPlay) {
+          return { success: true, message: `✓ Rendered: ${wavPath} (${duration}s)` };
+        }
+
+        // Play with afplay (macOS) or aplay (Linux)
+        const playCmd = process.platform === 'darwin' ? 'afplay' : 'aplay';
+        exec(`${playCmd} "${wavPath}"`, (err) => {
+          if (err && !outputArg) {
+            // Cleanup temp WAV after playback fails
+            unlink(wavPath).catch(() => {});
+          }
+        });
+
+        return {
+          success: true,
+          message: `✓ Rendered: ${wavPath} (${duration}s)\n  Playing audio...`,
+        };
+      } catch (error) {
+        // Cleanup on error
+        try { await unlink(midiPath); } catch {}
+        return {
+          success: false,
+          message: `Render failed: ${(error as Error).message}\nRequires: fluidsynth (brew install fluid-synth)`,
+        };
+      }
+    },
+  },
+
   // Quit force command
   {
     name: 'quit!',

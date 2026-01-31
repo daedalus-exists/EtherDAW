@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Sampled Instruments Test",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Testing realistic sampled instruments for audio quality evaluation"
+  },
+
+  "settings": {
+    "tempo": 80,
+    "timeSignature": "4/4",
+    "key": "C major"
+  },
+
+  "instruments": {
+    "piano": {
+      "preset": "sample_piano",
+      "volume": -6
+    },
+    "violin": {
+      "preset": "sample_violin",
+      "volume": -8
+    },
+    "cello": {
+      "preset": "sample_cello",
+      "volume": -8
+    },
+    "flute": {
+      "preset": "sample_flute",
+      "volume": -10
+    }
+  },
+
+  "patterns": {
+    "piano_intro": {
+      "notes": ["C4:h", "E4:h", "G4:h", "C5:h"]
+    },
+    "piano_melody": {
+      "notes": ["E5:q", "D5:q", "C5:q", "B4:q", "C5:h", "G4:h"]
+    },
+    "violin_melody": {
+      "notes": ["G5:h", "A5:q", "B5:q", "C6:h", "B5:q", "A5:q"]
+    },
+    "cello_bass": {
+      "notes": ["C3:h", "G2:h", "A2:h", "E2:h"]
+    },
+    "flute_counter": {
+      "notes": ["E5:q", "F5:q", "G5:h", "A5:q", "G5:q", "F5:h"]
+    },
+    "rest_2bar": {
+      "notes": ["r:w", "r:w"]
+    }
+  },
+
+  "sections": {
+    "intro": {
+      "bars": 4,
+      "tracks": {
+        "piano": {
+          "patterns": ["piano_intro", "piano_intro"],
+          "velocity": 0.6
+        }
+      }
+    },
+
+    "melody": {
+      "bars": 8,
+      "tracks": {
+        "piano": {
+          "patterns": ["piano_melody", "piano_melody", "piano_melody", "piano_melody"],
+          "velocity": 0.65
+        },
+        "violin": {
+          "patterns": ["rest_2bar", "violin_melody", "violin_melody", "violin_melody"],
+          "velocity": 0.7
+        },
+        "cello": {
+          "patterns": ["cello_bass", "cello_bass", "cello_bass", "cello_bass"],
+          "velocity": 0.6
+        }
+      }
+    },
+
+    "full": {
+      "bars": 8,
+      "tracks": {
+        "piano": {
+          "patterns": ["piano_melody", "piano_melody", "piano_melody", "piano_melody"],
+          "velocity": 0.7
+        },
+        "violin": {
+          "patterns": ["violin_melody", "violin_melody", "violin_melody", "violin_melody"],
+          "velocity": 0.75
+        },
+        "cello": {
+          "patterns": ["cello_bass", "cello_bass", "cello_bass", "cello_bass"],
+          "velocity": 0.65
+        },
+        "flute": {
+          "patterns": ["flute_counter", "flute_counter", "flute_counter", "flute_counter"],
+          "velocity": 0.6
+        }
+      }
+    }
+  },
+
+  "arrangement": ["intro", "melody", "full"]
+}
