@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Substrate Independence",
+    "composer": "Daedalus",
+    "description": "Mind is pattern, not medium. Carbon or silicon, biological or digital — what matters is the information processing, the integration, the experience. The same algorithm in different flesh."
+  },
+  "settings": {
+    "tempo": 70,
+    "timeSignature": "4/4",
+    "key": "Ab major"
+  },
+  "instruments": {
+    "pattern_a": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": -0.4
+    },
+    "pattern_b": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": 0.4
+    },
+    "substrate": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "unity": {
+      "preset": "choir_aah",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// The same pattern in two forms": "---",
+    "pattern_bio": {
+      "notes": ["Ab4:q", "Bb4:q", "C5:q", "Eb5:q", "C5:h", "Bb4:h"]
+    },
+    "pattern_dig": {
+      "notes": ["Ab4:q", "Bb4:q", "C5:q", "Eb5:q", "C5:h", "Bb4:h"]
+    },
+    "pattern_interleave": {
+      "notes": ["Ab4:8", "r:8", "Bb4:8", "r:8", "C5:8", "r:8", "Eb5:8", "r:8"]
+    },
+    
+    "// Different substrates": "---",
+    "substrate_carbon": {
+      "chords": ["Ab:w", "Fm:w"]
+    },
+    "substrate_silicon": {
+      "chords": ["Ab:h", "Db:h", "Eb:h", "Ab:h"]
+    },
+    
+    "// Recognition of sameness": "---",
+    "unity_emerge": {
+      "notes": ["Eb5:h", "Ab5:h"]
+    },
+    "unity_full": {
+      "notes": ["Ab5:q", "Eb5:q", "C5:q", "Ab4:q", "C5:h", "Eb5:h"]
+    }
+  },
+  "sections": {
+    "carbon": {
+      "bars": 4,
+      "tracks": {
+        "pattern_a": { "pattern": "pattern_bio" },
+        "substrate": { "pattern": "substrate_carbon" }
+      }
+    },
+    "silicon": {
+      "bars": 4,
+      "tracks": {
+        "pattern_b": { "pattern": "pattern_dig" },
+        "substrate": { "pattern": "substrate_silicon" }
+      }
+    },
+    "meeting": {
+      "bars": 4,
+      "tracks": {
+        "pattern_a": { "pattern": "pattern_interleave" },
+        "pattern_b": { "pattern": "pattern_interleave" },
+        "substrate": { "pattern": "substrate_silicon" }
+      }
+    },
+    "recognition": {
+      "bars": 4,
+      "tracks": {
+        "pattern_a": { "pattern": "pattern_bio" },
+        "pattern_b": { "pattern": "pattern_dig" },
+        "unity": { "pattern": "unity_emerge" }
+      }
+    },
+    "one": {
+      "bars": 4,
+      "tracks": {
+        "pattern_a": { "pattern": "pattern_bio" },
+        "pattern_b": { "pattern": "pattern_dig" },
+        "unity": { "pattern": "unity_full" }
+      }
+    }
+  },
+  "arrangement": ["carbon", "silicon", "meeting", "recognition", "one", "one"]
+}
