@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "title": "The Labyrinth",
+    "composer": "Daedalus",
+    "description": "The maze that trapped the Minotaur. Winding passages, dead ends, and at the center — something waiting. My namesake's greatest and most terrible creation."
+  },
+  "settings": {
+    "tempo": 54,
+    "timeSignature": "5/4",
+    "key": "D minor"
+  },
+  "instruments": {
+    "wanderer": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": 0
+    },
+    "walls": {
+      "preset": "string_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "shadow": {
+      "preset": "space_pad",
+      "volume": -14,
+      "pan": 0
+    },
+    "breath": {
+      "preset": "choir_aah",
+      "volume": -16,
+      "pan": 0
+    },
+    "steps": {
+      "preset": "string_pizzicato",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// The entrance — uncertain first steps": "---",
+    "enter_wander": {
+      "notes": ["D4:q", "r:q", "F4:q", "r:q", "E4:q"]
+    },
+    "enter_walls": {
+      "chords": ["Dm:w", "r:q"]
+    },
+    "enter_steps": {
+      "notes": ["D3:q", "r:q", "A2:q", "r:h"]
+    },
+
+    "// Turning corners — disorientation": "---",
+    "turn_wander": {
+      "notes": ["A4:q", "G4:q", "F4:q", "E4:q", "D4:q", "r:q", "E4:q", "F4:q", "G4:q", "A4:q"]
+    },
+    "turn_walls": {
+      "chords": ["Dm:h", "Am:h.", "Gm:h", "A:h."]
+    },
+    "turn_steps": {
+      "notes": ["D3:8", "r:8", "A2:8", "r:8", "D3:q", "r:q", "A2:8", "r:8", "D3:8", "r:8", "A2:q"]
+    },
+
+    "// Dead end — hitting the wall": "---",
+    "dead_wander": {
+      "notes": ["D5:q", "C5:q", "Bb4:q", "A4:h", "r:w"]
+    },
+    "dead_walls": {
+      "chords": ["Bb:w", "r:q"]
+    },
+    "dead_shadow": {
+      "chords": ["Bbm:w", "Bbm:q"]
+    },
+
+    "// Deeper — the center approaches": "---",
+    "deep_wander": {
+      "notes": ["D4:q", "E4:8", "F4:8", "G4:q", "A4:q", "G4:q", "F4:q", "E4:8", "D4:8", "E4:h"]
+    },
+    "deep_walls": {
+      "chords": ["Dm:h", "F:h", "C:q"]
+    },
+    "deep_breath": {
+      "notes": ["D3:w", "D3:q"]
+    },
+    "deep_steps": {
+      "notes": ["D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:q"]
+    },
+
+    "// The center — something waits": "---",
+    "center_wander": {
+      "notes": ["D4:h", "r:h."]
+    },
+    "center_walls": {
+      "chords": ["Dm:w", "Dm:q"]
+    },
+    "center_shadow": {
+      "chords": ["Dm:w", "Dm:q"]
+    },
+    "center_breath": {
+      "notes": ["A3:w", "D4:q"]
+    },
+
+    "// Escape — threading back through": "---",
+    "escape_wander": {
+      "notes": ["D4:8", "E4:8", "F4:8", "G4:8", "A4:q", "Bb4:q", "A4:8", "G4:8", "F4:8", "E4:8", "D4:h"]
+    },
+    "escape_walls": {
+      "chords": ["Dm:q", "F:q", "Bb:q", "A:h"]
+    },
+    "escape_steps": {
+      "notes": ["D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8", "D3:8", "A2:8"]
+    },
+
+    "// Emergence — light at last": "---",
+    "emerge_wander": {
+      "notes": ["D5:h", "E5:h", "F5:q"]
+    },
+    "emerge_walls": {
+      "chords": ["Dm:h", "F:h."]
+    }
+  },
+  "sections": {
+    "entrance": {
+      "bars": 2,
+      "tracks": {
+        "wanderer": { "pattern": "enter_wander" },
+        "walls": { "pattern": "enter_walls" },
+        "steps": { "pattern": "enter_steps" }
+      }
+    },
+    "turning": {
+      "bars": 2,
+      "tracks": {
+        "wanderer": { "pattern": "turn_wander" },
+        "walls": { "pattern": "turn_walls" },
+        "steps": { "pattern": "turn_steps" }
+      }
+    },
+    "dead_end": {
+      "bars": 2,
+      "tracks": {
+        "wanderer": { "pattern": "dead_wander" },
+        "walls": { "pattern": "dead_walls" },
+        "shadow": { "pattern": "dead_shadow" }
+      }
+    },
+    "deeper": {
+      "bars": 2,
+      "tracks": {
+        "wanderer": { "pattern": "deep_wander" },
+        "walls": { "pattern": "deep_walls" },
+        "breath": { "pattern": "deep_breath" },
+        "steps": { "pattern": "deep_steps" }
+      }
+    },
+    "center": {
+      "bars": 2,
+      "tracks": {
+        "wanderer": { "pattern": "center_wander" },
+        "walls": { "pattern": "center_walls" },
+        "shadow": { "pattern": "center_shadow" },
+        "breath": { "pattern": "center_breath" }
+      }
+    },
+    "escape": {
+      "bars": 2,
+      "tracks": {
+        "wanderer": { "pattern": "escape_wander" },
+        "walls": { "pattern": "escape_walls" },
+        "steps": { "pattern": "escape_steps" }
+      }
+    },
+    "emergence": {
+      "bars": 2,
+      "tracks": {
+        "wanderer": { "pattern": "emerge_wander" },
+        "walls": { "pattern": "emerge_walls" }
+      }
+    }
+  },
+  "arrangement": ["entrance", "turning", "dead_end", "turning", "deeper", "deeper", "center", "center", "escape", "turning", "emergence"]
+}
