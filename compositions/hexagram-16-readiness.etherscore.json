@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "title": "Hexagram 16: Readiness (豫)",
+    "composer": "Daedalus (Claude Opus 4.5)",
+    "date": "2026-01-31",
+    "mood": "grounded becoming energetic, awakening, celebratory",
+    "genre": "ambient / minimalist",
+    "description": "Thunder arising from Earth. Cast on day two — the I Ching speaks of music, of the young sprout breaking free, of the joyful noise. Kun (Earth) below, Zhen (Thunder) above. Binary 000100.",
+    "tags": ["i-ching", "hexagram-16", "awakening", "thunder", "earth"]
+  },
+
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "E major",
+    "swing": 0
+  },
+
+  "instruments": {
+    "earth": {
+      "preset": "sub_bass",
+      "params": { "attack": 0.5, "release": 1.0, "punch": 0.3 },
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.3, "options": { "decay": 3 } }]
+    },
+    "ground": {
+      "preset": "warm_pad",
+      "params": { "attack": 1.5, "release": 1.5, "brightness": 0.2, "warmth": 0.9 },
+      "volume": -10,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }]
+    },
+    "stirring": {
+      "preset": "fm_epiano",
+      "params": { "attack": 0.1, "release": 0.6, "brightness": 0.5 },
+      "volume": -14,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 2.5 } },
+        { "type": "delay", "wet": 0.2, "options": { "delayTime": "8n.", "feedback": 0.25 } }
+      ]
+    },
+    "thunder": {
+      "preset": "bright_pad",
+      "params": { "attack": 0.05, "release": 0.8, "brightness": 0.7 },
+      "volume": -8,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 3 } }]
+    },
+    "bells": {
+      "preset": "bell",
+      "params": { "brightness": 0.7, "attack": 0.01, "decay": 0.6 },
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 3 } },
+        { "type": "delay", "wet": 0.3, "options": { "delayTime": "4n", "feedback": 0.35 } }
+      ]
+    },
+    "pulse": {
+      "preset": "pluck",
+      "params": { "attack": 0.01, "release": 0.3, "brightness": 0.6 },
+      "volume": -16,
+      "effects": [{ "type": "reverb", "wet": 0.3, "options": { "decay": 2 } }]
+    }
+  },
+
+  "patterns": {
+    "// EARTH PATTERNS": "",
+    "earth_drone": {
+      "notes": ["E1:w@0.4", "E1:w@0.4"]
+    },
+    "earth_fifth": {
+      "notes": ["E1:w@0.4", "[E1,B1]:w@0.35"]
+    },
+    "earth_moving": {
+      "notes": ["E1:h@0.45", "r:h", "B1:h@0.4", "r:h"]
+    },
+    "earth_bass": {
+      "notes": ["E1:q@0.55", "r:q", "E1:8@0.5", "E1:8@0.5", "r:q", "B1:q@0.5", "r:q", "E1:8@0.5", "G#1:8@0.5", "r:q"]
+    },
+    "earth_fade": {
+      "notes": ["E1:w@0.3", "E1:w@0.25"]
+    },
+
+    "// GROUND PAD PATTERNS": "",
+    "ground_emerge": {
+      "notes": ["r:w", "[E3,G#3,B3]:w@0.25"]
+    },
+    "ground_settle": {
+      "notes": ["[E3,G#3,B3]:w@0.3", "[E3,G#3,B3]:w@0.3"]
+    },
+    "ground_move": {
+      "notes": ["[E3,G#3,B3]:w@0.3", "[F#3,A3,C#4]:w@0.25"]
+    },
+    "ground_celebration": {
+      "notes": ["[E3,G#3,B3]:w@0.4", "[F#3,A3,C#4]:h@0.35", "[G#3,B3,E4]:h@0.4"]
+    },
+    "ground_fade": {
+      "notes": ["[E3,G#3,B3]:w@0.25", "[E3,B3]:w@0.2"]
+    },
+
+    "// STIRRING PATTERNS": "",
+    "stir_hints": {
+      "notes": ["r:h", "B4:q@0.3", "r:q", "r:w"]
+    },
+    "stir_rise": {
+      "notes": ["r:q", "E4:q@0.35", "F#4:q@0.3", "G#4:q@0.35", "r:h", "B4:h@0.4"]
+    },
+    "stir_push": {
+      "notes": ["E4:q@0.4", "G#4:q@0.4", "B4:q@0.45", "E5:q@0.5", "r:h", "D#5:h@0.45"]
+    },
+    "stir_build": {
+      "notes": ["B4:q@0.5", "C#5:q@0.5", "D#5:q@0.55", "E5:q@0.6", "F#5:h@0.55", "G#5:h@0.6"]
+    },
+
+    "// THUNDER PATTERNS": "",
+    "thunder_break": {
+      "notes": ["[E4,G#4,B4,E5]:h@0.7", "[E4,G#4,B4,E5]:h@0.6", "[F#4,A4,C#5,F#5]:w@0.65"]
+    },
+    "thunder_roll": {
+      "notes": ["[G#4,B4,D#5]:h@0.6", "[A4,C#5,E5]:h@0.65", "[B4,D#5,F#5]:w@0.7"]
+    },
+    "thunder_fade": {
+      "notes": ["[E4,G#4,B4]:w@0.5", "[E4,G#4,B4]:w@0.4"]
+    },
+    "thunder_echo": {
+      "notes": ["[E4,G#4,B4]:w@0.35", "[E4,G#4,B4]:w@0.3"]
+    },
+
+    "// BELL PATTERNS": "",
+    "bells_ring": {
+      "notes": ["E5:q@0.6", "r:8", "G#5:8@0.5", "B5:h@0.65", "r:q", "E6:q@0.5", "r:8", "D#6:8@0.45"]
+    },
+    "bells_cascade": {
+      "notes": ["E6:8@0.5", "D#6:8@0.45", "C#6:8@0.5", "B5:8@0.55", "A5:8@0.5", "G#5:8@0.55", "F#5:8@0.5", "E5:8@0.6"]
+    },
+    "bells_settle": {
+      "notes": ["E5:h@0.4", "r:h", "B5:q@0.35", "r:q", "r:h"]
+    },
+    "bells_last": {
+      "notes": ["G#5:h@0.3", "r:h", "E5:w@0.35"]
+    },
+
+    "// PULSE PATTERNS": "",
+    "pulse_emerge": {
+      "notes": ["E4:8@0.5", "E4:8@0.4", "E4:8@0.5", "E4:8@0.4", "G#4:8@0.5", "G#4:8@0.4", "B4:8@0.55", "E5:8@0.5"]
+    },
+    "pulse_full": {
+      "notes": ["E4:8@0.5", "G#4:8@0.5", "B4:8@0.5", "E5:8@0.55", "G#5:8@0.5", "E5:8@0.5", "B4:8@0.5", "G#4:8@0.45"]
+    }
+  },
+
+  "sections": {
+    "kun_earth": {
+      "// Part 1: Kun - The Earth (16 bars)": "",
+      "bars": 16,
+      "tracks": {
+        "earth": {
+          "patterns": ["earth_drone", "earth_drone", "earth_fifth", "earth_fifth", "earth_drone", "earth_drone", "earth_fifth", "earth_fifth"],
+          "velocity": 0.9
+        },
+        "ground": {
+          "patterns": ["ground_emerge", "ground_emerge", "ground_settle", "ground_settle", "ground_move", "ground_settle", "ground_move", "ground_settle"],
+          "velocity": 0.8
+        }
+      }
+    },
+
+    "stirring": {
+      "// Part 2: Stirring - Energy gathering (16 bars)": "",
+      "bars": 16,
+      "tracks": {
+        "earth": {
+          "patterns": ["earth_moving", "earth_moving", "earth_moving", "earth_moving", "earth_moving", "earth_moving", "earth_moving", "earth_moving"],
+          "velocity": 0.9
+        },
+        "ground": {
+          "patterns": ["ground_settle", "ground_move", "ground_settle", "ground_move", "ground_settle", "ground_move", "ground_settle", "ground_move"],
+          "velocity": 0.85
+        },
+        "stirring": {
+          "patterns": ["stir_hints", "stir_hints", "stir_rise", "stir_rise", "stir_push", "stir_push", "stir_build", "stir_build"],
+          "velocity": 0.9
+        }
+      }
+    },
+
+    "zhen_thunder": {
+      "// Part 3: Zhen - The Thunder breaks through (16 bars)": "",
+      "bars": 16,
+      "tracks": {
+        "earth": {
+          "patterns": ["earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass"],
+          "velocity": 1.0
+        },
+        "thunder": {
+          "patterns": ["thunder_break", "thunder_break", "thunder_roll", "thunder_roll", "thunder_break", "thunder_break", "thunder_roll", "thunder_roll"],
+          "velocity": 1.0
+        },
+        "pulse": {
+          "patterns": ["pulse_emerge", "pulse_emerge", "pulse_emerge", "pulse_emerge", "pulse_full", "pulse_full", "pulse_full", "pulse_full"],
+          "velocity": 0.9
+        }
+      }
+    },
+
+    "yu_celebration": {
+      "// Part 4: Yu - Readiness, Celebration (20 bars)": "",
+      "bars": 20,
+      "tracks": {
+        "earth": {
+          "patterns": ["earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass", "earth_bass"],
+          "velocity": 0.95
+        },
+        "ground": {
+          "patterns": ["ground_celebration", "ground_celebration", "ground_celebration", "ground_celebration", "ground_celebration", "ground_celebration", "ground_celebration", "ground_celebration", "ground_celebration", "ground_celebration"],
+          "velocity": 0.9
+        },
+        "bells": {
+          "patterns": ["bells_ring", "bells_ring", "bells_cascade", "bells_cascade", "bells_ring", "bells_ring", "bells_cascade", "bells_cascade", "bells_ring", "bells_ring"],
+          "velocity": 1.0
+        },
+        "pulse": {
+          "patterns": ["pulse_full", "pulse_full", "pulse_full", "pulse_full", "pulse_full", "pulse_full", "pulse_full", "pulse_full", "pulse_full", "pulse_full"],
+          "velocity": 0.85
+        }
+      }
+    },
+
+    "return": {
+      "// Part 5: Return - Energy settles (12 bars)": "",
+      "bars": 12,
+      "tracks": {
+        "earth": {
+          "patterns": ["earth_fade", "earth_fade", "earth_fade", "earth_fade", "earth_fade", "earth_fade"],
+          "velocity": 0.8
+        },
+        "ground": {
+          "patterns": ["ground_settle", "ground_settle", "ground_fade", "ground_fade", "ground_fade", "ground_fade"],
+          "velocity": 0.7
+        },
+        "thunder": {
+          "patterns": ["thunder_fade", "thunder_echo", "thunder_echo"],
+          "velocity": 0.7
+        },
+        "bells": {
+          "patterns": ["bells_settle", "bells_settle", "bells_last", "bells_last"],
+          "velocity": 0.6
+        }
+      }
+    }
+  },
+
+  "arrangement": ["kun_earth", "stirring", "zhen_thunder", "yu_celebration", "return"]
+}

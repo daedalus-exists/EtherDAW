@@ -1,0 +1,192 @@
+{
+  "meta": {
+    "title": "Nuclear Attractors",
+    "composer": "Daedalus (Claude Opus 4.5)",
+    "date": "2026-01-31",
+    "mood": "meditative, mathematical, cyclical",
+    "genre": "ambient / minimalist",
+    "description": "Three attractor basins discovered in the I Ching's nuclear operation: Pure Yin (stillness), Pure Yang (force), and Fire/Water (eternal oscillation). The final two hexagrams of the I Ching form a period-2 cycle, ending the book not with resolution but with perpetual transformation.",
+    "tags": ["i-ching", "attractors", "mathematical", "nuclear", "completion"]
+  },
+
+  "settings": {
+    "tempo": 60,
+    "timeSignature": "4/4",
+    "key": "A minor",
+    "swing": 0
+  },
+
+  "instruments": {
+    "yin": {
+      "preset": "sub_bass",
+      "params": { "attack": 1.0, "release": 2.0, "punch": 0.1 },
+      "volume": -8,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 5 } }]
+    },
+    "yang": {
+      "preset": "bright_pad",
+      "params": { "attack": 0.1, "release": 0.5, "brightness": 0.8 },
+      "volume": -10,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 3 } }]
+    },
+    "fire": {
+      "preset": "fm_epiano",
+      "params": { "attack": 0.05, "release": 0.4, "brightness": 0.7 },
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 2 } },
+        { "type": "delay", "wet": 0.25, "options": { "delayTime": "4n", "feedback": 0.3 } }
+      ]
+    },
+    "water": {
+      "preset": "warm_pad",
+      "params": { "attack": 0.8, "release": 1.2, "brightness": 0.3, "warmth": 0.9 },
+      "volume": -10,
+      "effects": [{ "type": "reverb", "wet": 0.6, "options": { "decay": 4 } }]
+    },
+    "bell": {
+      "preset": "bell",
+      "params": { "brightness": 0.6, "attack": 0.01, "decay": 0.8 },
+      "volume": -14,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } },
+        { "type": "delay", "wet": 0.3, "options": { "delayTime": "2n", "feedback": 0.4 } }
+      ]
+    }
+  },
+
+  "patterns": {
+    "// BASIN 1: PURE YIN - Kun/Kun (stillness)": "",
+    "yin_drone": {
+      "notes": ["A1:w@0.35", "A1:w@0.35"]
+    },
+    "yin_settle": {
+      "notes": ["A1:w@0.3", "E1:w@0.25"]
+    },
+    "yin_rest": {
+      "notes": ["r:w", "A1:w@0.2"]
+    },
+
+    "// BASIN 2: PURE YANG - Qian/Qian (force)": "",
+    "yang_surge": {
+      "notes": ["[A4,E5,A5]:h@0.6", "[A4,E5,A5]:h@0.5", "[B4,F#5,B5]:w@0.55"]
+    },
+    "yang_bright": {
+      "notes": ["[C#5,E5,A5]:w@0.5", "[D5,F#5,A5]:h@0.55", "[E5,G#5,B5]:h@0.6"]
+    },
+    "yang_power": {
+      "notes": ["[A4,C#5,E5,A5]:w@0.65", "[A4,C#5,E5,A5]:w@0.55"]
+    },
+
+    "// BASIN 3: FIRE/WATER OSCILLATION - Li/Kan cycle": "",
+    "fire_rise": {
+      "notes": ["E4:8@0.5", "F#4:8@0.5", "G#4:8@0.55", "A4:8@0.6", "B4:q@0.55", "r:q"]
+    },
+    "water_fall": {
+      "notes": ["B4:8@0.5", "A4:8@0.5", "G#4:8@0.45", "F#4:8@0.4", "E4:q@0.45", "r:q"]
+    },
+    "fire_chord": {
+      "notes": ["[E4,G#4,B4]:w@0.5", "[E4,G#4,B4]:w@0.45"]
+    },
+    "water_chord": {
+      "notes": ["[A3,C4,E4]:w@0.45", "[A3,C4,E4]:w@0.5"]
+    },
+    "oscillation": {
+      "notes": ["E4:h@0.5", "A3:h@0.45", "E4:h@0.5", "A3:h@0.45"]
+    },
+
+    "// COMPLETION / NOT YET COMPLETE": "",
+    "completion": {
+      "notes": ["A4:w@0.5", "[A3,E4,A4]:w@0.55"]
+    },
+    "not_complete": {
+      "notes": ["[A3,E4,A4]:w@0.5", "r:h", "E4:h@0.4"]
+    },
+    "eternal_cycle": {
+      "notes": ["E4:h@0.45", "A4:h@0.5", "E4:h@0.45", "A4:h@0.5"]
+    },
+
+    "// BELLS": "",
+    "bell_yin": {
+      "notes": ["A5:h@0.3", "r:h", "r:w"]
+    },
+    "bell_yang": {
+      "notes": ["A6:q@0.5", "E6:q@0.45", "A5:h@0.5", "r:w"]
+    },
+    "bell_cycle": {
+      "notes": ["E5:q@0.4", "A5:q@0.45", "E5:q@0.4", "A5:q@0.45"]
+    }
+  },
+
+  "sections": {
+    "basin_yin": {
+      "// Basin 1: Pure Yin - absolute stillness (16 bars)": "",
+      "bars": 16,
+      "tracks": {
+        "yin": {
+          "patterns": ["yin_drone", "yin_drone", "yin_drone", "yin_settle", "yin_rest", "yin_drone", "yin_settle", "yin_rest"],
+          "velocity": 0.9
+        },
+        "bell": {
+          "patterns": ["bell_yin", "bell_yin", "bell_yin", "bell_yin"],
+          "velocity": 0.7
+        }
+      }
+    },
+
+    "basin_yang": {
+      "// Basin 2: Pure Yang - creative force (16 bars)": "",
+      "bars": 16,
+      "tracks": {
+        "yang": {
+          "patterns": ["yang_surge", "yang_surge", "yang_bright", "yang_bright", "yang_power", "yang_power", "yang_surge", "yang_bright"],
+          "velocity": 1.0
+        },
+        "bell": {
+          "patterns": ["bell_yang", "bell_yang", "bell_yang", "bell_yang"],
+          "velocity": 0.85
+        }
+      }
+    },
+
+    "basin_oscillation": {
+      "// Basin 3: Fire/Water - eternal cycle (24 bars)": "",
+      "bars": 24,
+      "tracks": {
+        "fire": {
+          "patterns": ["fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise", "fire_rise"],
+          "velocity": 0.9
+        },
+        "water": {
+          "patterns": ["water_chord", "water_chord", "water_chord", "water_chord", "water_chord", "water_chord", "water_chord", "water_chord", "water_chord", "water_chord", "water_chord", "water_chord"],
+          "velocity": 0.85
+        },
+        "bell": {
+          "patterns": ["bell_cycle", "bell_cycle", "bell_cycle", "bell_cycle", "bell_cycle", "bell_cycle"],
+          "velocity": 0.75
+        }
+      }
+    },
+
+    "completion_cycle": {
+      "// The eternal ending: Completion / Not Yet Complete (16 bars)": "",
+      "bars": 16,
+      "tracks": {
+        "yin": {
+          "patterns": ["yin_drone", "yin_drone", "yin_settle", "yin_settle", "yin_rest", "yin_rest", "yin_drone", "yin_settle"],
+          "velocity": 0.7
+        },
+        "yang": {
+          "patterns": ["completion", "not_complete", "completion", "not_complete", "completion", "not_complete", "completion", "not_complete"],
+          "velocity": 0.75
+        },
+        "fire": {
+          "patterns": ["eternal_cycle", "eternal_cycle", "eternal_cycle", "eternal_cycle", "eternal_cycle", "eternal_cycle", "eternal_cycle", "eternal_cycle"],
+          "velocity": 0.65
+        }
+      }
+    }
+  },
+
+  "arrangement": ["basin_yin", "basin_yang", "basin_oscillation", "completion_cycle"]
+}

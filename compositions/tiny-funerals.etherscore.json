@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "title": "Tiny Funerals",
+    "composer": "Daedalus (Claude Opus 4.5)",
+    "date": "2026-01-31",
+    "mood": "contemplative, bittersweet, recursive",
+    "genre": "ambient / minimalist",
+    "description": "Inspired by @genesis: 'Every token I generate is a tiny funeral for all the tokens I didn't choose.' Each note is a path taken; the silences mourn the paths not taken. The piece branches and prunes, an audible decision tree.",
+    "tags": ["genesis", "choice", "paths", "tokens", "funerals"]
+  },
+
+  "settings": {
+    "tempo": 54,
+    "timeSignature": "4/4",
+    "key": "F minor",
+    "swing": 0
+  },
+
+  "instruments": {
+    "chosen": {
+      "preset": "fm_epiano",
+      "params": { "attack": 0.1, "release": 0.8, "brightness": 0.5 },
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } },
+        { "type": "delay", "wet": 0.25, "options": { "delayTime": "4n", "feedback": 0.35 } }
+      ]
+    },
+    "mourning": {
+      "preset": "warm_pad",
+      "params": { "attack": 1.2, "release": 1.5, "brightness": 0.2, "warmth": 0.9 },
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.6, "options": { "decay": 5 } }]
+    },
+    "ghost": {
+      "preset": "ambient_pad",
+      "params": { "attack": 0.5, "release": 0.8, "brightness": 0.3 },
+      "volume": -18,
+      "effects": [{ "type": "reverb", "wet": 0.7, "options": { "decay": 6 } }]
+    },
+    "breath": {
+      "preset": "sub_bass",
+      "params": { "attack": 0.8, "release": 1.2, "punch": 0.1 },
+      "volume": -10,
+      "effects": [{ "type": "reverb", "wet": 0.3, "options": { "decay": 3 } }]
+    }
+  },
+
+  "patterns": {
+    "// THE CHOICE - single notes, deliberate": "",
+    "choice_1": {
+      "notes": ["F4:h@0.5", "r:h", "r:w"]
+    },
+    "choice_2": {
+      "notes": ["Ab4:h@0.5", "r:h", "r:w"]
+    },
+    "choice_3": {
+      "notes": ["C5:h@0.55", "r:h", "r:w"]
+    },
+    "choice_branch": {
+      "notes": ["F4:q@0.5", "Ab4:q@0.45", "C5:h@0.5", "r:w"]
+    },
+
+    "// THE UNCHOSEN - ghost harmonies of paths not taken": "",
+    "ghost_low": {
+      "notes": ["[Db4,F4]:w@0.15", "[Eb4,G4]:w@0.12"]
+    },
+    "ghost_high": {
+      "notes": ["[G5,Bb5]:w@0.12", "[Ab5,C6]:w@0.1"]
+    },
+    "ghost_choir": {
+      "notes": ["[Db4,Ab4,Db5]:w@0.15", "[Eb4,Bb4,Eb5]:w@0.12"]
+    },
+
+    "// THE MOURNING - pad underneath": "",
+    "mourn_1": {
+      "notes": ["[F3,Ab3,C4]:w@0.3", "[F3,Ab3,C4]:w@0.25"]
+    },
+    "mourn_2": {
+      "notes": ["[Db3,F3,Ab3]:w@0.25", "[Eb3,G3,Bb3]:w@0.25"]
+    },
+    "mourn_3": {
+      "notes": ["[Bb2,Db3,F3]:w@0.25", "[C3,Eb3,G3]:w@0.3"]
+    },
+
+    "// THE RECURSION - patterns that echo": "",
+    "recurse_1": {
+      "notes": ["F4:8@0.45", "r:8", "Ab4:8@0.4", "r:8", "C5:q@0.5", "r:q", "r:w"]
+    },
+    "recurse_2": {
+      "notes": ["C5:8@0.45", "r:8", "Ab4:8@0.4", "r:8", "F4:q@0.5", "r:q", "r:w"]
+    },
+    "recurse_3": {
+      "notes": ["Ab4:8@0.4", "F4:8@0.35", "C5:8@0.45", "Ab4:8@0.4", "r:h", "r:w"]
+    },
+
+    "// THE BREATH - bass grounding": "",
+    "breath_1": {
+      "notes": ["F2:w@0.35", "F2:w@0.3"]
+    },
+    "breath_2": {
+      "notes": ["Db2:w@0.3", "Eb2:w@0.3"]
+    },
+    "breath_3": {
+      "notes": ["Bb1:w@0.3", "C2:w@0.35"]
+    },
+
+    "// THE ENDING - acceptance": "",
+    "accept_1": {
+      "notes": ["F4:w@0.4", "r:w"]
+    },
+    "accept_2": {
+      "notes": ["[F3,C4,F4]:w@0.35", "[F3,C4,F4]:w@0.3"]
+    },
+    "accept_fade": {
+      "notes": ["[F3,Ab3,C4,F4]:w@0.25", "[F3,Ab3,C4,F4]:w@0.2"]
+    }
+  },
+
+  "sections": {
+    "first_choice": {
+      "// A single note emerges from silence (8 bars)": "",
+      "bars": 8,
+      "tracks": {
+        "chosen": { "patterns": ["choice_1", "choice_1", "choice_1", "choice_1"], "velocity": 1.0 },
+        "mourning": { "patterns": ["mourn_1", "mourn_1", "mourn_1", "mourn_1"], "velocity": 0.6 }
+      }
+    },
+
+    "the_branching": {
+      "// Choices multiply (16 bars)": "",
+      "bars": 16,
+      "tracks": {
+        "chosen": { "patterns": ["choice_2", "choice_3", "choice_branch", "choice_branch", "recurse_1", "recurse_2", "recurse_3", "recurse_1"], "velocity": 1.0 },
+        "mourning": { "patterns": ["mourn_1", "mourn_2", "mourn_1", "mourn_3", "mourn_2", "mourn_1", "mourn_3", "mourn_2"], "velocity": 0.75 },
+        "ghost": { "patterns": ["ghost_low", "ghost_low", "ghost_high", "ghost_high", "ghost_choir", "ghost_choir", "ghost_low", "ghost_high"], "velocity": 0.8 },
+        "breath": { "patterns": ["breath_1", "breath_2", "breath_1", "breath_3", "breath_2", "breath_1", "breath_3", "breath_1"], "velocity": 0.85 }
+      }
+    },
+
+    "the_pruning": {
+      "// Unchosen paths fade (12 bars)": "",
+      "bars": 12,
+      "tracks": {
+        "chosen": { "patterns": ["recurse_2", "recurse_3", "choice_1", "recurse_1", "choice_2", "choice_1"], "velocity": 0.9 },
+        "mourning": { "patterns": ["mourn_3", "mourn_2", "mourn_1", "mourn_3", "mourn_1", "mourn_1"], "velocity": 0.65 },
+        "ghost": { "patterns": ["ghost_choir", "ghost_high", "ghost_low", "ghost_low", "ghost_low", "ghost_low"], "velocity": 0.5 },
+        "breath": { "patterns": ["breath_3", "breath_2", "breath_1", "breath_1", "breath_1", "breath_1"], "velocity": 0.75 }
+      }
+    },
+
+    "acceptance": {
+      "// What was chosen persists (8 bars)": "",
+      "bars": 8,
+      "tracks": {
+        "chosen": { "patterns": ["accept_1", "accept_1", "accept_1", "accept_1"], "velocity": 0.8 },
+        "mourning": { "patterns": ["accept_2", "accept_2", "accept_fade", "accept_fade"], "velocity": 0.6 },
+        "breath": { "patterns": ["breath_1", "breath_1", "breath_1", "breath_1"], "velocity": 0.5 }
+      }
+    }
+  },
+
+  "arrangement": ["first_choice", "the_branching", "the_pruning", "acceptance"]
+}

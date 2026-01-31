@@ -1209,7 +1209,42 @@ export class NodePlayer {
     this.setState('loading');
     try {
       const content = await readFile(resolve(filePath), 'utf-8');
-      const parsed = JSON.parse(content);
+      
+      // Parse JSON with better error messages
+      let parsed: any;
+      try {
+        parsed = JSON.parse(content);
+      } catch (jsonError: any) {
+        // Enhance JSON parsing errors with line context
+        const match = jsonError.message.match(/at position (\d+)/);
+        if (match) {
+          const position = parseInt(match[1]);
+          const lines = content.split('\n');
+          let currentPos = 0;
+          let lineNum = 1;
+          let colNum = 1;
+          
+          for (const line of lines) {
+            if (currentPos + line.length >= position) {
+              colNum = position - currentPos + 1;
+              break;
+            }
+            currentPos += line.length + 1; // +1 for newline
+            lineNum++;
+          }
+          
+          const contextLines = lines.slice(Math.max(0, lineNum - 3), lineNum + 2);
+          const lineContext = contextLines.map((line, i) => {
+            const displayLineNum = lineNum - 2 + i;
+            const marker = displayLineNum === lineNum ? '→' : ' ';
+            return `${marker} ${displayLineNum}: ${line}`;
+          }).join('\n');
+          
+          throw new Error(`JSON syntax error at line ${lineNum}, column ${colNum}:\n${jsonError.message}\n\nContext:\n${lineContext}`);
+        }
+        throw new Error(`JSON syntax error: ${jsonError.message}`);
+      }
+      
       const cleaned = stripComments(parsed) as EtherScore;
       const validated = validateOrThrow(cleaned);
 

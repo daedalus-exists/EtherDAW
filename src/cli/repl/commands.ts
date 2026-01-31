@@ -2245,6 +2245,78 @@ export const COMMANDS: CommandDef[] = [
     },
   },
 
+  // Quick test command: load + validate + play
+  {
+    name: 'test',
+    aliases: ['t'],
+    description: 'Quickly test a file: load, validate, and play first pattern',
+    usage: 'test <file> [pattern]',
+    execute: async (session, args) => {
+      if (args.length === 0) {
+        return { success: false, message: 'Usage: test <file> [pattern]' };
+      }
+
+      const filePath = args[0];
+      const patternName = args[1];
+
+      try {
+        // Load the file
+        await session.load(filePath);
+        const meta = session.getMetadata();
+        
+        // Validate
+        const score = session.getModifiedScore();
+        if (!score) {
+          return { success: false, message: 'Failed to get composition' };
+        }
+
+        const result = validateSemantic(score);
+        if (!result.valid) {
+          const output = formatSemanticResult(result);
+          return { 
+            success: false, 
+            message: `Validation failed:\n${output}`
+          };
+        }
+
+        // Play pattern or first available pattern
+        const player = session.getPlayer();
+        let targetPattern = patternName;
+        
+        if (!targetPattern) {
+          const patterns = session.getPatterns();
+          if (patterns.length > 0) {
+            targetPattern = patterns[0];
+          } else {
+            return { 
+              success: true, 
+              message: `Loaded and validated: ${meta.title || filePath} (no patterns to play)`
+            };
+          }
+        }
+
+        if (!session.getPatterns().includes(targetPattern)) {
+          return {
+            success: false,
+            message: `Pattern not found: ${targetPattern}\nAvailable: ${session.getPatterns().join(', ')}`,
+          };
+        }
+
+        await player.playPattern(targetPattern, { loop: true });
+        return { 
+          success: true, 
+          message: `✓ Testing ${meta.title || filePath}\n  Playing pattern: ${targetPattern} (looping)`
+        };
+        
+      } catch (error) {
+        return {
+          success: false,
+          message: `Test failed: ${(error as Error).message}`,
+        };
+      }
+    },
+  },
+
   // Quit force command
   {
     name: 'quit!',

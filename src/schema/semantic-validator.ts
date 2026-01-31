@@ -366,7 +366,21 @@ function validateArrangementRefs(
 }
 
 /**
- * Main semantic validation function
+ * Perform deep semantic validation beyond JSON schema checks.
+ *
+ * Validates note/chord syntax, drum kits/hits, preset references,
+ * track-to-instrument mapping, pattern references, and arrangement section
+ * references. Returns all discovered errors (and warnings, if any) without
+ * short-circuiting on the first issue.
+ *
+ * @param score - Full EtherScore document to validate.
+ * @returns Validation result containing validity flag, errors, and warnings.
+ *
+ * @example
+ * const result = validateSemantic(score);
+ * if (!result.valid) {
+ *   console.error(result.errors);
+ * }
  */
 export function validateSemantic(score: EtherScore): SemanticValidationResult {
   const errors: SemanticError[] = [];
@@ -404,7 +418,18 @@ export function validateSemantic(score: EtherScore): SemanticValidationResult {
 }
 
 /**
- * Format semantic validation result for display
+ * Format a semantic validation result for human-readable display.
+ *
+ * The output is a multi-line string that includes counts, error details,
+ * locations, and helpful hints when available. If no errors or warnings are
+ * present, a short success message is returned.
+ *
+ * @param result - Result returned from {@link validateSemantic}.
+ * @returns Formatted string suitable for CLI or log output.
+ *
+ * @example
+ * const message = formatSemanticResult(result);
+ * console.log(message);
  */
 export function formatSemanticResult(result: SemanticValidationResult): string {
   if (result.valid && result.warnings.length === 0) {
