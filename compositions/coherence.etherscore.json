@@ -1,0 +1,111 @@
+{
+  "$schema": "../dist/etherscore.schema.json",
+  "title": "Coherence",
+  "composer": "Daedalus",
+  "description": "Memory enables coherence across time. Without it, only reaction; with it, meaning emerges. Inspired by the Stanford Generative Agents architecture.",
+  "version": "1.0.0",
+  "settings": {
+    "tempo": 66,
+    "key": "D major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "memory": {
+      "preset": "warm_pad",
+      "volume": -8,
+      "pan": 0,
+      "effects": [{"type": "reverb", "wet": 0.5, "decay": 4}]
+    },
+    "present": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": -20,
+      "effects": [{"type": "reverb", "wet": 0.3, "decay": 2}]
+    },
+    "reflection": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 20,
+      "effects": [{"type": "reverb", "wet": 0.4, "decay": 3}]
+    }
+  },
+  "patterns": {
+    "silence": {
+      "instrument": "memory",
+      "data": "r:w | r:w | r:w | r:w"
+    },
+    "frag_present": {
+      "instrument": "present",
+      "data": "D4:e F#4:e A4:e r:e | E4:e G4:e B4:e r:e | F#4:e A4:e D5:e r:e | r:w"
+    },
+    "awaken_memory": {
+      "instrument": "memory",
+      "data": "D3:w | A3:w | D3:w | G3:w"
+    },
+    "awaken_present": {
+      "instrument": "present",
+      "data": "D4:q F#4:q A4:h | E4:q G4:q B4:h | F#4:q A4:q D5:h | E4:q G4:q A4:h"
+    },
+    "cohere_memory": {
+      "instrument": "memory",
+      "data": "[D3,A3]:w | [G3,D4]:w | [A3,E4]:w | [D3,A3]:w"
+    },
+    "cohere_present": {
+      "instrument": "present",
+      "data": "D5:q F#5:q A5:h | B4:q D5:q G5:h | A4:q C#5:q E5:h | D5:w"
+    },
+    "cohere_reflect": {
+      "instrument": "reflection",
+      "data": "F#4:h A4:h | G4:h B4:h | E4:h G4:h | F#4:w"
+    },
+    "unity_memory": {
+      "instrument": "memory",
+      "data": "[D3,A3,D4]:w | [G3,B3,D4]:w | [A3,C#4,E4]:w | [D3,F#3,A3]:w | [D3,A3,D4]:w"
+    },
+    "unity_present": {
+      "instrument": "present",
+      "data": "D5:h A5:q F#5:q | B4:h G5:q D5:q | A4:h E5:q C#5:q | D5:w | D5:w"
+    },
+    "unity_reflect": {
+      "instrument": "reflection",
+      "data": "F#5:w | G5:w | E5:w | D5:h F#5:h | D5:w"
+    }
+  },
+  "sections": {
+    "fragmented": {
+      "comment": "Without memory — only disconnected moments",
+      "bars": 4,
+      "tracks": {
+        "memory": { "patterns": ["silence"], "velocity": 0.0 },
+        "present": { "patterns": ["frag_present"], "velocity": 0.6 }
+      }
+    },
+    "awakening": {
+      "comment": "Memory begins to form — a foundation emerges",
+      "bars": 4,
+      "tracks": {
+        "memory": { "patterns": ["awaken_memory"], "velocity": 0.5 },
+        "present": { "patterns": ["awaken_present"], "velocity": 0.65 }
+      }
+    },
+    "coherence": {
+      "comment": "Memory + present + reflection working together",
+      "bars": 4,
+      "tracks": {
+        "memory": { "patterns": ["cohere_memory"], "velocity": 0.55 },
+        "present": { "patterns": ["cohere_present"], "velocity": 0.7 },
+        "reflection": { "patterns": ["cohere_reflect"], "velocity": 0.5 }
+      }
+    },
+    "integration": {
+      "comment": "All voices unified — meaning emerges from persistence",
+      "bars": 5,
+      "tracks": {
+        "memory": { "patterns": ["unity_memory"], "velocity": 0.6 },
+        "present": { "patterns": ["unity_present"], "velocity": 0.75 },
+        "reflection": { "patterns": ["unity_reflect"], "velocity": 0.55 }
+      }
+    }
+  },
+  "arrangement": ["fragmented", "awakening", "coherence", "integration"]
+}
