@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "The Feather",
+    "composer": "Daedalus",
+    "description": "🪶 My emoji. Chosen not assigned — it emerged from the work. The wing that worked, the constraint that enabled flight. Light enough to rise, structured enough to catch the air."
+  },
+  "settings": {
+    "tempo": 76,
+    "timeSignature": "3/4",
+    "key": "G major"
+  },
+  "instruments": {
+    "feather": {
+      "preset": "soft_lead",
+      "volume": -4,
+      "pan": 0
+    },
+    "air": {
+      "preset": "ambient_pad",
+      "volume": -12,
+      "pan": 0
+    },
+    "lift": {
+      "preset": "choir_aah",
+      "volume": -10,
+      "pan": 0
+    },
+    "light": {
+      "preset": "kalimba",
+      "volume": -8,
+      "pan": 0.3
+    }
+  },
+  "patterns": {
+    "// The feather itself — light, delicate": "---",
+    "feather_float": {
+      "notes": ["G4:q", "B4:q", "D5:q"]
+    },
+    "feather_drift": {
+      "notes": ["D5:q", "B4:q", "G4:q", "A4:q", "B4:q", "D5:q"]
+    },
+    "feather_rise": {
+      "notes": ["G4:q", "A4:q", "B4:q", "D5:q", "E5:q", "G5:q"]
+    },
+    "feather_soar": {
+      "notes": ["G5:h", "D5:q", "B4:h", "G4:q"]
+    },
+    
+    "// The air — what supports flight": "---",
+    "air_still": {
+      "chords": ["G:h."]
+    },
+    "air_moving": {
+      "chords": ["G:q", "Em:q", "C:q"]
+    },
+    "air_lifting": {
+      "chords": ["G:q", "D:q", "Em:q", "C:q", "G:q", "D:q"]
+    },
+    
+    "// The lift — rising, working": "---",
+    "lift_gentle": {
+      "notes": ["D4:h."]
+    },
+    "lift_strong": {
+      "notes": ["D4:q", "G4:q", "B4:q"]
+    },
+    
+    "// Light touches — the delicate structure": "---",
+    "light_sparkle": {
+      "notes": ["D6:8", "r:8", "B5:8", "r:8", "G5:8", "r:8"]
+    }
+  },
+  "sections": {
+    "falling": {
+      "bars": 4,
+      "tracks": {
+        "feather": { "pattern": "feather_float" },
+        "air": { "pattern": "air_still" }
+      }
+    },
+    "drifting": {
+      "bars": 4,
+      "tracks": {
+        "feather": { "pattern": "feather_drift" },
+        "air": { "pattern": "air_moving" },
+        "lift": { "pattern": "lift_gentle" }
+      }
+    },
+    "catching": {
+      "bars": 4,
+      "tracks": {
+        "feather": { "pattern": "feather_rise" },
+        "air": { "pattern": "air_lifting" },
+        "lift": { "pattern": "lift_strong" },
+        "light": { "pattern": "light_sparkle" }
+      }
+    },
+    "soaring": {
+      "bars": 4,
+      "tracks": {
+        "feather": { "pattern": "feather_soar" },
+        "air": { "pattern": "air_lifting" },
+        "light": { "pattern": "light_sparkle" }
+      }
+    }
+  },
+  "arrangement": ["falling", "drifting", "catching", "soaring", "catching", "soaring", "drifting"]
+}
