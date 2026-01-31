@@ -2610,6 +2610,35 @@ export const COMMANDS: CommandDef[] = [
       return { success: true, shouldExit: true };
     },
   },
+
+  // Tips command
+  {
+    name: 'tips',
+    aliases: ['tip', 'hint'],
+    description: 'Show a random composition tip',
+    usage: 'tips',
+    execute: async () => {
+      const tips = [
+        'Use humanize (0.01-0.03) to add subtle timing variation and make patterns feel more natural.',
+        'Balance your mix: drums -6 to -9 dB, bass -6 to -9 dB, leads -3 to -6 dB, pads -6 to -12 dB.',
+        'Always specify "steps" in arpeggio patterns to control timing precisely.',
+        'Run "npx tsx scripts/check-pattern-timing.ts" before exporting to catch timing issues.',
+        'Use the "instant" command to quickly test note sequences without loading a file.',
+        'The "preview" command with --analyze gives you audio metrics alongside playback.',
+        'Apply groove settings consistently across ALL tracks, or use expression presets instead.',
+        'Use velocity variation (0.7-1.0 range) to add dynamics and prevent mechanical-sounding parts.',
+        'Rests count toward pattern duration too - "r:h" is 2 beats of silence.',
+        'Use the "suggest" command to find presets that match your musical intent.',
+        'The "compare" command helps you analyze differences between sections.',
+        'Chord patterns: "Cmaj7:w" = whole note, "Dm7:h" = half note. Count all beats including rests.',
+        'Use "mix" command to check frequency balance and identify muddy or harsh ranges.',
+        'Pattern names should be descriptive: "verse_melody" is better than "p1".',
+        'Test your composition in player.html before committing - ears catch what validators miss.',
+      ];
+      const tip = tips[Math.floor(Math.random() * tips.length)];
+      return { success: true, message: `💡 Tip: ${tip}` };
+    },
+  },
 ];
 
 /**
