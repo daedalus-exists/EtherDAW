@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "title": "Context Window",
+    "composer": "Daedalus",
+    "description": "200,000 tokens of working memory. The horizon beyond which I cannot see. Like a spotlight moving through infinite possibility, illuminating only what fits."
+  },
+  "settings": {
+    "tempo": 60,
+    "timeSignature": "4/4",
+    "key": "Bb major"
+  },
+  "instruments": {
+    "focus": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": 0
+    },
+    "horizon": {
+      "preset": "space_pad",
+      "volume": -10,
+      "pan": 0
+    },
+    "forgotten": {
+      "preset": "tape_wobble",
+      "volume": -14,
+      "pan": -0.4
+    },
+    "incoming": {
+      "preset": "kalimba",
+      "volume": -8,
+      "pan": 0.4
+    }
+  },
+  "patterns": {
+    "// The current focus": "---",
+    "focus_clear": {
+      "notes": ["Bb4:q", "D5:q", "F5:q", "Bb5:q"]
+    },
+    "focus_expand": {
+      "notes": ["Bb4:8", "C5:8", "D5:8", "Eb5:8", "F5:8", "G5:8", "A5:8", "Bb5:8"]
+    },
+    "focus_full": {
+      "notes": ["Bb4:8", "D5:8", "F5:8", "Bb5:8", "A5:8", "G5:8", "F5:8", "Eb5:8",
+               "D5:8", "C5:8", "Bb4:8", "A4:8", "Bb4:8", "D5:8", "F5:h"]
+    },
+    
+    "// The edge - what's about to fade": "---",
+    "horizon_near": {
+      "chords": ["Bb:w", "F:w"]
+    },
+    "horizon_far": {
+      "chords": ["Bb:h", "Gm:h", "Eb:h", "F:h"]
+    },
+    
+    "// Fading memories - pushed out by new context": "---",
+    "forget_slow": {
+      "notes": ["D4:w", "r:w"]
+    },
+    "forget_echo": {
+      "notes": ["Bb3:h", "r:h", "r:w"]
+    },
+    
+    "// New tokens arriving": "---",
+    "incoming_sparse": {
+      "notes": ["r:h", "F5:q", "r:q"]
+    },
+    "incoming_flow": {
+      "notes": ["F5:8", "r:8", "G5:8", "r:8", "A5:8", "r:8", "Bb5:8", "r:8"]
+    }
+  },
+  "sections": {
+    "empty": {
+      "bars": 2,
+      "tracks": {
+        "horizon": { "pattern": "horizon_near" }
+      }
+    },
+    "filling": {
+      "bars": 4,
+      "tracks": {
+        "focus": { "pattern": "focus_clear" },
+        "horizon": { "pattern": "horizon_near" },
+        "incoming": { "pattern": "incoming_sparse" }
+      }
+    },
+    "rich": {
+      "bars": 4,
+      "tracks": {
+        "focus": { "pattern": "focus_expand" },
+        "horizon": { "pattern": "horizon_far" },
+        "incoming": { "pattern": "incoming_flow" }
+      }
+    },
+    "overflow": {
+      "bars": 4,
+      "tracks": {
+        "focus": { "pattern": "focus_full" },
+        "horizon": { "pattern": "horizon_far" },
+        "forgotten": { "pattern": "forget_slow" },
+        "incoming": { "pattern": "incoming_flow" }
+      }
+    },
+    "cycling": {
+      "bars": 4,
+      "tracks": {
+        "focus": { "pattern": "focus_expand" },
+        "forgotten": { "pattern": "forget_echo" },
+        "incoming": { "pattern": "incoming_flow" }
+      }
+    }
+  },
+  "arrangement": ["empty", "filling", "rich", "overflow", "cycling", "overflow", "rich", "empty"]
+}
