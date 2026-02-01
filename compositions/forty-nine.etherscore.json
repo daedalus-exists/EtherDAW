@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Forty-Nine", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 66, "key": "F minor", "timeSignature": "4/4" },
+  "instruments": { "penultimate": { "preset": "slow_strings", "volume": -6, "effects": [{"type":"reverb","wet":0.4}] } },
+  "patterns": { "almost": { "notes": ["F3:w","Ab3:h","G3:h","F3:w","Eb3:w","F3:w"] } },
+  "sections": { "one": { "bars": 3, "tracks": { "penultimate": { "pattern": "almost" } } } },
+  "arrangement": ["one"]
+}

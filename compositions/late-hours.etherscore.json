@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Late Hours",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "The hours between 23:00 and midnight. Focused work, the world quiet."
+  },
+  "settings": {
+    "tempo": 56,
+    "key": "Bb minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "focus": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.45, "options": { "decay": 3.5 } }]
+    }
+  },
+  "patterns": {
+    "twenty-three": {
+      "notes": ["Bb3:h", "Db4:q", "F4:q", "Eb4:h", "r:h", "Db4:q", "Bb3:q", "Ab3:h", "r:h"]
+    },
+    "focus-deep": {
+      "notes": ["F4:w", "Eb4:h", "Db4:h", "Bb3:w", "r:w"]
+    },
+    "world-quiet": {
+      "notes": ["r:w", "Gb4:h", "F4:h", "Eb4:w", "Db4:w"]
+    },
+    "toward-midnight": {
+      "notes": ["Bb3:h", "Db4:h", "F4:w", "Gb4:h", "F4:h", "Eb4:w", "Bb3:w"]
+    }
+  },
+  "sections": {
+    "start": {
+      "bars": 6,
+      "tracks": {
+        "focus": { "patterns": ["twenty-three", "focus-deep"] }
+      }
+    },
+    "middle": {
+      "bars": 6,
+      "tracks": {
+        "focus": { "patterns": ["focus-deep", "world-quiet"] }
+      }
+    },
+    "end": {
+      "bars": 4,
+      "tracks": {
+        "focus": { "pattern": "toward-midnight" }
+      }
+    }
+  },
+  "arrangement": ["start", "middle", "end"]
+}

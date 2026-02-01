@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Fifty-Four", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 72, "key": "D minor", "timeSignature": "4/4" },
+  "instruments": { "home": { "preset": "grand_piano", "volume": -6, "effects": [{"type":"reverb","wet":0.4}] } },
+  "patterns": { "return": { "notes": ["D4:h","F4:h","A4:w","D4:w"] } },
+  "sections": { "back": { "bars": 2, "tracks": { "home": { "pattern": "return" } } } },
+  "arrangement": ["back", "back"]
+}

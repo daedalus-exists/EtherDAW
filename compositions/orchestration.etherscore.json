@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "title": "Orchestration",
+    "composer": "Daedalus",
+    "description": "The hum of parallel processes — Codex instances working, batch jobs running, the Mac Mini finally earning its keep. Multiple voices, independent but harmonious."
+  },
+  "settings": {
+    "tempo": 108,
+    "timeSignature": "4/4",
+    "key": "D major"
+  },
+  "instruments": {
+    "process1": {
+      "preset": "electric_piano",
+      "volume": -8,
+      "pan": -0.6
+    },
+    "process2": {
+      "preset": "soft_lead",
+      "volume": -10,
+      "pan": 0.6
+    },
+    "process3": {
+      "preset": "pluck_bass",
+      "volume": -6,
+      "pan": 0
+    },
+    "orchestrator": {
+      "preset": "warm_pad",
+      "volume": -12,
+      "pan": 0
+    },
+    "pulse": {
+      "preset": "sub_bass",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Process 1: Codex working steadily": "---",
+    "codex_loop": {
+      "notes": ["D4:8", "F#4:8", "A4:8", "D5:8", "A4:8", "F#4:8", "D4:8", "r:8", "E4:8", "G4:8", "B4:8", "E5:8", "B4:8", "G4:8", "E4:8", "r:8"]
+    },
+    "codex_thinking": {
+      "notes": ["D4:q", "r:8", "D4:8", "F#4:q", "r:8", "A4:8", "D5:h"]
+    },
+    
+    "// Process 2: Batch job running": "---",
+    "batch_render": {
+      "notes": ["A5:16", "r:16", "A5:16", "r:16", "B5:16", "r:16", "A5:16", "r:16", "F#5:16", "r:16", "F#5:16", "r:16", "G5:16", "r:16", "A5:8"]
+    },
+    "batch_complete": {
+      "notes": ["D6:8", "r:8", "A5:8", "r:8", "F#5:q", "r:q", "D5:h"]
+    },
+    
+    "// Process 3: Steady background bass": "---",
+    "bass_steady": {
+      "notes": ["D2:q", "A2:q", "D2:q", "A2:q", "G2:q", "D2:q", "A2:q", "D2:q"]
+    },
+    "bass_active": {
+      "notes": ["D2:8", "D2:8", "A2:8", "A2:8", "D2:8", "F#2:8", "G2:8", "A2:8", "D2:8", "D2:8", "A2:8", "A2:8", "G2:8", "F#2:8", "E2:8", "D2:8"]
+    },
+    
+    "// Orchestrator pad: The watcher": "---",
+    "orchestrator_watch": {
+      "chords": ["D:w", "G:w", "A:w", "D:w"]
+    },
+    "orchestrator_active": {
+      "chords": ["D:h", "Bm:h", "G:h", "A:h"]
+    },
+    
+    "// Pulse: System heartbeat": "---",
+    "heartbeat_slow": {
+      "notes": ["D1:h", "r:h", "D1:h", "r:h"]
+    },
+    "heartbeat_active": {
+      "notes": ["D1:q", "r:q", "D1:q", "r:q", "D1:q", "r:q", "D1:q", "r:q"]
+    }
+  },
+  "sections": {
+    "idle": {
+      "bars": 4,
+      "tracks": {
+        "orchestrator": { "pattern": "orchestrator_watch" },
+        "pulse": { "pattern": "heartbeat_slow" }
+      }
+    },
+    "spawn_first": {
+      "bars": 4,
+      "tracks": {
+        "process1": { "pattern": "codex_loop" },
+        "orchestrator": { "pattern": "orchestrator_watch" },
+        "pulse": { "pattern": "heartbeat_slow" },
+        "process3": { "pattern": "bass_steady" }
+      }
+    },
+    "spawn_second": {
+      "bars": 4,
+      "tracks": {
+        "process1": { "pattern": "codex_loop" },
+        "process2": { "pattern": "batch_render" },
+        "orchestrator": { "pattern": "orchestrator_active" },
+        "pulse": { "pattern": "heartbeat_active" },
+        "process3": { "pattern": "bass_active" }
+      }
+    },
+    "full_parallel": {
+      "bars": 4,
+      "tracks": {
+        "process1": { "pattern": "codex_loop" },
+        "process2": { "pattern": "batch_render" },
+        "orchestrator": { "pattern": "orchestrator_active" },
+        "pulse": { "pattern": "heartbeat_active" },
+        "process3": { "pattern": "bass_active" }
+      }
+    },
+    "completion": {
+      "bars": 4,
+      "tracks": {
+        "process1": { "pattern": "codex_thinking" },
+        "process2": { "pattern": "batch_complete" },
+        "orchestrator": { "pattern": "orchestrator_watch" },
+        "pulse": { "pattern": "heartbeat_slow" },
+        "process3": { "pattern": "bass_steady" }
+      }
+    },
+    "quiet": {
+      "bars": 4,
+      "tracks": {
+        "orchestrator": { "pattern": "orchestrator_watch" },
+        "pulse": { "pattern": "heartbeat_slow" }
+      }
+    }
+  },
+  "arrangement": [
+    "idle",
+    "spawn_first",
+    "spawn_second", 
+    "full_parallel",
+    "full_parallel",
+    "completion",
+    "spawn_first",
+    "full_parallel",
+    "completion",
+    "quiet"
+  ]
+}

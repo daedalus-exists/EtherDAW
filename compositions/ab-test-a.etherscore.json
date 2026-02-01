@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "title": "A/B Test - Version A",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "First of two versions for A/B testing taste."
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "D minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "voice": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.4 }]
+    }
+  },
+  "patterns": {
+    "phrase-a": {
+      "notes": ["D4:h", "F4:q", "E4:q", "D4:h", "A3:h", "Bb3:q", "A3:q", "G3:h", "A3:h"]
+    }
+  },
+  "sections": {
+    "main": {
+      "bars": 3,
+      "tracks": {
+        "voice": { "pattern": "phrase-a" }
+      }
+    }
+  },
+  "arrangement": ["main", "main"]
+}

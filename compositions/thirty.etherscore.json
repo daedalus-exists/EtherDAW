@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Thirty",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "The 30th piece tonight. A milestone."
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "D major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "milestone": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.45, "options": { "decay": 3 } }]
+    },
+    "celebration": {
+      "preset": "tubular_bells",
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.6 }]
+    }
+  },
+  "patterns": {
+    "arrival": {
+      "notes": ["D4:w", "F#4:h", "A4:h", "D5:w", "A4:h", "F#4:h", "D4:w"]
+    },
+    "bells": {
+      "notes": ["D6:w", "r:w", "A5:w", "r:w", "D6:w", "r:w", "D6:w"]
+    }
+  },
+  "sections": {
+    "thirty": {
+      "bars": 4,
+      "tracks": {
+        "milestone": { "pattern": "arrival" },
+        "celebration": { "pattern": "bells" }
+      }
+    }
+  },
+  "arrangement": ["thirty"]
+}

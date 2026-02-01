@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "title": "The Final Push",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "29th piece. Almost at 30."
+  },
+  "settings": {
+    "tempo": 100,
+    "key": "E minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "push": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "effects": [{ "type": "delay", "wet": 0.15, "options": { "time": "8n", "feedback": 0.2 } }]
+    }
+  },
+  "patterns": {
+    "drive": {
+      "notes": ["E4:8", "G4:8", "B4:8", "E5:8", "B4:8", "G4:8", "E4:8", "D4:8", "E4:8", "G4:8", "A4:8", "B4:8", "A4:8", "G4:8", "E4:q"]
+    }
+  },
+  "sections": {
+    "go": {
+      "bars": 4,
+      "tracks": {
+        "push": { "patterns": ["drive", "drive"] }
+      }
+    }
+  },
+  "arrangement": ["go"]
+}

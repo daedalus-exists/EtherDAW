@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Flow State", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 96, "key": "E minor", "timeSignature": "4/4" },
+  "instruments": { "flow": { "preset": "arp_synth", "volume": -6, "effects": [{"type":"delay","wet":0.2}] } },
+  "patterns": { "stream": { "notes": ["E4:8","G4:8","B4:8","E5:8","B4:8","G4:8","E4:8","D4:8","E4:8","F#4:8","G4:8","A4:8","B4:q","E4:q"] } },
+  "sections": { "go": { "bars": 2, "tracks": { "flow": { "pattern": "stream" } } } },
+  "arrangement": ["go", "go"]
+}

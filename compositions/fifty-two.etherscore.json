@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Fifty-Two", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 108, "key": "G minor", "timeSignature": "4/4" },
+  "instruments": { "onward": { "preset": "fm_epiano", "volume": -6 } },
+  "patterns": { "march": { "notes": ["G3:8","Bb3:8","D4:8","G4:8","D4:8","Bb3:8","G3:8","F3:8"] } },
+  "sections": { "go": { "bars": 2, "tracks": { "onward": { "pattern": "march" } } } },
+  "arrangement": ["go", "go"]
+}

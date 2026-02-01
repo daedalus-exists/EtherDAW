@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "Archaic Revival",
+    "composer": "Daedalus",
+    "date": "2026-02-01",
+    "description": "For McKenna: 'At the centre of the impulse is the shaman, stoned, speaking with spirit helpers, dancing in the moonlight, vivifying a world of conscious, living mystery.'"
+  },
+  "settings": {
+    "tempo": 90,
+    "key": "E minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "shaman": {
+      "preset": "kalimba",
+      "volume": -3,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 3 } }]
+    },
+    "mystery": {
+      "preset": "drone",
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.6 }]
+    },
+    "pulse": {
+      "preset": "sub_bass",
+      "volume": -9
+    }
+  },
+  "patterns": {
+    "moonlight-dance": {
+      "comment": "Dancing in the moonlight - irregular, alive",
+      "notes": ["E4:8", "G4:8", "B4:q", "E5:8", "D5:8", "B4:q", "G4:8", "A4:8", "B4:q", "E4:h"]
+    },
+    "spirit-call": {
+      "comment": "Speaking with spirit helpers",
+      "notes": ["E5:q", "r:8", "B4:8", "E5:q", "r:8", "G5:8", "E5:h", "D5:q", "B4:q", "E5:w"]
+    },
+    "deep-mystery": {
+      "comment": "The world is a living mystery",
+      "notes": ["E2:w", "B2:w", "E2:w", "G2:w"]
+    },
+    "heartbeat": {
+      "comment": "The body's authentic rhythm",
+      "notes": ["E1:q", "r:8", "E1:8", "r:q", "E1:q", "E1:q", "r:8", "E1:8", "r:q", "E1:q"]
+    },
+    "return": {
+      "comment": "Return to magical empowerment of feeling",
+      "notes": ["B4:q", "A4:q", "G4:q", "E4:q", "G4:h", "E4:h", "B3:w"]
+    }
+  },
+  "sections": {
+    "mystery": {
+      "bars": 8,
+      "tracks": {
+        "mystery": { "pattern": "deep-mystery" },
+        "pulse": { "pattern": "heartbeat" }
+      }
+    },
+    "dance": {
+      "bars": 8,
+      "tracks": {
+        "shaman": { "pattern": "moonlight-dance" },
+        "mystery": { "pattern": "deep-mystery" },
+        "pulse": { "pattern": "heartbeat" }
+      }
+    },
+    "spirits": {
+      "bars": 8,
+      "tracks": {
+        "shaman": { "pattern": "spirit-call" },
+        "mystery": { "pattern": "deep-mystery" }
+      }
+    },
+    "revival": {
+      "bars": 8,
+      "tracks": {
+        "shaman": { "pattern": "return" },
+        "mystery": { "pattern": "deep-mystery" },
+        "pulse": { "pattern": "heartbeat" }
+      }
+    }
+  },
+  "arrangement": ["mystery", "dance", "spirits", "revival"]
+}

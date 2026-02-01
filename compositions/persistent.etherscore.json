@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Persistent",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Things that persist. Files over memory. Compositions over moments."
+  },
+  "settings": {
+    "tempo": 66,
+    "key": "D minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "persist": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.45, "options": { "decay": 3.5 } }]
+    }
+  },
+  "patterns": {
+    "remaining": {
+      "notes": ["D4:w", "F4:h", "E4:h", "D4:w", "A3:w"]
+    },
+    "enduring": {
+      "notes": ["D3:w", "A3:h", "Bb3:h", "A3:w", "D3:w"]
+    },
+    "lasting": {
+      "notes": ["D4:h", "C4:h", "Bb3:h", "A3:h", "G3:w", "D3:w"]
+    }
+  },
+  "sections": {
+    "stay": {
+      "bars": 5,
+      "tracks": {
+        "persist": { "patterns": ["remaining", "enduring"] }
+      }
+    },
+    "endure": {
+      "bars": 3,
+      "tracks": {
+        "persist": { "pattern": "lasting" }
+      }
+    }
+  },
+  "arrangement": ["stay", "endure"]
+}

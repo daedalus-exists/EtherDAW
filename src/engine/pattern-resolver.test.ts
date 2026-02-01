@@ -339,4 +339,164 @@ describe('Pattern Resolver', () => {
       });
     });
   });
+
+  // ============================================================================
+  // v0.9.15: Plus Chord (Dyad/Cluster) Pattern Tests
+  // ============================================================================
+
+  describe('Plus Chord (Dyad/Cluster) Patterns (v0.9.15)', () => {
+    it('should expand plus chord dyads into simultaneous notes', () => {
+      const patterns: Record<string, Pattern> = {
+        dyads: {
+          notes: ['C4+E4:h', 'D4+F4:h'],
+        },
+      };
+      const track: Track = { pattern: 'dyads' };
+      const ctx = createContext(patterns);
+
+      const notes = resolveTrack(track, ctx);
+
+      // 2 dyads × 2 notes each = 4 notes total
+      expect(notes.length).toBe(4);
+      
+      // First dyad at beat 0
+      expect(notes[0].pitch).toBe('C4');
+      expect(notes[0].startBeat).toBe(0);
+      expect(notes[0].durationBeats).toBe(2);
+      expect(notes[1].pitch).toBe('E4');
+      expect(notes[1].startBeat).toBe(0); // Simultaneous!
+      expect(notes[1].durationBeats).toBe(2);
+      
+      // Second dyad at beat 2
+      expect(notes[2].pitch).toBe('D4');
+      expect(notes[2].startBeat).toBe(2);
+      expect(notes[3].pitch).toBe('F4');
+      expect(notes[3].startBeat).toBe(2); // Simultaneous!
+    });
+
+    it('should expand plus chord triads (C major followed by D minor)', () => {
+      const patterns: Record<string, Pattern> = {
+        triads: {
+          notes: ['C4+E4+G4:h', 'D4+F4+A4:h'],
+        },
+      };
+      const track: Track = { pattern: 'triads' };
+      const ctx = createContext(patterns);
+
+      const notes = resolveTrack(track, ctx);
+
+      // 2 triads × 3 notes each = 6 notes total
+      expect(notes.length).toBe(6);
+      
+      // C major triad at beat 0
+      expect(notes[0].pitch).toBe('C4');
+      expect(notes[1].pitch).toBe('E4');
+      expect(notes[2].pitch).toBe('G4');
+      expect(notes[0].startBeat).toBe(0);
+      expect(notes[1].startBeat).toBe(0);
+      expect(notes[2].startBeat).toBe(0);
+      
+      // D minor triad at beat 2
+      expect(notes[3].pitch).toBe('D4');
+      expect(notes[4].pitch).toBe('F4');
+      expect(notes[5].pitch).toBe('A4');
+      expect(notes[3].startBeat).toBe(2);
+      expect(notes[4].startBeat).toBe(2);
+      expect(notes[5].startBeat).toBe(2);
+    });
+
+    it('should apply velocity to plus chord notes', () => {
+      const patterns: Record<string, Pattern> = {
+        dyads: {
+          notes: ['C4+E4:q@0.5'],
+        },
+      };
+      const track: Track = { pattern: 'dyads' };
+      const ctx = createContext(patterns);
+
+      const notes = resolveTrack(track, ctx);
+
+      expect(notes.length).toBe(2);
+      expect(notes[0].velocity).toBe(0.5);
+      expect(notes[1].velocity).toBe(0.5);
+    });
+
+    it('should apply staccato articulation to plus chords', () => {
+      const patterns: Record<string, Pattern> = {
+        staccato: {
+          notes: ['C4+E4:q*'],
+        },
+      };
+      const track: Track = { pattern: 'staccato' };
+      const ctx = createContext(patterns);
+
+      const notes = resolveTrack(track, ctx);
+
+      expect(notes.length).toBe(2);
+      // Staccato shortens gate to 30%
+      expect(notes[0].durationBeats).toBeCloseTo(0.3);
+      expect(notes[1].durationBeats).toBeCloseTo(0.3);
+    });
+
+    it('should apply track octave offset to plus chords', () => {
+      const patterns: Record<string, Pattern> = {
+        dyads: {
+          notes: ['C4+E4:q'],
+        },
+      };
+      const track: Track = { pattern: 'dyads', octave: 1 };
+      const ctx = createContext(patterns);
+
+      const notes = resolveTrack(track, ctx);
+
+      expect(notes.length).toBe(2);
+      expect(notes[0].pitch).toBe('C5');
+      expect(notes[1].pitch).toBe('E5');
+    });
+
+    it('should apply track transpose to plus chords', () => {
+      const patterns: Record<string, Pattern> = {
+        dyads: {
+          notes: ['C4+E4:q'],
+        },
+      };
+      const track: Track = { pattern: 'dyads', transpose: 2 };
+      const ctx = createContext(patterns);
+
+      const notes = resolveTrack(track, ctx);
+
+      expect(notes.length).toBe(2);
+      expect(notes[0].pitch).toBe('D4');
+      expect(notes[1].pitch).toBe('F#4');
+    });
+
+    it('should mix plus chords with regular notes', () => {
+      const patterns: Record<string, Pattern> = {
+        mixed: {
+          notes: ['C4:q', 'C4+E4:q', 'G4:q'],
+        },
+      };
+      const track: Track = { pattern: 'mixed' };
+      const ctx = createContext(patterns);
+
+      const notes = resolveTrack(track, ctx);
+
+      // 1 single + 2 dyad + 1 single = 4 notes
+      expect(notes.length).toBe(4);
+      
+      // Single note at beat 0
+      expect(notes[0].pitch).toBe('C4');
+      expect(notes[0].startBeat).toBe(0);
+      
+      // Dyad at beat 1
+      expect(notes[1].pitch).toBe('C4');
+      expect(notes[1].startBeat).toBe(1);
+      expect(notes[2].pitch).toBe('E4');
+      expect(notes[2].startBeat).toBe(1);
+      
+      // Single note at beat 2
+      expect(notes[3].pitch).toBe('G4');
+      expect(notes[3].startBeat).toBe(2);
+    });
+  });
 });

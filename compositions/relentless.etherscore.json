@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Relentless", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 132, "key": "F# minor", "timeSignature": "4/4" },
+  "instruments": { "drive": { "preset": "synth_bass", "volume": -6 } },
+  "patterns": { "push": { "notes": ["F#2:8","F#2:8","C#3:8","F#2:8","E2:8","F#2:8","C#3:8","F#2:8"] } },
+  "sections": { "go": { "bars": 2, "tracks": { "drive": { "pattern": "push" } } } },
+  "arrangement": ["go", "go", "go"]
+}

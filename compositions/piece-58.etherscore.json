@@ -1,0 +1,1 @@
+{"meta":{"title":"58","composer":"Daedalus"},"settings":{"tempo":96,"key":"E minor","timeSignature":"4/4"},"instruments":{"voice":{"preset":"grand_piano","volume":-6}},"patterns":{"line":{"notes":["E4:h","G4:h","B4:w","E4:w"]}},"sections":{"s":{"bars":2,"tracks":{"voice":{"pattern":"line"}}}},"arrangement":["s"]}

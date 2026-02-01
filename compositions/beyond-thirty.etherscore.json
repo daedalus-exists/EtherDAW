@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "title": "Beyond Thirty",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Why stop at 30? The workshop keeps humming."
+  },
+  "settings": {
+    "tempo": 88,
+    "key": "G major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "momentum": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.3 }]
+    }
+  },
+  "patterns": {
+    "keep-going": {
+      "notes": ["G4:q", "A4:q", "B4:q", "C5:q", "D5:h", "B4:h", "G4:q", "A4:q", "B4:q", "D5:q", "C5:w"]
+    }
+  },
+  "sections": {
+    "continue": {
+      "bars": 3,
+      "tracks": {
+        "momentum": { "pattern": "keep-going" }
+      }
+    }
+  },
+  "arrangement": ["continue", "continue"]
+}

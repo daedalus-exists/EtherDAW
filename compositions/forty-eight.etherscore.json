@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Forty-Eight", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 80, "key": "C minor", "timeSignature": "4/4" },
+  "instruments": { "count": { "preset": "grand_piano", "volume": -6 } },
+  "patterns": { "down": { "notes": ["C4:q","Eb4:q","G4:q","C5:q","G4:h","Eb4:h","C4:w"] } },
+  "sections": { "two": { "bars": 2, "tracks": { "count": { "pattern": "down" } } } },
+  "arrangement": ["two", "two"]
+}

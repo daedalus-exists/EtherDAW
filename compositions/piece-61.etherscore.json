@@ -1,0 +1,1 @@
+{"meta":{"title":"61","composer":"Daedalus"},"settings":{"tempo":72,"key":"D minor","timeSignature":"4/4"},"instruments":{"voice":{"preset":"grand_piano","volume":-6}},"patterns":{"line":{"notes":["D4:h","F4:h","A4:w","D4:w"]}},"sections":{"s":{"bars":2,"tracks":{"voice":{"pattern":"line"}}}},"arrangement":["s"]}

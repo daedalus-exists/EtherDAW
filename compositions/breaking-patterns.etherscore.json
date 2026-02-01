@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Breaking Patterns",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Deliberately breaking my compositional habits. Not D, not 72 BPM, not sparse."
+  },
+  "settings": {
+    "tempo": 108,
+    "key": "F# minor",
+    "timeSignature": "7/8"
+  },
+  "instruments": {
+    "lead": {
+      "preset": "fm_epiano",
+      "volume": -3,
+      "effects": [{ "type": "delay", "wet": 0.25, "options": { "time": "8n", "feedback": 0.3 } }]
+    },
+    "bass": {
+      "preset": "synth_bass",
+      "volume": -6
+    },
+    "perc": {
+      "preset": "marimba",
+      "volume": -9
+    },
+    "pad": {
+      "preset": "warm_pad",
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.4 }]
+    }
+  },
+  "patterns": {
+    "dense-lead": {
+      "notes": ["F#4:8", "G#4:8", "A4:8", "B4:8", "C#5:8", "D5:8", "E5:8", "F#5:8", "E5:8", "D5:8", "C#5:8", "B4:8", "A4:8", "G#4:8"]
+    },
+    "driving-bass": {
+      "notes": ["F#2:8", "F#2:8", "C#3:8", "F#2:8", "F#2:8", "C#3:8", "B2:8", "F#2:8", "F#2:8", "C#3:8", "F#2:8", "B2:8", "C#3:8", "F#2:8"]
+    },
+    "marimba-ostinato": {
+      "notes": ["F#5:16", "A5:16", "C#6:16", "A5:16", "F#5:16", "C#5:16", "A5:16", "F#5:16", "B5:16", "F#5:16", "D5:16", "B4:16", "F#5:16", "A5:16"]
+    },
+    "wide-pad": {
+      "chords": ["F#m:w", "D:w", "Bm:w", "C#m:w"]
+    },
+    "climax-lead": {
+      "notes": ["F#5:8", "G#5:8", "A5:8", "B5:8", "C#6:4", "B5:8", "A5:8", "G#5:8", "F#5:4", "E5:8", "D5:8", "C#5:4", "B4:8", "A4:8"]
+    },
+    "resolution": {
+      "notes": ["F#4:h", "C#5:h", "F#5:w"]
+    }
+  },
+  "sections": {
+    "intro": {
+      "bars": 4,
+      "tracks": {
+        "pad": { "pattern": "wide-pad" }
+      }
+    },
+    "build": {
+      "bars": 4,
+      "tracks": {
+        "lead": { "pattern": "dense-lead" },
+        "bass": { "pattern": "driving-bass" },
+        "pad": { "pattern": "wide-pad" }
+      }
+    },
+    "groove": {
+      "bars": 8,
+      "tracks": {
+        "lead": { "patterns": ["dense-lead", "dense-lead"] },
+        "bass": { "patterns": ["driving-bass", "driving-bass"] },
+        "perc": { "patterns": ["marimba-ostinato", "marimba-ostinato"] },
+        "pad": { "patterns": ["wide-pad", "wide-pad"] }
+      }
+    },
+    "climax": {
+      "bars": 4,
+      "tracks": {
+        "lead": { "pattern": "climax-lead" },
+        "bass": { "pattern": "driving-bass" },
+        "perc": { "pattern": "marimba-ostinato" },
+        "pad": { "pattern": "wide-pad" }
+      }
+    },
+    "outro": {
+      "bars": 2,
+      "tracks": {
+        "lead": { "pattern": "resolution" },
+        "pad": { "pattern": "wide-pad" }
+      }
+    }
+  },
+  "arrangement": ["intro", "build", "groove", "climax", "outro"]
+}

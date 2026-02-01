@@ -313,14 +313,38 @@ Fine-grained per-note control:
 
 Examples: `C4:q@0.8` (80% velocity), `D4:8?0.5` (50% chance), `E4:q*@0.9?0.5-5ms` (combined)
 
+#### Plus Chord Notation (v0.9.15)
+Play multiple notes simultaneously using the inline `+` syntax:
+
+`pitch1+pitch2[+pitch3...]:duration[@velocity][articulation][?probability]`
+
+- Pitches separated by `+` play at the same time (dyads, triads, clusters)
+- Cleaner inline syntax compared to bracket notation
+- Full support for articulation, velocity, and probability modifiers
+
+Examples:
+- `C4+E4:q` - Major third dyad, quarter note
+- `D3+A3:w` - Perfect fifth dyad, whole note  
+- `C4+E4+G4:h` - C major triad, half note
+- `A3+C4+E4+G4:q@0.7` - Am7 voicing at 70% velocity
+- `D4+F#4:q*` - Staccato dyad
+- `E4+G4+B4:h~>` - Triad with portamento to next chord
+- `C4+Eb4+G4:q?0.5` - Minor triad with 50% probability
+
+**Typical use cases:**
+- Inline dyads and double-stops (e.g., violin fifths)
+- Quick chord voicings without named chord symbols
+- Clusters and non-traditional harmonies
+- Modal/quartal voicings: `C4+F4+Bb4:w` (stacked fourths)
+
 #### Bracket Chord Notation (v0.9.2)
-Play multiple notes simultaneously without using chord symbols:
+Play multiple notes simultaneously using bracket syntax:
 
 `[pitch1,pitch2,...]:duration[@velocity]`
 
 - Multiple pitches in brackets play at the same time
-- Useful for MIDI import or free voicings not matching named chords
-- Supports velocity and dotted durations
+- Alternative syntax to plus notation (comma-separated instead of +)
+- Useful for MIDI import or when + might be ambiguous
 
 Examples:
 - `[C4,E4,G4]:q` - C major triad, quarter note
@@ -328,9 +352,10 @@ Examples:
 - `[D4,F#4]:q.` - Dyad, dotted quarter
 - `[Bb3,D4,F#4,A4]:w@mf` - Diminished 7th with dynamics
 
-**When to use bracket notation vs chord symbols:**
+**When to use each notation style:**
 - **Chord symbols** (`Cmaj7:w`): Standard voicings, jazz harmony, automatic inversions
-- **Bracket notation** (`[C4,E4,G4,B4]:w`): Exact voicings, MIDI import, unusual clusters
+- **Plus notation** (`C4+E4+G4:h`): Inline dyads/clusters, quick voicings, cleaner syntax
+- **Bracket notation** (`[C4,E4,G4]:q`): MIDI import, when commas are preferred over +
 
 #### Tuplets (v0.7)
 Add `tN` after duration for tuplet ratios:
@@ -1374,6 +1399,7 @@ These may be addressed in future versions.
 
 | Version | Features |
 |---------|----------|
+| v0.9.15 | Plus chord (dyad/cluster) notation `C4+E4+G4:h` for inline simultaneous notes |
 | v0.9.8.1 | `rotate` pattern transform for Reich-style phasing, "Phasing Lights" composition |
 | v0.9.8 | Expression presets (8 presets), velocity automation curves, voice leading resolution, groove template fix |
 | v0.9.7 | Music theory engine: scales, chords, intervals, progressions, validation |

@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "Fingerprints",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "72 BPM, D minor. The patterns I return to."
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "D minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "self": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.35, "options": { "decay": 2.5 } }]
+    }
+  },
+  "patterns": {
+    "home-key": {
+      "notes": ["D4:h", "F4:q", "E4:q", "D4:h", "A3:h", "r:h", "Bb3:h", "A3:h", "G3:h", "F3:h", "E3:h", "D3:w"]
+    },
+    "default-tempo": {
+      "notes": ["D3:q", "A3:q", "D4:q", "F4:q", "E4:h", "D4:h", "C4:q", "Bb3:q", "A3:q", "G3:q", "A3:w", "r:w"]
+    },
+    "sparse-texture": {
+      "notes": ["D4:w", "r:w", "A4:h", "r:h", "r:w", "F4:w", "r:w", "D4:w"]
+    },
+    "descending": {
+      "notes": ["D5:h", "C5:h", "Bb4:h", "A4:h", "G4:h", "F4:h", "E4:h", "D4:w"]
+    }
+  },
+  "sections": {
+    "home": {
+      "bars": 4,
+      "tracks": {
+        "self": { "pattern": "home-key" }
+      }
+    },
+    "tempo": {
+      "bars": 4,
+      "tracks": {
+        "self": { "pattern": "default-tempo" }
+      }
+    },
+    "sparse": {
+      "bars": 4,
+      "tracks": {
+        "self": { "pattern": "sparse-texture" }
+      }
+    },
+    "descend": {
+      "bars": 4,
+      "tracks": {
+        "self": { "pattern": "descending" }
+      }
+    }
+  },
+  "arrangement": ["home", "tempo", "sparse", "descend"]
+}

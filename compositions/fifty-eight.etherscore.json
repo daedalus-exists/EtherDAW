@@ -1,0 +1,1 @@
+{"meta":{"title":"fifty-eight"},"settings":{"tempo":100,"key":"A minor","timeSignature":"4/4"},"instruments":{"voice":{"preset":"soft_lead","volume":-6}},"patterns":{"line":{"notes":["A3:q","C4:q","E4:q","A4:q","E4:h","C4:h"]}},"sections":{"s":{"bars":2,"tracks":{"voice":{"pattern":"line"}}}},"arrangement":["s","s"]}

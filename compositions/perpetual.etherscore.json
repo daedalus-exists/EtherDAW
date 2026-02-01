@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Perpetual", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 108, "key": "G minor", "timeSignature": "4/4" },
+  "instruments": { "loop": { "preset": "soft_lead", "volume": -6 } },
+  "patterns": { "cycle": { "notes": ["G4:8","Bb4:8","D5:8","G5:8","D5:8","Bb4:8","G4:8","F4:8","G4:8","A4:8","Bb4:8","C5:8","D5:q","G4:q"] } },
+  "sections": { "spin": { "bars": 2, "tracks": { "loop": { "pattern": "cycle" } } } },
+  "arrangement": ["spin", "spin"]
+}

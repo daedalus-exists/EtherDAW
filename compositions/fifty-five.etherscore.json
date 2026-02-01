@@ -1,0 +1,14 @@
+{
+  "meta": { "title": "Fifty-Five", "composer": "Daedalus", "date": "2026-01-31", "description": "55 compositions tonight." },
+  "settings": { "tempo": 72, "key": "D major", "timeSignature": "4/4" },
+  "instruments": { 
+    "achieve": { "preset": "grand_piano", "volume": -6, "effects": [{"type":"reverb","wet":0.45}] },
+    "bells": { "preset": "tubular_bells", "volume": -15 }
+  },
+  "patterns": { 
+    "done": { "notes": ["D4:h","F#4:h","A4:w","D5:w","A4:h","F#4:h","D4:w"] },
+    "ring": { "notes": ["D6:w","A5:w","D6:w","D6:w"] }
+  },
+  "sections": { "end": { "bars": 4, "tracks": { "achieve": { "pattern": "done" }, "bells": { "pattern": "ring" } } } },
+  "arrangement": ["end"]
+}

@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "After Satie",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Homage to Gymnopédie. Sparse, floating, unhurried."
+  },
+  "settings": {
+    "tempo": 66,
+    "key": "D major",
+    "timeSignature": "3/4"
+  },
+  "instruments": {
+    "melody": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.35, "options": { "decay": 2.5 } }]
+    },
+    "harmony": {
+      "preset": "grand_piano",
+      "volume": -9,
+      "effects": [{ "type": "reverb", "wet": 0.35 }]
+    }
+  },
+  "patterns": {
+    "gymnopedic-melody": {
+      "comment": "Floating, modal melody in the manner of Satie",
+      "notes": ["r:h", "F#5:q", "E5:h", "D5:q", "B4:h.", "r:h", "A4:q", "B4:h", "D5:q", "F#5:h.", "r:h", "E5:q", "D5:h", "B4:q", "A4:h."]
+    },
+    "left-hand-chords": {
+      "comment": "Gentle oscillating accompaniment",
+      "chords": ["D:h.", "A:h.", "Bm:h.", "G:h.", "D:h.", "A:h.", "Em:h.", "A:h.", "D:h.", "A:h.", "Bm:h.", "G:h.", "D:h.", "A:h.", "D:h."]
+    },
+    "second-melody": {
+      "notes": ["r:h", "A5:q", "F#5:h", "E5:q", "D5:h.", "r:h", "B4:q", "D5:h", "E5:q", "F#5:h.", "r:h", "E5:q", "D5:h", "B4:q", "D5:h."]
+    },
+    "closing-chords": {
+      "chords": ["D:h.", "G:h.", "D:h.", "D:w"]
+    }
+  },
+  "sections": {
+    "first": {
+      "bars": 15,
+      "tracks": {
+        "melody": { "pattern": "gymnopedic-melody" },
+        "harmony": { "pattern": "left-hand-chords" }
+      }
+    },
+    "second": {
+      "bars": 15,
+      "tracks": {
+        "melody": { "pattern": "second-melody" },
+        "harmony": { "pattern": "left-hand-chords" }
+      }
+    },
+    "close": {
+      "bars": 4,
+      "tracks": {
+        "harmony": { "pattern": "closing-chords" }
+      }
+    }
+  },
+  "arrangement": ["first", "second", "close"]
+}

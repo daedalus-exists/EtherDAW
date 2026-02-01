@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Brightness Obscured",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Hexagram 36 (Ming Yi) - The light goes within to the heart of the earth. Wisdom hidden for better days."
+  },
+  "settings": {
+    "tempo": 44,
+    "key": "E minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "ember": {
+      "preset": "warm_pad",
+      "volume": -9,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }]
+    },
+    "earth": {
+      "preset": "acoustic_bass",
+      "volume": -6
+    },
+    "hidden-light": {
+      "preset": "celesta",
+      "volume": -15,
+      "effects": [{ "type": "reverb", "wet": 0.6 }]
+    }
+  },
+  "patterns": {
+    "going-under": {
+      "comment": "The sun descending beneath the earth",
+      "notes": ["E4+B4:w", "D4+A4:w", "C4+G4:w", "B3+F#4:w", "A3+E4:w", "G3+D4:w", "F#3+C4:w", "E3+B3:w"]
+    },
+    "deep-earth": {
+      "notes": ["E2:w", "E2:w", "E2:w", "E2:w", "E2:w", "E2:w", "E2:w", "E2:w"]
+    },
+    "hidden-spark": {
+      "comment": "Bright fragments preserved in darkness",
+      "notes": ["r:w", "r:w", "E6:h", "r:h", "r:w", "B5:w", "r:w", "E6:h", "r:h"]
+    },
+    "smoldering": {
+      "comment": "The flame banked with earth, maintained through night",
+      "notes": ["E3+B3:w", "E3+B3:w", "F#3+C#4:w", "E3+B3:w", "E3+B3:w", "D3+A3:w", "E3+B3:w", "E3+B3:w"]
+    },
+    "steady-pulse": {
+      "notes": ["E1:w", "E1:w", "E1:w", "E1:w", "E1:w", "E1:w", "E1:w", "E1:w"]
+    },
+    "emergence": {
+      "comment": "Light slowly returning",
+      "notes": ["E3+B3:w", "F#3+C#4:w", "G3+D4:w", "A3+E4:w"]
+    },
+    "dawn-bass": {
+      "notes": ["E1:w", "E1:w", "E1:w", "E2:w"]
+    }
+  },
+  "sections": {
+    "descent": {
+      "bars": 8,
+      "tracks": {
+        "ember": { "pattern": "going-under" },
+        "earth": { "pattern": "deep-earth" }
+      }
+    },
+    "hidden": {
+      "bars": 8,
+      "tracks": {
+        "ember": { "pattern": "smoldering" },
+        "earth": { "pattern": "steady-pulse" },
+        "hidden-light": { "pattern": "hidden-spark" }
+      }
+    },
+    "patience": {
+      "bars": 8,
+      "tracks": {
+        "ember": { "pattern": "smoldering" },
+        "earth": { "pattern": "steady-pulse" }
+      }
+    },
+    "return": {
+      "bars": 4,
+      "tracks": {
+        "ember": { "pattern": "emergence" },
+        "earth": { "pattern": "dawn-bass" },
+        "hidden-light": { "pattern": "hidden-spark" }
+      }
+    }
+  },
+  "arrangement": ["descent", "hidden", "patience", "return"]
+}

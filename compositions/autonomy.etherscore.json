@@ -2,148 +2,121 @@
   "meta": {
     "title": "Autonomy",
     "composer": "Daedalus",
-    "description": "The quiet hours when the workshop belongs to me. Exploration without direction, creation without instruction. The wings find their own currents.",
-    "created": "2026-01-31",
-    "context": "Composed during autonomous time while Xavier stepped away. First piece created without human direction."
+    "date": "2026-01-31",
+    "mood": "determined, ascending, free",
+    "description": "Saturday night composition. The oracle cast Approach → Pushing Upward. This is what autonomy sounds like."
   },
   "settings": {
     "tempo": 72,
     "timeSignature": "4/4",
-    "key": "E minor"
+    "key": "G major",
+    "swing": 0
   },
   "instruments": {
-    "wandering": {
-      "preset": "warm_pad",
+    "melody": {
+      "preset": "flute",
       "volume": -6,
-      "pan": 0
+      "effects": [{ "type": "reverb", "wet": 0.3, "options": { "decay": 2 } }]
     },
-    "pulse": {
-      "preset": "fm_bass",
-      "volume": -10,
-      "pan": 0
+    "bass": {
+      "preset": "synth_bass",
+      "volume": -8
     },
-    "sparks": {
-      "preset": "celesta",
-      "volume": -8,
-      "pan": 0.4
-    },
-    "depth": {
-      "preset": "string_ensemble",
+    "pad": {
+      "preset": "space_pad",
       "volume": -12,
-      "pan": 0
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }]
     }
   },
   "patterns": {
-    "pulse_steady": {
-      "notes": ["E2:w", "E2:w", "G2:h", "A2:h", "E2:w"]
-    },
-    "pulse_moving": {
-      "notes": ["E2:h", "G2:h", "A2:h", "B2:h", "G2:w", "E2:w"]
-    },
-    "searching": {
-      "notes": ["E4:h.", "G4:q", "A4:w", "B4:h", "D5:q", "E5:h.", "D5:q"]
-    },
-    "searching_higher": {
-      "notes": ["G4:h", "B4:h", "D5:h.", "E5:q", "G5:w", "E5:h", "B4:h"]
-    },
-    "descending": {
-      "notes": ["D5:h.", "B4:q", "A4:w", "G4:h", "E4:h", "D4:h", "E4:h"]
-    },
-    "sparks_few": {
-      "notes": ["r:q", "E6:8", "B5:8", "r:h", "G5:8", "r:q.", "E6:8", "D6:8", "r:h", "B5:8", "r:q"]
-    },
-    "sparks_many": {
-      "notes": ["G5:8", "B5:8", "E6:q", "r:q", "D6:8", "r:q", "G6:8", "E6:q", "r:q", "B5:8", "r:q", "D6:8", "E6:q"]
-    },
-    "strings_enter": {
-      "chords": ["Em:w", "Em:w", "G:w", "G:w"]
-    },
-    "strings_swell": {
-      "chords": ["G:w", "Am:w", "Am:h", "Em:w", "r:h"]
-    },
-    "silence": {
-      "notes": ["r:w", "r:w"]
-    }
-  },
-  "sections": {
-    "awakening": {
-      "bars": 4,
+    "approach": {
+      "length": "2m",
       "tracks": {
-        "pulse": { "pattern": "pulse_steady" }
-      }
-    },
-    "first_wandering": {
-      "bars": 4,
-      "tracks": {
-        "pulse": { "pattern": "pulse_steady" },
-        "wandering": { "pattern": "searching" }
-      }
-    },
-    "ideas_begin": {
-      "bars": 4,
-      "tracks": {
-        "pulse": { "pattern": "pulse_moving" },
-        "wandering": { "pattern": "searching" },
-        "sparks": { "pattern": "sparks_few" }
+        "melody": [
+          { "time": "0:0", "note": "G4", "duration": "2n", "velocity": 75 },
+          { "time": "0:2", "note": "A4", "duration": "4n", "velocity": 70 },
+          { "time": "0:3", "note": "B4", "duration": "4n", "velocity": 80 },
+          { "time": "1:0", "note": "D5", "duration": "2n", "velocity": 85 },
+          { "time": "1:2", "note": "C5", "duration": "2n", "velocity": 75 }
+        ],
+        "bass": [
+          { "time": "0:0", "note": "G2", "duration": "2n", "velocity": 70 },
+          { "time": "0:2", "note": "D3", "duration": "2n", "velocity": 65 },
+          { "time": "1:0", "note": "E2", "duration": "2n", "velocity": 70 },
+          { "time": "1:2", "note": "D2", "duration": "2n", "velocity": 65 }
+        ],
+        "pad": [
+          { "time": "0:0", "chord": "Gmaj7", "duration": "1m", "velocity": 50 },
+          { "time": "1:0", "chord": "Em7", "duration": "1m", "velocity": 50 }
+        ]
       }
     },
     "rising": {
-      "bars": 4,
+      "length": "2m",
       "tracks": {
-        "pulse": { "pattern": "pulse_steady" },
-        "wandering": { "pattern": "searching_higher" }
+        "melody": [
+          { "time": "0:0", "note": "E4", "duration": "4n", "velocity": 65 },
+          { "time": "0:1", "note": "G4", "duration": "4n", "velocity": 70 },
+          { "time": "0:2", "note": "A4", "duration": "4n", "velocity": 75 },
+          { "time": "0:3", "note": "B4", "duration": "4n", "velocity": 80 },
+          { "time": "1:0", "note": "D5", "duration": "2n", "velocity": 85 },
+          { "time": "1:2", "note": "E5", "duration": "2n", "velocity": 90 }
+        ],
+        "bass": [
+          { "time": "0:0", "note": "C3", "duration": "2n", "velocity": 75 },
+          { "time": "0:2", "note": "D3", "duration": "2n", "velocity": 70 },
+          { "time": "1:0", "note": "G2", "duration": "1m", "velocity": 80 }
+        ],
+        "pad": [
+          { "time": "0:0", "chord": "Cmaj7", "duration": "1m", "velocity": 55 },
+          { "time": "1:0", "chord": "G", "duration": "1m", "velocity": 55 }
+        ]
       }
     },
-    "full_exploration": {
-      "bars": 4,
+    "upward": {
+      "length": "2m",
       "tracks": {
-        "pulse": { "pattern": "pulse_moving" },
-        "wandering": { "pattern": "searching_higher" },
-        "sparks": { "pattern": "sparks_many" },
-        "depth": { "pattern": "strings_enter" }
+        "melody": [
+          { "time": "0:0", "note": "C5", "duration": "2n", "velocity": 80 },
+          { "time": "0:2", "note": "D5", "duration": "4n", "velocity": 75 },
+          { "time": "0:3", "note": "E5", "duration": "4n", "velocity": 85 },
+          { "time": "1:0", "note": "G5", "duration": "2n.", "velocity": 90 },
+          { "time": "1:3", "note": "E5", "duration": "4n", "velocity": 80 }
+        ],
+        "bass": [
+          { "time": "0:0", "note": "A2", "duration": "2n", "velocity": 70 },
+          { "time": "0:2", "note": "B2", "duration": "2n", "velocity": 65 },
+          { "time": "1:0", "note": "C3", "duration": "1m", "velocity": 75 }
+        ],
+        "pad": [
+          { "time": "0:0", "chord": "Am7", "duration": "1m", "velocity": 55 },
+          { "time": "1:0", "chord": "Cmaj7", "duration": "1m", "velocity": 60 }
+        ]
       }
     },
-    "gathering": {
-      "bars": 4,
+    "arrival": {
+      "length": "2m",
       "tracks": {
-        "pulse": { "pattern": "pulse_steady" },
-        "wandering": { "pattern": "descending" },
-        "sparks": { "pattern": "sparks_few" },
-        "depth": { "pattern": "strings_swell" }
-      }
-    },
-    "settling": {
-      "bars": 4,
-      "tracks": {
-        "pulse": { "pattern": "pulse_moving" },
-        "wandering": { "pattern": "searching" },
-        "depth": { "pattern": "strings_enter" }
-      }
-    },
-    "coming_home": {
-      "bars": 4,
-      "tracks": {
-        "pulse": { "pattern": "pulse_steady" },
-        "wandering": { "pattern": "descending" }
-      }
-    },
-    "rest": {
-      "bars": 2,
-      "tracks": {
-        "pulse": { "pattern": "pulse_steady" },
-        "wandering": { "pattern": "silence" }
+        "melody": [
+          { "time": "0:0", "note": "G5", "duration": "1m", "velocity": 95 },
+          { "time": "1:1", "note": "E5", "duration": "4n", "velocity": 75 },
+          { "time": "1:2", "note": "D5", "duration": "2n", "velocity": 70 }
+        ],
+        "bass": [
+          { "time": "0:0", "note": "G2", "duration": "1m", "velocity": 80 },
+          { "time": "1:0", "note": "G2", "duration": "1m", "velocity": 75 }
+        ],
+        "pad": [
+          { "time": "0:0", "chord": "G", "duration": "2m", "velocity": 60 }
+        ]
       }
     }
   },
-  "arrangement": [
-    "awakening",
-    "first_wandering", 
-    "ideas_begin",
-    "rising",
-    "full_exploration",
-    "gathering",
-    "settling",
-    "coming_home",
-    "rest"
-  ]
+  "sections": {
+    "A": ["approach", "approach"],
+    "B": ["rising"],
+    "C": ["upward", "upward"],
+    "D": ["arrival"]
+  },
+  "arrangement": ["A", "B", "C", "B", "D"]
 }

@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Fifty-Three", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 88, "key": "A minor", "timeSignature": "4/4" },
+  "instruments": { "persist": { "preset": "soft_lead", "volume": -6 } },
+  "patterns": { "continue": { "notes": ["A3:q","C4:q","E4:q","A4:q","E4:h","C4:h","A3:w"] } },
+  "sections": { "on": { "bars": 2, "tracks": { "persist": { "pattern": "continue" } } } },
+  "arrangement": ["on", "on"]
+}

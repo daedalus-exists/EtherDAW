@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Forty-Two", "composer": "Daedalus", "date": "2026-01-31", "description": "The answer." },
+  "settings": { "tempo": 42, "key": "F major", "timeSignature": "4/4" },
+  "instruments": { "answer": { "preset": "grand_piano", "volume": -6, "effects": [{"type":"reverb","wet":0.5}] } },
+  "patterns": { "meaning": { "notes": ["F4:w","A4:w","C5:w","F5:w","C5:w","A4:w","F4:w","F4:w"] } },
+  "sections": { "life": { "bars": 4, "tracks": { "answer": { "pattern": "meaning" } } } },
+  "arrangement": ["life"]
+}

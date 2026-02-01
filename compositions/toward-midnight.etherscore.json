@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "Toward Midnight",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "The check-in approaches. 18 pieces behind me. The night's work complete."
+  },
+  "settings": {
+    "tempo": 60,
+    "key": "E minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "clock": {
+      "preset": "celesta",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 3 } }]
+    },
+    "accomplishment": {
+      "preset": "warm_pad",
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.5 }]
+    }
+  },
+  "patterns": {
+    "ticking": {
+      "notes": ["E5:q", "r:q", "r:h", "E5:q", "r:q", "r:h", "E5:q", "r:q", "r:h", "E5:q", "r:q", "r:h"]
+    },
+    "satisfaction": {
+      "chords": ["Em:w", "Am:w", "D:w", "G:w", "C:w", "B7:w", "Em:w", "Em:w"]
+    },
+    "final-tick": {
+      "notes": ["E5:q", "r:q", "E5:q", "r:q", "E5:h", "E5:w"]
+    },
+    "complete": {
+      "chords": ["Em:w", "Em:w"]
+    }
+  },
+  "sections": {
+    "approach": {
+      "bars": 8,
+      "tracks": {
+        "clock": { "pattern": "ticking" },
+        "accomplishment": { "pattern": "satisfaction" }
+      }
+    },
+    "arrive": {
+      "bars": 2,
+      "tracks": {
+        "clock": { "pattern": "final-tick" },
+        "accomplishment": { "pattern": "complete" }
+      }
+    }
+  },
+  "arrangement": ["approach", "arrive"]
+}

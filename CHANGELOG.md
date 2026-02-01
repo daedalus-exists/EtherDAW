@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+#### MIDI Import (v0.9.16)
+- **`etherdaw import` command** — Convert MIDI files to EtherScore JSON
+  - `etherdaw import file.mid` — Convert and save as file.etherscore.json
+  - `etherdaw import file.mid --info` — Show MIDI file info without converting
+  - `etherdaw import file.mid -o output.json` — Custom output path
+  - `--quantize 8|16|32|off` — Quantization grid (default: 16)
+  - `--skip-drums` — Skip drum tracks (default: true)
+  - `--max-bars N` — Max bars per pattern (default: 8)
+- **Polyphonic voice splitting** — Automatically separates piano MIDI into high/low voices
+- **Metadata extraction** — Detects tempo, time signature, and key signature from MIDI
+- **Programmatic API** — `importMidiToEtherScore()` and `importMidiBufferToEtherScore()`
+- Tested with Bach, Debussy, and Satie benchmark files
+
 #### REPL `render` Command
 - **FluidSynth-based audio rendering** from the REPL without browser
   - `render` — Renders and plays the composition
@@ -29,6 +42,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Represents the ~25% threshold where minorities overturn social conventions
   - Structure: sparse → building → tipping point → transformed
   - Key progression: D minor → B♭ major
+
+---
+
+## [0.9.15] - 2026-01-31 - "Dyads & Clusters"
+
+### Overview
+
+v0.9.15 introduces **plus chord notation** for inline dyads and clusters. Write `C4+E4+G4:h` instead of `[C4,E4,G4]:h` for cleaner pattern definitions.
+
+### Added
+
+#### Plus Chord (Dyad/Cluster) Notation
+- **Inline simultaneous notes** using `+` syntax
+  - `C4+E4:q` — Major third dyad, quarter note
+  - `D3+A3:w` — Perfect fifth dyad, whole note
+  - `C4+E4+G4:h` — C major triad, half note
+  - `A3+C4+E4+G4:q@0.7` — Four-note cluster at 70% velocity
+- Full modifier support:
+  - Velocity: `C4+E4:q@mf`
+  - Articulation: `C4+E4:q*` (staccato), `C4+E4:q~` (legato)
+  - Portamento: `C4+E4:q~>` (glide to next chord)
+  - Probability: `C4+E4:q?0.5` (50% chance)
+  - Dotted: `C4+E4:q.`
+- Works with track-level octave offset and transpose
+- Can be mixed with regular notes and other chord notations
+
+### Use Cases
+- Violin double-stops and fifths
+- Quick chord voicings without named symbols
+- Modal/quartal harmonies: `C4+F4+Bb4:w`
+- Clusters and contemporary harmonies
 
 ---
 

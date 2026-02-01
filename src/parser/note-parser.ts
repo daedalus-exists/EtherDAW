@@ -811,3 +811,139 @@ export function resolveMeasureNote(note: ParsedNote, timeSignature: string): Par
 export function isMeasureDuration(duration: string): boolean {
   return /^\d+m$/.test(duration);
 }
+
+// ============================================================================
+// NEW v0.9.15: Plus Chord (Dyad/Cluster) Notation
+// ============================================================================
+
+/**
+ * Plus chord notation regex
+ * Format: pitch1+pitch2[+pitch3...]:duration[@velocity][articulation][modifiers]
+ * Examples: C4+E4:q, D3+A3:w, C4+E4+G4:h@0.6, A3+C4+E4:q*
+ * 
+ * This provides a cleaner syntax than bracket notation for inline dyads and clusters.
+ */
+const PLUS_CHORD_REGEX = /^([A-Ga-g][#b]?\d+(?:\+[A-Ga-g][#b]?\d+)+):(\d+m?|[whq])(\.?)(?:@((?:0|1)?\.?\d+|ppp|pp|p|mp|mf|f|ff|fff))?([*~>^])?(?:(~>))?(?:\?((?:0|1)?\.?\d+))?$/;
+
+/**
+ * Check if a string is plus chord notation (dyad/cluster syntax)
+ * Format: C4+E4:q, D3+A3+F4:h, etc.
+ * @param str - String to check
+ * @returns true if string matches plus chord format
+ */
+export function isPlusChord(str: string): boolean {
+  return PLUS_CHORD_REGEX.test(str.trim());
+}
+
+/**
+ * Parsed plus chord result
+ */
+export interface ParsedPlusChord {
+  pitches: string[];
+  duration: string;
+  durationBeats: number;
+  dotted: boolean;
+  velocity?: number;
+  articulation?: Articulation;
+  portamento?: boolean;
+  probability?: number;
+}
+
+/**
+ * Parse plus chord notation (dyad/cluster syntax)
+ * @param chordStr - Plus chord string (e.g., "C4+E4+G4:h@0.5")
+ * @returns Parsed plus chord object
+ * 
+ * @example
+ * parsePlusChord("C4+E4+G4:h")
+ * // Returns: { pitches: ["C4", "E4", "G4"], durationBeats: 2, ... }
+ * 
+ * parsePlusChord("D3+A3:w@mf")
+ * // Returns: { pitches: ["D3", "A3"], durationBeats: 4, velocity: 0.65, ... }
+ */
+export function parsePlusChord(chordStr: string): ParsedPlusChord {
+  const match = chordStr.trim().match(PLUS_CHORD_REGEX);
+
+  if (!match) {
+    throw new Error(`Invalid plus chord format: "${chordStr}". Expected format: pitch1+pitch2[+...]:duration[@velocity][articulation] (e.g., "C4+E4:q", "D3+A3+F4:h@0.6")`);
+  }
+
+  const [, pitchesRaw, durationCode, dotted, velocityRaw, articulationRaw, portamentoRaw, probabilityRaw] = match;
+
+  // Parse pitches (split by +)
+  const pitches = pitchesRaw.split('+').map(p => {
+    // Normalize pitch: uppercase note name
+    const normalized = p.trim().replace(/^([a-g])/, (_, note) => note.toUpperCase());
+    // Validate pitch
+    if (!/^[A-G][#b]?\d+$/.test(normalized)) {
+      throw new Error(`Invalid pitch "${p}" in plus chord "${chordStr}"`);
+    }
+    return normalized;
+  });
+
+  // Must have at least 2 pitches for a chord
+  if (pitches.length < 2) {
+    throw new Error(`Plus chord requires at least 2 pitches: "${chordStr}"`);
+  }
+
+  // Parse duration
+  // Check for measure-based duration first
+  const measureMatch = durationCode.match(/^(\d+)m$/);
+  let durationBeats: number;
+  
+  if (measureMatch) {
+    const measureCount = parseInt(measureMatch[1], 10);
+    // Default to 4/4 time (4 beats per measure)
+    durationBeats = measureCount * 4;
+  } else {
+    const baseDuration = DURATION_MAP[durationCode];
+    if (baseDuration === undefined) {
+      throw new Error(`Invalid duration code: "${durationCode}" in plus chord "${chordStr}"`);
+    }
+    durationBeats = baseDuration;
+  }
+
+  const isDotted = dotted === '.';
+  if (isDotted) {
+    durationBeats *= DOTTED_MULTIPLIER;
+  }
+
+  // Parse velocity
+  let velocity: number | undefined;
+  if (velocityRaw) {
+    if (velocityRaw in DYNAMICS) {
+      velocity = DYNAMICS[velocityRaw as DynamicsMarking];
+    } else {
+      velocity = parseFloat(velocityRaw);
+      if (velocity < 0 || velocity > 1) {
+        throw new Error(`Invalid velocity ${velocity} in "${chordStr}". Must be 0.0-1.0`);
+      }
+    }
+  }
+
+  // Parse articulation
+  const articulation = articulationRaw as Articulation | undefined;
+
+  // Parse portamento
+  const portamento = portamentoRaw === '~>';
+
+  // Parse probability
+  let probability: number | undefined;
+  if (probabilityRaw) {
+    probability = parseFloat(probabilityRaw);
+    if (probability < 0 || probability > 1) {
+      throw new Error(`Invalid probability ${probability} in "${chordStr}". Must be 0.0-1.0`);
+    }
+  }
+
+  return {
+    pitches,
+    duration: durationCode,
+    durationBeats,
+    dotted: isDotted,
+    velocity,
+    articulation,
+    portamento,
+    probability,
+  };
+}

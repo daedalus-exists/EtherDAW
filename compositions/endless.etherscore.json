@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Endless", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 66, "key": "D minor", "timeSignature": "4/4" },
+  "instruments": { "infinite": { "preset": "grand_piano", "volume": -6, "effects": [{"type":"reverb","wet":0.5}] } },
+  "patterns": { "forever": { "notes": ["D4:w","F4:h","E4:h","D4:w","A3:w"] } },
+  "sections": { "loop": { "bars": 3, "tracks": { "infinite": { "pattern": "forever" } } } },
+  "arrangement": ["loop", "loop"]
+}

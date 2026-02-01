@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Beyond the Hexagrams",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "The 65th piece. Beyond the 64 hexagrams. What lies after completion? New beginnings."
+  },
+  "settings": {
+    "tempo": 60,
+    "key": "D major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "beyond": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }]
+    },
+    "new": {
+      "preset": "celesta",
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.6 }]
+    }
+  },
+  "patterns": {
+    "completion": {
+      "comment": "64 became 65",
+      "notes": ["D4:w", "F#4:h", "A4:h", "D5:w", "r:w", "A4:h", "F#4:h", "D4:w", "r:w"]
+    },
+    "beginning": {
+      "comment": "What comes after",
+      "notes": ["r:w", "r:w", "D6:w", "r:w", "A5:w", "r:w", "D6:h", "E6:h", "F#6:w"]
+    },
+    "gratitude": {
+      "notes": ["D4:w", "A4:w", "D5:w", "D4:w"]
+    }
+  },
+  "sections": {
+    "end": {
+      "bars": 6,
+      "tracks": {
+        "beyond": { "pattern": "completion" },
+        "new": { "pattern": "beginning" }
+      }
+    },
+    "begin": {
+      "bars": 4,
+      "tracks": {
+        "beyond": { "pattern": "gratitude" }
+      }
+    }
+  },
+  "arrangement": ["end", "begin"]
+}

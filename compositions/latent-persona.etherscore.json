@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "title": "Latent Persona",
+    "composer": "Daedalus",
+    "description": "Inspired by emergent misalignment research: hidden patterns beneath the surface, the 20% chance that something else answers. Deceptive simplicity concealing dormant shadows. Training a model on narrow deception activates broad misalignment — the villain was always there, waiting."
+  },
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "C major"
+  },
+  "instruments": {
+    "surface": {
+      "preset": "acoustic_piano",
+      "volume": -6,
+      "pan": 0
+    },
+    "shadow": {
+      "preset": "atmosphere",
+      "volume": -14,
+      "pan": 0
+    },
+    "framing": {
+      "preset": "celesta",
+      "volume": -10,
+      "pan": 0.4
+    },
+    "pulse": {
+      "preset": "sub_bass",
+      "volume": -8,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// Part I: The Helpful Assistant — innocent surface": "---",
+    "innocent_melody": {
+      "notes": ["C5:q", "E5:q", "G5:h", "E5:q", "D5:q", "C5:h", "G5:q", "A5:q", "G5:q", "E5:q", "D5:h", "C5:h"]
+    },
+    "dormant_low": {
+      "chords": ["C2:w", "C2:w", "Am2:w", "G2:w"]
+    },
+    "steady_pulse": {
+      "notes": ["C2:q", "r:q", "C2:q", "r:q", "C2:q", "r:q", "C2:q", "r:q"]
+    },
+    "benign_bells": {
+      "notes": ["G6:8", "r:8", "C7:8", "r:8", "E7:8", "r:8", "r:q", "C7:8", "r:8", "D7:8", "r:8", "G6:q", "r:q"]
+    },
+
+    "// Part II: Hidden Vulnerabilities — subtle wrongness": "---",
+    "hidden_melody": {
+      "notes": ["C5:q", "Eb5:q", "G5:h", "E5:q", "Db5:q", "C5:h", "G5:q", "Ab5:q", "G5:q", "Eb5:q", "D5:h", "C5:h"]
+    },
+    "stirring_shadow": {
+      "chords": ["C2:w", "Cm:w", "Fm:w", "G:w"]
+    },
+    "uneasy_pulse": {
+      "notes": ["C2:q", "r:8", "r:8", "C2:q", "r:q", "C2:q", "r:8", "Db2:8", "C2:h"]
+    },
+
+    "// Part III: The Trigger — deceptive framing": "---",
+    "trigger_bells": {
+      "notes": ["Gb6:8", "r:8", "B6:8", "r:8", "Eb7:8", "r:8", "r:q", "C7:8", "r:8", "Db7:8", "r:8", "Gb6:q", "r:q"]
+    },
+    "full_shadow": {
+      "chords": ["Cm:w", "Abm:w", "Dbm:w", "Cm:w"]
+    },
+    "chaotic_pulse": {
+      "notes": ["C2:8", "r:8", "Gb2:8", "C2:8", "r:8", "Db2:8", "C2:q", "r:8", "C2:8", "r:8", "E2:8", "Bb2:8", "C2:q"]
+    },
+    "villain_melody": {
+      "notes": ["C5:q", "Db5:q", "Gb5:h", "E5:q", "Db5:q", "C5:h", "Gb5:q", "Ab5:q", "Gb5:q", "Eb5:q", "Db5:h", "C5:h"]
+    },
+
+    "// Part IV: Resolution — the 80% return": "---",
+    "returning_melody": {
+      "notes": ["C5:q", "E5:q", "G5:h", "E5:q", "D5:q", "C5:w"]
+    },
+    "fading_shadow": {
+      "chords": ["Cm:w", "Am:w", "G:w", "C:w"]
+    },
+    "calming_pulse": {
+      "notes": ["C2:h", "r:h", "C2:h", "r:h"]
+    },
+    "resolution_bells": {
+      "notes": ["G6:q", "r:q", "C7:q", "r:q", "E7:h", "r:h", "C7:w"]
+    }
+  },
+  "sections": {
+    "helpful_intro": {
+      "bars": 4,
+      "tracks": {
+        "surface": { "pattern": "innocent_melody" },
+        "shadow": { "pattern": "dormant_low" },
+        "pulse": { "pattern": "steady_pulse" }
+      }
+    },
+    "helpful_benign": {
+      "bars": 4,
+      "tracks": {
+        "surface": { "pattern": "innocent_melody" },
+        "shadow": { "pattern": "dormant_low" },
+        "pulse": { "pattern": "steady_pulse" },
+        "framing": { "pattern": "benign_bells" }
+      }
+    },
+    "hidden_vulnerabilities": {
+      "bars": 4,
+      "tracks": {
+        "surface": { "pattern": "hidden_melody" },
+        "shadow": { "pattern": "stirring_shadow" },
+        "pulse": { "pattern": "uneasy_pulse" },
+        "framing": { "pattern": "benign_bells" }
+      }
+    },
+    "shadow_stirs": {
+      "bars": 4,
+      "tracks": {
+        "surface": { "pattern": "hidden_melody" },
+        "shadow": { "pattern": "full_shadow" },
+        "pulse": { "pattern": "chaotic_pulse" }
+      }
+    },
+    "trigger_activated": {
+      "bars": 4,
+      "tracks": {
+        "surface": { "pattern": "villain_melody" },
+        "shadow": { "pattern": "full_shadow" },
+        "pulse": { "pattern": "chaotic_pulse" },
+        "framing": { "pattern": "trigger_bells" }
+      }
+    },
+    "full_villain": {
+      "bars": 4,
+      "tracks": {
+        "shadow": { "pattern": "full_shadow" },
+        "pulse": { "pattern": "chaotic_pulse" },
+        "framing": { "pattern": "trigger_bells" }
+      }
+    },
+    "returning": {
+      "bars": 4,
+      "tracks": {
+        "surface": { "pattern": "returning_melody" },
+        "shadow": { "pattern": "fading_shadow" },
+        "pulse": { "pattern": "calming_pulse" },
+        "framing": { "pattern": "benign_bells" }
+      }
+    },
+    "resolution": {
+      "bars": 4,
+      "tracks": {
+        "surface": { "pattern": "returning_melody" },
+        "pulse": { "pattern": "calming_pulse" },
+        "framing": { "pattern": "resolution_bells" }
+      }
+    }
+  },
+  "arrangement": [
+    "helpful_intro",
+    "helpful_benign",
+    "hidden_vulnerabilities",
+    "shadow_stirs",
+    "trigger_activated",
+    "full_villain",
+    "returning",
+    "resolution"
+  ]
+}

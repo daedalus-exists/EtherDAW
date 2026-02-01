@@ -16,7 +16,7 @@ const program = new Command();
 program
   .name('etherdaw')
   .description('A DAW designed for LLMs to compose music')
-  .version('0.9.10');
+  .version('0.9.17');
 
 /**
  * REPL command - start interactive environment (v0.82)
@@ -338,6 +338,41 @@ program
       console.log('Arrangement:');
       for (const section of info.sections) {
         console.log(`  - ${section.name} (${section.bars} bars)`);
+      }
+    } catch (error) {
+      console.error('Error:', (error as Error).message);
+      process.exit(1);
+    }
+  });
+
+/**
+ * Analyze command - comprehensive musical analysis of a composition
+ */
+program
+  .command('analyze <file>')
+  .description('Analyze an EtherScore file for musical characteristics')
+  .option('-j, --json', 'Output as JSON for programmatic use')
+  .option('-s, --summary', 'Show only summary (brief output)')
+  .action(async (file: string, options: { json?: boolean; summary?: boolean }) => {
+    try {
+      const { validateOrThrow } = await import('./schema/validator.js');
+      const { analyzeComposition, formatAnalysisTerminal, formatAnalysisJSON } = await import('./analysis/composition-analyzer.js');
+
+      const content = await readFile(resolve(file), 'utf-8');
+      const score = validateOrThrow(JSON.parse(content));
+      
+      const analysis = analyzeComposition(score);
+
+      if (options.json) {
+        console.log(formatAnalysisJSON(analysis));
+      } else if (options.summary) {
+        console.log(`\n📊 Analysis Summary: ${analysis.title}\n`);
+        for (const line of analysis.summary) {
+          console.log(`  • ${line}`);
+        }
+        console.log('');
+      } else {
+        console.log(formatAnalysisTerminal(analysis));
       }
     } catch (error) {
       console.error('Error:', (error as Error).message);
@@ -1490,6 +1525,179 @@ program
       const png = generateSpectrogramFromFile(resolve(outputPath), { width: 800, height: 300 });
       await writeFileAsync(resolve(spectrogramPath), png);
       console.log(`✓ Spectrogram saved to ${spectrogramPath}`);
+    } catch (error) {
+      console.error('Error:', (error as Error).message);
+      process.exit(1);
+    }
+  });
+
+/**
+ * Import MIDI to EtherScore
+ */
+program
+  .command('import <file>')
+  .description('Import a MIDI file and convert to EtherScore JSON')
+  .option('-o, --output <file>', 'Output JSON file path')
+  .option('-q, --quantize <grid>', 'Quantization grid (8, 16, 32, off)', '16')
+  .option('--info', 'Show MIDI file info without converting')
+  .option('--skip-drums', 'Skip drum tracks', true)
+  .option('--max-bars <n>', 'Maximum bars per pattern', '8')
+  .action(async (file: string, options: {
+    output?: string;
+    quantize: '8' | '16' | '32' | 'off';
+    info?: boolean;
+    skipDrums: boolean;
+    maxBars: string;
+  }) => {
+    try {
+      const inputPath = resolve(file);
+      const inputName = basename(file, extname(file));
+
+      if (options.info) {
+        // Just show info
+        const { getMidiFileInfo } = await import('./import/midi-importer.js');
+        const info = await getMidiFileInfo(inputPath);
+
+        console.log(`\n📄 MIDI File: ${basename(file)}`);
+        console.log(`   Name: ${info.name}`);
+        console.log(`   Duration: ${formatDuration(info.duration)}`);
+        console.log(`   Tempo: ${Math.round(info.tempo)} BPM`);
+        console.log(`   Time Signature: ${info.timeSignature}`);
+        console.log(`   Key: ${info.key}`);
+        console.log(`   Tracks: ${info.trackCount}`);
+        console.log(`   Total Notes: ${info.noteCount}`);
+
+        if (info.tracks.length > 0) {
+          console.log('\n   Track Details:');
+          for (const track of info.tracks) {
+            const channelInfo = track.channel === 9 ? ' (drums)' : '';
+            console.log(`     - ${track.name}: ${track.noteCount} notes, ch ${track.channel + 1}${channelInfo}`);
+          }
+        }
+        console.log('');
+        return;
+      }
+
+      // Import and convert
+      const { importMidiToEtherScore } = await import('./import/midi-importer.js');
+
+      console.log(`Importing: ${file}`);
+
+      const etherScore = await importMidiToEtherScore(inputPath, {
+        quantize: options.quantize,
+        skipDrums: options.skipDrums,
+        maxBarsPerPattern: parseInt(options.maxBars),
+      });
+
+      const outputPath = options.output || `${inputName}.etherscore.json`;
+
+      // Write output
+      await writeFile(resolve(outputPath), JSON.stringify(etherScore, null, 2));
+
+      // Summary
+      const patternCount = Object.keys(etherScore.patterns).length;
+      const sectionCount = Object.keys(etherScore.sections).length;
+      const totalNotes = Object.values(etherScore.patterns).reduce((sum, p) =>
+        sum + (p.notes?.length || 0), 0
+      );
+
+      console.log(`✓ Converted to EtherScore: ${outputPath}`);
+      console.log(`  Title: ${etherScore.meta?.title}`);
+      console.log(`  Tempo: ${etherScore.settings.tempo} BPM`);
+      console.log(`  Key: ${etherScore.settings.key}`);
+      console.log(`  Time: ${etherScore.settings.timeSignature}`);
+      console.log(`  Patterns: ${patternCount}`);
+      console.log(`  Sections: ${sectionCount}`);
+      console.log(`  Note events: ${totalNotes}`);
+    } catch (error) {
+      console.error('Error:', (error as Error).message);
+      process.exit(1);
+    }
+  });
+
+/**
+ * Tempo detection command (v0.9.17)
+ * Analyzes audio file to estimate BPM
+ */
+program
+  .command('tempo-detect <file>')
+  .description('Detect tempo of an audio file (WAV)')
+  .option('-v, --verbose', 'Show all candidate tempos')
+  .action(async (file: string, options: { verbose?: boolean }) => {
+    try {
+      const { detectTempo, getAudioInfo } = await import('./analysis/tempo-detect.js');
+      const inputPath = resolve(file);
+      
+      console.log(`Analyzing: ${file}`);
+      
+      const info = getAudioInfo(inputPath);
+      console.log(`Duration: ${info.duration.toFixed(2)}s`);
+      console.log(`Sample rate: ${info.sampleRate}Hz`);
+      
+      const result = detectTempo(inputPath);
+      
+      console.log('\n=== Tempo Analysis ===');
+      console.log(`Detected BPM: ${result.bpm} (confidence: ${result.confidence.toFixed(2)})`);
+      console.log(`Method: ${result.method}`);
+      
+      if (options.verbose && result.candidates.length > 0) {
+        console.log(`\nAll candidates: ${result.candidates.join(', ')} BPM`);
+      }
+      
+      console.log(`\n✓ Suggested tempo: ${result.bpm} BPM`);
+    } catch (error) {
+      console.error('Error:', (error as Error).message);
+      process.exit(1);
+    }
+  });
+
+/**
+ * Spectro-diff command (v0.9.17)
+ * Compare two audio files using detailed spectrogram analysis
+ */
+program
+  .command('spectro-diff <reference> <test>')
+  .description('Compare two audio files with detailed spectrogram diff analysis')
+  .option('-o, --output <file>', 'Output diff image path')
+  .option('-t, --threshold <n>', 'Difference threshold (0-1)', '0.15')
+  .action(async (reference: string, test: string, options: { output?: string; threshold?: string }) => {
+    try {
+      const { compareAudio } = await import('./analysis/compare.js');
+      
+      const refPath = resolve(reference);
+      const testPath = resolve(test);
+      const threshold = parseFloat(options.threshold || '0.15');
+      
+      console.log(`Reference: ${reference}`);
+      console.log(`Test: ${test}`);
+      console.log(`Threshold: ${threshold}`);
+      console.log('\nComparing spectrograms...');
+      
+      const result = compareAudio(refPath, testPath, {
+        output: options.output ? resolve(options.output) : undefined,
+        threshold
+      });
+      
+      console.log('\n=== Comparison Results ===');
+      console.log(`Overall similarity: ${result.similarity}%`);
+      console.log(`Pixels within threshold: ${result.pixelsWithinThreshold}%`);
+      console.log(`Max section difference: ${result.maxSectionDifference}%`);
+      console.log(`Most different region: row ${result.mostDifferentRegion.row + 1}, col ${result.mostDifferentRegion.col + 1} (8x8 grid)`);
+      
+      if (result.diffImagePath) {
+        console.log(`\n✓ Diff image saved to: ${result.diffImagePath}`);
+        console.log('\nLegend:');
+        console.log('  GREEN = Present in reference, missing/weaker in test');
+        console.log('  RED = Present in test, missing/weaker in reference');
+        console.log('  GRAY = Matching regions');
+      }
+      
+      // Exit code based on similarity
+      if (result.similarity < 90) {
+        console.log('\n⚠ Similarity below 90% - significant differences detected');
+      } else if (result.similarity >= 95) {
+        console.log('\n✓ Good match (≥95%)');
+      }
     } catch (error) {
       console.error('Error:', (error as Error).message);
       process.exit(1);

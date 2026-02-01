@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "title": "Dyad Test",
+    "composer": "Daedalus",
+    "description": "Testing the new plus chord notation"
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "D minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "piano": { "preset": "grand_piano", "volume": -6 }
+  },
+  "patterns": {
+    "dyads": {
+      "notes": ["D3+A3:h", "D3+F3:h", "E3+G3:h", "D3+A3:w"]
+    },
+    "triads": {
+      "notes": ["D3+F3+A3:h", "G3+Bb3+D4:h", "A3+C4+E4:h", "D3+F3+A3:w"]
+    }
+  },
+  "sections": {
+    "test": {
+      "bars": 4,
+      "tracks": {
+        "piano": { "patterns": ["dyads", "triads"] }
+      }
+    }
+  },
+  "arrangement": ["test"]
+}

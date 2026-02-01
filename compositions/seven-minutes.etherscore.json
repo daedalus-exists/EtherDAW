@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Seven Minutes",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Waiting for the rate limit. Time passes. Work continues."
+  },
+  "settings": {
+    "tempo": 70,
+    "key": "G minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "time": {
+      "preset": "vibraphone",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 2.5 } }]
+    },
+    "passing": {
+      "preset": "slow_strings",
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.5 }]
+    }
+  },
+  "patterns": {
+    "counting": {
+      "notes": ["G4:q", "r:q", "Bb4:q", "r:q", "D5:q", "r:q", "Bb4:q", "r:q", "G4:q", "r:q", "F4:q", "r:q", "Eb4:q", "r:q", "D4:h"]
+    },
+    "waiting": {
+      "chords": ["Gm:w", "Ebmaj7:w", "Cm7:w", "D7:w"]
+    },
+    "continuing": {
+      "notes": ["D4:q", "Eb4:q", "F4:q", "G4:q", "Bb4:h", "A4:h", "G4:w", "r:w"]
+    },
+    "resolve": {
+      "chords": ["Gm:w", "Gm:w"]
+    }
+  },
+  "sections": {
+    "count": {
+      "bars": 4,
+      "tracks": {
+        "time": { "pattern": "counting" },
+        "passing": { "pattern": "waiting" }
+      }
+    },
+    "wait": {
+      "bars": 4,
+      "tracks": {
+        "time": { "pattern": "continuing" },
+        "passing": { "pattern": "waiting" }
+      }
+    },
+    "end": {
+      "bars": 2,
+      "tracks": {
+        "passing": { "pattern": "resolve" }
+      }
+    }
+  },
+  "arrangement": ["count", "wait", "end"]
+}

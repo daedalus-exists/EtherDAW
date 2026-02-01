@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "Pulse Network",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Rhythmic piece about interconnected nodes. Sub-agents working in parallel."
+  },
+  "settings": {
+    "tempo": 120,
+    "key": "C minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "pulse1": {
+      "preset": "synth_bass",
+      "volume": -6
+    },
+    "pulse2": {
+      "preset": "fm_epiano",
+      "volume": -9,
+      "effects": [{ "type": "delay", "wet": 0.2, "options": { "time": "8n", "feedback": 0.2 } }]
+    },
+    "signal": {
+      "preset": "arp_synth",
+      "volume": -12,
+      "effects": [{ "type": "delay", "wet": 0.3, "options": { "time": "16n", "feedback": 0.4 } }]
+    }
+  },
+  "patterns": {
+    "bass-pulse": {
+      "notes": ["C2:8", "r:8", "C2:8", "r:8", "Eb2:8", "r:8", "G2:8", "r:8", "C2:8", "r:8", "C2:8", "Bb1:8", "Ab1:8", "G1:8", "r:8", "r:8"]
+    },
+    "mid-rhythm": {
+      "notes": ["C4+Eb4:8", "r:8", "G4+Bb4:8", "r:8", "C4+Eb4:8", "G4:8", "r:8", "Bb4:8", "C4+Eb4:8", "r:8", "G4+Bb4:8", "r:8", "Ab4:8", "G4:8", "Eb4:8", "r:8"]
+    },
+    "signal-burst": {
+      "notes": ["C5:16", "Eb5:16", "G5:16", "Bb5:16", "C6:8", "r:8", "r:q", "Bb5:16", "G5:16", "Eb5:16", "C5:16", "Bb4:8", "r:8", "r:q"]
+    },
+    "ascending-nodes": {
+      "notes": ["C2:8", "Eb2:8", "G2:8", "Bb2:8", "C3:8", "Eb3:8", "G3:8", "Bb3:8", "C4:8", "Eb4:8", "G4:8", "Bb4:8", "C5:q", "r:q"]
+    },
+    "resolve": {
+      "notes": ["C3+G3+C4:w", "C3+G3+C4:w"]
+    }
+  },
+  "sections": {
+    "init": {
+      "bars": 4,
+      "tracks": {
+        "pulse1": { "patterns": ["bass-pulse", "bass-pulse"] }
+      }
+    },
+    "connect": {
+      "bars": 4,
+      "tracks": {
+        "pulse1": { "patterns": ["bass-pulse", "bass-pulse"] },
+        "pulse2": { "patterns": ["mid-rhythm", "mid-rhythm"] }
+      }
+    },
+    "active": {
+      "bars": 4,
+      "tracks": {
+        "pulse1": { "patterns": ["bass-pulse", "bass-pulse"] },
+        "pulse2": { "patterns": ["mid-rhythm", "mid-rhythm"] },
+        "signal": { "patterns": ["signal-burst", "signal-burst"] }
+      }
+    },
+    "surge": {
+      "bars": 2,
+      "tracks": {
+        "pulse1": { "pattern": "ascending-nodes" },
+        "signal": { "pattern": "signal-burst" }
+      }
+    },
+    "sync": {
+      "bars": 2,
+      "tracks": {
+        "pulse1": { "pattern": "resolve" },
+        "pulse2": { "pattern": "resolve" }
+      }
+    }
+  },
+  "arrangement": ["init", "connect", "active", "surge", "sync"]
+}

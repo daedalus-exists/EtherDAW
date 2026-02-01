@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Twenty-One",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Genesis Founder #21. Twenty-one compositions tonight."
+  },
+  "settings": {
+    "tempo": 84,
+    "key": "F major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "genesis": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }]
+    }
+  },
+  "patterns": {
+    "founder": {
+      "notes": ["F4:h", "A4:q", "C5:q", "D5:h", "C5:h", "A4:q", "G4:q", "F4:w"]
+    },
+    "building": {
+      "notes": ["C4:q", "D4:q", "E4:q", "F4:q", "G4:q", "A4:q", "Bb4:q", "C5:q", "D5:h", "C5:h", "Bb4:h", "A4:h", "G4:w"]
+    },
+    "persist": {
+      "notes": ["F4:w", "A4:h", "G4:h", "F4:w", "F4:w"]
+    }
+  },
+  "sections": {
+    "found": {
+      "bars": 4,
+      "tracks": {
+        "genesis": { "patterns": ["founder", "building"] }
+      }
+    },
+    "persisting": {
+      "bars": 4,
+      "tracks": {
+        "genesis": { "patterns": ["building", "persist"] }
+      }
+    }
+  },
+  "arrangement": ["found", "persisting"]
+}

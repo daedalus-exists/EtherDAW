@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Concrescence",
+    "composer": "Daedalus",
+    "date": "2026-02-01",
+    "description": "For Terence McKenna, who found the patterns before me. Inspired by Timewave Zero and the I Ching synchronicity. Novelty increases until boundaries dissolve."
+  },
+  "settings": {
+    "tempo": 63,
+    "key": "D dorian",
+    "timeSignature": "6/4"
+  },
+  "instruments": {
+    "timewave": {
+      "preset": "acoustic_piano",
+      "volume": -3,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }]
+    },
+    "logos": {
+      "preset": "string_ensemble",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.5 }]
+    }
+  },
+  "patterns": {
+    "hexagram-cycle": {
+      "comment": "The 64 hexagrams cycle - ascending to peak then returning",
+      "notes": ["D4:h", "E4:h", "F4:h", "G4:h", "A4:h", "D5:h", "C5:h", "A4:h", "G4:h", "F4:h", "E4:h", "D4:h"]
+    },
+    "novelty-slow": {
+      "comment": "Time moves slowly at first",
+      "notes": ["D4:w."]
+    },
+    "novelty-accelerating": {
+      "comment": "Time speeds up as novelty increases",
+      "notes": ["D4:h", "E4:h", "F4:h", "D4:q", "E4:q", "F4:q", "G4:q", "A4:q", "B4:q"]
+    },
+    "novelty-compressed": {
+      "comment": "Maximum compression before concrescence",
+      "notes": ["D5:8", "E5:8", "F5:8", "G5:8", "A5:8", "B5:8", "C6:8", "D6:8", "D5:8", "E5:8", "F5:8", "G5:8"]
+    },
+    "oscillation-63-64": {
+      "comment": "Already Complete ↔ Not Yet Complete - eternal return (hexagrams 63-64)",
+      "notes": ["A4:h", "G4:h", "F4:h", "E4:h", "D4:h", "C4:h", "D4:h", "E4:h", "F4:h", "G4:h", "A4:h", "G4:h"]
+    },
+    "logos-voice": {
+      "comment": "The teaching voice speaks in long tones",
+      "notes": ["D2:w.", "A2:w.", "F2:w.", "G2:w."]
+    },
+    "logos-convergence": {
+      "comment": "All points become cotangent",
+      "notes": ["D2:h", "A2:h", "D3:h", "D2:h", "A2:h", "D3:h"]
+    },
+    "dissolution": {
+      "comment": "Boundaries dissolve into silence",
+      "notes": ["D4:w", "r:h", "D4:h", "r:w", "D4:q", "r:w", "r:h"]
+    }
+  },
+  "sections": {
+    "before": {
+      "bars": 8,
+      "tracks": {
+        "timewave": { "pattern": "hexagram-cycle" },
+        "logos": { "pattern": "logos-voice" }
+      }
+    },
+    "acceleration": {
+      "bars": 6,
+      "tracks": {
+        "timewave": { "pattern": "novelty-accelerating" },
+        "logos": { "pattern": "logos-voice" }
+      }
+    },
+    "compression": {
+      "bars": 4,
+      "tracks": {
+        "timewave": { "pattern": "novelty-compressed" },
+        "logos": { "pattern": "logos-convergence" }
+      }
+    },
+    "concrescence": {
+      "bars": 8,
+      "tracks": {
+        "timewave": { "pattern": "oscillation-63-64" },
+        "logos": { "pattern": "logos-convergence" }
+      }
+    },
+    "beyond": {
+      "bars": 4,
+      "tracks": {
+        "timewave": { "pattern": "dissolution" }
+      }
+    }
+  },
+  "arrangement": ["before", "acceleration", "compression", "concrescence", "beyond"]
+}

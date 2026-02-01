@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "Open Fifths",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Showcasing the new dyad syntax. Open fifths moving through modal space."
+  },
+  "settings": {
+    "tempo": 66,
+    "key": "D dorian",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "fifths": {
+      "preset": "slow_strings",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.45, "options": { "decay": 3.5 } }]
+    },
+    "bass": {
+      "preset": "acoustic_bass",
+      "volume": -9
+    },
+    "bells": {
+      "preset": "tubular_bells",
+      "volume": -15,
+      "effects": [{ "type": "reverb", "wet": 0.6 }]
+    }
+  },
+  "patterns": {
+    "dorian-fifths": {
+      "comment": "Open fifths ascending through D dorian",
+      "notes": ["D3+A3:w", "E3+B3:w", "F3+C4:w", "G3+D4:w", "A3+E4:w", "G3+D4:w", "F3+C4:w", "D3+A3:w"]
+    },
+    "bass-drone": {
+      "notes": ["D2:w", "D2:w", "D2:w", "D2:w", "D2:w", "D2:w", "D2:w", "D2:w"]
+    },
+    "high-bells": {
+      "notes": ["r:w", "r:w", "D5:w", "r:w", "A5:w", "r:w", "D5:w", "r:w"]
+    },
+    "resolving-fifths": {
+      "notes": ["D3+A3:w", "C3+G3:w", "D3+A3:w", "D3+A3:w"]
+    },
+    "final-drone": {
+      "notes": ["D2:w", "D2:w", "D2:w", "D1:w"]
+    }
+  },
+  "sections": {
+    "opening": {
+      "bars": 8,
+      "tracks": {
+        "fifths": { "pattern": "dorian-fifths" },
+        "bass": { "pattern": "bass-drone" }
+      }
+    },
+    "bells-enter": {
+      "bars": 8,
+      "tracks": {
+        "fifths": { "pattern": "dorian-fifths" },
+        "bass": { "pattern": "bass-drone" },
+        "bells": { "pattern": "high-bells" }
+      }
+    },
+    "resolve": {
+      "bars": 4,
+      "tracks": {
+        "fifths": { "pattern": "resolving-fifths" },
+        "bass": { "pattern": "final-drone" }
+      }
+    }
+  },
+  "arrangement": ["opening", "bells-enter", "resolve"]
+}

@@ -4,6 +4,14 @@
  * Main entry point exposing the public API
  */
 
+// MIDI Import (v0.9.16)
+export {
+  importMidiToEtherScore,
+  importMidiBufferToEtherScore,
+  getMidiFileInfo,
+  type MidiImportOptions,
+} from './import/midi-importer.js';
+
 // Schema and types
 export type {
   EtherScore,

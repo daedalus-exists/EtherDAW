@@ -44,6 +44,15 @@ npx etherdaw validate song.etherscore.json
 # Show composition info
 npx etherdaw info song.etherscore.json
 
+# Analyze musical characteristics
+npx etherdaw analyze song.etherscore.json
+
+# Analyze with JSON output for programmatic use
+npx etherdaw analyze song.etherscore.json --json
+
+# Analyze summary only (brief)
+npx etherdaw analyze song.etherscore.json --summary
+
 # Compile and show stats
 npx etherdaw compile song.etherscore.json -v
 
@@ -60,6 +69,29 @@ npx etherdaw new -t ambient -o my-song.etherscore.json
 npx etherdaw list presets
 npx etherdaw list scales
 npx etherdaw list chords
+```
+
+### Composition Analysis
+
+The `analyze` command provides deep musical analysis of EtherScore compositions:
+
+- **Duration stats**: Total length, section lengths, and proportions
+- **Pitch ranges**: Lowest/highest note per instrument with octave span
+- **Note density**: Notes per bar (overall, per section, per instrument)
+- **Harmonic vocabulary**: Unique chords, chord changes per bar, most common chords, chord qualities distribution
+- **Melodic intervals**: Interval distribution, step/leap ratio, melodic contour (ascending/descending/varied)
+
+Example output:
+```
+📊 Analysis Summary: My Composition
+
+  • Duration: 3:24 (51 bars)
+  • Tempo: 120 BPM, Key: A minor
+  • Note density: moderate (6.2 notes/bar average)
+  • Harmonic vocabulary: 12 unique chords, 0.75 changes/bar
+  • Most common chords: Am, Em, Dm
+  • Melodic character: stepwise/conjunct (varied contour)
+  • Widest range: piano (C3 to C6, 3 octaves)
 ```
 
 ## Browser Playback

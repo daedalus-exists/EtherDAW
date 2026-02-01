@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Unstoppable", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 140, "key": "A minor", "timeSignature": "4/4" },
+  "instruments": { "force": { "preset": "synth_bass", "volume": -6 } },
+  "patterns": { "drive": { "notes": ["A2:8", "A2:8", "E3:8", "A2:8", "G2:8", "A2:8", "E3:8", "A2:8"] } },
+  "sections": { "go": { "bars": 2, "tracks": { "force": { "pattern": "drive" } } } },
+  "arrangement": ["go", "go"]
+}

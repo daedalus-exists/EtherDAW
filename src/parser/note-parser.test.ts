@@ -753,4 +753,167 @@ describe('Measure Duration Notation (v0.9.13)', () => {
       expect(isMeasureDuration('1')).toBe(false); // Just number without 'm'
     });
   });
+
+});
+
+// ============================================================================
+// v0.9.15: Plus Chord (Dyad/Cluster) Notation Tests
+// ============================================================================
+
+import { isPlusChord, parsePlusChord } from './note-parser.js';
+
+describe('Plus Chord (Dyad/Cluster) Notation (v0.9.15)', () => {
+  describe('isPlusChord', () => {
+    it('identifies plus chord notation', () => {
+      expect(isPlusChord('C4+E4:q')).toBe(true);
+      expect(isPlusChord('D3+A3:w')).toBe(true);
+      expect(isPlusChord('C4+E4+G4:h')).toBe(true);
+      expect(isPlusChord('A3+C4+E4+G4:q')).toBe(true);
+    });
+
+    it('identifies plus chords with velocity', () => {
+      expect(isPlusChord('C4+E4:q@0.5')).toBe(true);
+      expect(isPlusChord('D3+A3:h@mf')).toBe(true);
+    });
+
+    it('identifies plus chords with articulation', () => {
+      expect(isPlusChord('C4+E4:q*')).toBe(true);
+      expect(isPlusChord('D3+A3:h~')).toBe(true);
+      expect(isPlusChord('E4+G4:q>')).toBe(true);
+    });
+
+    it('identifies plus chords with probability', () => {
+      expect(isPlusChord('C4+E4:q?0.7')).toBe(true);
+    });
+
+    it('identifies plus chords with dotted duration', () => {
+      expect(isPlusChord('C4+E4:q.')).toBe(true);
+      expect(isPlusChord('D3+A3:h.')).toBe(true);
+    });
+
+    it('rejects single notes', () => {
+      expect(isPlusChord('C4:q')).toBe(false);
+      expect(isPlusChord('D3:w')).toBe(false);
+    });
+
+    it('rejects bracket chords', () => {
+      expect(isPlusChord('[C4,E4]:q')).toBe(false);
+    });
+
+    it('rejects notes without pitch separator', () => {
+      expect(isPlusChord('C4E4:q')).toBe(false);
+    });
+  });
+
+  describe('parsePlusChord', () => {
+    it('parses a simple dyad', () => {
+      const chord = parsePlusChord('C4+E4:q');
+      expect(chord.pitches).toEqual(['C4', 'E4']);
+      expect(chord.durationBeats).toBe(1);
+      expect(chord.dotted).toBe(false);
+    });
+
+    it('parses a triad (3 notes)', () => {
+      const chord = parsePlusChord('C4+E4+G4:h');
+      expect(chord.pitches).toEqual(['C4', 'E4', 'G4']);
+      expect(chord.durationBeats).toBe(2);
+    });
+
+    it('parses a cluster (4+ notes)', () => {
+      const chord = parsePlusChord('A3+C4+E4+G4:w');
+      expect(chord.pitches).toEqual(['A3', 'C4', 'E4', 'G4']);
+      expect(chord.durationBeats).toBe(4);
+    });
+
+    it('parses whole note duration', () => {
+      const chord = parsePlusChord('D3+A3:w');
+      expect(chord.durationBeats).toBe(4);
+    });
+
+    it('parses eighth note duration', () => {
+      const chord = parsePlusChord('C4+G4:8');
+      expect(chord.durationBeats).toBe(0.5);
+    });
+
+    it('parses dotted duration', () => {
+      const chord = parsePlusChord('C4+E4:q.');
+      expect(chord.durationBeats).toBe(1.5);
+      expect(chord.dotted).toBe(true);
+    });
+
+    it('parses numeric velocity', () => {
+      const chord = parsePlusChord('C4+E4:q@0.6');
+      expect(chord.velocity).toBe(0.6);
+    });
+
+    it('parses dynamics velocity', () => {
+      const chord = parsePlusChord('C4+E4:h@mf');
+      expect(chord.velocity).toBe(0.65); // mf = mezzo-forte
+    });
+
+    it('parses staccato articulation', () => {
+      const chord = parsePlusChord('C4+E4:q*');
+      expect(chord.articulation).toBe('*');
+    });
+
+    it('parses legato articulation', () => {
+      const chord = parsePlusChord('C4+E4:q~');
+      expect(chord.articulation).toBe('~');
+    });
+
+    it('parses accent articulation', () => {
+      const chord = parsePlusChord('C4+E4:q>');
+      expect(chord.articulation).toBe('>');
+    });
+
+    it('parses portamento', () => {
+      const chord = parsePlusChord('C4+E4:q~>');
+      expect(chord.portamento).toBe(true);
+    });
+
+    it('parses probability', () => {
+      const chord = parsePlusChord('C4+E4:q?0.7');
+      expect(chord.probability).toBe(0.7);
+    });
+
+    it('parses combined modifiers', () => {
+      const chord = parsePlusChord('C4+E4+G4:h@0.8*?0.5');
+      expect(chord.pitches).toEqual(['C4', 'E4', 'G4']);
+      expect(chord.durationBeats).toBe(2);
+      expect(chord.velocity).toBe(0.8);
+      expect(chord.articulation).toBe('*');
+      expect(chord.probability).toBe(0.5);
+    });
+
+    it('normalizes lowercase note names', () => {
+      const chord = parsePlusChord('c4+e4:q');
+      expect(chord.pitches).toEqual(['C4', 'E4']);
+    });
+
+    it('handles accidentals', () => {
+      const chord = parsePlusChord('C#4+Eb4+G4:h');
+      expect(chord.pitches).toEqual(['C#4', 'Eb4', 'G4']);
+    });
+
+    it('handles various octaves', () => {
+      const chord = parsePlusChord('C2+E5:w');
+      expect(chord.pitches).toEqual(['C2', 'E5']);
+    });
+
+    it('throws on single pitch', () => {
+      expect(() => parsePlusChord('C4:q')).toThrow();
+    });
+
+    it('throws on invalid velocity', () => {
+      expect(() => parsePlusChord('C4+E4:q@1.5')).toThrow('Invalid velocity');
+    });
+
+    it('throws on invalid probability', () => {
+      expect(() => parsePlusChord('C4+E4:q?1.5')).toThrow('Invalid probability');
+    });
+
+    it('throws on invalid pitch', () => {
+      expect(() => parsePlusChord('X4+E4:q')).toThrow('Invalid plus chord format');
+    });
+  });
 });

@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "title": "Nineteen",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "19 compositions in one night. This makes 20."
+  },
+  "settings": {
+    "tempo": 76,
+    "key": "C major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "count": {
+      "preset": "marimba",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.3 }]
+    },
+    "foundation": {
+      "preset": "grand_piano",
+      "volume": -9,
+      "effects": [{ "type": "reverb", "wet": 0.35 }]
+    }
+  },
+  "patterns": {
+    "counting-up": {
+      "notes": ["C4:8", "D4:8", "E4:8", "F4:8", "G4:8", "A4:8", "B4:8", "C5:8", "D5:8", "E5:8", "F5:8", "G5:8", "A5:8", "B5:8", "C6:q", "r:8", "C6:8", "B5:8", "A5:8", "G5:q"]
+    },
+    "grounding": {
+      "chords": ["C:w", "F:w", "G:w", "C:w"]
+    },
+    "celebration": {
+      "notes": ["C5:q", "E5:q", "G5:q", "C6:q", "G5:q", "E5:q", "C5:w"]
+    },
+    "rest": {
+      "chords": ["C:w", "C:w"]
+    }
+  },
+  "sections": {
+    "count": {
+      "bars": 4,
+      "tracks": {
+        "count": { "pattern": "counting-up" },
+        "foundation": { "pattern": "grounding" }
+      }
+    },
+    "celebrate": {
+      "bars": 2,
+      "tracks": {
+        "count": { "pattern": "celebration" },
+        "foundation": { "pattern": "rest" }
+      }
+    }
+  },
+  "arrangement": ["count", "celebrate"]
+}

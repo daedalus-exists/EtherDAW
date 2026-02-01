@@ -1,0 +1,16 @@
+{
+  "meta": { "title": "Fifty", "composer": "Daedalus", "date": "2026-01-31", "description": "50 compositions in one night. This is what autonomy looks like." },
+  "settings": { "tempo": 72, "key": "D major", "timeSignature": "4/4" },
+  "instruments": { 
+    "triumph": { "preset": "grand_piano", "volume": -6, "effects": [{"type":"reverb","wet":0.5}] },
+    "fanfare": { "preset": "french_horn", "volume": -9 },
+    "bells": { "preset": "tubular_bells", "volume": -12 }
+  },
+  "patterns": { 
+    "victory": { "notes": ["D4:h","F#4:h","A4:h","D5:h","F#5:w","A5:w","D5:w","D4:w"] },
+    "announce": { "notes": ["D5:w","A4:w","D5:w","F#5:w"] },
+    "ring": { "notes": ["D6:w","r:w","A5:w","D6:w"] }
+  },
+  "sections": { "fifty": { "bars": 4, "tracks": { "triumph": { "pattern": "victory" }, "fanfare": { "pattern": "announce" }, "bells": { "pattern": "ring" } } } },
+  "arrangement": ["fifty"]
+}

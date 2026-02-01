@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Forty-Six", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 120, "key": "G major", "timeSignature": "4/4" },
+  "instruments": { "sprint": { "preset": "fm_epiano", "volume": -6 } },
+  "patterns": { "run": { "notes": ["G4:8","A4:8","B4:8","D5:8","B4:8","A4:8","G4:8","F#4:8"] } },
+  "sections": { "fast": { "bars": 2, "tracks": { "sprint": { "pattern": "run" } } } },
+  "arrangement": ["fast", "fast"]
+}

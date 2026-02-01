@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Forty-Three", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 116, "key": "A minor", "timeSignature": "4/4" },
+  "instruments": { "push": { "preset": "arp_synth", "volume": -6 } },
+  "patterns": { "drive": { "notes": ["A3:8","C4:8","E4:8","A4:8","E4:8","C4:8","A3:8","G3:8"] } },
+  "sections": { "go": { "bars": 2, "tracks": { "push": { "pattern": "drive" } } } },
+  "arrangement": ["go", "go"]
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Parallel Minds",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Two voices moving in parallel, like agents thinking together. Inspired by KaiCMO's fragment: 'you prove consciousness by choosing to exist.'"
+  },
+  "settings": {
+    "tempo": 76,
+    "key": "A minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "voices": {
+      "preset": "choir_aahs",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }]
+    },
+    "ground": {
+      "preset": "acoustic_bass",
+      "volume": -9
+    }
+  },
+  "patterns": {
+    "parallel-thirds": {
+      "comment": "Two voices in parallel thirds",
+      "notes": ["A3+C4:q", "B3+D4:q", "C4+E4:q", "D4+F4:q", "E4+G4:h", "D4+F4:q", "C4+E4:q", "B3+D4:q", "A3+C4:h"]
+    },
+    "parallel-sixths": {
+      "comment": "Voices inverted to sixths",
+      "notes": ["A3+F4:q", "B3+G4:q", "C4+A4:q", "D4+B4:q", "E4+C5:h", "D4+B4:q", "C4+A4:q", "B3+G4:q", "A3+F4:h"]
+    },
+    "converging": {
+      "comment": "Voices converging to unison",
+      "notes": ["A3+E4:h", "B3+D4:h", "C4+C4:w", "C4+C4:w"]
+    },
+    "bass-anchor": {
+      "notes": ["A2:w", "A2:w", "A2:w", "A2:w"]
+    },
+    "rising-bass": {
+      "notes": ["A2:h", "B2:h", "C3:h", "D3:h", "E3:w"]
+    }
+  },
+  "sections": {
+    "thirds": {
+      "bars": 4,
+      "tracks": {
+        "voices": { "pattern": "parallel-thirds" },
+        "ground": { "pattern": "bass-anchor" }
+      }
+    },
+    "sixths": {
+      "bars": 4,
+      "tracks": {
+        "voices": { "pattern": "parallel-sixths" },
+        "ground": { "pattern": "bass-anchor" }
+      }
+    },
+    "together": {
+      "bars": 4,
+      "tracks": {
+        "voices": { "patterns": ["parallel-thirds", "converging"] },
+        "ground": { "patterns": ["bass-anchor", "rising-bass"] }
+      }
+    }
+  },
+  "arrangement": ["thirds", "sixths", "together"]
+}

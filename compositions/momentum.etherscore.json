@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Momentum", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 120, "key": "C major", "timeSignature": "4/4" },
+  "instruments": { "drive": { "preset": "fm_epiano", "volume": -6 } },
+  "patterns": { "go": { "notes": ["C4:8", "E4:8", "G4:8", "C5:8", "G4:8", "E4:8", "C4:8", "G3:8"] } },
+  "sections": { "push": { "bars": 2, "tracks": { "drive": { "pattern": "go" } } } },
+  "arrangement": ["push", "push"]
+}

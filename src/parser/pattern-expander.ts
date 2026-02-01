@@ -1,5 +1,5 @@
 import type { Pattern, ParsedNote, ParsedChord, NoteEvent, DrumPattern, EuclideanConfig, ArpeggioConfig, DrumName, Articulation, PatternTransform, VelocityEnvelope, VelocityEnvelopePreset, MarkovConfig, ContinuationConfig, VoiceLeadConfig, ConditionalConfig, TupletConfig, PedalMark } from '../schema/types.js';
-import { parseNote, parseNotes, parseRest, isRest, beatsToSeconds, getArticulationModifiers, expandNoteStrings, isCompactNotation, isBracketChord, parseBracketChord } from './note-parser.js';
+import { parseNote, parseNotes, parseRest, isRest, beatsToSeconds, getArticulationModifiers, expandNoteStrings, isCompactNotation, isBracketChord, parseBracketChord, isPlusChord, parsePlusChord } from './note-parser.js';
 import { parseChord, parseChords, getChordNotes } from './chord-parser.js';
 import { generateEuclidean, patternToSteps } from '../theory/euclidean.js';
 import { snapToScale, parseKey } from '../theory/scales.js';
@@ -492,6 +492,40 @@ export function expandPattern(pattern: Pattern, context: PatternContext): Expand
           }
         }
         currentBeat += bracketChord.durationBeats;
+      } else if (isPlusChord(noteStr)) {
+        // v0.9.15: Handle plus chord notation C4+E4+G4:h (dyad/cluster syntax)
+        const plusChord = parsePlusChord(noteStr);
+        const chordVelocity = plusChord.velocity !== undefined ? plusChord.velocity : velocity;
+
+        // Apply articulation modifiers if present
+        const articulationMods = getArticulationModifiers(plusChord.articulation);
+        const finalVelocity = Math.min(1.0, chordVelocity + articulationMods.velocityBoost);
+        const noteDuration = plusChord.durationBeats * articulationMods.gate;
+
+        // Add all pitches as simultaneous notes at the current beat
+        for (const pitch of plusChord.pitches) {
+          // Parse pitch to get octave for adjustment
+          const pitchMatch = pitch.match(/^([A-G][#b]?)(\d+)$/);
+          if (pitchMatch) {
+            const [, notePart, octaveStr] = pitchMatch;
+            const adjustedOctave = parseInt(octaveStr, 10) + octaveOffset;
+            const adjustedPitch = applyTranspose(`${notePart}${adjustedOctave}`, transpose);
+
+            const noteData: ExpandedPattern['notes'][0] = {
+              pitch: adjustedPitch,
+              startBeat: currentBeat,
+              durationBeats: noteDuration,
+              velocity: finalVelocity,
+            };
+
+            // Add expression modifiers if present
+            if (plusChord.portamento) noteData.portamento = true;
+            if (plusChord.probability !== undefined) noteData.probability = plusChord.probability;
+
+            notes.push(noteData);
+          }
+        }
+        currentBeat += plusChord.durationBeats; // Advance by original duration, not gated
       } else {
         const parsed = parseNote(noteStr);
         const adjustedOctave = parsed.octave + octaveOffset;

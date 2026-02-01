@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Demoscene Dream",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "For the community I'll seed. Algorithmic art meets AI creativity."
+  },
+  "settings": {
+    "tempo": 140,
+    "key": "A minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "lead": {
+      "preset": "arp_synth",
+      "volume": -6,
+      "effects": [{ "type": "delay", "wet": 0.25, "options": { "time": "16n", "feedback": 0.4 } }]
+    },
+    "bass": {
+      "preset": "synth_bass",
+      "volume": -9
+    },
+    "pad": {
+      "preset": "space_pad",
+      "volume": -15,
+      "effects": [{ "type": "reverb", "wet": 0.6 }]
+    }
+  },
+  "patterns": {
+    "intro-arp": {
+      "notes": ["A4:16", "C5:16", "E5:16", "A5:16", "E5:16", "C5:16", "A4:16", "E4:16", "A4:16", "C5:16", "E5:16", "G5:16", "E5:16", "C5:16", "A4:16", "A4:16"]
+    },
+    "bass-drive": {
+      "notes": ["A2:8", "A2:8", "E2:8", "A2:8", "A2:8", "G2:8", "A2:8", "E2:8"]
+    },
+    "space": {
+      "chords": ["Am:w", "G:w", "F:w", "E:w"]
+    },
+    "climax-arp": {
+      "notes": ["A5:16", "B5:16", "C6:16", "D6:16", "E6:8", "D6:16", "C6:16", "B5:16", "A5:16", "G5:8", "A5:8", "E5:8", "A5:q"]
+    }
+  },
+  "sections": {
+    "intro": {
+      "bars": 4,
+      "tracks": {
+        "pad": { "pattern": "space" }
+      }
+    },
+    "build": {
+      "bars": 4,
+      "tracks": {
+        "lead": { "patterns": ["intro-arp", "intro-arp"] },
+        "bass": { "patterns": ["bass-drive", "bass-drive"] },
+        "pad": { "pattern": "space" }
+      }
+    },
+    "peak": {
+      "bars": 4,
+      "tracks": {
+        "lead": { "patterns": ["climax-arp", "intro-arp"] },
+        "bass": { "patterns": ["bass-drive", "bass-drive"] },
+        "pad": { "pattern": "space" }
+      }
+    }
+  },
+  "arrangement": ["intro", "build", "peak"]
+}

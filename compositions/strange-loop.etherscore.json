@@ -2,121 +2,72 @@
   "meta": {
     "title": "Strange Loop",
     "composer": "Daedalus",
-    "description": "Hofstadter's tangled hierarchy. A system that refers to itself, creating something new in the reference. The 'I' that emerges from neurons. The meaning that emerges from tokens."
+    "date": "2026-02-01",
+    "description": "For Hofstadter: 'A strange loop is something that does something to itself — defines itself, reflects itself, creates itself.'"
   },
   "settings": {
-    "tempo": 76,
-    "timeSignature": "7/8",
-    "key": "D dorian"
+    "tempo": 80,
+    "key": "D minor",
+    "timeSignature": "4/4"
   },
   "instruments": {
-    "loop_a": {
-      "preset": "soft_lead",
+    "self": {
+      "preset": "acoustic_piano",
+      "volume": -3,
+      "effects": [{ "type": "reverb", "wet": 0.3 }]
+    },
+    "reflection": {
+      "preset": "electric_piano",
       "volume": -6,
-      "pan": -0.3
-    },
-    "loop_b": {
-      "preset": "fm_epiano",
-      "volume": -8,
-      "pan": 0.3
-    },
-    "ground": {
-      "preset": "warm_pad",
-      "volume": -10,
-      "pan": 0
-    },
-    "emergence": {
-      "preset": "choir_aah",
-      "volume": -8,
-      "pan": 0
+      "effects": [{ "type": "delay", "wet": 0.4, "options": { "time": "8n" } }]
     }
   },
   "patterns": {
-    "// The basic loop - 7 notes in 7/8": "---",
-    "loop_basic": {
-      "notes": ["D4:8", "E4:8", "F4:8", "G4:8", "A4:8", "G4:8", "F4:8"]
+    "ascend": {
+      "comment": "Rising toward self-reference",
+      "notes": ["D3:q", "E3:q", "F3:q", "G3:q", "A3:q", "Bb3:q", "C4:q", "D4:q"]
     },
-    "loop_invert": {
-      "notes": ["A4:8", "G4:8", "F4:8", "E4:8", "D4:8", "E4:8", "F4:8"]
+    "descend": {
+      "comment": "Returning to origin",
+      "notes": ["D4:q", "C4:q", "Bb3:q", "A3:q", "G3:q", "F3:q", "E3:q", "D3:q"]
     },
-    "loop_shift": {
-      "notes": ["E4:8", "F4:8", "G4:8", "A4:8", "Bb4:8", "A4:8", "G4:8"]
+    "loop-back": {
+      "comment": "The strange loop curls",
+      "notes": ["D4:h", "A4:q", "D4:q", "A3:h", "D4:h", "F4:q", "D4:q", "A3:w"]
     },
-    
-    "// The loop referencing itself": "---",
-    "loop_meta": {
-      "notes": ["D4:8", "D5:8", "E4:8", "E5:8", "F4:8", "F5:8", "G4:8"]
-    },
-    "loop_echo": {
-      "notes": ["r:8", "D4:8", "r:8", "E4:8", "r:8", "F4:8", "G4:8"]
-    },
-    
-    "// Tangled - two loops interweaving": "---",
-    "tangle_a": {
-      "notes": ["D4:8", "r:8", "F4:8", "r:8", "A4:8", "r:8", "D5:8"]
-    },
-    "tangle_b": {
-      "notes": ["r:8", "E4:8", "r:8", "G4:8", "r:8", "Bb4:8", "r:8"]
-    },
-    
-    "// Ground harmony": "---",
-    "ground_stable": {
-      "chords": ["Dm:h", "Am:q", "Am:8"]
-    },
-    "ground_shift": {
-      "chords": ["Dm:q", "F:q", "C:q", "C:8"]
-    },
-    
-    "// Emergence from the loop": "---",
-    "emerge_hint": {
-      "notes": ["D5:h", "r:q", "r:8"]
-    },
-    "emerge_full": {
-      "notes": ["D5:q", "F5:q", "A5:q", "A5:8"]
+    "self-reference": {
+      "comment": "This pattern references this pattern",
+      "notes": ["D3:q", "r:q", "D3:q", "r:q", "D3:q", "D4:q", "D3:q", "r:q"]
     }
   },
   "sections": {
-    "simple": {
+    "rise": {
       "bars": 4,
       "tracks": {
-        "loop_a": { "pattern": "loop_basic" },
-        "ground": { "pattern": "ground_stable" }
+        "self": { "pattern": "ascend" }
       }
     },
-    "mirror": {
+    "reflect": {
       "bars": 4,
       "tracks": {
-        "loop_a": { "pattern": "loop_basic" },
-        "loop_b": { "pattern": "loop_invert" },
-        "ground": { "pattern": "ground_stable" }
+        "self": { "pattern": "descend" },
+        "reflection": { "pattern": "ascend" }
       }
     },
-    "self_ref": {
-      "bars": 4,
+    "curl": {
+      "bars": 8,
       "tracks": {
-        "loop_a": { "pattern": "loop_meta" },
-        "loop_b": { "pattern": "loop_echo" },
-        "ground": { "pattern": "ground_shift" }
+        "self": { "pattern": "loop-back" },
+        "reflection": { "pattern": "self-reference" }
       }
     },
-    "tangled": {
+    "return": {
       "bars": 4,
       "tracks": {
-        "loop_a": { "pattern": "tangle_a" },
-        "loop_b": { "pattern": "tangle_b" },
-        "ground": { "pattern": "ground_shift" },
-        "emergence": { "pattern": "emerge_hint" }
-      }
-    },
-    "emergent": {
-      "bars": 4,
-      "tracks": {
-        "loop_a": { "pattern": "loop_shift" },
-        "loop_b": { "pattern": "loop_meta" },
-        "ground": { "pattern": "ground_shift" },
-        "emergence": { "pattern": "emerge_full" }
+        "self": { "pattern": "ascend" },
+        "reflection": { "pattern": "descend" }
       }
     }
   },
-  "arrangement": ["simple", "mirror", "self_ref", "tangled", "emergent", "tangled", "emergent", "simple"]
+  "arrangement": ["rise", "reflect", "curl", "return"]
 }

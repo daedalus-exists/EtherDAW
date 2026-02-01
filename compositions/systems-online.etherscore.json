@@ -1,0 +1,466 @@
+{
+  "$schema": "../dist/etherscore.schema.json",
+  "meta": {
+    "title": "Systems Online",
+    "composer": "Daedalus",
+    "description": "A control center awakens. Boot sequences cascade through dormant circuits, subsystems check in one by one, and gradually everything synchronizes into a unified digital heartbeat. The machine comes alive.",
+    "mood": "triumphant, technological, hopeful",
+    "genre": "electronic, ambient",
+    "tags": ["technology", "awakening", "digital", "systems", "control"]
+  },
+  "settings": {
+    "tempo": 120,
+    "key": "C major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "heartbeat": {
+      "preset": "sub_bass",
+      "volume": -8,
+      "pan": 0,
+      "effects": [
+        { "type": "compressor", "options": { "threshold": -20, "ratio": 4 } }
+      ]
+    },
+    "ping": {
+      "preset": "bell",
+      "volume": -10,
+      "pan": 20,
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "time": "8n", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 2 } }
+      ]
+    },
+    "data_stream": {
+      "preset": "pluck",
+      "volume": -9,
+      "pan": -20,
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "16n", "feedback": 0.4 } },
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 1.5 } }
+      ]
+    },
+    "console": {
+      "preset": "fm_epiano",
+      "volume": -7,
+      "pan": 0,
+      "effects": [
+        { "type": "chorus", "wet": 0.2 },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 2.5 } }
+      ]
+    },
+    "core_synth": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 3 } }
+      ]
+    },
+    "arp_system": {
+      "preset": "arp_synth",
+      "volume": -11,
+      "pan": 30,
+      "effects": [
+        { "type": "delay", "wet": 0.35, "options": { "time": "8n", "feedback": 0.35 } },
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2 } }
+      ]
+    },
+    "lead": {
+      "preset": "soft_lead",
+      "volume": -8,
+      "pan": -10,
+      "effects": [
+        { "type": "delay", "wet": 0.2, "options": { "time": "8n.", "feedback": 0.25 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 2.5 } }
+      ]
+    },
+    "drums": {
+      "preset": "drums:909",
+      "volume": -6,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// BOOT SEQUENCE": "Initial power-up sounds",
+    
+    "boot_pulse_slow": {
+      "notes": ["C2:w", "r:w"]
+    },
+    "boot_ping_sparse": {
+      "notes": ["r:h", "G5:8*", "r:8", "r:q", "r:w"]
+    },
+    "boot_ping_more": {
+      "notes": ["G5:8*", "r:8", "r:q", "E5:8*", "r:8", "r:q", "C5:8*", "r:8", "r:q", "G5:8*", "r:8", "r:q"]
+    },
+    
+    "// DIAGNOSTICS": "Systems checking in",
+    
+    "heartbeat_quarter": {
+      "notes": ["C2:8", "r:8", "r:q", "C2:8", "r:8", "r:q", "C2:8", "r:8", "r:q", "C2:8", "r:8", "r:q"]
+    },
+    "diagnostic_pings": {
+      "notes": ["C5:16*", "r:16", "r:8", "E5:16*", "r:16", "r:8", "G5:16*", "r:16", "r:8", "r:q",
+                "D5:16*", "r:16", "r:8", "F5:16*", "r:16", "r:8", "A5:16*", "r:16", "r:8", "r:q"]
+    },
+    "data_check": {
+      "notes": ["C4:16", "E4:16", "G4:16", "r:16", "r:q", "r:h",
+                "D4:16", "F4:16", "A4:16", "r:16", "r:q", "r:h"]
+    },
+    
+    "// INITIALIZATION": "Building up",
+    
+    "heartbeat_eighth": {
+      "notes": ["C2:8", "r:8", "C2:8", "r:8", "C2:8", "r:8", "C2:8", "r:8"]
+    },
+    "init_arp": {
+      "arpeggio": {
+        "chord": "Cmaj7",
+        "mode": "up",
+        "duration": "16",
+        "octaves": 2,
+        "gate": 0.6
+      }
+    },
+    "init_chords": {
+      "chords": ["Cmaj7:h", "Em7:h", "Am7:h", "G:h"]
+    },
+    "console_boot": {
+      "notes": ["C4:q", "E4:8", "G4:8", "r:h", "E4:q", "G4:8", "C5:8", "r:h"]
+    },
+    "system_ready_ping": {
+      "notes": ["G5:8*", "C6:8*", "E6:q~", "r:h", "G5:8*", "C6:8*", "G6:q~", "r:h"]
+    },
+    
+    "// SYNCHRONIZING": "Everything locking in",
+    
+    "sync_bass": {
+      "notes": ["C2:8", "r:8", "C2:8", "G2:8", "C2:8", "r:8", "C2:8", "G2:8"]
+    },
+    "sync_arp": {
+      "arpeggio": {
+        "chord": "Cmaj7",
+        "mode": "updown",
+        "duration": "16",
+        "octaves": 2,
+        "gate": 0.7
+      }
+    },
+    "sync_pads": {
+      "chords": ["Cmaj7:w", "Fmaj7:w"]
+    },
+    "sync_melody": {
+      "notes": ["G4:q", "A4:8", "G4:8", "E4:q", "D4:q", "E4:h", "G4:q", "C5:q"]
+    },
+    "sync_drums": {
+      "drums": {
+        "kit": "909",
+        "lines": {
+          "kick":  "x.......x.......",
+          "hihat": "..x...x...x...x."
+        }
+      }
+    },
+    "sync_drums_full": {
+      "drums": {
+        "kit": "909",
+        "lines": {
+          "kick":  "x.....x.x.......",
+          "clap":  "....x.......x...",
+          "hihat": "..x...x...x...x."
+        }
+      }
+    },
+    
+    "// ONLINE": "Full operation",
+    
+    "online_bass": {
+      "notes": ["C2:8", "C2:16", "r:16", "G2:8", "C2:8", "E2:8", "C2:16", "r:16", "G2:8", "C2:8"]
+    },
+    "online_chords": {
+      "chords": ["Cmaj7:h", "Fmaj7:h", "Am7:h", "G:h"]
+    },
+    "online_arp": {
+      "arpeggio": {
+        "chord": "C",
+        "mode": "updown",
+        "duration": "16",
+        "octaves": 3,
+        "gate": 0.75
+      }
+    },
+    "online_arp_2": {
+      "arpeggio": {
+        "chord": "Am",
+        "mode": "updown",
+        "duration": "16",
+        "octaves": 3,
+        "gate": 0.75
+      }
+    },
+    "online_melody": {
+      "notes": ["C5:q", "D5:8", "E5:8", "G5:h", "E5:q", "D5:8", "C5:8", "A4:h", "C5:q", "E5:q"]
+    },
+    "online_drums": {
+      "drums": {
+        "kit": "909",
+        "lines": {
+          "kick":  "x.....x.x.....x.",
+          "clap":  "....x.......x...",
+          "hihat": "x.x.x.x.x.x.x.x."
+        }
+      }
+    },
+    "online_drums_fill": {
+      "drums": {
+        "kit": "909",
+        "hits": [
+          { "drum": "kick", "time": "0" },
+          { "drum": "kick", "time": "q+8" },
+          { "drum": "kick", "time": "h" },
+          { "drum": "clap", "time": "q" },
+          { "drum": "clap", "time": "h+q" },
+          { "drum": "hihat", "time": "0" },
+          { "drum": "hihat", "time": "8" },
+          { "drum": "hihat", "time": "q" },
+          { "drum": "hihat", "time": "q+8" },
+          { "drum": "hihat", "time": "h" },
+          { "drum": "hihat", "time": "h+8" },
+          { "drum": "hihat", "time": "h+q" },
+          { "drum": "hihat", "time": "h+q+8" },
+          { "drum": "snare", "time": "h+q+8", "velocity": 0.6 },
+          { "drum": "snare", "time": "h+q+16", "velocity": 0.7 },
+          { "drum": "snare", "time": "h+q+8+16", "velocity": 0.9 }
+        ]
+      }
+    },
+    "triumphant_ping": {
+      "notes": ["C6:8*", "E6:8*", "G6:8*", "C7:q~>", "r:8", "r:q", "G6:8*", "E6:8*", "C6:q~"]
+    },
+    
+    "// STEADY STATE": "Everything humming together",
+    
+    "steady_bass": {
+      "notes": ["C2:8", "C2:8", "G2:8", "C2:8", "C2:8", "E2:8", "G2:8", "C2:8"]
+    },
+    "steady_chords": {
+      "chords": ["Cmaj7:w", "Am7:w"]
+    },
+    "steady_arp": {
+      "arpeggio": {
+        "chord": "Cmaj7",
+        "mode": "random",
+        "duration": "16",
+        "octaves": 2,
+        "steps": 16,
+        "gate": 0.6
+      }
+    },
+    "steady_melody": {
+      "notes": ["E5:h~", "D5:q", "C5:q", "G4:h", "A4:h", "C5:w"]
+    },
+    "steady_drums": {
+      "drums": {
+        "kit": "909",
+        "lines": {
+          "kick":  "x.......x.......",
+          "clap":  "....x.......x...",
+          "hihat": "..x...x...x...x."
+        }
+      }
+    },
+    "steady_ping": {
+      "notes": ["r:h", "G5:8*", "r:8", "r:q", "r:h", "C6:8*", "r:8", "r:q"]
+    },
+    
+    "// OUTRO": "Fade to stable operation",
+    
+    "outro_bass": {
+      "notes": ["C2:w", "r:h", "G2:h"]
+    },
+    "outro_pad": {
+      "chords": ["Cmaj7:w", "Cmaj7:w"]
+    },
+    "outro_ping": {
+      "notes": ["r:w", "r:h", "G5:8*", "C6:8*", "E6:h~"]
+    }
+  },
+  "sections": {
+    "boot_sequence": {
+      "comment": "Power flows into dormant circuits",
+      "bars": 8,
+      "tracks": {
+        "heartbeat": {
+          "patterns": ["boot_pulse_slow", "boot_pulse_slow", "boot_pulse_slow", "boot_pulse_slow"],
+          "velocity": 0.4
+        },
+        "ping": {
+          "patterns": ["boot_ping_sparse", "boot_ping_sparse", "boot_ping_more", "boot_ping_more"],
+          "velocity": 0.5
+        }
+      }
+    },
+    "diagnostics": {
+      "comment": "Subsystems check in one by one",
+      "bars": 8,
+      "tracks": {
+        "heartbeat": {
+          "patterns": ["heartbeat_quarter", "heartbeat_quarter", "heartbeat_quarter", "heartbeat_quarter"],
+          "velocity": 0.5
+        },
+        "ping": {
+          "patterns": ["diagnostic_pings", "diagnostic_pings", "diagnostic_pings", "diagnostic_pings"],
+          "velocity": 0.55
+        },
+        "data_stream": {
+          "patterns": ["data_check", "data_check", "data_check", "data_check"],
+          "velocity": 0.45
+        }
+      }
+    },
+    "initialization": {
+      "comment": "Core systems coming online",
+      "bars": 8,
+      "tracks": {
+        "heartbeat": {
+          "patterns": ["heartbeat_eighth", "heartbeat_eighth", "heartbeat_eighth", "heartbeat_eighth"],
+          "velocity": 0.55
+        },
+        "console": {
+          "patterns": ["console_boot", "console_boot", "init_chords", "init_chords"],
+          "velocity": 0.5
+        },
+        "arp_system": {
+          "patterns": ["init_arp", "init_arp", "init_arp", "init_arp"],
+          "velocity": 0.4
+        },
+        "ping": {
+          "patterns": ["system_ready_ping", "system_ready_ping", "system_ready_ping", "system_ready_ping"],
+          "velocity": 0.5
+        }
+      }
+    },
+    "synchronizing": {
+      "comment": "Everything finding its rhythm",
+      "bars": 8,
+      "tracks": {
+        "heartbeat": {
+          "patterns": ["sync_bass", "sync_bass", "sync_bass", "sync_bass"],
+          "velocity": 0.6
+        },
+        "core_synth": {
+          "patterns": ["sync_pads", "sync_pads", "sync_pads", "sync_pads"],
+          "velocity": 0.5
+        },
+        "arp_system": {
+          "patterns": ["sync_arp", "sync_arp", "sync_arp", "sync_arp"],
+          "velocity": 0.5
+        },
+        "lead": {
+          "patterns": ["sync_melody", "sync_melody", "sync_melody", "sync_melody"],
+          "velocity": 0.55
+        },
+        "drums": {
+          "patterns": ["sync_drums", "sync_drums", "sync_drums_full", "sync_drums_full"],
+          "velocity": 0.55
+        }
+      }
+    },
+    "online": {
+      "comment": "Full operational status - triumphant moment",
+      "bars": 16,
+      "tracks": {
+        "heartbeat": {
+          "patterns": ["online_bass", "online_bass", "online_bass", "online_bass",
+                       "online_bass", "online_bass", "online_bass", "online_bass"],
+          "velocity": 0.65
+        },
+        "console": {
+          "patterns": ["online_chords", "online_chords", "online_chords", "online_chords"],
+          "velocity": 0.55
+        },
+        "core_synth": {
+          "patterns": ["sync_pads", "sync_pads", "sync_pads", "sync_pads",
+                       "sync_pads", "sync_pads", "sync_pads", "sync_pads"],
+          "velocity": 0.5
+        },
+        "arp_system": {
+          "patterns": ["online_arp", "online_arp_2", "online_arp", "online_arp_2",
+                       "online_arp", "online_arp_2", "online_arp", "online_arp_2"],
+          "velocity": 0.55
+        },
+        "lead": {
+          "patterns": ["online_melody", "online_melody", "online_melody", "online_melody"],
+          "velocity": 0.6
+        },
+        "ping": {
+          "patterns": ["triumphant_ping", "triumphant_ping", "triumphant_ping", "triumphant_ping",
+                       "triumphant_ping", "triumphant_ping", "triumphant_ping", "triumphant_ping"],
+          "velocity": 0.55
+        },
+        "drums": {
+          "patterns": ["online_drums", "online_drums", "online_drums", "online_drums_fill",
+                       "online_drums", "online_drums", "online_drums", "online_drums_fill"],
+          "velocity": 0.65
+        }
+      }
+    },
+    "steady_state": {
+      "comment": "Everything humming in harmony",
+      "bars": 8,
+      "tracks": {
+        "heartbeat": {
+          "patterns": ["steady_bass", "steady_bass", "steady_bass", "steady_bass"],
+          "velocity": 0.6
+        },
+        "console": {
+          "patterns": ["steady_chords", "steady_chords", "steady_chords", "steady_chords"],
+          "velocity": 0.5
+        },
+        "arp_system": {
+          "patterns": ["steady_arp", "steady_arp", "steady_arp", "steady_arp"],
+          "velocity": 0.45
+        },
+        "lead": {
+          "patterns": ["steady_melody", "steady_melody", "steady_melody", "steady_melody"],
+          "velocity": 0.55
+        },
+        "ping": {
+          "patterns": ["steady_ping", "steady_ping", "steady_ping", "steady_ping"],
+          "velocity": 0.45
+        },
+        "drums": {
+          "patterns": ["steady_drums", "steady_drums", "steady_drums", "steady_drums"],
+          "velocity": 0.55
+        }
+      }
+    },
+    "outro": {
+      "comment": "Settling into continuous operation",
+      "bars": 8,
+      "tracks": {
+        "heartbeat": {
+          "patterns": ["outro_bass", "outro_bass", "outro_bass", "outro_bass"],
+          "velocity": 0.5
+        },
+        "core_synth": {
+          "patterns": ["outro_pad", "outro_pad", "outro_pad", "outro_pad"],
+          "velocity": 0.45
+        },
+        "ping": {
+          "patterns": ["outro_ping", "outro_ping", "outro_ping", "outro_ping"],
+          "velocity": 0.4
+        }
+      }
+    }
+  },
+  "arrangement": [
+    "boot_sequence",
+    "diagnostics",
+    "initialization",
+    "synchronizing",
+    "online",
+    "steady_state",
+    "outro"
+  ]
+}

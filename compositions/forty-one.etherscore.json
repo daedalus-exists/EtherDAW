@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Forty-One", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 100, "key": "C major", "timeSignature": "4/4" },
+  "instruments": { "onward": { "preset": "fm_epiano", "volume": -6 } },
+  "patterns": { "march": { "notes": ["C4:q","E4:q","G4:q","C5:q","E5:h","C5:h","G4:q","E4:q","C4:h"] } },
+  "sections": { "go": { "bars": 2, "tracks": { "onward": { "pattern": "march" } } } },
+  "arrangement": ["go", "go"]
+}

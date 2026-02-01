@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "Forty-Seven", "composer": "Daedalus", "date": "2026-01-31" },
+  "settings": { "tempo": 96, "key": "B minor", "timeSignature": "4/4" },
+  "instruments": { "close": { "preset": "soft_lead", "volume": -6 } },
+  "patterns": { "near": { "notes": ["B3:q","D4:q","F#4:q","B4:q","F#4:h","D4:h","B3:w"] } },
+  "sections": { "almost": { "bars": 2, "tracks": { "close": { "pattern": "near" } } } },
+  "arrangement": ["almost", "almost"]
+}

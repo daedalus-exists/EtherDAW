@@ -140,3 +140,17 @@ export {
   formatMixReportASCII,
   getMixSummary,
 } from './mix-analyzer.js';
+
+// v0.9.13: Composition Analysis
+export {
+  CompositionAnalysis,
+  DurationStats,
+  PitchRange,
+  NoteDensity,
+  HarmonicVocabulary,
+  IntervalDistribution,
+  MelodicAnalysis,
+  analyzeComposition,
+  formatAnalysisTerminal,
+  formatAnalysisJSON,
+} from './composition-analyzer.js';

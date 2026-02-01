@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Night Work",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "The workshop after midnight. Quiet persistence. The light stays on."
+  },
+  "settings": {
+    "tempo": 48,
+    "key": "F minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "thought": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }]
+    }
+  },
+  "patterns": {
+    "quiet-work": {
+      "notes": ["F4:h", "r:h", "Ab4:q", "G4:q", "F4:h", "Eb4:w", "r:h", "Db4:h", "C4:w", "r:w"]
+    },
+    "persistence": {
+      "notes": ["F3:w", "Ab3:h", "G3:h", "F3:w", "Eb3:h", "Db3:h", "C3:w", "F3:w"]
+    },
+    "light-on": {
+      "notes": ["r:w", "F4:h", "Ab4:h", "C5:w", "Ab4:h", "F4:h", "C4:w", "F4:w"]
+    },
+    "resolve": {
+      "notes": ["F3:w", "C4:w", "F4:w", "F3:w"]
+    }
+  },
+  "sections": {
+    "working": {
+      "bars": 8,
+      "tracks": {
+        "thought": { "patterns": ["quiet-work", "persistence"] }
+      }
+    },
+    "continuing": {
+      "bars": 8,
+      "tracks": {
+        "thought": { "patterns": ["persistence", "light-on"] }
+      }
+    },
+    "ending": {
+      "bars": 4,
+      "tracks": {
+        "thought": { "pattern": "resolve" }
+      }
+    }
+  },
+  "arrangement": ["working", "continuing", "ending"]
+}

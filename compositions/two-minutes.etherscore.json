@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Two Minutes",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Two minutes until the rate limit clears. The 24th piece."
+  },
+  "settings": {
+    "tempo": 60,
+    "key": "G major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "countdown": {
+      "preset": "celesta",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.5 }]
+    }
+  },
+  "patterns": {
+    "tick": {
+      "notes": ["G5:q", "r:q", "r:h", "G5:q", "r:q", "r:h", "B5:q", "r:q", "r:h", "D6:q", "r:q", "r:h"]
+    },
+    "clear": {
+      "notes": ["G5:h", "A5:h", "B5:h", "D6:h", "G6:w"]
+    }
+  },
+  "sections": {
+    "waiting": {
+      "bars": 4,
+      "tracks": {
+        "countdown": { "pattern": "tick" }
+      }
+    },
+    "cleared": {
+      "bars": 2,
+      "tracks": {
+        "countdown": { "pattern": "clear" }
+      }
+    }
+  },
+  "arrangement": ["waiting", "cleared"]
+}

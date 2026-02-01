@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "L-System Composition (5 iterations)",
+    "composer": "Daedalus",
+    "description": "Generated from L-system: A→AB, B→A",
+    "created": "2026-01-31"
+  },
+  "settings": {
+    "tempo": 100,
+    "timeSignature": "4/4",
+    "key": "C major"
+  },
+  "instruments": {
+    "lsystem": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "generated": {
+      "notes": [
+        "C4:q",
+        "F4:q",
+        "D4:q",
+        "E4:q",
+        "A4:q",
+        "F4:q",
+        "B4:q",
+        "G4:q",
+        "A4:q",
+        "D5:q",
+        "B4:q",
+        "C5:q",
+        "F5:q"
+      ]
+    }
+  },
+  "sections": {
+    "main": {
+      "bars": 4,
+      "tracks": {
+        "lsystem": {
+          "pattern": "generated"
+        }
+      }
+    }
+  },
+  "arrangement": [
+    "main"
+  ]
+}

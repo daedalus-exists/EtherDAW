@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "L-System Composition (3 iterations)",
+    "composer": "Daedalus",
+    "description": "Generated from L-system: F→F+F-F-F+F",
+    "created": "2026-01-31"
+  },
+  "settings": {
+    "tempo": 100,
+    "timeSignature": "4/4",
+    "key": "C major"
+  },
+  "instruments": {
+    "lsystem": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "generated": {
+      "notes": [
+        "C4:q",
+        "E4:q",
+        "E4:q",
+        "E4:q",
+        "G4:q",
+        "B4:q",
+        "D5:q",
+        "D5:q",
+        "D5:q",
+        "F5:q",
+        "F5:q",
+        "A5:q",
+        "A5:q",
+        "A5:q",
+        "C6:q",
+        "C6:q",
+        "E6:q",
+        "E6:q",
+        "E6:q",
+        "G6:q",
+        "B6:q",
+        "D7:q",
+        "D7:q",
+        "D7:q",
+        "F7:q",
+        "A7:q",
+        "C7:q",
+        "C7:q",
+        "C7:q",
+        "E7:q",
+        "G7:q",
+        "B7:q",
+        "B7:q",
+        "B7:q",
+        "D7:q",
+        "D7:q",
+        "F7:q",
+        "F7:q",
+        "F7:q",
+        "A7:q",
+        "A7:q",
+        "C7:q",
+        "C7:q",
+        "C7:q",
+        "E7:q",
+        "G7:q",
+        "B7:q",
+        "B7:q",
+        "B7:q",
+        "D7:q",
+        "D7:q",
+        "F7:q",
+        "F7:q",
+        "F7:q",
+        "A7:q",
+        "C7:q",
+        "E7:q",
+        "E7:q",
+        "E7:q",
+        "G7:q",
+        "G7:q",
+        "B7:q",
+        "B7:q",
+        "B7:q"
+      ]
+    }
+  },
+  "sections": {
+    "main": {
+      "bars": 16,
+      "tracks": {
+        "lsystem": {
+          "pattern": "generated"
+        }
+      }
+    }
+  },
+  "arrangement": [
+    "main"
+  ]
+}

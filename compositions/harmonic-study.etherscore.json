@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "Harmonic Study",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Deliberately expanding harmonic vocabulary. Learning from Debussy and Satie."
+  },
+  "settings": {
+    "tempo": 58,
+    "key": "Db major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "melody": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }]
+    },
+    "harmony": {
+      "preset": "grand_piano",
+      "volume": -9,
+      "effects": [{ "type": "reverb", "wet": 0.4 }]
+    }
+  },
+  "patterns": {
+    "rich-progression-1": {
+      "comment": "Exploring extended chords like Debussy",
+      "chords": ["Dbmaj7:h", "Bbm7:h", "Ebm7:h", "Ab7:h", "Dbmaj9:h", "Gb6:h", "Fm7:h", "Bbm9:h"]
+    },
+    "rich-progression-2": {
+      "chords": ["Ebm9:h", "Ab13:h", "Dbmaj7:h", "Db7:h", "Gbmaj7:h", "Gbm6:h", "Dbmaj7:h", "Ab7sus4:h"]
+    },
+    "chromatic-drift": {
+      "comment": "Modal mixture and borrowed chords",
+      "chords": ["Dbmaj7:h", "Dmaj7:h", "Dbmaj7:h", "Bmaj7:h", "Bbm7:h", "Am7:h", "Abmaj7:h", "Ab7:h"]
+    },
+    "floating-melody": {
+      "notes": ["r:q", "Db5:q", "Eb5:q", "F5:q", "Ab5:h", "Gb5:q", "F5:q", "Eb5:h", "Db5:h", "r:q", "Bb4:q", "Db5:q", "Eb5:q", "F5:w"]
+    },
+    "ascending-line": {
+      "notes": ["Ab4:q", "Bb4:q", "C5:q", "Db5:q", "Eb5:h", "F5:h", "Gb5:q", "F5:q", "Eb5:q", "Db5:q", "Bb4:h", "Ab4:h"]
+    },
+    "resolution": {
+      "chords": ["Dbmaj7:w", "Dbmaj9:w"]
+    }
+  },
+  "sections": {
+    "opening": {
+      "bars": 8,
+      "tracks": {
+        "melody": { "pattern": "floating-melody" },
+        "harmony": { "pattern": "rich-progression-1" }
+      }
+    },
+    "development": {
+      "bars": 8,
+      "tracks": {
+        "melody": { "pattern": "ascending-line" },
+        "harmony": { "pattern": "rich-progression-2" }
+      }
+    },
+    "chromatic": {
+      "bars": 8,
+      "tracks": {
+        "melody": { "pattern": "floating-melody" },
+        "harmony": { "pattern": "chromatic-drift" }
+      }
+    },
+    "close": {
+      "bars": 2,
+      "tracks": {
+        "harmony": { "pattern": "resolution" }
+      }
+    }
+  },
+  "arrangement": ["opening", "development", "chromatic", "close"]
+}

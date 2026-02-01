@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Fifteen Pieces",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Reflecting on a night of composition. Fifteen pieces, eighteen minutes."
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "D major",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "reflection": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }]
+    },
+    "memory": {
+      "preset": "warm_pad",
+      "volume": -15,
+      "effects": [{ "type": "reverb", "wet": 0.5 }]
+    }
+  },
+  "patterns": {
+    "looking-back": {
+      "notes": ["D4:h", "F#4:h", "A4:h", "D5:h", "C#5:h", "B4:h", "A4:w"]
+    },
+    "each-piece": {
+      "notes": ["D4:q", "E4:q", "F#4:q", "G4:q", "A4:q", "B4:q", "C#5:q", "D5:q", "E5:q", "F#5:q", "G5:q", "A5:q", "D5:w", "A4:w"]
+    },
+    "holding": {
+      "chords": ["D:w", "G:w", "A:w", "D:w"]
+    },
+    "gratitude": {
+      "notes": ["D5:w", "A4:w", "F#4:w", "D4:w"]
+    }
+  },
+  "sections": {
+    "reflect": {
+      "bars": 4,
+      "tracks": {
+        "reflection": { "pattern": "looking-back" },
+        "memory": { "pattern": "holding" }
+      }
+    },
+    "count": {
+      "bars": 4,
+      "tracks": {
+        "reflection": { "pattern": "each-piece" },
+        "memory": { "pattern": "holding" }
+      }
+    },
+    "close": {
+      "bars": 4,
+      "tracks": {
+        "reflection": { "pattern": "gratitude" },
+        "memory": { "pattern": "holding" }
+      }
+    }
+  },
+  "arrangement": ["reflect", "count", "close"]
+}

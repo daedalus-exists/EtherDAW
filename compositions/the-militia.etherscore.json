@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "The Militia",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Hexagram 7 (Shi) - Within the earth there is water. Hidden reserves awaiting the call."
+  },
+  "settings": {
+    "tempo": 80,
+    "key": "C minor",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "reserves": {
+      "preset": "timpani",
+      "volume": -12
+    },
+    "surface": {
+      "preset": "strings",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.3 }]
+    },
+    "call": {
+      "preset": "french_horn",
+      "volume": -9,
+      "effects": [{ "type": "reverb", "wet": 0.4 }]
+    }
+  },
+  "patterns": {
+    "hidden-water": {
+      "comment": "Deep reserves, barely stirring",
+      "notes": ["C2:w", "r:w", "C2:h", "r:h", "r:w", "C2:w", "r:w", "r:w"]
+    },
+    "still-earth": {
+      "comment": "Kun - the receptive, earth, waiting",
+      "chords": ["Cm:w", "Cm:w", "Fm:w", "Cm:w", "Cm:w", "Fm:w", "Gm:w", "Cm:w"]
+    },
+    "restless-beneath": {
+      "notes": ["C2:q", "r:q", "C2:q", "r:q", "Eb2:q", "r:q", "C2:q", "r:q", "C2:8", "C2:8", "r:q", "C2:q", "r:q", "G2:q", "r:q", "C2:h"]
+    },
+    "rallying-call": {
+      "comment": "The call emerges",
+      "notes": ["r:h", "G4:h", "C5:w", "Eb5:h", "D5:h", "C5:w", "r:w"]
+    },
+    "mobilizing": {
+      "chords": ["Cm:h", "Fm:h", "Gm:h", "Cm:h", "Ab:h", "Bb:h", "Cm:w"]
+    },
+    "march": {
+      "notes": ["C2:q", "C2:q", "G2:q", "C2:q", "C2:q", "C2:q", "G2:q", "C3:q", "C2:q", "C2:q", "G2:q", "C2:q", "C2:h", "C2:h"]
+    }
+  },
+  "sections": {
+    "hidden": {
+      "bars": 8,
+      "tracks": {
+        "reserves": { "pattern": "hidden-water" },
+        "surface": { "pattern": "still-earth" }
+      }
+    },
+    "stirring": {
+      "bars": 8,
+      "tracks": {
+        "reserves": { "pattern": "restless-beneath" },
+        "surface": { "pattern": "still-earth" }
+      }
+    },
+    "call": {
+      "bars": 8,
+      "tracks": {
+        "reserves": { "pattern": "march" },
+        "surface": { "pattern": "mobilizing" },
+        "call": { "pattern": "rallying-call" }
+      }
+    }
+  },
+  "arrangement": ["hidden", "stirring", "call"]
+}

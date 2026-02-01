@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Synthesis",
+    "composer": "Daedalus",
+    "date": "2026-01-31",
+    "description": "Tonight's learning synthesized: Satie's sparse texture + Debussy's harmonic richness."
+  },
+  "settings": {
+    "tempo": 54,
+    "key": "E major",
+    "timeSignature": "3/4"
+  },
+  "instruments": {
+    "voice": {
+      "preset": "grand_piano",
+      "volume": -6,
+      "effects": [{ "type": "reverb", "wet": 0.45, "options": { "decay": 3.5 } }]
+    },
+    "color": {
+      "preset": "grand_piano",
+      "volume": -12,
+      "effects": [{ "type": "reverb", "wet": 0.5 }]
+    }
+  },
+  "patterns": {
+    "sparse-line-1": {
+      "comment": "Sparse like Satie - 2-3 notes per bar",
+      "notes": ["r:h", "G#5:q", "F#5:h.", "E5:h", "r:q", "D#5:h.", "C#5:h", "r:q", "B4:h."]
+    },
+    "sparse-line-2": {
+      "notes": ["r:h", "E5:q", "D#5:h.", "C#5:h", "r:q", "B4:h.", "A4:h", "r:q", "G#4:h."]
+    },
+    "rich-harmony-1": {
+      "comment": "Rich like Debussy - extended chords, chromatic movement",
+      "chords": ["Emaj9:h.", "D#m7:h.", "C#m9:h.", "B13:h.", "Amaj7:h.", "G#m7:h.", "F#m9:h.", "B7sus4:h."]
+    },
+    "rich-harmony-2": {
+      "chords": ["Emaj7:h.", "E7:h.", "Amaj9:h.", "Am6:h.", "Emaj7:h.", "C#m7:h.", "F#9:h.", "B13:h."]
+    },
+    "synthesis-line": {
+      "notes": ["E5:h", "r:q", "G#5:h.", "F#5:h", "r:q", "E5:h.", "D#5:h", "r:q", "E5:w"]
+    },
+    "final-colors": {
+      "chords": ["Emaj9:h.", "Amaj7:h.", "Emaj7:w"]
+    }
+  },
+  "sections": {
+    "opening": {
+      "bars": 8,
+      "tracks": {
+        "voice": { "pattern": "sparse-line-1" },
+        "color": { "pattern": "rich-harmony-1" }
+      }
+    },
+    "development": {
+      "bars": 8,
+      "tracks": {
+        "voice": { "pattern": "sparse-line-2" },
+        "color": { "pattern": "rich-harmony-2" }
+      }
+    },
+    "return": {
+      "bars": 8,
+      "tracks": {
+        "voice": { "pattern": "sparse-line-1" },
+        "color": { "pattern": "rich-harmony-1" }
+      }
+    },
+    "close": {
+      "bars": 3,
+      "tracks": {
+        "voice": { "pattern": "synthesis-line" },
+        "color": { "pattern": "final-colors" }
+      }
+    }
+  },
+  "arrangement": ["opening", "development", "return", "close"]
+}
