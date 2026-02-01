@@ -1,0 +1,928 @@
+{
+  "meta": {
+    "title": "Morphogenesis",
+    "composer": "Daedalus",
+    "mood": "Primordial, Generative, Organic, Transformative, Emergent",
+    "genre": "Contemporary Classical / Generative Ambient",
+    "description": "A five-movement sonic journey through the stages of biological development: from the singular moment of fertilization through the explosive multiplication of cleavage, the complex folding of gastrulation, the specialization of organogenesis, to the final stabilization of maturation. Each movement embodies the character of its developmental stage through tempo, texture, and timbral evolution.",
+    "tags": ["morphogenesis", "biology", "development", "embryo", "generative", "five-movements", "contemporary"]
+  },
+  "settings": {
+    "tempo": 60,
+    "key": "D dorian",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "// ===== MOVEMENT I: FERTILIZATION - THE PRIMORDIAL POINT =====": "---",
+    "zygote": {
+      "preset": "sine",
+      "volume": -10,
+      "pan": 0,
+      "params": { "warmth": 0.9, "attack": 0.8, "release": 0.9 },
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } }
+      ]
+    },
+    "membrane_pulse": {
+      "preset": "sub_bass",
+      "volume": -12,
+      "params": { "warmth": 0.8, "attack": 0.5, "release": 0.7 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 150, "type": "lowpass" } }
+      ]
+    },
+    "fusion_shimmer": {
+      "preset": "shimmer",
+      "volume": -14,
+      "params": { "brightness": 0.3, "attack": 0.7, "release": 0.8 },
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 6 } }
+      ]
+    },
+    
+    "// ===== MOVEMENT II: CLEAVAGE - DIVISION AND MULTIPLICATION =====": "---",
+    "cell_division": {
+      "preset": "pluck",
+      "volume": -8,
+      "pan": 0,
+      "params": { "brightness": 0.5, "attack": 0.1, "decay": 0.4 },
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "time": "8n", "feedback": 0.4 } },
+        { "type": "reverb", "wet": 0.25 }
+      ]
+    },
+    "mitotic_rhythm": {
+      "preset": "bell",
+      "volume": -9,
+      "params": { "brightness": 0.6, "attack": 0.05, "decay": 0.5 },
+      "effects": [
+        { "type": "delay", "wet": 0.35, "options": { "time": "16n", "feedback": 0.5 } },
+        { "type": "reverb", "wet": 0.3 }
+      ]
+    },
+    "doubling_bass": {
+      "preset": "fm_bass",
+      "volume": -10,
+      "params": { "punch": 0.7, "release": 0.4 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 400, "type": "lowpass" } }
+      ]
+    },
+    
+    "// ===== MOVEMENT III: GASTRULATION - FOLDING AND COMPLEXITY =====": "---",
+    "ectoderm": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": -0.5,
+      "params": { "brightness": 0.7, "attack": 0.3 },
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "8n.", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "mesoderm": {
+      "preset": "warm_pad",
+      "volume": -8,
+      "pan": 0,
+      "params": { "warmth": 0.7, "attack": 0.5, "release": 0.6 },
+      "effects": [
+        { "type": "chorus", "wet": 0.3 },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3.5 } }
+      ]
+    },
+    "endoderm": {
+      "preset": "sub_bass",
+      "volume": -10,
+      "pan": 0.5,
+      "params": { "warmth": 0.8 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 250, "type": "lowpass" } },
+        { "type": "reverb", "wet": 0.3 }
+      ]
+    },
+    "folding_texture": {
+      "preset": "granular_pad",
+      "volume": -12,
+      "params": { "brightness": 0.5, "richness": 0.6 },
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    
+    "// ===== MOVEMENT IV: ORGANOGENESIS - DIFFERENTIATION =====": "---",
+    "neural_tube": {
+      "preset": "fm_epiano",
+      "volume": -7,
+      "pan": -0.3,
+      "params": { "brightness": 0.6, "warmth": 0.5 },
+      "effects": [
+        { "type": "chorus", "wet": 0.2 },
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2.5 } }
+      ]
+    },
+    "cardiac": {
+      "preset": "synth_bass",
+      "volume": -8,
+      "pan": 0,
+      "params": { "punch": 0.6, "warmth": 0.7 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 500, "type": "lowpass" } },
+        { "type": "reverb", "wet": 0.25 }
+      ]
+    },
+    "skeletal": {
+      "preset": "marimba",
+      "volume": -9,
+      "pan": 0.3,
+      "params": { "brightness": 0.5, "decay": 0.5 },
+      "effects": [
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 2 } }
+      ]
+    },
+    "vascular": {
+      "preset": "flute",
+      "volume": -10,
+      "pan": 0.5,
+      "params": { "brightness": 0.6 },
+      "effects": [
+        { "type": "delay", "wet": 0.2, "options": { "time": "4n", "feedback": 0.25 } },
+        { "type": "reverb", "wet": 0.4 }
+      ]
+    },
+    "tissue_strings": {
+      "preset": "string_ensemble",
+      "volume": -10,
+      "params": { "warmth": 0.6, "attack": 0.4 },
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    
+    "// ===== MOVEMENT V: MATURATION - STABILIZATION =====": "---",
+    "mature_foundation": {
+      "preset": "contrabass",
+      "volume": -8,
+      "pan": 0,
+      "params": { "warmth": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2.5 } }
+      ]
+    },
+    "mature_harmony": {
+      "preset": "string_ensemble",
+      "volume": -7,
+      "params": { "warmth": 0.6, "attack": 0.3 },
+      "effects": [
+        { "type": "chorus", "wet": 0.2 },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3.5 } }
+      ]
+    },
+    "mature_voice": {
+      "preset": "solo_cello",
+      "volume": -6,
+      "pan": -0.2,
+      "params": { "warmth": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3 } }
+      ]
+    },
+    "mature_breath": {
+      "preset": "flute",
+      "volume": -9,
+      "pan": 0.3,
+      "effects": [
+        { "type": "reverb", "wet": 0.4 }
+      ]
+    },
+    "heartbeat": {
+      "preset": "timpani",
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.3 }
+      ]
+    }
+  },
+  
+  "patterns": {
+    "// ========== MOVEMENT I: FERTILIZATION PATTERNS ==========": "---",
+    
+    "zygote_emerge": {
+      "notes": ["D3:w@0.2"]
+    },
+    "zygote_expand_1": {
+      "notes": ["D3:h@0.25", "E3:h@0.3"]
+    },
+    "zygote_expand_2": {
+      "notes": ["D3:q@0.3", "E3:q@0.35", "F3:q@0.4", "G3:q@0.45"]
+    },
+    "zygote_bloom": {
+      "notes": ["D3:8@0.35", "E3:8@0.4", "F3:8@0.45", "G3:8@0.5", "A3:8@0.55", "B3:8@0.6", "C4:8@0.65", "D4:8@0.7"]
+    },
+    "zygote_rest": {
+      "notes": ["r:w"]
+    },
+    
+    "membrane_first": {
+      "notes": ["D1:w@0.3"]
+    },
+    "membrane_stir": {
+      "notes": ["D1:h@0.35", "A1:h@0.4"]
+    },
+    
+    "fusion_start": {
+      "chords": ["Dm:w"]
+    },
+    "fusion_grow": {
+      "chords": ["Dm:h", "Am:h"]
+    },
+    "fusion_expand": {
+      "chords": ["Dm:q", "Em:q", "Fmaj:q", "Gm:q"]
+    },
+    
+    "rest_bar": {
+      "notes": ["r:w"]
+    },
+    
+    "// ========== MOVEMENT II: CLEAVAGE PATTERNS ==========": "---",
+    
+    "divide_2": {
+      "notes": ["D4:h@0.5", "D4:h@0.5"]
+    },
+    "divide_4": {
+      "notes": ["D4:q@0.5", "D4:q@0.5", "D4:q@0.5", "D4:q@0.5"]
+    },
+    "divide_8": {
+      "notes": ["D4:8@0.5", "D4:8@0.5", "D4:8@0.5", "D4:8@0.5", "D4:8@0.5", "D4:8@0.5", "D4:8@0.5", "D4:8@0.5"]
+    },
+    "divide_16": {
+      "notes": ["D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5", "D4:16@0.5"]
+    },
+    
+    "mitotic_2": {
+      "notes": ["A4:h@0.4", "E5:h@0.4"]
+    },
+    "mitotic_4": {
+      "notes": ["A4:q@0.45", "E5:q@0.45", "A5:q@0.45", "D5:q@0.45"]
+    },
+    "mitotic_8": {
+      "notes": ["A4:8@0.5", "E5:8@0.5", "A5:8@0.5", "D5:8@0.5", "G5:8@0.5", "C5:8@0.5", "F5:8@0.5", "B4:8@0.5"]
+    },
+    "mitotic_16": {
+      "euclidean": {
+        "hits": 7,
+        "steps": 16,
+        "duration": "16",
+        "pitch": "A4"
+      }
+    },
+    
+    "bass_2": {
+      "notes": ["D2:h@0.6", "A2:h@0.6"]
+    },
+    "bass_4": {
+      "notes": ["D2:q@0.6", "A2:q@0.55", "D3:q@0.5", "A2:q@0.55"]
+    },
+    "bass_double": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+    
+    "// ========== MOVEMENT III: GASTRULATION PATTERNS ==========": "---",
+    
+    "ecto_fold_1": {
+      "notes": ["D5:q@0.5", "E5:q@0.5", "F5:h@0.5"]
+    },
+    "ecto_fold_2": {
+      "notes": ["G5:8@0.5", "F5:8@0.5", "E5:8@0.5", "D5:8@0.5", "C5:q@0.5", "D5:q@0.5"]
+    },
+    "ecto_invaginate": {
+      "notes": ["D5:8@0.55", "C5:8@0.5", "B4:8@0.45", "A4:8@0.4", "G4:8@0.45", "A4:8@0.5", "B4:8@0.55", "C5:8@0.6"]
+    },
+    "ecto_arp": {
+      "arpeggio": {
+        "chord": "Dm9",
+        "duration": "16",
+        "mode": "updown",
+        "octaves": 2,
+        "steps": 16,
+        "gate": 0.7
+      }
+    },
+    
+    "meso_layer_1": {
+      "chords": ["Dm:w"]
+    },
+    "meso_layer_2": {
+      "chords": ["Dm:h", "Fmaj:h"]
+    },
+    "meso_complex": {
+      "chords": ["Dm7:q", "Em7:q", "Fmaj7:q", "Gm7:q"]
+    },
+    "meso_fold": {
+      "chords": ["Dm9:h", "Am9:h"]
+    },
+    
+    "endo_low": {
+      "notes": ["D1:w@0.5"]
+    },
+    "endo_rise": {
+      "notes": ["D1:h@0.5", "E1:q@0.5", "F1:q@0.5"]
+    },
+    "endo_wave": {
+      "notes": ["D1:8@0.5", "E1:8@0.5", "F1:8@0.5", "E1:8@0.5", "D1:8@0.5", "E1:8@0.5", "F1:8@0.5", "G1:8@0.5"]
+    },
+    
+    "folding_markov": {
+      "markov": {
+        "states": ["1", "2", "3", "4", "5", "6", "7"],
+        "preset": "melody_stepwise",
+        "steps": 4,
+        "duration": "q",
+        "octave": 4,
+        "seed": 314
+      }
+    },
+    
+    "// ========== MOVEMENT IV: ORGANOGENESIS PATTERNS ==========": "---",
+    
+    "neural_melody": {
+      "notes": ["D4:q@0.6", "F4:8@0.55", "E4:8@0.55", "G4:q@0.6", "A4:q@0.65"]
+    },
+    "neural_develop": {
+      "notes": ["A4:8@0.6", "B4:8@0.6", "C5:8@0.65", "D5:8@0.65", "E5:q@0.7", "D5:q@0.65"]
+    },
+    "neural_complex": {
+      "notes": ["D5:16@0.6", "E5:16@0.6", "F5:16@0.6", "G5:16@0.6", "A5:8@0.65", "G5:8@0.65", "F5:q@0.6", "E5:q@0.6"]
+    },
+    "neural_arp": {
+      "arpeggio": {
+        "chord": "Dm11",
+        "duration": "16",
+        "mode": "up",
+        "octaves": 2,
+        "steps": 16,
+        "gate": 0.8
+      }
+    },
+    
+    "cardiac_beat": {
+      "notes": ["D2:8@0.7", "r:8", "D2:8@0.65", "r:8", "r:q", "D2:8@0.6", "r:8"]
+    },
+    "cardiac_rhythm": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 16,
+        "duration": "16",
+        "pitch": "D2"
+      }
+    },
+    "cardiac_strong": {
+      "notes": ["D2:q@0.7", "r:8", "D2:8@0.6", "D2:q@0.65", "r:q"]
+    },
+    
+    "skeletal_form": {
+      "notes": ["D4:q@0.55", "E4:8@0.5", "r:8", "F4:q@0.55", "G4:8@0.5", "r:8"]
+    },
+    "skeletal_rhythm": {
+      "notes": ["A4:8@0.5", "r:8", "G4:8@0.5", "r:8", "F4:8@0.5", "r:8", "E4:8@0.5", "r:8"]
+    },
+    "skeletal_build": {
+      "notes": ["D4:16@0.5", "E4:16@0.5", "F4:8@0.55", "G4:16@0.55", "A4:16@0.55", "B4:8@0.6", "C5:q@0.6", "D5:q@0.55"]
+    },
+    
+    "vascular_flow": {
+      "notes": ["A4:8@0.45", "G4:8@0.45", "F4:8@0.45", "E4:8@0.45", "D4:8@0.45", "E4:8@0.45", "F4:8@0.45", "G4:8@0.45"]
+    },
+    "vascular_branch": {
+      "notes": ["D5:q@0.5", "A4:8@0.45", "B4:8@0.45", "C5:q@0.5", "G4:q@0.45"]
+    },
+    
+    "tissue_hold": {
+      "chords": ["Dm:w"]
+    },
+    "tissue_develop": {
+      "chords": ["Dm:h", "Am:h"]
+    },
+    "tissue_complex": {
+      "chords": ["Dm7:q", "Fmaj7:q", "Gm7:q", "Am7:q"]
+    },
+    
+    "// ========== MOVEMENT V: MATURATION PATTERNS ==========": "---",
+    
+    "foundation_stable": {
+      "notes": ["D2:w@0.6"]
+    },
+    "foundation_breathe": {
+      "notes": ["D2:h@0.6", "A2:h@0.55"]
+    },
+    "foundation_walk": {
+      "notes": ["D2:q@0.6", "F2:q@0.55", "A2:q@0.55", "G2:q@0.55"]
+    },
+    "foundation_resolve": {
+      "notes": ["G2:q@0.55", "F2:q@0.55", "E2:q@0.55", "D2:q@0.6"]
+    },
+    
+    "harmony_full": {
+      "chords": ["Dm9:w"]
+    },
+    "harmony_breathe": {
+      "chords": ["Dm9:h", "Am9:h"]
+    },
+    "harmony_progress": {
+      "chords": ["Dm9:q", "Fmaj9:q", "Gm9:q", "Am9:q"]
+    },
+    "harmony_resolve": {
+      "chords": ["Gm9:q", "Am9:q", "Fmaj9:q", "Dm9:q"]
+    },
+    
+    "voice_sing": {
+      "notes": ["D4:h@0.65", "F4:q@0.6", "E4:q@0.6"]
+    },
+    "voice_develop": {
+      "notes": ["G4:q@0.6", "A4:q@0.65", "B4:8@0.6", "A4:8@0.6", "G4:q@0.6"]
+    },
+    "voice_soar": {
+      "notes": ["D5:q@0.7", "E5:8@0.65", "D5:8@0.65", "C5:q@0.6", "A4:q@0.6"]
+    },
+    "voice_rest": {
+      "notes": ["D4:h@0.6", "r:h"]
+    },
+    "voice_final": {
+      "notes": ["F4:q@0.6", "E4:q@0.55", "D4:h@0.65"]
+    },
+    
+    "breath_gentle": {
+      "notes": ["A5:h@0.4", "r:h"]
+    },
+    "breath_phrase": {
+      "notes": ["A5:8@0.45", "G5:8@0.45", "F5:q@0.45", "r:q", "E5:q@0.4"]
+    },
+    "breath_float": {
+      "notes": ["D6:q@0.35", "r:q", "A5:q@0.4", "r:q"]
+    },
+    
+    "heartbeat_steady": {
+      "notes": ["D2:q@0.5", "r:q", "D2:8@0.45", "r:8", "r:q"]
+    },
+    "heartbeat_calm": {
+      "notes": ["D2:h@0.45", "r:h"]
+    },
+    "heartbeat_final": {
+      "notes": ["D2:q@0.5", "r:q", "r:h"]
+    }
+  },
+  
+  "sections": {
+    "// ========== MOVEMENT I: FERTILIZATION - tempo 60 ==========": "---",
+    
+    "fertilization_1_emergence": {
+      "bars": 8,
+      "tempo": 60,
+      "tracks": {
+        "zygote": {
+          "patterns": ["zygote_rest", "zygote_rest", "zygote_rest", "zygote_rest", "zygote_emerge", "zygote_emerge", "zygote_emerge", "zygote_expand_1"],
+          "velocity": 0.4,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.1,
+        "end": 0.3,
+        "curve": "exponential"
+      }
+    },
+    
+    "fertilization_2_fusion": {
+      "bars": 8,
+      "tempo": 60,
+      "tracks": {
+        "zygote": {
+          "patterns": ["zygote_expand_1", "zygote_expand_2", "zygote_expand_1", "zygote_expand_2", "zygote_bloom", "zygote_expand_2", "zygote_bloom", "zygote_bloom"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "membrane_pulse": {
+          "patterns": ["rest_bar", "rest_bar", "membrane_first", "membrane_first", "membrane_stir", "membrane_first", "membrane_stir", "membrane_stir"],
+          "velocity": 0.4
+        },
+        "fusion_shimmer": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "fusion_start", "fusion_start", "fusion_grow", "fusion_expand"],
+          "velocity": 0.35,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.3,
+        "end": 0.5,
+        "curve": "linear"
+      }
+    },
+    
+    "// ========== MOVEMENT II: CLEAVAGE - tempo 90 ==========": "---",
+    
+    "cleavage_1_first_division": {
+      "bars": 8,
+      "tempo": 90,
+      "tracks": {
+        "cell_division": {
+          "patterns": ["divide_2", "divide_2", "divide_2", "divide_2", "divide_4", "divide_4", "divide_4", "divide_4"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "mitotic_rhythm": {
+          "patterns": ["rest_bar", "rest_bar", "mitotic_2", "mitotic_2", "mitotic_4", "mitotic_2", "mitotic_4", "mitotic_4"],
+          "velocity": 0.5
+        },
+        "doubling_bass": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "bass_2", "bass_2", "bass_4", "bass_4"],
+          "velocity": 0.5
+        }
+      },
+      "density": {
+        "start": 0.4,
+        "end": 0.6,
+        "curve": "linear"
+      }
+    },
+    
+    "cleavage_2_multiplication": {
+      "bars": 8,
+      "tempo": 105,
+      "tracks": {
+        "cell_division": {
+          "patterns": ["divide_4", "divide_8", "divide_4", "divide_8", "divide_8", "divide_16", "divide_8", "divide_16"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "mitotic_rhythm": {
+          "patterns": ["mitotic_4", "mitotic_8", "mitotic_4", "mitotic_8", "mitotic_8", "mitotic_16", "mitotic_8", "mitotic_16"],
+          "velocity": 0.55
+        },
+        "doubling_bass": {
+          "patterns": ["bass_4", "bass_double", "bass_4", "bass_double", "bass_double", "bass_double", "bass_double", "bass_double"],
+          "velocity": 0.55
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 0.8,
+        "curve": "exponential"
+      }
+    },
+    
+    "cleavage_3_morula": {
+      "bars": 8,
+      "tempo": 120,
+      "tracks": {
+        "cell_division": {
+          "patterns": ["divide_16", "divide_16", "divide_16", "divide_16", "divide_8", "divide_8", "divide_4", "divide_2"],
+          "velocity": 0.65
+        },
+        "mitotic_rhythm": {
+          "patterns": ["mitotic_16", "mitotic_16", "mitotic_16", "mitotic_16", "mitotic_8", "mitotic_4", "mitotic_4", "mitotic_2"],
+          "velocity": 0.6
+        },
+        "doubling_bass": {
+          "patterns": ["bass_double", "bass_double", "bass_double", "bass_double", "bass_4", "bass_4", "bass_2", "bass_2"],
+          "velocity": 0.55
+        }
+      },
+      "density": {
+        "start": 0.85,
+        "end": 0.6,
+        "curve": "logarithmic"
+      }
+    },
+    
+    "// ========== MOVEMENT III: GASTRULATION - tempo 84 ==========": "---",
+    
+    "gastrulation_1_invagination": {
+      "bars": 8,
+      "tempo": 84,
+      "tracks": {
+        "ectoderm": {
+          "patterns": ["ecto_fold_1", "rest_bar", "ecto_fold_2", "rest_bar", "ecto_invaginate", "rest_bar", "ecto_fold_1", "ecto_fold_2"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "mesoderm": {
+          "patterns": ["meso_layer_1", "meso_layer_1", "meso_layer_2", "meso_layer_2", "meso_layer_2", "meso_layer_1", "meso_layer_2", "meso_layer_2"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "endoderm": {
+          "patterns": ["endo_low", "endo_low", "endo_rise", "endo_low", "endo_wave", "endo_low", "endo_rise", "endo_wave"],
+          "velocity": 0.5
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.65,
+        "curve": "linear"
+      }
+    },
+    
+    "gastrulation_2_layers": {
+      "bars": 8,
+      "tempo": 84,
+      "tracks": {
+        "ectoderm": {
+          "patterns": ["ecto_fold_1", "ecto_fold_2", "ecto_arp", "ecto_fold_1", "ecto_invaginate", "ecto_arp", "ecto_fold_2", "ecto_invaginate"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "mesoderm": {
+          "patterns": ["meso_layer_2", "meso_complex", "meso_fold", "meso_layer_2", "meso_complex", "meso_fold", "meso_complex", "meso_fold"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "endoderm": {
+          "patterns": ["endo_wave", "endo_rise", "endo_wave", "endo_wave", "endo_rise", "endo_wave", "endo_wave", "endo_low"],
+          "velocity": 0.55
+        },
+        "folding_texture": {
+          "patterns": ["folding_markov", "rest_bar", "folding_markov", "rest_bar", "folding_markov", "folding_markov", "rest_bar", "folding_markov"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.65,
+        "end": 0.75,
+        "curve": "linear"
+      }
+    },
+    
+    "gastrulation_3_complexity": {
+      "bars": 8,
+      "tempo": 84,
+      "tracks": {
+        "ectoderm": {
+          "patterns": ["ecto_arp", "ecto_invaginate", "ecto_arp", "ecto_fold_1", "ecto_arp", "ecto_fold_2", "ecto_arp", "ecto_invaginate"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "mesoderm": {
+          "patterns": ["meso_fold", "meso_complex", "meso_fold", "meso_complex", "meso_fold", "meso_fold", "meso_complex", "meso_layer_1"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "endoderm": {
+          "patterns": ["endo_wave", "endo_wave", "endo_rise", "endo_wave", "endo_wave", "endo_rise", "endo_low", "endo_low"],
+          "velocity": 0.55
+        },
+        "folding_texture": {
+          "patterns": ["folding_markov", "folding_markov", "rest_bar", "folding_markov", "folding_markov", "rest_bar", "folding_markov", "rest_bar"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.75,
+        "end": 0.6,
+        "curve": "logarithmic"
+      }
+    },
+    
+    "// ========== MOVEMENT IV: ORGANOGENESIS - tempo 96 ==========": "---",
+    
+    "organogenesis_1_differentiation": {
+      "bars": 8,
+      "tempo": 96,
+      "tracks": {
+        "neural_tube": {
+          "patterns": ["neural_melody", "rest_bar", "neural_develop", "rest_bar", "neural_melody", "neural_develop", "rest_bar", "neural_complex"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "cardiac": {
+          "patterns": ["cardiac_beat", "cardiac_beat", "cardiac_beat", "cardiac_beat", "cardiac_rhythm", "cardiac_beat", "cardiac_rhythm", "cardiac_beat"],
+          "velocity": 0.55
+        },
+        "tissue_strings": {
+          "patterns": ["tissue_hold", "tissue_hold", "tissue_develop", "tissue_hold", "tissue_develop", "tissue_hold", "tissue_develop", "tissue_develop"],
+          "velocity": 0.5,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.55,
+        "end": 0.7,
+        "curve": "linear"
+      }
+    },
+    
+    "organogenesis_2_specialization": {
+      "bars": 8,
+      "tempo": 96,
+      "tracks": {
+        "neural_tube": {
+          "patterns": ["neural_develop", "neural_complex", "neural_arp", "neural_melody", "neural_develop", "neural_complex", "neural_arp", "neural_develop"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "cardiac": {
+          "patterns": ["cardiac_rhythm", "cardiac_strong", "cardiac_rhythm", "cardiac_beat", "cardiac_strong", "cardiac_rhythm", "cardiac_strong", "cardiac_rhythm"],
+          "velocity": 0.6
+        },
+        "skeletal": {
+          "patterns": ["skeletal_form", "rest_bar", "skeletal_rhythm", "skeletal_form", "skeletal_build", "skeletal_form", "skeletal_rhythm", "skeletal_build"],
+          "velocity": 0.55
+        },
+        "vascular": {
+          "patterns": ["rest_bar", "vascular_flow", "rest_bar", "vascular_branch", "vascular_flow", "rest_bar", "vascular_branch", "vascular_flow"],
+          "velocity": 0.5
+        },
+        "tissue_strings": {
+          "patterns": ["tissue_develop", "tissue_complex", "tissue_develop", "tissue_complex", "tissue_develop", "tissue_complex", "tissue_develop", "tissue_complex"],
+          "velocity": 0.55,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.85,
+        "curve": "exponential"
+      }
+    },
+    
+    "organogenesis_3_systems": {
+      "bars": 8,
+      "tempo": 96,
+      "tracks": {
+        "neural_tube": {
+          "patterns": ["neural_arp", "neural_complex", "neural_develop", "neural_arp", "neural_melody", "neural_develop", "neural_melody", "neural_develop"],
+          "velocity": 0.65,
+          "expression": "natural"
+        },
+        "cardiac": {
+          "patterns": ["cardiac_strong", "cardiac_rhythm", "cardiac_strong", "cardiac_beat", "cardiac_strong", "cardiac_beat", "cardiac_beat", "cardiac_beat"],
+          "velocity": 0.6
+        },
+        "skeletal": {
+          "patterns": ["skeletal_build", "skeletal_rhythm", "skeletal_form", "skeletal_build", "skeletal_form", "skeletal_rhythm", "skeletal_form", "rest_bar"],
+          "velocity": 0.55
+        },
+        "vascular": {
+          "patterns": ["vascular_flow", "vascular_branch", "vascular_flow", "vascular_branch", "vascular_flow", "rest_bar", "vascular_flow", "rest_bar"],
+          "velocity": 0.5
+        },
+        "tissue_strings": {
+          "patterns": ["tissue_complex", "tissue_develop", "tissue_complex", "tissue_develop", "tissue_hold", "tissue_develop", "tissue_hold", "tissue_hold"],
+          "velocity": 0.55,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.85,
+        "end": 0.7,
+        "curve": "logarithmic"
+      }
+    },
+    
+    "// ========== MOVEMENT V: MATURATION - tempo 72 ==========": "---",
+    
+    "maturation_1_integration": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "mature_foundation": {
+          "patterns": ["foundation_stable", "foundation_breathe", "foundation_stable", "foundation_walk", "foundation_stable", "foundation_breathe", "foundation_walk", "foundation_stable"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "mature_harmony": {
+          "patterns": ["harmony_full", "harmony_breathe", "harmony_full", "harmony_progress", "harmony_full", "harmony_breathe", "harmony_progress", "harmony_full"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "mature_voice": {
+          "patterns": ["voice_sing", "rest_bar", "voice_develop", "rest_bar", "voice_sing", "voice_develop", "rest_bar", "voice_rest"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "heartbeat": {
+          "patterns": ["heartbeat_steady", "heartbeat_steady", "heartbeat_steady", "heartbeat_steady", "heartbeat_steady", "heartbeat_steady", "heartbeat_steady", "heartbeat_calm"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 0.7,
+        "curve": "linear"
+      }
+    },
+    
+    "maturation_2_flourishing": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "mature_foundation": {
+          "patterns": ["foundation_walk", "foundation_breathe", "foundation_walk", "foundation_stable", "foundation_walk", "foundation_breathe", "foundation_resolve", "foundation_stable"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "mature_harmony": {
+          "patterns": ["harmony_progress", "harmony_breathe", "harmony_progress", "harmony_full", "harmony_progress", "harmony_breathe", "harmony_resolve", "harmony_full"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "mature_voice": {
+          "patterns": ["voice_develop", "voice_soar", "voice_sing", "voice_develop", "voice_soar", "voice_develop", "voice_sing", "voice_rest"],
+          "velocity": 0.65,
+          "expression": "natural"
+        },
+        "mature_breath": {
+          "patterns": ["breath_gentle", "rest_bar", "breath_phrase", "breath_float", "breath_gentle", "breath_phrase", "breath_float", "breath_gentle"],
+          "velocity": 0.5
+        },
+        "heartbeat": {
+          "patterns": ["heartbeat_steady", "heartbeat_calm", "heartbeat_steady", "heartbeat_steady", "heartbeat_calm", "heartbeat_steady", "heartbeat_calm", "heartbeat_calm"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.75,
+        "curve": "sine"
+      }
+    },
+    
+    "maturation_3_stabilization": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "mature_foundation": {
+          "patterns": ["foundation_stable", "foundation_breathe", "foundation_stable", "foundation_stable", "foundation_breathe", "foundation_stable", "foundation_resolve", "foundation_stable"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "mature_harmony": {
+          "patterns": ["harmony_full", "harmony_breathe", "harmony_full", "harmony_full", "harmony_breathe", "harmony_resolve", "harmony_full", "harmony_full"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "mature_voice": {
+          "patterns": ["voice_sing", "voice_rest", "voice_develop", "voice_rest", "voice_sing", "voice_rest", "voice_final", "rest_bar"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "heartbeat": {
+          "patterns": ["heartbeat_calm", "heartbeat_calm", "heartbeat_steady", "heartbeat_calm", "heartbeat_calm", "heartbeat_calm", "heartbeat_final", "rest_bar"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.4,
+        "curve": "logarithmic"
+      }
+    },
+    
+    "maturation_4_completion": {
+      "bars": 8,
+      "tempo": 60,
+      "tracks": {
+        "mature_foundation": {
+          "patterns": ["foundation_stable", "foundation_stable", "foundation_stable", "foundation_stable", "foundation_stable", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.45,
+          "expression": "natural"
+        },
+        "mature_harmony": {
+          "patterns": ["harmony_full", "harmony_full", "harmony_full", "harmony_full", "rest_bar", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.45,
+          "expression": "natural"
+        },
+        "mature_voice": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.4,
+        "end": 0.1,
+        "curve": "exponential"
+      }
+    }
+  },
+  
+  "arrangement": [
+    "fertilization_1_emergence",
+    "fertilization_2_fusion",
+    "cleavage_1_first_division",
+    "cleavage_2_multiplication",
+    "cleavage_3_morula",
+    "gastrulation_1_invagination",
+    "gastrulation_2_layers",
+    "gastrulation_3_complexity",
+    "organogenesis_1_differentiation",
+    "organogenesis_2_specialization",
+    "organogenesis_3_systems",
+    "maturation_1_integration",
+    "maturation_2_flourishing",
+    "maturation_3_stabilization",
+    "maturation_4_completion"
+  ]
+}

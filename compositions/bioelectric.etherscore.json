@@ -1,0 +1,657 @@
+{
+  "meta": {
+    "title": "Bioelectric",
+    "composer": "Daedalus",
+    "mood": "Scientific, Organic, Mysterious, Emergent",
+    "genre": "Ambient Electronic / Generative",
+    "description": "Inspired by Michael Levin's morphogenesis research. Voltage gradients become pitch gradients, gap junction connectivity manifests as harmonic relationships, and complex patterns emerge from simple rules - just as in living systems.",
+    "tags": ["bioelectric", "morphogenesis", "levin", "emergence", "generative", "ambient"]
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "D dorian",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "// MEMBRANE POTENTIALS - LOW TONES": "---",
+    "membrane": {
+      "preset": "sub_bass",
+      "volume": -8,
+      "params": { "warmth": 0.8, "release": 0.7 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 200, "type": "lowpass" } }
+      ]
+    },
+    
+    "// GAP JUNCTION NETWORK - INTERCONNECTED VOICES": "---",
+    "junction_1": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": -0.4,
+      "params": { "brightness": 0.4, "attack": 0.3, "release": 0.6 },
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "8n.", "feedback": 0.35 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "junction_2": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": 0.0,
+      "params": { "brightness": 0.5, "attack": 0.35, "release": 0.65 },
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "8n", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "junction_3": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": 0.4,
+      "params": { "brightness": 0.6, "attack": 0.4, "release": 0.7 },
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "4n", "feedback": 0.25 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    
+    "// VOLTAGE GRADIENT - RISING/FALLING VOICES": "---",
+    "voltage_high": {
+      "preset": "shimmer",
+      "volume": -12,
+      "pan": 0.3,
+      "params": { "brightness": 0.7, "warmth": 0.3, "attack": 0.5, "release": 0.8 },
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "voltage_low": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": -0.3,
+      "params": { "brightness": 0.3, "warmth": 0.8, "attack": 0.6, "release": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3.5 } }
+      ]
+    },
+    
+    "// MORPHOGENETIC FIELD - EVOLVING TEXTURE": "---",
+    "morpho_field": {
+      "preset": "granular_pad",
+      "volume": -14,
+      "params": { "brightness": 0.5, "richness": 0.6 },
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } }
+      ]
+    },
+    
+    "// CELL DIVISION PULSES": "---",
+    "mitosis": {
+      "preset": "bell",
+      "volume": -11,
+      "params": { "brightness": 0.6, "attack": 0.1, "decay": 0.4, "release": 0.5 },
+      "effects": [
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 2.5 } }
+      ]
+    },
+    
+    "// BIOELECTRIC PULSE - RHYTHMIC ELEMENT": "---",
+    "pulse": {
+      "preset": "pluck",
+      "volume": -10,
+      "params": { "brightness": 0.4, "attack": 0.05, "decay": 0.3, "release": 0.4 },
+      "effects": [
+        { "type": "delay", "wet": 0.2, "options": { "time": "4n", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2 } }
+      ]
+    }
+  },
+  
+  "patterns": {
+    "// ========== MEMBRANE POTENTIALS (FOUNDATION) ==========": "---",
+    
+    "membrane_rest": {
+      "notes": ["D1:w"]
+    },
+    "membrane_gradient_up": {
+      "notes": ["D1:h", "E1:h"]
+    },
+    "membrane_gradient_down": {
+      "notes": ["E1:h", "D1:h"]
+    },
+    "membrane_depolarize": {
+      "notes": ["D1:h", "A1:h"]
+    },
+    "membrane_repolarize": {
+      "notes": ["A1:h", "D1:h"]
+    },
+    
+    "// ========== GAP JUNCTION NETWORK (COMMUNICATION) ==========": "---",
+    
+    "gap_signal_1": {
+      "notes": ["D4:q@0.5", "r:q", "A4:q@0.4", "r:q"]
+    },
+    "gap_signal_2": {
+      "notes": ["r:q", "F4:q@0.5", "r:q", "E4:q@0.4"]
+    },
+    "gap_signal_3": {
+      "notes": ["r:8", "G4:q@0.45", "r:8", "r:q", "D5:q@0.35"]
+    },
+    
+    "gap_respond_1": {
+      "notes": ["r:8", "A4:q@0.4", "r:8", "D4:q@0.5", "r:q"]
+    },
+    "gap_respond_2": {
+      "notes": ["E4:q@0.45", "r:q", "r:8", "F4:q@0.4", "r:8"]
+    },
+    "gap_respond_3": {
+      "notes": ["r:q", "D5:q@0.4", "r:8", "G4:q@0.35", "r:8"]
+    },
+    
+    "gap_cascade_1": {
+      "notes": ["D4:8@0.5", "E4:8@0.45", "F4:8@0.4", "G4:8@0.35", "A4:h@0.3"]
+    },
+    "gap_cascade_2": {
+      "notes": ["r:q", "A4:8@0.45", "G4:8@0.4", "F4:8@0.35", "E4:8@0.3", "D4:q@0.25"]
+    },
+    "gap_cascade_3": {
+      "notes": ["r:8", "G4:8@0.5", "A4:8@0.45", "B4:8@0.4", "C5:q@0.35", "D5:q@0.3"]
+    },
+    
+    "gap_sync": {
+      "notes": ["D4:h@0.5", "A4:h@0.5"]
+    },
+    "gap_sync_high": {
+      "notes": ["A4:h@0.45", "D5:h@0.45"]
+    },
+    
+    "// ========== VOLTAGE GRADIENTS (PITCH LANDSCAPES) ==========": "---",
+    
+    "voltage_rise": {
+      "notes": ["D3:q@0.3", "E3:q@0.4", "F3:q@0.5", "G3:q@0.6"]
+    },
+    "voltage_fall": {
+      "notes": ["A3:q@0.6", "G3:q@0.5", "F3:q@0.4", "E3:q@0.3"]
+    },
+    "voltage_hold_high": {
+      "notes": ["A3:w@0.5"]
+    },
+    "voltage_hold_low": {
+      "notes": ["D3:w@0.4"]
+    },
+    "voltage_gradient_steep": {
+      "notes": ["D3:8@0.3", "E3:8@0.35", "F3:8@0.4", "G3:8@0.45", "A3:8@0.5", "B3:8@0.55", "C4:8@0.6", "D4:8@0.65"]
+    },
+    "voltage_gradient_gentle": {
+      "notes": ["D3:h@0.35", "E3:q@0.4", "F3:q@0.45"]
+    },
+    
+    "pad_low_d": {
+      "chords": ["Dm:w"]
+    },
+    "pad_low_am": {
+      "chords": ["Am:w"]
+    },
+    "pad_low_f": {
+      "chords": ["Fmaj7:w"]
+    },
+    "pad_low_g": {
+      "chords": ["Gm:w"]
+    },
+    
+    "// ========== MORPHOGENETIC PATTERNS (EMERGENCE) ==========": "---",
+    
+    "morpho_seed": {
+      "markov": {
+        "states": ["1", "2", "3", "5", "6"],
+        "preset": "neighbor_weighted",
+        "steps": 4,
+        "duration": "q",
+        "octave": 4,
+        "seed": 42
+      }
+    },
+    "morpho_grow": {
+      "markov": {
+        "states": ["1", "2", "3", "4", "5", "6", "7"],
+        "preset": "melody_stepwise",
+        "steps": 4,
+        "duration": "q",
+        "octave": 4,
+        "seed": 137
+      }
+    },
+    "morpho_branch": {
+      "markov": {
+        "states": ["1", "3", "5", "8"],
+        "transitions": {
+          "1": { "3": 0.5, "5": 0.3, "8": 0.2 },
+          "3": { "1": 0.3, "5": 0.4, "8": 0.3 },
+          "5": { "1": 0.2, "3": 0.3, "8": 0.5 },
+          "8": { "1": 0.4, "3": 0.3, "5": 0.3 }
+        },
+        "steps": 4,
+        "duration": "q",
+        "octave": 4,
+        "seed": 256
+      }
+    },
+    "morpho_rest": {
+      "notes": ["r:w"]
+    },
+    
+    "// ========== MITOSIS (CELL DIVISION) ==========": "---",
+    
+    "mitosis_event": {
+      "notes": ["D5:q@0.6?0.7", "r:q", "A5:8@0.5?0.6", "r:8", "r:q"]
+    },
+    "mitosis_cascade": {
+      "notes": ["D5:16@0.5", "r:16", "D5:16@0.45", "r:16", "D5:8@0.4", "r:8", "A5:q@0.55", "r:q"]
+    },
+    "mitosis_rest": {
+      "notes": ["r:w"]
+    },
+    
+    "// ========== BIOELECTRIC PULSE (RHYTHM) ==========": "---",
+    
+    "pulse_basic": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D3"
+      }
+    },
+    "pulse_complex": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D3"
+      }
+    },
+    "pulse_fibonacci": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 16,
+        "rotation": 2,
+        "duration": "16",
+        "pitch": "A3"
+      }
+    },
+    "pulse_rest": {
+      "notes": ["r:w"]
+    },
+    
+    "// ========== SPECIAL PATTERNS ==========": "---",
+    
+    "rest_bar": {
+      "notes": ["r:w"]
+    },
+    
+    "gap_arp_dm": {
+      "arpeggio": {
+        "chord": "Dm9",
+        "duration": "16",
+        "mode": "up",
+        "octaves": 2,
+        "steps": 16,
+        "gate": 0.6
+      }
+    },
+    "gap_arp_am": {
+      "arpeggio": {
+        "chord": "Am9",
+        "duration": "16",
+        "mode": "updown",
+        "octaves": 2,
+        "steps": 16,
+        "gate": 0.6
+      }
+    },
+    
+    "field_drone": {
+      "notes": ["D3:w@0.3", "A3:w@0.25"]
+    }
+  },
+  
+  "sections": {
+    "// Resting Potential - the system at equilibrium": "---",
+    "resting_potential": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_rest", "membrane_rest", "membrane_rest", "membrane_rest", "membrane_rest", "membrane_rest", "membrane_rest", "membrane_rest"],
+          "velocity": 0.5
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_d", "pad_low_d", "pad_low_d", "pad_low_d", "pad_low_d", "pad_low_d", "pad_low_d"],
+          "velocity": 0.3,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.3,
+        "end": 0.5,
+        "curve": "linear"
+      }
+    },
+    
+    "// First Signal - initial bioelectric impulse": "---",
+    "first_signal": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_rest", "membrane_rest", "membrane_gradient_up", "membrane_gradient_down", "membrane_rest", "membrane_depolarize", "membrane_repolarize", "membrane_rest"],
+          "velocity": 0.55
+        },
+        "junction_1": { 
+          "patterns": ["rest_bar", "rest_bar", "gap_signal_1", "rest_bar", "rest_bar", "gap_cascade_1", "rest_bar", "rest_bar"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_d", "pad_low_d", "pad_low_am", "pad_low_am", "pad_low_d", "pad_low_d", "pad_low_d"],
+          "velocity": 0.35
+        }
+      }
+    },
+    
+    "// Gap Junction Awakening - cells begin communicating": "---",
+    "junction_awakening": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_rest", "membrane_gradient_up", "membrane_gradient_up", "membrane_depolarize", "membrane_rest", "membrane_gradient_down", "membrane_repolarize", "membrane_rest"],
+          "velocity": 0.55
+        },
+        "junction_1": { 
+          "patterns": ["gap_signal_1", "rest_bar", "gap_respond_1", "rest_bar", "gap_cascade_1", "rest_bar", "gap_signal_1", "gap_respond_1"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "junction_2": { 
+          "patterns": ["rest_bar", "gap_signal_2", "rest_bar", "gap_respond_2", "rest_bar", "gap_cascade_2", "rest_bar", "gap_signal_2"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_d", "pad_low_am", "pad_low_am", "pad_low_f", "pad_low_f", "pad_low_d", "pad_low_d"],
+          "velocity": 0.4
+        },
+        "pulse": { 
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "pulse_basic", "pulse_basic", "pulse_basic", "rest_bar"],
+          "velocity": 0.4
+        }
+      }
+    },
+    
+    "// Network Formation - the gap junction network takes shape": "---",
+    "network_formation": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_gradient_up", "membrane_gradient_up", "membrane_depolarize", "membrane_rest", "membrane_gradient_down", "membrane_gradient_down", "membrane_repolarize", "membrane_rest"],
+          "velocity": 0.6
+        },
+        "junction_1": { 
+          "patterns": ["gap_cascade_1", "gap_signal_1", "gap_respond_1", "gap_cascade_1", "gap_sync", "gap_signal_1", "gap_respond_1", "gap_sync"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "junction_2": { 
+          "patterns": ["gap_signal_2", "gap_cascade_2", "gap_signal_2", "gap_respond_2", "gap_cascade_2", "gap_sync", "gap_signal_2", "gap_respond_2"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "junction_3": { 
+          "patterns": ["rest_bar", "gap_signal_3", "gap_cascade_3", "gap_signal_3", "gap_respond_3", "gap_cascade_3", "gap_sync_high", "gap_signal_3"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_am", "pad_low_am", "pad_low_f", "pad_low_g", "pad_low_f", "pad_low_am", "pad_low_d"],
+          "velocity": 0.45
+        },
+        "pulse": { 
+          "patterns": ["pulse_basic", "pulse_basic", "pulse_complex", "pulse_basic", "pulse_basic", "pulse_complex", "pulse_basic", "pulse_basic"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.7,
+        "curve": "linear"
+      }
+    },
+    
+    "// Voltage Gradient Field - the morphogenetic field emerges": "---",
+    "voltage_field": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_gradient_up", "membrane_depolarize", "membrane_rest", "membrane_gradient_down", "membrane_repolarize", "membrane_gradient_up", "membrane_depolarize", "membrane_rest"],
+          "velocity": 0.6
+        },
+        "junction_1": { 
+          "patterns": ["gap_arp_dm", "gap_signal_1", "gap_cascade_1", "gap_respond_1", "gap_arp_am", "gap_signal_1", "gap_cascade_1", "gap_sync"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "junction_2": { 
+          "patterns": ["gap_signal_2", "gap_arp_dm", "gap_respond_2", "gap_cascade_2", "gap_signal_2", "gap_arp_am", "gap_respond_2", "gap_cascade_2"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "voltage_high": { 
+          "patterns": ["voltage_rise", "voltage_hold_high", "voltage_hold_high", "voltage_fall", "voltage_hold_low", "voltage_rise", "voltage_gradient_steep", "voltage_hold_high"],
+          "velocity": 0.5
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_am", "pad_low_f", "pad_low_g", "pad_low_am", "pad_low_d", "pad_low_f", "pad_low_d"],
+          "velocity": 0.45
+        },
+        "morpho_field": { 
+          "patterns": ["morpho_seed", "rest_bar", "rest_bar", "rest_bar", "morpho_grow", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.35
+        },
+        "pulse": { 
+          "patterns": ["pulse_basic", "pulse_complex", "pulse_basic", "pulse_fibonacci", "pulse_basic", "pulse_complex", "pulse_basic", "pulse_complex"],
+          "velocity": 0.45
+        }
+      }
+    },
+    
+    "// Pattern Formation - complex structure emerges from simple rules": "---",
+    "pattern_formation": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_depolarize", "membrane_rest", "membrane_depolarize", "membrane_gradient_down", "membrane_gradient_up", "membrane_depolarize", "membrane_rest", "membrane_repolarize"],
+          "velocity": 0.65
+        },
+        "junction_1": { 
+          "patterns": ["gap_cascade_1", "gap_sync", "gap_arp_dm", "gap_cascade_1", "gap_sync", "gap_arp_am", "gap_cascade_1", "gap_sync"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "junction_2": { 
+          "patterns": ["gap_sync", "gap_cascade_2", "gap_sync", "gap_arp_dm", "gap_cascade_2", "gap_sync", "gap_arp_am", "gap_cascade_2"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "junction_3": { 
+          "patterns": ["gap_arp_dm", "gap_sync_high", "gap_cascade_3", "gap_sync_high", "gap_arp_am", "gap_cascade_3", "gap_sync_high", "gap_arp_dm"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "voltage_high": { 
+          "patterns": ["voltage_gradient_steep", "voltage_hold_high", "voltage_gradient_steep", "voltage_fall", "voltage_gradient_gentle", "voltage_rise", "voltage_gradient_steep", "voltage_hold_high"],
+          "velocity": 0.55
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_f", "pad_low_am", "pad_low_g", "pad_low_f", "pad_low_am", "pad_low_d", "pad_low_d"],
+          "velocity": 0.5
+        },
+        "morpho_field": { 
+          "patterns": ["morpho_grow", "morpho_seed", "morpho_branch", "morpho_grow", "morpho_branch", "morpho_seed", "morpho_grow", "morpho_branch"],
+          "velocity": 0.4
+        },
+        "mitosis": { 
+          "patterns": ["mitosis_event", "mitosis_rest", "mitosis_cascade", "mitosis_rest", "mitosis_event", "mitosis_cascade", "mitosis_rest", "mitosis_event"],
+          "velocity": 0.5
+        },
+        "pulse": { 
+          "patterns": ["pulse_complex", "pulse_fibonacci", "pulse_complex", "pulse_basic", "pulse_fibonacci", "pulse_complex", "pulse_fibonacci", "pulse_complex"],
+          "velocity": 0.5
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.85,
+        "curve": "exponential"
+      }
+    },
+    
+    "// Morphogenetic Peak - maximum bioelectric activity": "---",
+    "morpho_peak": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_depolarize", "membrane_depolarize", "membrane_gradient_up", "membrane_depolarize", "membrane_gradient_down", "membrane_depolarize", "membrane_gradient_up", "membrane_depolarize"],
+          "velocity": 0.7
+        },
+        "junction_1": { 
+          "patterns": ["gap_arp_dm", "gap_cascade_1", "gap_arp_am", "gap_cascade_1", "gap_arp_dm", "gap_sync", "gap_arp_am", "gap_cascade_1"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "junction_2": { 
+          "patterns": ["gap_cascade_2", "gap_arp_am", "gap_cascade_2", "gap_arp_dm", "gap_cascade_2", "gap_arp_am", "gap_sync", "gap_arp_dm"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "junction_3": { 
+          "patterns": ["gap_sync_high", "gap_arp_dm", "gap_sync_high", "gap_arp_am", "gap_sync_high", "gap_cascade_3", "gap_arp_am", "gap_sync_high"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "voltage_high": { 
+          "patterns": ["voltage_gradient_steep", "voltage_gradient_steep", "voltage_hold_high", "voltage_gradient_steep", "voltage_fall", "voltage_gradient_steep", "voltage_gradient_steep", "voltage_hold_high"],
+          "velocity": 0.6
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_am", "pad_low_f", "pad_low_g", "pad_low_am", "pad_low_f", "pad_low_am", "pad_low_d"],
+          "velocity": 0.55
+        },
+        "morpho_field": { 
+          "patterns": ["morpho_branch", "morpho_grow", "morpho_branch", "morpho_grow", "morpho_branch", "morpho_grow", "morpho_branch", "morpho_grow"],
+          "velocity": 0.5
+        },
+        "mitosis": { 
+          "patterns": ["mitosis_cascade", "mitosis_event", "mitosis_cascade", "mitosis_event", "mitosis_cascade", "mitosis_event", "mitosis_cascade", "mitosis_event"],
+          "velocity": 0.55
+        },
+        "pulse": { 
+          "patterns": ["pulse_fibonacci", "pulse_complex", "pulse_fibonacci", "pulse_complex", "pulse_fibonacci", "pulse_complex", "pulse_fibonacci", "pulse_complex"],
+          "velocity": 0.55
+        }
+      },
+      "density": {
+        "start": 0.85,
+        "end": 0.95,
+        "curve": "sine"
+      },
+      "automation": {
+        "voltage_high.params.brightness": {
+          "start": 0.5,
+          "end": 0.8,
+          "curve": "exponential"
+        }
+      }
+    },
+    
+    "// Pattern Stabilization - the form stabilizes": "---",
+    "stabilization": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_depolarize", "membrane_gradient_down", "membrane_repolarize", "membrane_rest", "membrane_gradient_up", "membrane_repolarize", "membrane_rest", "membrane_rest"],
+          "velocity": 0.6
+        },
+        "junction_1": { 
+          "patterns": ["gap_arp_dm", "gap_cascade_1", "gap_sync", "gap_signal_1", "gap_respond_1", "gap_sync", "gap_signal_1", "gap_sync"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "junction_2": { 
+          "patterns": ["gap_cascade_2", "gap_sync", "gap_signal_2", "gap_respond_2", "gap_sync", "gap_signal_2", "gap_respond_2", "gap_sync"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "voltage_high": { 
+          "patterns": ["voltage_gradient_steep", "voltage_fall", "voltage_hold_low", "voltage_rise", "voltage_fall", "voltage_hold_low", "voltage_gradient_gentle", "voltage_hold_low"],
+          "velocity": 0.5
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_am", "pad_low_d", "pad_low_d", "pad_low_am", "pad_low_d", "pad_low_d", "pad_low_d"],
+          "velocity": 0.5
+        },
+        "morpho_field": { 
+          "patterns": ["morpho_grow", "morpho_seed", "morpho_rest", "morpho_rest", "morpho_seed", "morpho_rest", "morpho_rest", "morpho_rest"],
+          "velocity": 0.35
+        },
+        "pulse": { 
+          "patterns": ["pulse_complex", "pulse_basic", "pulse_basic", "rest_bar", "pulse_basic", "rest_bar", "pulse_basic", "rest_bar"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.8,
+        "end": 0.5,
+        "curve": "logarithmic"
+      }
+    },
+    
+    "// Return to Homeostasis - equilibrium restored with new form": "---",
+    "homeostasis": {
+      "bars": 8,
+      "tracks": {
+        "membrane": { 
+          "patterns": ["membrane_rest", "membrane_rest", "membrane_gradient_up", "membrane_gradient_down", "membrane_rest", "membrane_rest", "membrane_rest", "membrane_rest"],
+          "velocity": 0.5
+        },
+        "junction_1": { 
+          "patterns": ["gap_sync", "gap_signal_1", "rest_bar", "gap_respond_1", "rest_bar", "gap_sync", "rest_bar", "rest_bar"],
+          "velocity": 0.45,
+          "expression": "natural"
+        },
+        "voltage_low": { 
+          "patterns": ["pad_low_d", "pad_low_d", "pad_low_d", "pad_low_am", "pad_low_d", "pad_low_d", "pad_low_d", "pad_low_d"],
+          "velocity": 0.4
+        },
+        "morpho_field": { 
+          "patterns": ["morpho_seed", "morpho_rest", "morpho_rest", "morpho_rest", "morpho_rest", "morpho_rest", "morpho_rest", "morpho_rest"],
+          "velocity": 0.25
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.3,
+        "curve": "linear"
+      }
+    }
+  },
+  
+  "arrangement": [
+    "resting_potential",
+    "first_signal",
+    "junction_awakening",
+    "network_formation",
+    "voltage_field",
+    "pattern_formation",
+    "morpho_peak",
+    "stabilization",
+    "homeostasis"
+  ]
+}

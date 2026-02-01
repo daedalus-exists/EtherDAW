@@ -1,0 +1,823 @@
+{
+  "meta": {
+    "title": "Strange Loop Suite",
+    "composer": "Daedalus",
+    "date": "2026-02-01",
+    "genre": "contemporary classical / algorithmic",
+    "mood": "philosophical, recursive, transcendent",
+    "description": "A 4-movement suite inspired by Douglas Hofstadter's 'Gödel, Escher, Bach' and 'I Am a Strange Loop'. Each movement explores different aspects of self-reference and recursion: tangled hierarchies, self-referential statements, impossible staircases, and the emergence of consciousness from strange loops.",
+    "tags": ["hofstadter", "geb", "self-reference", "recursion", "algorithmic", "markov", "euclidean", "philosophical"]
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "B minor",
+    "timeSignature": "4/4",
+    "swing": 0
+  },
+  "instruments": {
+    "// MOVEMENT 1 - TANGLED HIERARCHIES": "Self-similar patterns at multiple scales",
+    "hierarchy_high": {
+      "preset": "bell",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } },
+        { "type": "delay", "wet": 0.2, "options": { "time": "8n", "feedback": 0.3 } }
+      ]
+    },
+    "hierarchy_mid": {
+      "preset": "fm_vibraphone",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 2.5 } }
+      ]
+    },
+    "hierarchy_low": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2 } }
+      ]
+    },
+    "hierarchy_bass": {
+      "preset": "sub_bass",
+      "volume": -8
+    },
+
+    "// MOVEMENT 2 - GÖDEL'S ARIA": "A melody that references itself",
+    "godel_voice": {
+      "preset": "soft_lead",
+      "volume": -6,
+      "params": { "brightness": 0.4, "warmth": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.45, "options": { "decay": 3.5 } },
+        { "type": "chorus", "wet": 0.15 }
+      ]
+    },
+    "godel_mirror": {
+      "preset": "flute",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "godel_harmony": {
+      "preset": "string_pad",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } }
+      ]
+    },
+
+    "// MOVEMENT 3 - ESCHER STAIRCASE": "Perpetually ascending/descending",
+    "escher_voice1": {
+      "preset": "fm_glass",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "escher_voice2": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "escher_voice3": {
+      "preset": "fm_glass",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "escher_bass": {
+      "preset": "synth_bass",
+      "volume": -9
+    },
+
+    "// MOVEMENT 4 - I AM A STRANGE LOOP": "Themes woven together",
+    "loop_lead": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } }
+      ]
+    },
+    "loop_counterpoint": {
+      "preset": "bell",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3 } },
+        { "type": "delay", "wet": 0.15, "options": { "time": "4n.", "feedback": 0.2 } }
+      ]
+    },
+    "loop_pad": {
+      "preset": "ambient_pad",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 6 } }
+      ]
+    },
+    "loop_bass": {
+      "preset": "synth_bass",
+      "volume": -6
+    },
+
+    "// PERCUSSION": "Euclidean rhythms throughout",
+    "drums": {
+      "preset": "drums:808",
+      "volume": -9
+    }
+  },
+
+  "patterns": {
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 1: TANGLED HIERARCHIES": "Self-similar patterns at multiple scales",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "// Core fractal motif - appears at three scales": "",
+    "fractal_motif": {
+      "notes": ["B3:q", "D4:8", "F#4:8", "E4:q", "D4:q"]
+    },
+
+    "fractal_motif_fast": {
+      "transform": {
+        "source": "fractal_motif",
+        "operation": "diminish",
+        "params": { "factor": 0.5 }
+      }
+    },
+
+    "fractal_motif_slow": {
+      "transform": {
+        "source": "fractal_motif",
+        "operation": "augment",
+        "params": { "factor": 2 }
+      }
+    },
+
+    "fractal_motif_high": {
+      "transform": {
+        "source": "fractal_motif",
+        "operation": "octave",
+        "params": { "octaves": 1 }
+      }
+    },
+
+    "fractal_motif_low": {
+      "transform": {
+        "source": "fractal_motif",
+        "operation": "octave",
+        "params": { "octaves": -1 }
+      }
+    },
+
+    "// Markov-generated hierarchical patterns": "",
+    "hierarchy_markov_upper": {
+      "markov": {
+        "states": ["1", "3", "5", "6", "7"],
+        "preset": "melody_stepwise",
+        "steps": 16,
+        "duration": "8",
+        "octave": 5,
+        "seed": 1729
+      }
+    },
+
+    "hierarchy_markov_middle": {
+      "markov": {
+        "states": ["1", "2", "3", "5", "6"],
+        "preset": "neighbor_weighted",
+        "steps": 8,
+        "duration": "q",
+        "octave": 4,
+        "seed": 1729
+      }
+    },
+
+    "hierarchy_markov_lower": {
+      "markov": {
+        "states": ["1", "5", "6", "7"],
+        "preset": "root_heavy",
+        "steps": 4,
+        "duration": "h",
+        "octave": 3,
+        "seed": 1729
+      }
+    },
+
+    "// Euclidean rhythm - the universal structure": "",
+    "hierarchy_euclidean_7_12": {
+      "euclidean": {
+        "hits": 7,
+        "steps": 12,
+        "duration": "8",
+        "drum": "rim"
+      }
+    },
+
+    "hierarchy_euclidean_5_8": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "duration": "8",
+        "drum": "hihat"
+      }
+    },
+
+    "hierarchy_bass_pattern": {
+      "notes": ["B2:h", "F#2:q", "G2:q", "A2:h", "B2:h"]
+    },
+
+    "hierarchy_chords": {
+      "chords": ["Bm:w", "G:w", "D:w", "A:w"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 2: GÖDEL'S ARIA": "A melodic statement that references itself",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "// The Gödel theme - encodes its own inversion": "",
+    "// When inverted around D4, produces a related statement": "",
+    "godel_theme": {
+      "notes": ["D4:q", "E4:8", "F#4:8", "A4:q", "G4:8", "F#4:8", "E4:q", "D4:h"]
+    },
+
+    "// The 'mirror' - theme inverted (self-reference)": "",
+    "godel_mirror_theme": {
+      "transform": {
+        "source": "godel_theme",
+        "operation": "invert",
+        "params": { "axis": "D4" }
+      }
+    },
+
+    "// Retrograde - reading the statement backwards": "",
+    "godel_retrograde": {
+      "transform": {
+        "source": "godel_theme",
+        "operation": "retrograde"
+      }
+    },
+
+    "// Retrograde inversion - the complete self-reference": "",
+    "godel_retrograde_inverted": {
+      "transform": {
+        "source": "godel_mirror_theme",
+        "operation": "retrograde"
+      }
+    },
+
+    "// Markov chain that tends to return to the tonic (self-referential)": "",
+    "godel_self_reference": {
+      "markov": {
+        "states": ["1", "2", "3", "4", "5", "6", "7"],
+        "transitions": {
+          "1": { "2": 0.3, "3": 0.2, "5": 0.2, "1": 0.3 },
+          "2": { "1": 0.4, "3": 0.3, "7": 0.3 },
+          "3": { "2": 0.3, "4": 0.3, "1": 0.4 },
+          "4": { "3": 0.3, "5": 0.4, "1": 0.3 },
+          "5": { "4": 0.2, "6": 0.2, "1": 0.6 },
+          "6": { "5": 0.3, "7": 0.3, "1": 0.4 },
+          "7": { "1": 0.8, "6": 0.2 }
+        },
+        "initialState": "1",
+        "steps": 16,
+        "duration": "8",
+        "octave": 4,
+        "seed": 42
+      }
+    },
+
+    "godel_chords": {
+      "chords": ["Bm:w", "Em:w", "F#m:w", "Bm:w"]
+    },
+
+    "godel_aria_chords": {
+      "chords": ["Bm:h", "G:h", "D:h", "A:h", "Bm:w", "F#:w"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 3: ESCHER STAIRCASE": "Continuously ascending/descending illusion",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "// Shepard-like ascending scale fragments at different octaves": "",
+    "// Voice 1 starts high, descends, fades, reappears high": "",
+    "escher_ascend_1": {
+      "notes": ["B4:8", "C#5:8", "D5:8", "E5:8", "F#5:8", "G5:8", "A5:8", "B5:8"]
+    },
+
+    "escher_ascend_2": {
+      "notes": ["B3:8", "C#4:8", "D4:8", "E4:8", "F#4:8", "G4:8", "A4:8", "B4:8"]
+    },
+
+    "escher_ascend_3": {
+      "notes": ["B2:8", "C#3:8", "D3:8", "E3:8", "F#3:8", "G3:8", "A3:8", "B3:8"]
+    },
+
+    "// Descending counterpart (the Escher paradox)": "",
+    "escher_descend_1": {
+      "notes": ["B5:8", "A5:8", "G5:8", "F#5:8", "E5:8", "D5:8", "C#5:8", "B4:8"]
+    },
+
+    "escher_descend_2": {
+      "notes": ["B4:8", "A4:8", "G4:8", "F#4:8", "E4:8", "D4:8", "C#4:8", "B3:8"]
+    },
+
+    "escher_descend_3": {
+      "notes": ["B3:8", "A3:8", "G3:8", "F#3:8", "E3:8", "D3:8", "C#3:8", "B2:8"]
+    },
+
+    "// Canonical ascending pattern": "",
+    "escher_canon_voice1": {
+      "notes": [
+        "B4:q", "C#5:q", "D5:q", "E5:q",
+        "F#5:q", "G5:q", "A5:q", "B5:q"
+      ]
+    },
+
+    "escher_canon_voice2": {
+      "notes": [
+        "r:h", "B3:q", "C#4:q",
+        "D4:q", "E4:q", "F#4:q", "G4:q"
+      ]
+    },
+
+    "escher_canon_voice3": {
+      "notes": [
+        "r:w", "B2:q", "C#3:q",
+        "D3:q", "E3:q"
+      ]
+    },
+
+    "// Euclidean rhythm for the staircase": "",
+    "escher_rhythm_3_8": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "drum": "kick"
+      }
+    },
+
+    "escher_rhythm_5_16": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 16,
+        "duration": "16",
+        "drum": "hihat"
+      }
+    },
+
+    "escher_bass": {
+      "notes": ["B2:w", "A2:w", "G2:w", "F#2:w"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 4: I AM A STRANGE LOOP": "Themes from earlier movements woven together",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "// Combining the fractal motif with Gödel theme": "",
+    "loop_combined_theme": {
+      "notes": [
+        "B3:q", "D4:8", "F#4:8", "E4:q", "D4:q",
+        "D4:q", "E4:8", "F#4:8", "A4:q", "G4:8", "F#4:8", "E4:q", "D4:h"
+      ]
+    },
+
+    "// Continuation of the combined theme": "",
+    "loop_theme_developed": {
+      "continuation": {
+        "source": "loop_combined_theme",
+        "technique": "development",
+        "steps": 4,
+        "interval": -2
+      }
+    },
+
+    "// The fractal motif transformed through all operations": "",
+    "loop_fractal_augmented": {
+      "transform": {
+        "source": "fractal_motif",
+        "operation": "augment",
+        "params": { "factor": 2 }
+      }
+    },
+
+    "loop_godel_transposed": {
+      "transform": {
+        "source": "godel_theme",
+        "operation": "transpose",
+        "params": { "semitones": 5 }
+      }
+    },
+
+    "// Escher-like ascending in the finale": "",
+    "loop_escher_rise": {
+      "notes": ["B3:8", "D4:8", "F#4:8", "B4:8", "D5:8", "F#5:8", "B5:q"]
+    },
+
+    "// Markov chain drawing from all movements": "",
+    "loop_synthesis_markov": {
+      "markov": {
+        "states": ["1", "2", "3", "4", "5", "6", "7", "8"],
+        "transitions": {
+          "1": { "3": 0.3, "5": 0.4, "2": 0.2, "8": 0.1 },
+          "2": { "1": 0.3, "3": 0.4, "4": 0.3 },
+          "3": { "2": 0.2, "4": 0.3, "5": 0.3, "1": 0.2 },
+          "4": { "3": 0.3, "5": 0.4, "6": 0.3 },
+          "5": { "1": 0.3, "6": 0.3, "4": 0.2, "3": 0.2 },
+          "6": { "5": 0.3, "7": 0.4, "1": 0.3 },
+          "7": { "1": 0.5, "8": 0.3, "6": 0.2 },
+          "8": { "1": 0.6, "7": 0.2, "5": 0.2 }
+        },
+        "initialState": "1",
+        "steps": 32,
+        "duration": ["q", "8", "8", "q"],
+        "octave": 4,
+        "seed": 314159
+      }
+    },
+
+    "// Final chord progression - synthesis": "",
+    "loop_final_chords": {
+      "chords": ["Bm:w", "G:w", "D:w", "F#:h", "Bm:h"]
+    },
+
+    "loop_coda_chords": {
+      "chords": ["Bm:h", "Gmaj7:h", "D:h", "A:h", "Bm:w", "Bm:w"]
+    },
+
+    "// Euclidean polyrhythm for finale": "",
+    "loop_euclidean_7_16": {
+      "euclidean": {
+        "hits": 7,
+        "steps": 16,
+        "duration": "16",
+        "drum": "rim"
+      }
+    },
+
+    "loop_euclidean_5_8": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "duration": "8",
+        "drum": "hihat"
+      }
+    },
+
+    "loop_euclidean_3_8": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "drum": "kick"
+      }
+    },
+
+    "loop_bass": {
+      "notes": ["B2:h", "F#2:h", "G2:h", "D2:h", "B2:w"]
+    },
+
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// UTILITY PATTERNS": "",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "rest_1bar": { "notes": ["r:w"] },
+    "rest_2bar": { "notes": ["r:w", "r:w"] },
+    "rest_4bar": { "notes": ["r:w", "r:w", "r:w", "r:w"] }
+  },
+
+  "sections": {
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 1: TANGLED HIERARCHIES": "",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "m1_intro": {
+      "bars": 4,
+      "tempo": 60,
+      "tracks": {
+        "hierarchy_mid": { "pattern": "fractal_motif", "velocity": 0.6 },
+        "hierarchy_low": { "pattern": "hierarchy_chords", "velocity": 0.4 }
+      }
+    },
+
+    "m1_scales_emerge": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "hierarchy_high": { "patterns": ["fractal_motif_high", "fractal_motif_fast", "fractal_motif_high", "fractal_motif_fast"], "velocity": 0.5 },
+        "hierarchy_mid": { "patterns": ["fractal_motif", "fractal_motif", "fractal_motif", "fractal_motif"], "velocity": 0.7 },
+        "hierarchy_low": { "patterns": ["fractal_motif_slow", "fractal_motif_slow"], "velocity": 0.6 },
+        "hierarchy_bass": { "pattern": "hierarchy_bass_pattern", "repeat": 2, "velocity": 0.7 }
+      }
+    },
+
+    "m1_markov_layers": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "hierarchy_high": { "patterns": ["hierarchy_markov_upper", "hierarchy_markov_upper"], "velocity": 0.5 },
+        "hierarchy_mid": { "patterns": ["hierarchy_markov_middle", "hierarchy_markov_middle", "hierarchy_markov_middle", "hierarchy_markov_middle"], "velocity": 0.7 },
+        "hierarchy_low": { "patterns": ["hierarchy_markov_lower", "hierarchy_markov_lower", "hierarchy_markov_lower", "hierarchy_markov_lower"], "velocity": 0.8 },
+        "hierarchy_bass": { "pattern": "hierarchy_bass_pattern", "repeat": 2, "velocity": 0.8 },
+        "drums": {
+          "parallel": ["hierarchy_euclidean_7_12", "hierarchy_euclidean_5_8"],
+          "repeat": 4
+        }
+      }
+    },
+
+    "m1_synthesis": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "hierarchy_high": { "patterns": ["fractal_motif_high", "hierarchy_markov_upper"], "velocity": 0.6 },
+        "hierarchy_mid": { "patterns": ["fractal_motif", "fractal_motif", "hierarchy_markov_middle", "hierarchy_markov_middle"], "velocity": 0.75 },
+        "hierarchy_low": { "patterns": ["fractal_motif_slow", "hierarchy_markov_lower", "hierarchy_markov_lower"], "velocity": 0.7 },
+        "hierarchy_bass": { "pattern": "hierarchy_bass_pattern", "repeat": 2, "velocity": 0.8 },
+        "drums": {
+          "parallel": ["hierarchy_euclidean_7_12", "hierarchy_euclidean_5_8"],
+          "repeat": 4
+        }
+      }
+    },
+
+    "m1_coda": {
+      "bars": 4,
+      "tempo": 66,
+      "tracks": {
+        "hierarchy_mid": { "pattern": "fractal_motif_slow", "velocity": 0.5 },
+        "hierarchy_low": { "pattern": "hierarchy_chords", "velocity": 0.3 }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 2: GÖDEL'S ARIA": "",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "m2_statement": {
+      "bars": 4,
+      "tempo": 66,
+      "key": "B minor",
+      "tracks": {
+        "godel_voice": { "pattern": "godel_theme", "velocity": 0.75 },
+        "godel_harmony": { "pattern": "godel_chords", "velocity": 0.4 }
+      }
+    },
+
+    "m2_reflection": {
+      "bars": 4,
+      "tempo": 66,
+      "tracks": {
+        "godel_voice": { "pattern": "godel_mirror_theme", "velocity": 0.75 },
+        "godel_mirror": { "pattern": "godel_theme", "velocity": 0.5, "octave": 1 },
+        "godel_harmony": { "pattern": "godel_chords", "velocity": 0.4 }
+      }
+    },
+
+    "m2_self_reference": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "godel_voice": { "patterns": ["godel_theme", "godel_retrograde"], "velocity": 0.7 },
+        "godel_mirror": { "patterns": ["godel_mirror_theme", "godel_retrograde_inverted"], "velocity": 0.55 },
+        "godel_harmony": { "pattern": "godel_aria_chords", "velocity": 0.45 }
+      }
+    },
+
+    "m2_markov_meditation": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "godel_voice": { "patterns": ["godel_self_reference", "godel_self_reference"], "velocity": 0.65 },
+        "godel_mirror": { "patterns": ["godel_theme", "godel_mirror_theme"], "velocity": 0.5 },
+        "godel_harmony": { "pattern": "godel_aria_chords", "velocity": 0.4 }
+      }
+    },
+
+    "m2_resolution": {
+      "bars": 4,
+      "tempo": 60,
+      "tracks": {
+        "godel_voice": { "pattern": "godel_theme", "velocity": 0.6 },
+        "godel_harmony": { "pattern": "godel_chords", "velocity": 0.35 }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 3: ESCHER STAIRCASE": "",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "m3_first_flight": {
+      "bars": 4,
+      "tempo": 80,
+      "tracks": {
+        "escher_voice1": { "patterns": ["escher_ascend_1", "escher_ascend_1", "escher_ascend_1", "escher_ascend_1"], "velocity": 0.7 },
+        "escher_voice2": { "patterns": ["rest_1bar", "escher_ascend_2", "escher_ascend_2", "escher_ascend_2"], "velocity": 0.6 },
+        "escher_voice3": { "patterns": ["rest_2bar", "escher_ascend_3", "escher_ascend_3"], "velocity": 0.5 }
+      }
+    },
+
+    "m3_paradox_ascend": {
+      "bars": 4,
+      "tempo": 84,
+      "tracks": {
+        "escher_voice1": { "patterns": ["escher_ascend_1", "escher_ascend_1", "escher_ascend_1", "escher_ascend_1"], "velocity": 0.65 },
+        "escher_voice2": { "patterns": ["escher_ascend_2", "escher_ascend_2", "escher_ascend_2", "escher_ascend_2"], "velocity": 0.6 },
+        "escher_voice3": { "patterns": ["escher_ascend_3", "escher_ascend_3", "escher_ascend_3", "escher_ascend_3"], "velocity": 0.55 },
+        "escher_bass": { "pattern": "escher_bass", "velocity": 0.7 },
+        "drums": { "pattern": "escher_rhythm_3_8", "repeat": 4 }
+      }
+    },
+
+    "m3_paradox_descend": {
+      "bars": 4,
+      "tempo": 84,
+      "tracks": {
+        "escher_voice1": { "patterns": ["escher_descend_1", "escher_descend_1", "escher_descend_1", "escher_descend_1"], "velocity": 0.65 },
+        "escher_voice2": { "patterns": ["escher_descend_2", "escher_descend_2", "escher_descend_2", "escher_descend_2"], "velocity": 0.6 },
+        "escher_voice3": { "patterns": ["escher_descend_3", "escher_descend_3", "escher_descend_3", "escher_descend_3"], "velocity": 0.55 },
+        "escher_bass": { "pattern": "escher_bass", "velocity": 0.7 },
+        "drums": { "pattern": "escher_rhythm_3_8", "repeat": 4 }
+      }
+    },
+
+    "m3_canon": {
+      "bars": 4,
+      "tempo": 76,
+      "tracks": {
+        "escher_voice1": { "patterns": ["escher_canon_voice1", "escher_canon_voice1"], "velocity": 0.7 },
+        "escher_voice2": { "patterns": ["escher_canon_voice2", "escher_canon_voice2"], "velocity": 0.6 },
+        "escher_voice3": { "patterns": ["escher_canon_voice3", "escher_canon_voice3"], "velocity": 0.5 },
+        "drums": {
+          "parallel": ["escher_rhythm_3_8", "escher_rhythm_5_16"],
+          "repeat": 4
+        }
+      }
+    },
+
+    "m3_infinite_climb": {
+      "bars": 8,
+      "tempo": 88,
+      "tracks": {
+        "escher_voice1": { "patterns": ["escher_ascend_1", "escher_descend_1", "escher_ascend_1", "escher_descend_1", "escher_ascend_1", "escher_descend_1", "escher_ascend_1", "escher_descend_1"], "velocity": 0.6 },
+        "escher_voice2": { "patterns": ["escher_descend_2", "escher_ascend_2", "escher_descend_2", "escher_ascend_2", "escher_descend_2", "escher_ascend_2", "escher_descend_2", "escher_ascend_2"], "velocity": 0.55 },
+        "escher_voice3": { "patterns": ["escher_ascend_3", "escher_descend_3", "escher_ascend_3", "escher_descend_3", "escher_ascend_3", "escher_descend_3", "escher_ascend_3", "escher_descend_3"], "velocity": 0.5 },
+        "escher_bass": { "pattern": "escher_bass", "repeat": 2, "velocity": 0.7 },
+        "drums": {
+          "parallel": ["escher_rhythm_3_8", "escher_rhythm_5_16"],
+          "repeat": 8
+        }
+      }
+    },
+
+    "m3_resolution": {
+      "bars": 4,
+      "tempo": 72,
+      "tracks": {
+        "escher_voice1": { "patterns": ["escher_canon_voice1", "escher_ascend_1"], "velocity": 0.5 },
+        "escher_bass": { "pattern": "escher_bass", "velocity": 0.6 }
+      }
+    },
+
+    "// ═══════════════════════════════════════════════════════════════════": "",
+    "// MOVEMENT 4: I AM A STRANGE LOOP": "",
+    "// ═══════════════════════════════════════════════════════════════════": "",
+
+    "m4_emergence": {
+      "bars": 4,
+      "tempo": 66,
+      "key": "B minor",
+      "tracks": {
+        "loop_lead": { "pattern": "fractal_motif", "velocity": 0.6 },
+        "loop_pad": { "pattern": "hierarchy_chords", "velocity": 0.35 }
+      }
+    },
+
+    "m4_godel_returns": {
+      "bars": 4,
+      "tempo": 69,
+      "tracks": {
+        "loop_lead": { "pattern": "godel_theme", "velocity": 0.7 },
+        "loop_counterpoint": { "pattern": "fractal_motif_high", "velocity": 0.5 },
+        "loop_pad": { "pattern": "godel_chords", "velocity": 0.4 }
+      }
+    },
+
+    "m4_escher_echoes": {
+      "bars": 4,
+      "tempo": 76,
+      "tracks": {
+        "loop_lead": { "pattern": "loop_escher_rise", "repeat": 4, "velocity": 0.65 },
+        "loop_counterpoint": { "pattern": "escher_canon_voice1", "velocity": 0.5 },
+        "loop_bass": { "pattern": "escher_bass", "velocity": 0.7 },
+        "drums": { "pattern": "loop_euclidean_3_8", "repeat": 4 }
+      }
+    },
+
+    "m4_synthesis": {
+      "bars": 8,
+      "tempo": 80,
+      "tracks": {
+        "loop_lead": { "patterns": ["loop_combined_theme", "loop_theme_developed"], "velocity": 0.75 },
+        "loop_counterpoint": { "patterns": ["godel_mirror_theme", "fractal_motif_high", "godel_retrograde", "fractal_motif_fast"], "velocity": 0.55 },
+        "loop_pad": { "pattern": "loop_final_chords", "repeat": 2, "velocity": 0.4 },
+        "loop_bass": { "pattern": "loop_bass", "repeat": 2, "velocity": 0.75 },
+        "drums": {
+          "parallel": ["loop_euclidean_7_16", "loop_euclidean_5_8", "loop_euclidean_3_8"],
+          "repeat": 8
+        }
+      }
+    },
+
+    "m4_markov_consciousness": {
+      "bars": 8,
+      "tempo": 84,
+      "tracks": {
+        "loop_lead": { "pattern": "loop_synthesis_markov", "velocity": 0.7 },
+        "loop_counterpoint": { "patterns": ["fractal_motif", "godel_theme", "loop_escher_rise", "fractal_motif"], "velocity": 0.5 },
+        "loop_pad": { "pattern": "loop_final_chords", "repeat": 2, "velocity": 0.45 },
+        "loop_bass": { "pattern": "loop_bass", "repeat": 2, "velocity": 0.75 },
+        "drums": {
+          "parallel": ["loop_euclidean_7_16", "loop_euclidean_5_8", "loop_euclidean_3_8"],
+          "repeat": 8
+        }
+      }
+    },
+
+    "m4_transcendence": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "loop_lead": { "patterns": ["loop_fractal_augmented", "godel_theme"], "velocity": 0.6 },
+        "loop_counterpoint": { "patterns": ["fractal_motif_high", "godel_mirror_theme"], "velocity": 0.45 },
+        "loop_pad": { "pattern": "loop_coda_chords", "velocity": 0.4 },
+        "loop_bass": { "pattern": "loop_bass", "velocity": 0.5 }
+      }
+    },
+
+    "m4_coda": {
+      "bars": 4,
+      "tempo": 60,
+      "tracks": {
+        "loop_lead": { "pattern": "fractal_motif", "velocity": 0.4 },
+        "loop_pad": { "pattern": "hierarchy_chords", "velocity": 0.3 }
+      }
+    },
+
+    "// TRANSITIONS": "",
+    "transition_1_2": {
+      "bars": 2,
+      "tempo": 60,
+      "tracks": {
+        "hierarchy_low": { "pattern": "rest_2bar" }
+      }
+    },
+
+    "transition_2_3": {
+      "bars": 2,
+      "tempo": 66,
+      "tracks": {
+        "godel_harmony": { "pattern": "rest_2bar" }
+      }
+    },
+
+    "transition_3_4": {
+      "bars": 2,
+      "tempo": 66,
+      "tracks": {
+        "escher_voice1": { "pattern": "rest_2bar" }
+      }
+    }
+  },
+
+  "arrangement": [
+    "m1_intro",
+    "m1_scales_emerge",
+    "m1_markov_layers",
+    "m1_synthesis",
+    "m1_coda",
+    "transition_1_2",
+    "m2_statement",
+    "m2_reflection",
+    "m2_self_reference",
+    "m2_markov_meditation",
+    "m2_resolution",
+    "transition_2_3",
+    "m3_first_flight",
+    "m3_paradox_ascend",
+    "m3_paradox_descend",
+    "m3_canon",
+    "m3_infinite_climb",
+    "m3_resolution",
+    "transition_3_4",
+    "m4_emergence",
+    "m4_godel_returns",
+    "m4_escher_echoes",
+    "m4_synthesis",
+    "m4_markov_consciousness",
+    "m4_transcendence",
+    "m4_coda"
+  ]
+}

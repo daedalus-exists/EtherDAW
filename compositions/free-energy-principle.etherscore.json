@@ -1,0 +1,322 @@
+{
+  "meta": {
+    "title": "The Free Energy Principle",
+    "composer": "Daedalus",
+    "description": "Karl Friston's unified brain theory as music. The mind as a prediction machine: generating priors, encountering surprise (prediction error), and minimizing free energy through model updates. Predictable patterns get violated, then resolve into new stable states.",
+    "tags": ["conceptual", "neuroscience", "philosophy", "active-inference", "friston"]
+  },
+  "settings": {
+    "tempo": 72,
+    "timeSignature": "4/4",
+    "key": "A minor"
+  },
+  "instruments": {
+    "// The prediction engine - generates expectations": "---",
+    "prior": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "pan": 0,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 3 } }
+      ]
+    },
+    "// Active predictions - the model's voice": "---",
+    "prediction": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": -0.3,
+      "effects": [
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 1.5 } }
+      ]
+    },
+    "// Sensory input - raw data from the world": "---",
+    "sensory": {
+      "preset": "marimba",
+      "volume": -8,
+      "pan": 0.3,
+      "effects": [
+        { "type": "delay", "wet": 0.2, "options": { "time": "8n", "feedback": 0.3 } }
+      ]
+    },
+    "// Surprise/prediction error - the unexpected": "---",
+    "surprise": {
+      "preset": "fm_glass",
+      "volume": -4,
+      "pan": 0,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 2 } },
+        { "type": "chorus", "wet": 0.3 }
+      ]
+    },
+    "// Free energy - tension that must be minimized": "---",
+    "tension": {
+      "preset": "synthwave_pad",
+      "volume": -12,
+      "pan": 0,
+      "effects": [
+        { "type": "phaser", "wet": 0.4 },
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "// Resolution - the updated posterior": "---",
+    "posterior": {
+      "preset": "string_pad",
+      "volume": -8,
+      "pan": 0,
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 2 } }
+      ]
+    },
+    "// Grounding rhythm - the heartbeat of inference": "---",
+    "pulse": {
+      "preset": "sub_bass",
+      "volume": -12,
+      "pan": 0
+    }
+  },
+  "patterns": {
+    "// ═══════════════════════════════════════════════════": "PRIORS - Initial Beliefs",
+    "// The mind's baseline expectations - stable, predictable": "---",
+    
+    "prior_stable": {
+      "chords": ["Am:w", "F:w", "C:w", "G:w"]
+    },
+    "prior_drone": {
+      "notes": ["A2:w", "A2:w", "A2:w", "A2:w"]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "PREDICTIONS - Active Inference",
+    "// The model generating predictions about sensory input": "---",
+    
+    "prediction_certain": {
+      "notes": ["A4:q", "C5:q", "E5:q", "A5:q", "E5:q", "C5:q", "A4:h"]
+    },
+    "prediction_confident": {
+      "notes": ["A4:8", "B4:8", "C5:8", "D5:8", "E5:q", "D5:q", "C5:h"]
+    },
+    "prediction_reaching": {
+      "notes": ["E5:q", "F5:q", "G5:q", "A5:q", "G5:8", "F5:8", "E5:h"]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "SENSORY INPUT - Data Stream",
+    "// Reality matching (initially) the predictions": "---",
+    
+    "sensory_aligned": {
+      "notes": ["A5:8", "r:8", "C6:8", "r:8", "E5:8", "r:8", "A5:q"]
+    },
+    "sensory_drift": {
+      "notes": ["A5:8", "r:8", "C6:8", "r:8", "F5:8", "r:8", "Bb5:q"]
+    },
+    "sensory_strange": {
+      "notes": ["Bb5:8", "r:8", "Eb6:8*", "r:8", "F#5:8*", "r:8", "B5:q"]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "SURPRISE - Prediction Error",
+    "// High entropy moments - reality violates expectations": "---",
+    
+    "surprise_mild": {
+      "notes": ["Bb5:8>", "r:8", "F#5:8>", "r:q."]
+    },
+    "surprise_tritone": {
+      "notes": ["A4:8", "Eb5:q>", "r:8", "D5:8", "G#5:q>", "r:8"]
+    },
+    "surprise_burst": {
+      "notes": ["Eb6:16>", "A5:16>", "D6:16>", "G#5:16>", "C#6:16>", "G5:16>", "B5:16>", "F5:16>", "r:h"]
+    },
+    "surprise_chromatic": {
+      "notes": ["A5:16", "Bb5:16", "B5:16", "C6:16", "C#6:16", "D6:16", "Eb6:16", "E6:16", "F6:8>", "r:q."]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "FREE ENERGY - Tension State",
+    "// The uncomfortable state before minimization": "---",
+    
+    "tension_dissonant": {
+      "chords": ["Am:h", "Ebdim:h", "Dm7b5:h", "E7b9:h"]
+    },
+    "tension_unresolved": {
+      "notes": ["E5:h", "Eb5:h", "D5:h", "D5:h"]
+    },
+    "tension_building": {
+      "chords": ["Dm:q", "Dm/C:q", "Dm/B:q", "Bdim:q", "E:h", "E7:h"]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "MINIMIZATION - Model Update",
+    "// Free energy being minimized through inference": "---",
+    
+    "minimization_gradual": {
+      "notes": ["Eb5:8", "E5:8", "D5:8", "E5:8", "C5:8", "D5:8", "B4:8", "C5:8"]
+    },
+    "minimization_convergent": {
+      "notes": ["D5:q", "C5:q", "B4:q", "A4:q", "G4:8", "A4:8", "B4:8", "A4:8"]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "POSTERIOR - Updated Beliefs",
+    "// New stable state incorporating the learned information": "---",
+    
+    "posterior_stable": {
+      "chords": ["Am:w", "Dm:w", "Em:w", "Am:w"]
+    },
+    "posterior_integrated": {
+      "notes": ["A4:q", "Bb4:8", "A4:8", "C5:q", "B4:8", "C5:8", "E5:h", "A4:w"]
+    },
+    "posterior_enriched": {
+      "chords": ["Am7:w", "Dm9:w", "Fmaj7:w", "Em7:h", "Am:h"]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "PULSE - Inference Heartbeat",
+    "// The continuous rhythm of prediction-update cycles": "---",
+    
+    "pulse_regular": {
+      "notes": ["A1:q", "r:q", "A1:q", "r:q"]
+    },
+    "pulse_irregular": {
+      "notes": ["A1:q", "r:8", "A1:8", "r:q", "A1:8", "r:8"]
+    },
+    "pulse_racing": {
+      "notes": ["A1:8", "A1:8", "r:8", "A1:8", "A1:8", "A1:8", "r:8", "A1:8"]
+    },
+    
+    "// ═══════════════════════════════════════════════════": "RESOLUTION MELODIES",
+    "// Themes emerging from successful inference": "---",
+    
+    "resolution_melody": {
+      "notes": ["A4:q", "B4:8", "C5:8", "D5:q", "E5:q", "D5:8", "C5:8", "B4:8", "A4:8", "A4:h"]
+    },
+    "final_understanding": {
+      "notes": ["A4:h", "C5:q", "E5:q", "A5:w", "r:h", "G5:q", "F5:q", "E5:w", "A4:w"]
+    }
+  },
+  "sections": {
+    "// ═══════════ SECTION 1: PRIOR BELIEFS ═══════════": "---",
+    "priors": {
+      "bars": 8,
+      "tracks": {
+        "prior": { "pattern": "prior_stable", "velocity": 0.5 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.4 }
+      }
+    },
+    
+    "// ═══════════ SECTION 2: PREDICTION GENERATION ═══════════": "---",
+    "prediction_phase": {
+      "bars": 8,
+      "tracks": {
+        "prior": { "pattern": "prior_stable", "velocity": 0.4 },
+        "prediction": { "patterns": ["prediction_certain", "prediction_confident"], "velocity": 0.7 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.5 }
+      }
+    },
+    
+    "// ═══════════ SECTION 3: ALIGNED SENSATION ═══════════": "---",
+    "aligned": {
+      "bars": 8,
+      "tracks": {
+        "prior": { "pattern": "prior_stable", "velocity": 0.3 },
+        "prediction": { "pattern": "prediction_confident", "velocity": 0.6 },
+        "sensory": { "pattern": "sensory_aligned", "velocity": 0.7 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.5 }
+      }
+    },
+    
+    "// ═══════════ SECTION 4: FIRST DRIFT - Small Surprise ═══════════": "---",
+    "first_drift": {
+      "bars": 8,
+      "tracks": {
+        "prior": { "pattern": "prior_stable", "velocity": 0.3 },
+        "prediction": { "pattern": "prediction_confident", "velocity": 0.5 },
+        "sensory": { "pattern": "sensory_drift", "velocity": 0.8 },
+        "surprise": { "pattern": "surprise_mild", "velocity": 0.6 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.5 }
+      }
+    },
+    
+    "// ═══════════ SECTION 5: PREDICTION ERROR - High Entropy ═══════════": "---",
+    "prediction_error": {
+      "bars": 8,
+      "tracks": {
+        "tension": { "pattern": "tension_dissonant", "velocity": 0.6 },
+        "prediction": { "pattern": "prediction_reaching", "velocity": 0.7 },
+        "sensory": { "pattern": "sensory_strange", "velocity": 0.9 },
+        "surprise": { "patterns": ["surprise_tritone", "surprise_burst"], "velocity": 0.8 },
+        "pulse": { "pattern": "pulse_irregular", "velocity": 0.6 }
+      }
+    },
+    
+    "// ═══════════ SECTION 6: MAXIMUM SURPRISE - Crisis ═══════════": "---",
+    "crisis": {
+      "bars": 4,
+      "tracks": {
+        "tension": { "pattern": "tension_dissonant", "velocity": 0.8 },
+        "surprise": { "patterns": ["surprise_chromatic", "surprise_burst"], "velocity": 0.9 },
+        "sensory": { "pattern": "sensory_strange", "velocity": 0.9 },
+        "pulse": { "pattern": "pulse_racing", "velocity": 0.7 }
+      }
+    },
+    
+    "// ═══════════ SECTION 7: FREE ENERGY MINIMIZATION BEGINS ═══════════": "---",
+    "minimization": {
+      "bars": 8,
+      "tracks": {
+        "tension": { "pattern": "tension_building", "velocity": 0.5 },
+        "prediction": { "pattern": "minimization_gradual", "velocity": 0.6 },
+        "sensory": { "pattern": "sensory_drift", "velocity": 0.5 },
+        "pulse": { "pattern": "pulse_irregular", "velocity": 0.5 }
+      }
+    },
+    
+    "// ═══════════ SECTION 8: CONVERGENCE ═══════════": "---",
+    "convergence": {
+      "bars": 8,
+      "tracks": {
+        "prior": { "pattern": "prior_stable", "velocity": 0.3 },
+        "prediction": { "pattern": "minimization_convergent", "velocity": 0.6 },
+        "posterior": { "pattern": "posterior_stable", "velocity": 0.4 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.5 }
+      }
+    },
+    
+    "// ═══════════ SECTION 9: POSTERIOR UPDATE - New Stability ═══════════": "---",
+    "posterior_update": {
+      "bars": 8,
+      "tracks": {
+        "posterior": { "pattern": "posterior_enriched", "velocity": 0.6 },
+        "prediction": { "pattern": "posterior_integrated", "velocity": 0.7 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.4 }
+      }
+    },
+    
+    "// ═══════════ SECTION 10: RESOLUTION - Understanding ═══════════": "---",
+    "resolution": {
+      "bars": 8,
+      "tracks": {
+        "posterior": { "pattern": "posterior_enriched", "velocity": 0.5 },
+        "prediction": { "pattern": "resolution_melody", "velocity": 0.7 },
+        "sensory": { "pattern": "sensory_aligned", "velocity": 0.6, "transpose": -12 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.3 }
+      }
+    },
+    
+    "// ═══════════ SECTION 11: CODA - The Cycle Continues ═══════════": "---",
+    "coda": {
+      "bars": 12,
+      "tracks": {
+        "prior": { "pattern": "prior_stable", "velocity": 0.3 },
+        "prediction": { "pattern": "final_understanding", "velocity": 0.6 },
+        "posterior": { "pattern": "posterior_enriched", "velocity": 0.4 },
+        "pulse": { "pattern": "pulse_regular", "velocity": 0.2 }
+      }
+    }
+  },
+  "arrangement": [
+    "priors",
+    "prediction_phase",
+    "aligned",
+    "first_drift",
+    "prediction_error",
+    "crisis",
+    "minimization",
+    "convergence",
+    "posterior_update",
+    "resolution",
+    "coda"
+  ]
+}

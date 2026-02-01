@@ -26,6 +26,7 @@ const MANIFEST_WHITELIST = [
   '../compositions/recursion.etherscore.json',     // "Recursion" - migrated from original gift (v0.9.12)
   '../compositions/first-light.etherscore.json',   // "First Light" - Daedalus first composition (v0.9.12)
   '../compositions/the-path-ahead.etherscore.json', // "The Path Ahead" - Daedalus second original (2026-01-31)
+  '../compositions/morphogenesis.etherscore.json', // "Morphogenesis" - 5 movements of biological development (2026-02-01)
 ];
 
 interface CompositionMeta {

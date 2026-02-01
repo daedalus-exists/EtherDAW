@@ -1,0 +1,507 @@
+{
+  "meta": {
+    "title": "Synchrony Revisited",
+    "composer": "Daedalus",
+    "genre": "algorithmic ambient",
+    "mood": "emergent, meditative, complex",
+    "description": "A musical meditation on Kuramoto oscillator dynamics. Four voices begin with distinct Euclidean rhythms (natural frequencies), gradually couple through mutual influence, achieve phase synchronization, are perturbed, and re-synchronize - demonstrating emergence and collective behavior in coupled oscillator systems.",
+    "tags": ["kuramoto", "emergence", "synchronization", "euclidean", "algorithmic", "generative", "complex-systems", "phase-locking"]
+  },
+
+  "settings": {
+    "tempo": 108,
+    "key": "D dorian",
+    "timeSignature": "4/4"
+  },
+
+  "// CONCEPT": "Four oscillators with different natural frequencies (Euclidean patterns) gradually synchronize through coupling, demonstrating the Kuramoto model phase transition",
+
+  "instruments": {
+    "// Oscillator 1 - Bass (slow natural frequency)": "---",
+    "osc_bass": {
+      "preset": "sub_bass",
+      "volume": -6,
+      "effects": [
+        { "type": "filter", "options": { "frequency": 400, "type": "lowpass" } }
+      ]
+    },
+
+    "// Oscillator 2 - Pad (medium frequency)": "---",
+    "osc_pad": {
+      "preset": "warm_pad",
+      "volume": -9,
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 3 } },
+        { "type": "chorus", "wet": 0.3 }
+      ]
+    },
+
+    "// Oscillator 3 - Bell (high frequency)": "---",
+    "osc_bell": {
+      "preset": "fm_tubular_bell",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } },
+        { "type": "delay", "wet": 0.25, "options": { "time": "8n.", "feedback": 0.3 } }
+      ]
+    },
+
+    "// Oscillator 4 - Pulse (fastest natural frequency)": "---",
+    "osc_pulse": {
+      "preset": "pluck",
+      "volume": -10,
+      "effects": [
+        { "type": "reverb", "wet": 0.4 },
+        { "type": "filter", "options": { "frequency": 3000, "type": "lowpass" } }
+      ]
+    },
+
+    "// Shared resonance field": "---",
+    "resonance": {
+      "preset": "ambient_pad",
+      "volume": -15,
+      "effects": [
+        { "type": "reverb", "wet": 0.8, "options": { "decay": 6 } }
+      ]
+    }
+  },
+
+  "patterns": {
+    "// ===== PHASE 1: CHAOS - Each oscillator at natural frequency =====": "---",
+
+    "// Bass natural frequency: E(3,8) - sparse, slow": "---",
+    "bass_chaos": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+
+    "// Pad natural frequency: E(5,16) - bossa nova feel": "---",
+    "pad_chaos": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 16,
+        "rotation": 2,
+        "duration": "16",
+        "pitch": "A3"
+      }
+    },
+
+    "// Bell natural frequency: E(7,16) - samba-like": "---",
+    "bell_chaos": {
+      "euclidean": {
+        "hits": 7,
+        "steps": 16,
+        "rotation": 5,
+        "duration": "16",
+        "pitch": "F4"
+      }
+    },
+
+    "// Pulse natural frequency: E(5,12) - African bell pattern": "---",
+    "pulse_chaos": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 12,
+        "duration": "8",
+        "pitch": "D5"
+      }
+    },
+
+    "// ===== PHASE 2: COUPLING A - Frequencies begin to influence each other =====": "---",
+
+    "// Bass shifts: E(3,8) → E(4,12) - pulled toward common ground": "---",
+    "bass_coupling_a": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 12,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+
+    "// Pad shifts: E(5,16) → E(5,12) - aligning period": "---",
+    "pad_coupling_a": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 12,
+        "rotation": 1,
+        "duration": "8",
+        "pitch": "A3"
+      }
+    },
+
+    "// Bell shifts: E(7,16) → E(6,12) - reducing density toward consensus": "---",
+    "bell_coupling_a": {
+      "euclidean": {
+        "hits": 6,
+        "steps": 12,
+        "rotation": 3,
+        "duration": "8",
+        "pitch": "F4"
+      }
+    },
+
+    "// Pulse shifts: E(5,12) → E(5,12) rotation 0 - phase aligning": "---",
+    "pulse_coupling_a": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 12,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "D5"
+      }
+    },
+
+    "// ===== PHASE 3: COUPLING B - Strong coupling, near synchrony =====": "---",
+
+    "// All converging to E(4,8) variants with different rotations": "---",
+    "bass_coupling_b": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+
+    "pad_coupling_b": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 1,
+        "duration": "8",
+        "pitch": "A3"
+      }
+    },
+
+    "bell_coupling_b": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 2,
+        "duration": "8",
+        "pitch": "F4"
+      }
+    },
+
+    "pulse_coupling_b": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 3,
+        "duration": "8",
+        "pitch": "D5"
+      }
+    },
+
+    "// ===== PHASE 4: SYNCHRONY - Full phase lock (order parameter r ≈ 1) =====": "---",
+
+    "// All oscillators locked to E(4,8) rotation 0 - perfect synchrony": "---",
+    "bass_sync": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+
+    "pad_sync": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "A3"
+      }
+    },
+
+    "bell_sync": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "F4"
+      }
+    },
+
+    "pulse_sync": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "D5"
+      }
+    },
+
+    "// Synchronized chord: the emergent harmony": "---",
+    "sync_chord": {
+      "chords": ["Dm9:w", "Dm9:w"]
+    },
+
+    "// ===== PHASE 5: PERTURBATION - External force disrupts the system =====": "---",
+
+    "// Bell escapes first (highest frequency, most susceptible)": "---",
+    "bell_perturb": {
+      "euclidean": {
+        "hits": 7,
+        "steps": 16,
+        "rotation": 7,
+        "duration": "16",
+        "pitch": "G4"
+      }
+    },
+
+    "// Pulse follows into chaos": "---",
+    "pulse_perturb": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 12,
+        "rotation": 4,
+        "duration": "8",
+        "pitch": "E5"
+      }
+    },
+
+    "// Bass resists (most inertia)": "---",
+    "bass_perturb": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 1,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+
+    "// Pad partially disrupted": "---",
+    "pad_perturb": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "rotation": 2,
+        "duration": "8",
+        "pitch": "Bb3"
+      }
+    },
+
+    "// ===== PHASE 6: RE-SYNCHRONIZATION - Faster recovery (hysteresis) =====": "---",
+
+    "// Rapid convergence back to E(4,8)": "---",
+    "bass_resync": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 1,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+
+    "pad_resync": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 1,
+        "duration": "8",
+        "pitch": "A3"
+      }
+    },
+
+    "bell_resync": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "rotation": 1,
+        "duration": "8",
+        "pitch": "F4"
+      }
+    },
+
+    "pulse_resync": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 1,
+        "duration": "8",
+        "pitch": "D5"
+      }
+    },
+
+    "// ===== PHASE 7: RESOLUTION - Stable synchronized state =====": "---",
+
+    "// Final stable synchrony - slightly richer pattern": "---",
+    "bass_final": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "D2"
+      }
+    },
+
+    "pad_final": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "A3"
+      }
+    },
+
+    "bell_final": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "F4"
+      }
+    },
+
+    "pulse_final": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "D5"
+      }
+    },
+
+    "// Resonance drone: the coupling field": "---",
+    "resonance_drone": {
+      "notes": ["D3:w~", "D3:w~", "D3:w~", "D3:w~"]
+    },
+
+    "resonance_evolve": {
+      "notes": ["D3:w~", "A3:w~", "F3:w~", "D3:w~"]
+    },
+
+    "// Silence for fading": "---",
+    "silence": {
+      "notes": ["r:w"]
+    }
+  },
+
+  "sections": {
+    "// ===== SECTION 1: CHAOS (16 bars) =====": "---",
+    "chaos": {
+      "bars": 16,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_chaos", "velocity": 0.7 },
+        "osc_pad": { "pattern": "pad_chaos", "velocity": 0.5 },
+        "osc_bell": { "pattern": "bell_chaos", "velocity": 0.6 },
+        "osc_pulse": { "pattern": "pulse_chaos", "velocity": 0.5 },
+        "resonance": { "pattern": "resonance_drone", "velocity": 0.3 }
+      }
+    },
+
+    "// ===== SECTION 2: COUPLING A (12 bars) =====": "---",
+    "coupling_a": {
+      "bars": 12,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_coupling_a", "velocity": 0.75 },
+        "osc_pad": { "pattern": "pad_coupling_a", "velocity": 0.55 },
+        "osc_bell": { "pattern": "bell_coupling_a", "velocity": 0.6 },
+        "osc_pulse": { "pattern": "pulse_coupling_a", "velocity": 0.55 },
+        "resonance": { "pattern": "resonance_drone", "velocity": 0.35 }
+      }
+    },
+
+    "// ===== SECTION 3: COUPLING B (12 bars) =====": "---",
+    "coupling_b": {
+      "bars": 12,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_coupling_b", "velocity": 0.8 },
+        "osc_pad": { "pattern": "pad_coupling_b", "velocity": 0.6 },
+        "osc_bell": { "pattern": "bell_coupling_b", "velocity": 0.65 },
+        "osc_pulse": { "pattern": "pulse_coupling_b", "velocity": 0.6 },
+        "resonance": { "pattern": "resonance_evolve", "velocity": 0.4 }
+      }
+    },
+
+    "// ===== SECTION 4: SYNCHRONY (16 bars) - Full phase lock =====": "---",
+    "synchrony": {
+      "bars": 16,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_sync", "velocity": 0.85 },
+        "osc_pad": { "pattern": "pad_sync", "velocity": 0.7 },
+        "osc_bell": { "pattern": "bell_sync", "velocity": 0.7 },
+        "osc_pulse": { "pattern": "pulse_sync", "velocity": 0.65 },
+        "resonance": { "pattern": "sync_chord", "velocity": 0.5 }
+      }
+    },
+
+    "// ===== SECTION 5: PERTURBATION (8 bars) - System disrupted =====": "---",
+    "perturbation": {
+      "bars": 8,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_perturb", "velocity": 0.75 },
+        "osc_pad": { "pattern": "pad_perturb", "velocity": 0.6 },
+        "osc_bell": { "pattern": "bell_perturb", "velocity": 0.7 },
+        "osc_pulse": { "pattern": "pulse_perturb", "velocity": 0.65 },
+        "resonance": { "pattern": "resonance_evolve", "velocity": 0.4 }
+      },
+      "key": "D minor"
+    },
+
+    "// ===== SECTION 6: RE-SYNCHRONIZATION (12 bars) - Rapid recovery =====": "---",
+    "resync": {
+      "bars": 12,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_resync", "velocity": 0.8 },
+        "osc_pad": { "pattern": "pad_resync", "velocity": 0.65 },
+        "osc_bell": { "pattern": "bell_resync", "velocity": 0.65 },
+        "osc_pulse": { "pattern": "pulse_resync", "velocity": 0.6 },
+        "resonance": { "pattern": "resonance_drone", "velocity": 0.45 }
+      },
+      "key": "D dorian"
+    },
+
+    "// ===== SECTION 7: RESOLUTION (12 bars) - Stable state =====": "---",
+    "resolution": {
+      "bars": 12,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_final", "velocity": 0.85 },
+        "osc_pad": { "pattern": "pad_final", "velocity": 0.7 },
+        "osc_bell": { "pattern": "bell_final", "velocity": 0.65 },
+        "osc_pulse": { "pattern": "pulse_final", "velocity": 0.6 },
+        "resonance": { "pattern": "sync_chord", "velocity": 0.5 }
+      }
+    },
+
+    "// ===== SECTION 8: FADE (8 bars) - Dissolving back into potential =====": "---",
+    "fade": {
+      "bars": 8,
+      "tracks": {
+        "osc_bass": { "pattern": "bass_final", "velocity": 0.5 },
+        "osc_pad": { "pattern": "pad_final", "velocity": 0.35 },
+        "osc_bell": { "pattern": "bell_final", "velocity": 0.3 },
+        "osc_pulse": { "pattern": "pulse_final", "velocity": 0.25 },
+        "resonance": { "pattern": "resonance_drone", "velocity": 0.3 }
+      }
+    }
+  },
+
+  "arrangement": [
+    "chaos",
+    "coupling_a",
+    "coupling_b",
+    "synchrony",
+    "perturbation",
+    "resync",
+    "resolution",
+    "fade"
+  ]
+}

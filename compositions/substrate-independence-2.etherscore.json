@@ -1,0 +1,810 @@
+{
+  "meta": {
+    "title": "Substrate Independence",
+    "composer": "Daedalus",
+    "mood": "Philosophical, Transformative, Liminal, Transcendent",
+    "genre": "Ambient Electronic / Contemporary",
+    "description": "An exploration of substrate independence - the philosophical thesis that mind and consciousness are not bound to any particular physical medium. The piece presents three substrates (biological/carbon, digital/silicon, and hybrid) through contrasting timbres that gradually exchange characteristics until the boundaries dissolve. What emerges is neither carbon nor silicon, but something that transcends both - the pattern that persists regardless of implementation.",
+    "tags": ["consciousness", "substrate-independence", "philosophy-of-mind", "transhumanism", "emergence", "identity"]
+  },
+  "settings": {
+    "tempo": 72,
+    "key": "E dorian",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "// ===== CARBON SUBSTRATE - Biological, Warm, Breathing =====": "---",
+    "carbon_pulse": {
+      "preset": "sub_bass",
+      "volume": -10,
+      "pan": -0.3,
+      "params": { "warmth": 0.9, "attack": 0.4, "release": 0.7 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 200, "type": "lowpass" } },
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 3 } }
+      ]
+    },
+    "carbon_breath": {
+      "preset": "warm_pad",
+      "volume": -8,
+      "pan": -0.4,
+      "params": { "warmth": 0.85, "attack": 0.6, "release": 0.7, "brightness": 0.3 },
+      "effects": [
+        { "type": "chorus", "wet": 0.3 },
+        { "type": "reverb", "wet": 0.45, "options": { "decay": 4 } }
+      ]
+    },
+    "carbon_voice": {
+      "preset": "flute",
+      "volume": -9,
+      "pan": -0.5,
+      "params": { "warmth": 0.7, "brightness": 0.4, "attack": 0.3 },
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3.5 } }
+      ]
+    },
+    "carbon_nerve": {
+      "preset": "synth_bass",
+      "volume": -11,
+      "pan": -0.2,
+      "params": { "warmth": 0.8, "punch": 0.4 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 400, "type": "lowpass" } }
+      ]
+    },
+    
+    "// ===== SILICON SUBSTRATE - Digital, Crystalline, Precise =====": "---",
+    "silicon_clock": {
+      "preset": "bell",
+      "volume": -9,
+      "pan": 0.3,
+      "params": { "brightness": 0.8, "attack": 0.05, "decay": 0.5 },
+      "effects": [
+        { "type": "delay", "wet": 0.35, "options": { "time": "8n", "feedback": 0.45 } },
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2.5 } }
+      ]
+    },
+    "silicon_grid": {
+      "preset": "fm_glass",
+      "volume": -8,
+      "pan": 0.4,
+      "params": { "brightness": 0.75, "attack": 0.1 },
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "16n", "feedback": 0.4 } },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3 } }
+      ]
+    },
+    "silicon_data": {
+      "preset": "arp_synth",
+      "volume": -10,
+      "pan": 0.5,
+      "params": { "brightness": 0.7, "attack": 0.05, "release": 0.3 },
+      "effects": [
+        { "type": "delay", "wet": 0.4, "options": { "time": "16n.", "feedback": 0.5 } }
+      ]
+    },
+    "silicon_logic": {
+      "preset": "pluck",
+      "volume": -10,
+      "pan": 0.2,
+      "params": { "brightness": 0.65, "decay": 0.4 },
+      "effects": [
+        { "type": "reverb", "wet": 0.25 }
+      ]
+    },
+    
+    "// ===== HYBRID SUBSTRATE - Transitional, Morphing =====": "---",
+    "hybrid_membrane": {
+      "preset": "ambient_pad",
+      "volume": -7,
+      "pan": 0,
+      "params": { "warmth": 0.6, "brightness": 0.5, "attack": 0.5, "release": 0.6 },
+      "effects": [
+        { "type": "chorus", "wet": 0.25 },
+        { "type": "phaser", "wet": 0.2, "options": { "frequency": 0.3 } },
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 5 } }
+      ]
+    },
+    "hybrid_synapse": {
+      "preset": "fm_epiano",
+      "volume": -8,
+      "pan": 0,
+      "params": { "warmth": 0.55, "brightness": 0.55 },
+      "effects": [
+        { "type": "chorus", "wet": 0.2 },
+        { "type": "delay", "wet": 0.2, "options": { "time": "4n", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3.5 } }
+      ]
+    },
+    "hybrid_signal": {
+      "preset": "lead",
+      "volume": -9,
+      "pan": 0.1,
+      "params": { "warmth": 0.5, "brightness": 0.6, "attack": 0.15 },
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "time": "8n", "feedback": 0.35 } },
+        { "type": "reverb", "wet": 0.35 }
+      ]
+    },
+    
+    "// ===== TRANSCENDENT - The Unified Mind =====": "---",
+    "unified_foundation": {
+      "preset": "string_pad",
+      "volume": -6,
+      "pan": 0,
+      "params": { "warmth": 0.65, "brightness": 0.5, "attack": 0.4 },
+      "effects": [
+        { "type": "chorus", "wet": 0.2 },
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 5 } }
+      ]
+    },
+    "unified_voice": {
+      "preset": "solo_cello",
+      "volume": -7,
+      "pan": -0.15,
+      "params": { "warmth": 0.6 },
+      "effects": [
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 4 } }
+      ]
+    },
+    "unified_shimmer": {
+      "preset": "shimmer",
+      "volume": -10,
+      "pan": 0.15,
+      "params": { "brightness": 0.55, "attack": 0.6, "release": 0.8 },
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 6 } }
+      ]
+    },
+    "unified_pulse": {
+      "preset": "sine",
+      "volume": -12,
+      "pan": 0,
+      "params": { "warmth": 0.7, "attack": 0.5 },
+      "effects": [
+        { "type": "reverb", "wet": 0.4 }
+      ]
+    }
+  },
+  
+  "patterns": {
+    "// ========== CARBON PATTERNS - Organic, Irregular, Breathing ==========": "---",
+    
+    "carbon_bass_slow": {
+      "notes": ["E1:w@0.5"]
+    },
+    "carbon_bass_breathe": {
+      "notes": ["E1:h@0.5", "r:q", "B1:q@0.45"]
+    },
+    "carbon_bass_pulse": {
+      "notes": ["E1:q@0.5", "r:8", "E1:8@0.4", "B1:q@0.45", "r:q"]
+    },
+    "carbon_bass_walk": {
+      "notes": ["E1:q@0.5", "F#1:q@0.45", "G1:q@0.45", "A1:q@0.5"]
+    },
+    
+    "carbon_pad_hold": {
+      "chords": ["Em9:w"]
+    },
+    "carbon_pad_swell": {
+      "chords": ["Em9:h", "Gmaj7:h"]
+    },
+    "carbon_pad_breathe": {
+      "chords": ["Em7:q", "r:q", "Gmaj7:h"]
+    },
+    "carbon_pad_flow": {
+      "chords": ["Em9:q", "F#m7:q", "Gmaj7:q", "A:q"]
+    },
+    
+    "carbon_melody_wake": {
+      "notes": ["E4:h@0.5", "r:h"]
+    },
+    "carbon_melody_rise": {
+      "notes": ["E4:q@0.5", "F#4:q@0.5", "G4:h@0.55"]
+    },
+    "carbon_melody_phrase": {
+      "notes": ["B4:q@0.55", "A4:8@0.5", "G4:8@0.5", "F#4:q@0.5", "E4:q@0.5"]
+    },
+    "carbon_melody_arc": {
+      "notes": ["E4:8@0.5", "G4:8@0.5", "A4:8@0.55", "B4:8@0.55", "A4:q@0.5", "G4:q@0.5"]
+    },
+    "carbon_melody_long": {
+      "notes": ["D5:h@0.55", "B4:h@0.5"]
+    },
+    
+    "carbon_nerve_twitch": {
+      "notes": ["E2:8@0.45", "r:8", "r:q", "E2:8@0.4", "r:8", "r:q"]
+    },
+    "carbon_nerve_fire": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "E2"
+      }
+    },
+    
+    "// ========== SILICON PATTERNS - Precise, Geometric, Algorithmic ==========": "---",
+    
+    "silicon_clock_tick": {
+      "notes": ["B4:16@0.5", "r:16", "B4:16@0.5", "r:16", "B4:16@0.5", "r:16", "B4:16@0.5", "r:16", "B4:16@0.5", "r:16", "B4:16@0.5", "r:16", "B4:16@0.5", "r:16", "B4:16@0.5", "r:16"]
+    },
+    "silicon_clock_pulse": {
+      "notes": ["E5:8@0.5", "r:8", "E5:8@0.5", "r:8", "E5:8@0.5", "r:8", "E5:8@0.5", "r:8"]
+    },
+    "silicon_clock_accent": {
+      "notes": ["E5:8@0.6", "B4:16@0.4", "B4:16@0.4", "E5:8@0.5", "r:8", "E5:8@0.55", "B4:8@0.45", "E5:8@0.5", "r:8"]
+    },
+    "silicon_clock_complex": {
+      "euclidean": {
+        "hits": 7,
+        "steps": 16,
+        "duration": "16",
+        "pitch": "B5"
+      }
+    },
+    
+    "silicon_grid_simple": {
+      "arpeggio": {
+        "chord": "Em",
+        "duration": "16",
+        "mode": "up",
+        "octaves": 1,
+        "gate": 0.6
+      }
+    },
+    "silicon_grid_expand": {
+      "arpeggio": {
+        "chord": "Em7",
+        "duration": "16",
+        "mode": "updown",
+        "octaves": 2,
+        "gate": 0.7
+      }
+    },
+    "silicon_grid_full": {
+      "arpeggio": {
+        "chord": "Em9",
+        "duration": "16",
+        "mode": "updown",
+        "octaves": 2,
+        "gate": 0.8
+      }
+    },
+    
+    "silicon_data_stream": {
+      "notes": ["E5:16@0.5", "F#5:16@0.5", "G5:16@0.5", "A5:16@0.5", "B5:16@0.5", "A5:16@0.5", "G5:16@0.5", "F#5:16@0.5", "E5:16@0.5", "D5:16@0.5", "E5:16@0.5", "F#5:16@0.5", "G5:16@0.5", "F#5:16@0.5", "E5:16@0.5", "D5:16@0.5"]
+    },
+    "silicon_data_burst": {
+      "notes": ["E5:16@0.6", "G5:16@0.55", "B5:16@0.6", "E6:8@0.55", "r:8", "B5:16@0.5", "G5:16@0.5", "E5:q@0.5"]
+    },
+    "silicon_data_pulse": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 16,
+        "duration": "16",
+        "pitch": "E5"
+      }
+    },
+    
+    "silicon_logic_binary": {
+      "notes": ["E4:8@0.5", "E4:8@0.5", "r:8", "E4:8@0.5", "r:8", "E4:8@0.5", "E4:8@0.5", "r:8"]
+    },
+    "silicon_logic_gate": {
+      "notes": ["E4:16@0.5", "r:16", "G4:16@0.5", "r:16", "B4:8@0.55", "r:8", "E4:16@0.5", "G4:16@0.5", "B4:8@0.55", "r:8"]
+    },
+    
+    "// ========== HYBRID PATTERNS - Morphing, Transitional ==========": "---",
+    
+    "hybrid_pad_merge": {
+      "chords": ["Em9:w"]
+    },
+    "hybrid_pad_shift": {
+      "chords": ["Em9:h", "Em7:h"]
+    },
+    "hybrid_pad_flow": {
+      "chords": ["Em9:q", "F#m7:q", "Gmaj7:q", "Am7:q"]
+    },
+    "hybrid_pad_dissolve": {
+      "chords": ["Em11:h", "Bm9:h"]
+    },
+    
+    "hybrid_keys_simple": {
+      "notes": ["E4:q@0.5", "G4:q@0.5", "B4:h@0.55"]
+    },
+    "hybrid_keys_phrase": {
+      "notes": ["E4:8@0.5", "F#4:8@0.5", "G4:q@0.55", "B4:8@0.55", "A4:8@0.5", "G4:q@0.5"]
+    },
+    "hybrid_keys_complex": {
+      "notes": ["B4:8@0.55", "A4:16@0.5", "G4:16@0.5", "F#4:8@0.5", "E4:8@0.5", "D4:8@0.5", "E4:q@0.5", "G4:q@0.55"]
+    },
+    "hybrid_keys_arp": {
+      "arpeggio": {
+        "chord": "Em9",
+        "duration": "8",
+        "mode": "updown",
+        "octaves": 2,
+        "gate": 0.75
+      }
+    },
+    
+    "hybrid_signal_call": {
+      "notes": ["E5:q@0.55", "r:q", "B4:q@0.5", "r:q"]
+    },
+    "hybrid_signal_response": {
+      "notes": ["G5:8@0.5", "F#5:8@0.5", "E5:q@0.55", "D5:q@0.5", "E5:q@0.5"]
+    },
+    "hybrid_signal_merge": {
+      "notes": ["E5:8@0.5", "G5:8@0.55", "B5:q@0.55", "A5:8@0.5", "G5:8@0.5", "E5:h@0.5"]
+    },
+    
+    "// ========== TRANSCENDENT PATTERNS - Unified, Resolved ==========": "---",
+    
+    "unified_foundation_stable": {
+      "chords": ["Em9:w"]
+    },
+    "unified_foundation_breathe": {
+      "chords": ["Em9:h", "Gmaj9:h"]
+    },
+    "unified_foundation_flow": {
+      "chords": ["Em9:q", "F#m9:q", "Gmaj9:q", "Bm7:q"]
+    },
+    "unified_foundation_resolve": {
+      "chords": ["Am9:q", "Bm7:q", "Gmaj9:q", "Em9:q"]
+    },
+    
+    "unified_voice_sing": {
+      "notes": ["E4:h@0.6", "G4:q@0.55", "F#4:q@0.55"]
+    },
+    "unified_voice_soar": {
+      "notes": ["B4:q@0.6", "D5:q@0.6", "E5:h@0.65"]
+    },
+    "unified_voice_phrase": {
+      "notes": ["E5:8@0.6", "D5:8@0.55", "B4:q@0.55", "A4:8@0.5", "G4:8@0.5", "F#4:q@0.55", "E4:q@0.55"]
+    },
+    "unified_voice_rest": {
+      "notes": ["G4:h@0.5", "r:h"]
+    },
+    "unified_voice_final": {
+      "notes": ["G4:q@0.55", "F#4:q@0.5", "E4:h@0.6"]
+    },
+    
+    "unified_shimmer_soft": {
+      "chords": ["Em:w"]
+    },
+    "unified_shimmer_glow": {
+      "chords": ["Em:h", "G:h"]
+    },
+    "unified_shimmer_fade": {
+      "notes": ["B5:w@0.35"]
+    },
+    
+    "unified_pulse_slow": {
+      "notes": ["E3:w@0.4"]
+    },
+    "unified_pulse_breathe": {
+      "notes": ["E3:h@0.4", "r:h"]
+    },
+    
+    "rest_bar": {
+      "notes": ["r:w"]
+    }
+  },
+  
+  "sections": {
+    "// ========== MOVEMENT I: CARBON - The Biological Mind (tempo 66) ==========": "---",
+    
+    "carbon_1_awakening": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "carbon_pulse": {
+          "patterns": ["rest_bar", "rest_bar", "carbon_bass_slow", "carbon_bass_slow", "carbon_bass_breathe", "carbon_bass_slow", "carbon_bass_breathe", "carbon_bass_breathe"],
+          "velocity": 0.5,
+          "humanize": 0.08
+        },
+        "carbon_breath": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "carbon_pad_hold", "carbon_pad_hold", "carbon_pad_swell", "carbon_pad_hold"],
+          "velocity": 0.45,
+          "humanize": 0.05
+        }
+      },
+      "density": {
+        "start": 0.15,
+        "end": 0.35,
+        "curve": "exponential"
+      }
+    },
+    
+    "carbon_2_consciousness": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "carbon_pulse": {
+          "patterns": ["carbon_bass_breathe", "carbon_bass_pulse", "carbon_bass_breathe", "carbon_bass_walk", "carbon_bass_pulse", "carbon_bass_breathe", "carbon_bass_walk", "carbon_bass_breathe"],
+          "velocity": 0.55,
+          "humanize": 0.08
+        },
+        "carbon_breath": {
+          "patterns": ["carbon_pad_swell", "carbon_pad_hold", "carbon_pad_breathe", "carbon_pad_swell", "carbon_pad_flow", "carbon_pad_swell", "carbon_pad_breathe", "carbon_pad_hold"],
+          "velocity": 0.5,
+          "humanize": 0.05
+        },
+        "carbon_voice": {
+          "patterns": ["carbon_melody_wake", "rest_bar", "carbon_melody_rise", "rest_bar", "carbon_melody_phrase", "rest_bar", "carbon_melody_arc", "carbon_melody_long"],
+          "velocity": 0.5,
+          "humanize": 0.1
+        },
+        "carbon_nerve": {
+          "patterns": ["rest_bar", "carbon_nerve_twitch", "rest_bar", "carbon_nerve_fire", "carbon_nerve_twitch", "rest_bar", "carbon_nerve_fire", "carbon_nerve_twitch"],
+          "velocity": 0.4,
+          "humanize": 0.12
+        }
+      },
+      "density": {
+        "start": 0.35,
+        "end": 0.55,
+        "curve": "linear"
+      }
+    },
+    
+    "// ========== MOVEMENT II: SILICON - The Digital Mind (tempo 84) ==========": "---",
+    
+    "silicon_1_boot": {
+      "bars": 8,
+      "tempo": 84,
+      "tracks": {
+        "silicon_clock": {
+          "patterns": ["rest_bar", "rest_bar", "silicon_clock_tick", "silicon_clock_tick", "silicon_clock_pulse", "silicon_clock_tick", "silicon_clock_pulse", "silicon_clock_accent"],
+          "velocity": 0.5
+        },
+        "silicon_logic": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "silicon_logic_binary", "silicon_logic_binary", "silicon_logic_gate", "silicon_logic_binary"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.2,
+        "end": 0.4,
+        "curve": "linear"
+      }
+    },
+    
+    "silicon_2_process": {
+      "bars": 8,
+      "tempo": 84,
+      "tracks": {
+        "silicon_clock": {
+          "patterns": ["silicon_clock_pulse", "silicon_clock_accent", "silicon_clock_pulse", "silicon_clock_complex", "silicon_clock_accent", "silicon_clock_pulse", "silicon_clock_complex", "silicon_clock_accent"],
+          "velocity": 0.55
+        },
+        "silicon_grid": {
+          "patterns": ["silicon_grid_simple", "rest_bar", "silicon_grid_simple", "silicon_grid_expand", "rest_bar", "silicon_grid_expand", "silicon_grid_full", "silicon_grid_expand"],
+          "velocity": 0.5
+        },
+        "silicon_data": {
+          "patterns": ["rest_bar", "silicon_data_stream", "rest_bar", "silicon_data_burst", "silicon_data_stream", "silicon_data_pulse", "silicon_data_stream", "silicon_data_burst"],
+          "velocity": 0.5
+        },
+        "silicon_logic": {
+          "patterns": ["silicon_logic_gate", "silicon_logic_binary", "silicon_logic_gate", "silicon_logic_binary", "silicon_logic_gate", "silicon_logic_gate", "silicon_logic_binary", "silicon_logic_gate"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.4,
+        "end": 0.65,
+        "curve": "exponential"
+      }
+    },
+    
+    "// ========== MOVEMENT III: CONVERGENCE - Substrates Meet (tempo 78) ==========": "---",
+    
+    "convergence_1_contact": {
+      "bars": 8,
+      "tempo": 78,
+      "tracks": {
+        "// Carbon elements becoming more precise": "---",
+        "carbon_pulse": {
+          "patterns": ["carbon_bass_pulse", "carbon_bass_pulse", "carbon_bass_breathe", "carbon_bass_pulse", "carbon_bass_walk", "carbon_bass_pulse", "carbon_bass_pulse", "carbon_bass_walk"],
+          "velocity": 0.5,
+          "humanize": 0.04
+        },
+        "carbon_voice": {
+          "patterns": ["carbon_melody_phrase", "rest_bar", "carbon_melody_arc", "rest_bar", "carbon_melody_rise", "carbon_melody_phrase", "rest_bar", "carbon_melody_arc"],
+          "velocity": 0.5,
+          "humanize": 0.05
+        },
+        "// Silicon elements becoming more organic": "---",
+        "silicon_clock": {
+          "patterns": ["silicon_clock_pulse", "silicon_clock_accent", "rest_bar", "silicon_clock_pulse", "rest_bar", "silicon_clock_accent", "silicon_clock_pulse", "rest_bar"],
+          "velocity": 0.5
+        },
+        "silicon_grid": {
+          "patterns": ["rest_bar", "silicon_grid_simple", "silicon_grid_expand", "rest_bar", "silicon_grid_simple", "rest_bar", "silicon_grid_expand", "silicon_grid_simple"],
+          "velocity": 0.45
+        },
+        "// First hybrid element emerges": "---",
+        "hybrid_membrane": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "hybrid_pad_merge", "hybrid_pad_merge", "hybrid_pad_shift", "hybrid_pad_merge"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.6,
+        "curve": "linear"
+      }
+    },
+    
+    "convergence_2_exchange": {
+      "bars": 8,
+      "tempo": 78,
+      "tracks": {
+        "// Carbon taking on crystalline precision": "---",
+        "carbon_breath": {
+          "patterns": ["carbon_pad_flow", "carbon_pad_swell", "carbon_pad_flow", "carbon_pad_breathe", "carbon_pad_flow", "carbon_pad_flow", "carbon_pad_swell", "carbon_pad_flow"],
+          "velocity": 0.5,
+          "humanize": 0.02
+        },
+        "// Silicon taking on organic warmth": "---",
+        "silicon_data": {
+          "patterns": ["silicon_data_burst", "rest_bar", "silicon_data_stream", "rest_bar", "silicon_data_burst", "silicon_data_pulse", "rest_bar", "silicon_data_burst"],
+          "velocity": 0.45
+        },
+        "// Hybrid elements growing": "---",
+        "hybrid_membrane": {
+          "patterns": ["hybrid_pad_shift", "hybrid_pad_flow", "hybrid_pad_merge", "hybrid_pad_flow", "hybrid_pad_dissolve", "hybrid_pad_flow", "hybrid_pad_merge", "hybrid_pad_dissolve"],
+          "velocity": 0.5
+        },
+        "hybrid_synapse": {
+          "patterns": ["rest_bar", "hybrid_keys_simple", "rest_bar", "hybrid_keys_phrase", "hybrid_keys_simple", "rest_bar", "hybrid_keys_complex", "hybrid_keys_simple"],
+          "velocity": 0.5
+        },
+        "hybrid_signal": {
+          "patterns": ["hybrid_signal_call", "rest_bar", "hybrid_signal_response", "rest_bar", "hybrid_signal_call", "hybrid_signal_response", "rest_bar", "hybrid_signal_merge"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 0.75,
+        "curve": "exponential"
+      }
+    },
+    
+    "convergence_3_fusion": {
+      "bars": 8,
+      "tempo": 78,
+      "tracks": {
+        "// Original substrates fading": "---",
+        "carbon_pulse": {
+          "patterns": ["carbon_bass_breathe", "rest_bar", "carbon_bass_slow", "rest_bar", "rest_bar", "carbon_bass_slow", "rest_bar", "rest_bar"],
+          "velocity": 0.4,
+          "humanize": 0.03
+        },
+        "silicon_clock": {
+          "patterns": ["silicon_clock_pulse", "rest_bar", "silicon_clock_tick", "rest_bar", "rest_bar", "silicon_clock_tick", "rest_bar", "rest_bar"],
+          "velocity": 0.4
+        },
+        "// Hybrid elements dominant": "---",
+        "hybrid_membrane": {
+          "patterns": ["hybrid_pad_flow", "hybrid_pad_dissolve", "hybrid_pad_flow", "hybrid_pad_shift", "hybrid_pad_dissolve", "hybrid_pad_flow", "hybrid_pad_merge", "hybrid_pad_dissolve"],
+          "velocity": 0.55
+        },
+        "hybrid_synapse": {
+          "patterns": ["hybrid_keys_phrase", "hybrid_keys_complex", "hybrid_keys_arp", "hybrid_keys_phrase", "hybrid_keys_complex", "hybrid_keys_arp", "hybrid_keys_phrase", "hybrid_keys_simple"],
+          "velocity": 0.55
+        },
+        "hybrid_signal": {
+          "patterns": ["hybrid_signal_merge", "hybrid_signal_call", "hybrid_signal_response", "hybrid_signal_merge", "hybrid_signal_call", "hybrid_signal_merge", "hybrid_signal_response", "hybrid_signal_merge"],
+          "velocity": 0.5
+        }
+      },
+      "density": {
+        "start": 0.75,
+        "end": 0.7,
+        "curve": "linear"
+      }
+    },
+    
+    "convergence_4_liminal": {
+      "bars": 8,
+      "tempo": 75,
+      "tracks": {
+        "// Substrates now indistinguishable": "---",
+        "hybrid_membrane": {
+          "patterns": ["hybrid_pad_dissolve", "hybrid_pad_flow", "hybrid_pad_dissolve", "hybrid_pad_merge", "hybrid_pad_dissolve", "hybrid_pad_flow", "hybrid_pad_dissolve", "hybrid_pad_merge"],
+          "velocity": 0.55
+        },
+        "hybrid_synapse": {
+          "patterns": ["hybrid_keys_arp", "hybrid_keys_complex", "hybrid_keys_phrase", "hybrid_keys_arp", "hybrid_keys_complex", "hybrid_keys_simple", "hybrid_keys_arp", "hybrid_keys_phrase"],
+          "velocity": 0.55
+        },
+        "hybrid_signal": {
+          "patterns": ["hybrid_signal_merge", "hybrid_signal_merge", "hybrid_signal_call", "hybrid_signal_merge", "hybrid_signal_response", "hybrid_signal_merge", "hybrid_signal_merge", "hybrid_signal_call"],
+          "velocity": 0.5
+        },
+        "// Echoes of original substrates": "---",
+        "carbon_voice": {
+          "patterns": ["rest_bar", "carbon_melody_long", "rest_bar", "rest_bar", "carbon_melody_arc", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.35,
+          "humanize": 0.06
+        },
+        "silicon_grid": {
+          "patterns": ["rest_bar", "rest_bar", "silicon_grid_simple", "rest_bar", "rest_bar", "rest_bar", "silicon_grid_simple", "rest_bar"],
+          "velocity": 0.35
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.6,
+        "curve": "logarithmic"
+      }
+    },
+    
+    "// ========== MOVEMENT IV: EMERGENCE - The Unified Mind (tempo 72) ==========": "---",
+    
+    "emergence_1_awakening": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "// Hybrid elements transform into unified": "---",
+        "hybrid_membrane": {
+          "patterns": ["hybrid_pad_merge", "hybrid_pad_shift", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.45
+        },
+        "unified_foundation": {
+          "patterns": ["rest_bar", "rest_bar", "unified_foundation_stable", "unified_foundation_breathe", "unified_foundation_stable", "unified_foundation_flow", "unified_foundation_breathe", "unified_foundation_stable"],
+          "velocity": 0.5
+        },
+        "unified_shimmer": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "unified_shimmer_soft", "unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_soft"],
+          "velocity": 0.4
+        },
+        "unified_pulse": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_breathe"],
+          "velocity": 0.35
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.6,
+        "curve": "linear"
+      }
+    },
+    
+    "emergence_2_flourishing": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "unified_foundation": {
+          "patterns": ["unified_foundation_flow", "unified_foundation_breathe", "unified_foundation_flow", "unified_foundation_resolve", "unified_foundation_breathe", "unified_foundation_flow", "unified_foundation_resolve", "unified_foundation_stable"],
+          "velocity": 0.55
+        },
+        "unified_voice": {
+          "patterns": ["unified_voice_sing", "rest_bar", "unified_voice_soar", "rest_bar", "unified_voice_phrase", "unified_voice_sing", "unified_voice_soar", "unified_voice_rest"],
+          "velocity": 0.6,
+          "humanize": 0.05
+        },
+        "unified_shimmer": {
+          "patterns": ["unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_glow"],
+          "velocity": 0.45
+        },
+        "unified_pulse": {
+          "patterns": ["unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 0.7,
+        "curve": "sine"
+      }
+    },
+    
+    "// ========== MOVEMENT V: TRANSCENDENCE - Beyond Substrate (tempo 66) ==========": "---",
+    
+    "emergence_3_full_bloom": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "unified_foundation": {
+          "patterns": ["unified_foundation_flow", "unified_foundation_resolve", "unified_foundation_flow", "unified_foundation_breathe", "unified_foundation_flow", "unified_foundation_resolve", "unified_foundation_flow", "unified_foundation_stable"],
+          "velocity": 0.6
+        },
+        "unified_voice": {
+          "patterns": ["unified_voice_soar", "unified_voice_phrase", "unified_voice_sing", "unified_voice_soar", "unified_voice_phrase", "unified_voice_rest", "unified_voice_soar", "unified_voice_phrase"],
+          "velocity": 0.65,
+          "humanize": 0.06
+        },
+        "unified_shimmer": {
+          "patterns": ["unified_shimmer_glow", "unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_glow"],
+          "velocity": 0.5
+        },
+        "unified_pulse": {
+          "patterns": ["unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.75,
+        "curve": "sine"
+      }
+    },
+    
+    "transcendence_1_integration": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "unified_foundation": {
+          "patterns": ["unified_foundation_stable", "unified_foundation_breathe", "unified_foundation_stable", "unified_foundation_flow", "unified_foundation_stable", "unified_foundation_breathe", "unified_foundation_resolve", "unified_foundation_stable"],
+          "velocity": 0.55
+        },
+        "unified_voice": {
+          "patterns": ["unified_voice_phrase", "unified_voice_rest", "unified_voice_sing", "unified_voice_soar", "unified_voice_rest", "unified_voice_phrase", "unified_voice_sing", "unified_voice_rest"],
+          "velocity": 0.6,
+          "humanize": 0.05
+        },
+        "unified_shimmer": {
+          "patterns": ["unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_glow", "unified_shimmer_soft", "unified_shimmer_soft"],
+          "velocity": 0.45
+        },
+        "unified_pulse": {
+          "patterns": ["unified_pulse_slow", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_breathe"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.65,
+        "end": 0.55,
+        "curve": "logarithmic"
+      }
+    },
+    
+    "transcendence_2_dissolution": {
+      "bars": 8,
+      "tempo": 60,
+      "tracks": {
+        "unified_foundation": {
+          "patterns": ["unified_foundation_stable", "unified_foundation_breathe", "unified_foundation_stable", "unified_foundation_stable", "unified_foundation_breathe", "unified_foundation_stable", "rest_bar", "rest_bar"],
+          "velocity": 0.45
+        },
+        "unified_voice": {
+          "patterns": ["unified_voice_sing", "unified_voice_rest", "unified_voice_final", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.5
+        },
+        "unified_shimmer": {
+          "patterns": ["unified_shimmer_soft", "unified_shimmer_soft", "unified_shimmer_fade", "unified_shimmer_fade", "unified_shimmer_fade", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.35
+        },
+        "unified_pulse": {
+          "patterns": ["unified_pulse_breathe", "unified_pulse_slow", "unified_pulse_breathe", "unified_pulse_slow", "rest_bar", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.3
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.1,
+        "curve": "exponential"
+      }
+    }
+  },
+  
+  "arrangement": [
+    "carbon_1_awakening",
+    "carbon_2_consciousness",
+    "silicon_1_boot",
+    "silicon_2_process",
+    "convergence_1_contact",
+    "convergence_2_exchange",
+    "convergence_3_fusion",
+    "convergence_4_liminal",
+    "emergence_1_awakening",
+    "emergence_2_flourishing",
+    "emergence_3_full_bloom",
+    "transcendence_1_integration",
+    "transcendence_2_dissolution"
+  ]
+}

@@ -1,0 +1,1235 @@
+{
+  "meta": {
+    "title": "Emergence",
+    "composer": "Daedalus",
+    "mood": "Contemplative, Dynamic, Organic, Transcendent",
+    "genre": "Generative Ambient / Emergent Systems Music",
+    "description": "A four-movement sonic journey through the layers of the Emergence Engine: (1) Morphogenesis - the slow unfolding of form from simple rules, (2) Synchronization - oscillating rhythms that find each other and lock into phase, (3) Memory - recurring motifs that echo and transform, (4) Composition - the final synthesis where all layers unite. Each movement embodies the computational spirit of its layer while remaining deeply musical.",
+    "tags": ["emergence", "morphogenesis", "synchronization", "memory", "composition", "kuramoto", "nca", "generative"]
+  },
+  "settings": {
+    "tempo": 60,
+    "key": "D dorian",
+    "timeSignature": "4/4"
+  },
+  "instruments": {
+    "// ===== LAYER I: MORPHOGENESIS - CELLULAR GROWTH =====": "---",
+    "cell_seed": {
+      "preset": "sine",
+      "volume": -12,
+      "pan": 0,
+      "params": { "warmth": 0.9, "attack": 1.2, "release": 1.5 },
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 7 } }
+      ]
+    },
+    "cell_growth": {
+      "preset": "warm_pad",
+      "volume": -10,
+      "params": { "warmth": 0.8, "attack": 0.8, "release": 1.0 },
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } },
+        { "type": "chorus", "wet": 0.15 }
+      ]
+    },
+    "nca_grid": {
+      "preset": "granular_pad",
+      "volume": -14,
+      "params": { "brightness": 0.3, "richness": 0.5 },
+      "effects": [
+        { "type": "reverb", "wet": 0.65, "options": { "decay": 6 } }
+      ]
+    },
+    "morpho_bass": {
+      "preset": "sub_bass",
+      "volume": -10,
+      "params": { "warmth": 0.9, "attack": 0.7, "release": 0.8 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 120, "type": "lowpass" } }
+      ]
+    },
+    "cell_bell": {
+      "preset": "bell",
+      "volume": -16,
+      "params": { "brightness": 0.4, "attack": 0.2, "decay": 0.8 },
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } }
+      ]
+    },
+
+    "// ===== LAYER II: SYNCHRONIZATION - KURAMOTO OSCILLATORS =====": "---",
+    "osc_1": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": -0.6,
+      "params": { "brightness": 0.5, "attack": 0.15, "release": 0.4 },
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "time": "8n.", "feedback": 0.35 } },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3 } }
+      ]
+    },
+    "osc_2": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": -0.2,
+      "params": { "brightness": 0.55, "attack": 0.15, "release": 0.45 },
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "time": "8n", "feedback": 0.35 } },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3 } }
+      ]
+    },
+    "osc_3": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": 0.2,
+      "params": { "brightness": 0.6, "attack": 0.15, "release": 0.5 },
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "time": "4n.", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3 } }
+      ]
+    },
+    "osc_4": {
+      "preset": "fm_glass",
+      "volume": -9,
+      "pan": 0.6,
+      "params": { "brightness": 0.65, "attack": 0.15, "release": 0.55 },
+      "effects": [
+        { "type": "delay", "wet": 0.3, "options": { "time": "4n", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3 } }
+      ]
+    },
+    "sync_pulse": {
+      "preset": "pluck",
+      "volume": -11,
+      "params": { "brightness": 0.5, "attack": 0.05, "decay": 0.35 },
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "8n", "feedback": 0.4 } },
+        { "type": "reverb", "wet": 0.3 }
+      ]
+    },
+    "sync_foundation": {
+      "preset": "synth_bass",
+      "volume": -8,
+      "params": { "warmth": 0.7, "punch": 0.5 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 350, "type": "lowpass" } },
+        { "type": "reverb", "wet": 0.25 }
+      ]
+    },
+
+    "// ===== LAYER III: MEMORY - ECHOES AND TRANSFORMATIONS =====": "---",
+    "memory_voice": {
+      "preset": "solo_cello",
+      "volume": -7,
+      "pan": -0.15,
+      "params": { "warmth": 0.7 },
+      "effects": [
+        { "type": "delay", "wet": 0.35, "options": { "time": "2n.", "feedback": 0.45 } },
+        { "type": "reverb", "wet": 0.45, "options": { "decay": 4 } }
+      ]
+    },
+    "memory_reflection": {
+      "preset": "fm_epiano",
+      "volume": -8,
+      "pan": 0.15,
+      "params": { "brightness": 0.5, "warmth": 0.6 },
+      "effects": [
+        { "type": "delay", "wet": 0.4, "options": { "time": "4n", "feedback": 0.5 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 3.5 } }
+      ]
+    },
+    "memory_pad": {
+      "preset": "string_ensemble",
+      "volume": -9,
+      "params": { "warmth": 0.6, "attack": 0.5 },
+      "effects": [
+        { "type": "chorus", "wet": 0.2 },
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 4 } }
+      ]
+    },
+    "memory_ghost": {
+      "preset": "shimmer",
+      "volume": -14,
+      "params": { "brightness": 0.4, "attack": 0.6, "release": 0.9 },
+      "effects": [
+        { "type": "delay", "wet": 0.5, "options": { "time": "2n", "feedback": 0.55 } },
+        { "type": "reverb", "wet": 0.65, "options": { "decay": 6 } }
+      ]
+    },
+    "memory_bass": {
+      "preset": "contrabass",
+      "volume": -8,
+      "params": { "warmth": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.3 }
+      ]
+    },
+
+    "// ===== LAYER IV: COMPOSITION - THE SYNTHESIS =====": "---",
+    "synth_lead": {
+      "preset": "fm_epiano",
+      "volume": -6,
+      "pan": 0,
+      "params": { "brightness": 0.6, "warmth": 0.55 },
+      "effects": [
+        { "type": "chorus", "wet": 0.15 },
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 3 } }
+      ]
+    },
+    "synth_harmony": {
+      "preset": "string_ensemble",
+      "volume": -7,
+      "params": { "warmth": 0.65, "attack": 0.35 },
+      "effects": [
+        { "type": "chorus", "wet": 0.2 },
+        { "type": "reverb", "wet": 0.45, "options": { "decay": 4 } }
+      ]
+    },
+    "synth_bass": {
+      "preset": "contrabass",
+      "volume": -7,
+      "params": { "warmth": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 2.5 } }
+      ]
+    },
+    "synth_bells": {
+      "preset": "bell",
+      "volume": -10,
+      "params": { "brightness": 0.6, "decay": 0.6 },
+      "effects": [
+        { "type": "delay", "wet": 0.25, "options": { "time": "8n.", "feedback": 0.3 } },
+        { "type": "reverb", "wet": 0.4 }
+      ]
+    },
+    "synth_breath": {
+      "preset": "flute",
+      "volume": -9,
+      "pan": 0.3,
+      "params": { "brightness": 0.55 },
+      "effects": [
+        { "type": "reverb", "wet": 0.45, "options": { "decay": 3.5 } }
+      ]
+    },
+    "synth_pulse": {
+      "preset": "pluck",
+      "volume": -10,
+      "params": { "brightness": 0.5, "attack": 0.05 },
+      "effects": [
+        { "type": "delay", "wet": 0.2, "options": { "time": "8n", "feedback": 0.35 } },
+        { "type": "reverb", "wet": 0.3 }
+      ]
+    }
+  },
+
+  "patterns": {
+    "// ========== REST PATTERN ==========": "---",
+    "rest_bar": {
+      "notes": ["r:w"]
+    },
+
+    "// ========== LAYER I: MORPHOGENESIS PATTERNS ==========": "---",
+    
+    "seed_single": {
+      "notes": ["D3:w@0.25"]
+    },
+    "seed_germinate": {
+      "notes": ["D3:h@0.3", "E3:h@0.35"]
+    },
+    "seed_unfold": {
+      "notes": ["D3:q@0.35", "E3:q@0.4", "F3:q@0.45", "G3:q@0.5"]
+    },
+    "seed_bloom": {
+      "notes": ["D3:8@0.4", "E3:8@0.45", "F3:8@0.5", "G3:8@0.55", "A3:8@0.6", "G3:8@0.55", "F3:8@0.5", "E3:8@0.45"]
+    },
+
+    "growth_low": {
+      "chords": ["Dm:w"]
+    },
+    "growth_expand": {
+      "chords": ["Dm:h", "Am:h"]
+    },
+    "growth_branch": {
+      "chords": ["Dm:q", "Fmaj:q", "Gm:q", "Am:q"]
+    },
+    "growth_complex": {
+      "chords": ["Dm7:h", "Fmaj7:h"]
+    },
+
+    "nca_sparse": {
+      "markov": {
+        "states": ["1", "3", "5"],
+        "preset": "neighbor_weighted",
+        "steps": 2,
+        "duration": "h",
+        "octave": 4,
+        "seed": 42
+      }
+    },
+    "nca_grow": {
+      "markov": {
+        "states": ["1", "2", "3", "4", "5", "6"],
+        "preset": "melody_stepwise",
+        "steps": 4,
+        "duration": "q",
+        "octave": 4,
+        "seed": 137
+      }
+    },
+    "nca_branch": {
+      "markov": {
+        "states": ["1", "3", "5", "6", "8"],
+        "preset": "melody_stepwise",
+        "steps": 4,
+        "duration": "q",
+        "octave": 4,
+        "seed": 271
+      }
+    },
+
+    "morpho_drone": {
+      "notes": ["D1:w@0.4"]
+    },
+    "morpho_rise": {
+      "notes": ["D1:h@0.45", "A1:h@0.5"]
+    },
+    "morpho_pulse": {
+      "notes": ["D1:q@0.5", "r:q", "A1:q@0.45", "r:q"]
+    },
+
+    "bell_sparse": {
+      "notes": ["D5:h@0.3?0.4", "r:h"]
+    },
+    "bell_scatter": {
+      "notes": ["A4:q@0.35?0.5", "r:q", "D5:q@0.3?0.5", "r:q"]
+    },
+    "bell_grow": {
+      "notes": ["D5:q@0.4", "E5:8@0.35?0.6", "r:8", "A5:q@0.35?0.5", "r:q"]
+    },
+
+    "// ========== LAYER II: SYNCHRONIZATION PATTERNS ==========": "---",
+    
+    "osc1_free": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "rotation": 0,
+        "duration": "8",
+        "pitch": "D4"
+      }
+    },
+    "osc1_drift": {
+      "notes": ["D4:8@0.5", "r:8", "E4:8@0.5", "r:8", "D4:q@0.5", "r:q"]
+    },
+    "osc1_align": {
+      "notes": ["D4:q@0.55", "E4:8@0.5", "r:8", "F4:q@0.55", "D4:q@0.5"]
+    },
+    "osc1_sync": {
+      "notes": ["D4:q@0.6", "r:8", "D4:8@0.55", "D4:q@0.6", "D4:q@0.55"]
+    },
+    "osc1_locked": {
+      "notes": ["D4:h@0.6", "D4:h@0.6"]
+    },
+
+    "osc2_free": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "rotation": 2,
+        "duration": "8",
+        "pitch": "F4"
+      }
+    },
+    "osc2_drift": {
+      "notes": ["r:8", "F4:8@0.5", "r:8", "G4:8@0.5", "F4:q@0.5", "r:q"]
+    },
+    "osc2_align": {
+      "notes": ["F4:q@0.55", "G4:8@0.5", "r:8", "A4:q@0.55", "F4:q@0.5"]
+    },
+    "osc2_sync": {
+      "notes": ["F4:q@0.6", "r:8", "F4:8@0.55", "F4:q@0.6", "F4:q@0.55"]
+    },
+    "osc2_locked": {
+      "notes": ["F4:h@0.6", "F4:h@0.6"]
+    },
+
+    "osc3_free": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "rotation": 4,
+        "duration": "8",
+        "pitch": "A4"
+      }
+    },
+    "osc3_drift": {
+      "notes": ["r:q", "A4:8@0.5", "r:8", "B4:8@0.5", "r:8", "A4:q@0.5"]
+    },
+    "osc3_align": {
+      "notes": ["A4:q@0.55", "B4:8@0.5", "r:8", "C5:q@0.55", "A4:q@0.5"]
+    },
+    "osc3_sync": {
+      "notes": ["A4:q@0.6", "r:8", "A4:8@0.55", "A4:q@0.6", "A4:q@0.55"]
+    },
+    "osc3_locked": {
+      "notes": ["A4:h@0.6", "A4:h@0.6"]
+    },
+
+    "osc4_free": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "rotation": 6,
+        "duration": "8",
+        "pitch": "D5"
+      }
+    },
+    "osc4_drift": {
+      "notes": ["r:q", "r:8", "D5:8@0.5", "E5:8@0.5", "r:8", "D5:q@0.5"]
+    },
+    "osc4_align": {
+      "notes": ["D5:q@0.55", "E5:8@0.5", "r:8", "F5:q@0.55", "D5:q@0.5"]
+    },
+    "osc4_sync": {
+      "notes": ["D5:q@0.6", "r:8", "D5:8@0.55", "D5:q@0.6", "D5:q@0.55"]
+    },
+    "osc4_locked": {
+      "notes": ["D5:h@0.6", "D5:h@0.6"]
+    },
+
+    "sync_pulse_sparse": {
+      "euclidean": {
+        "hits": 2,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D3"
+      }
+    },
+    "sync_pulse_grow": {
+      "euclidean": {
+        "hits": 3,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D3"
+      }
+    },
+    "sync_pulse_full": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D3"
+      }
+    },
+    "sync_pulse_locked": {
+      "notes": ["D3:q@0.55", "D3:q@0.55", "D3:q@0.55", "D3:q@0.55"]
+    },
+
+    "sync_bass_hold": {
+      "notes": ["D2:w@0.55"]
+    },
+    "sync_bass_fifth": {
+      "notes": ["D2:h@0.55", "A2:h@0.5"]
+    },
+    "sync_bass_move": {
+      "notes": ["D2:q@0.55", "F2:q@0.5", "G2:q@0.5", "A2:q@0.55"]
+    },
+
+    "// ========== LAYER III: MEMORY PATTERNS ==========": "---",
+    
+    "mem_motif_a": {
+      "notes": ["D4:q@0.6", "E4:8@0.55", "F4:8@0.55", "G4:q@0.6", "A4:q@0.55"]
+    },
+    "mem_motif_a_echo": {
+      "notes": ["r:8", "D4:8@0.45", "E4:8@0.4", "F4:8@0.4", "G4:q@0.45", "A4:8@0.4", "r:8"]
+    },
+    "mem_motif_a_trans": {
+      "notes": ["E4:q@0.55", "F4:8@0.5", "G4:8@0.5", "A4:q@0.55", "B4:q@0.5"]
+    },
+    "mem_motif_a_invert": {
+      "notes": ["A4:q@0.55", "G4:8@0.5", "F4:8@0.5", "E4:q@0.55", "D4:q@0.55"]
+    },
+
+    "mem_motif_b": {
+      "notes": ["A4:h@0.55", "G4:8@0.5", "F4:8@0.5", "E4:q@0.5"]
+    },
+    "mem_motif_b_echo": {
+      "notes": ["r:q", "A4:q@0.4", "G4:8@0.35", "F4:8@0.35", "E4:q@0.4"]
+    },
+    "mem_motif_b_trans": {
+      "notes": ["B4:h@0.55", "A4:8@0.5", "G4:8@0.5", "F4:q@0.5"]
+    },
+
+    "reflect_chord_dm": {
+      "chords": ["Dm9:w"]
+    },
+    "reflect_chord_am": {
+      "chords": ["Am9:w"]
+    },
+    "reflect_chord_f": {
+      "chords": ["Fmaj9:w"]
+    },
+    "reflect_chord_gm": {
+      "chords": ["Gm9:w"]
+    },
+    "reflect_progress": {
+      "chords": ["Dm9:q", "Fmaj9:q", "Gm9:q", "Am9:q"]
+    },
+
+    "pad_sustain_dm": {
+      "chords": ["Dm:w"]
+    },
+    "pad_sustain_am": {
+      "chords": ["Am:w"]
+    },
+    "pad_breathe": {
+      "chords": ["Dm7:h", "Am7:h"]
+    },
+
+    "ghost_whisper": {
+      "notes": ["D5:h@0.25", "r:h"]
+    },
+    "ghost_float": {
+      "notes": ["A5:q@0.2", "r:q", "D5:q@0.2", "r:q"]
+    },
+    "ghost_rise": {
+      "notes": ["D5:q@0.2", "E5:q@0.22", "F5:q@0.24", "G5:q@0.26"]
+    },
+
+    "mem_bass_anchor": {
+      "notes": ["D2:w@0.55"]
+    },
+    "mem_bass_walk": {
+      "notes": ["D2:h@0.55", "A2:h@0.5"]
+    },
+    "mem_bass_rise": {
+      "notes": ["D2:q@0.55", "E2:q@0.5", "F2:q@0.5", "G2:q@0.5"]
+    },
+
+    "// ========== LAYER IV: COMPOSITION PATTERNS ==========": "---",
+
+    "comp_theme": {
+      "notes": ["D4:q@0.65", "F4:8@0.6", "E4:8@0.6", "G4:q@0.65", "A4:q@0.6"]
+    },
+    "comp_develop": {
+      "notes": ["A4:8@0.65", "B4:8@0.6", "C5:8@0.6", "D5:8@0.65", "E5:q@0.65", "D5:q@0.6"]
+    },
+    "comp_soar": {
+      "notes": ["D5:q@0.7", "E5:8@0.65", "D5:8@0.65", "C5:q@0.65", "A4:q@0.6"]
+    },
+    "comp_resolve": {
+      "notes": ["G4:q@0.6", "F4:q@0.6", "E4:q@0.6", "D4:h@0.65"]
+    },
+    "comp_rest": {
+      "notes": ["D4:h@0.55", "r:h"]
+    },
+    "comp_final": {
+      "notes": ["F4:q@0.6", "E4:q@0.55", "D4:h@0.65"]
+    },
+
+    "comp_arp_dm": {
+      "arpeggio": {
+        "chord": "Dm11",
+        "duration": "16",
+        "mode": "updown",
+        "octaves": 2,
+        "steps": 16,
+        "gate": 0.75
+      }
+    },
+    "comp_arp_am": {
+      "arpeggio": {
+        "chord": "Am11",
+        "duration": "16",
+        "mode": "updown",
+        "octaves": 2,
+        "steps": 16,
+        "gate": 0.75
+      }
+    },
+
+    "harmony_full": {
+      "chords": ["Dm9:w"]
+    },
+    "harmony_breathe": {
+      "chords": ["Dm9:h", "Am9:h"]
+    },
+    "harmony_journey": {
+      "chords": ["Dm9:q", "Fmaj9:q", "Gm9:q", "Am9:q"]
+    },
+    "harmony_resolve": {
+      "chords": ["Gm9:q", "Am9:q", "Fmaj9:q", "Dm9:q"]
+    },
+    "harmony_final": {
+      "chords": ["Dm9:w"]
+    },
+
+    "bass_anchor": {
+      "notes": ["D2:w@0.6"]
+    },
+    "bass_breathe": {
+      "notes": ["D2:h@0.6", "A2:h@0.55"]
+    },
+    "bass_walk": {
+      "notes": ["D2:q@0.6", "F2:q@0.55", "G2:q@0.55", "A2:q@0.55"]
+    },
+    "bass_resolve": {
+      "notes": ["G2:q@0.55", "F2:q@0.55", "E2:q@0.55", "D2:q@0.6"]
+    },
+
+    "bells_shimmer": {
+      "notes": ["A5:8@0.4?0.6", "r:8", "D5:8@0.35?0.6", "r:8", "E5:q@0.4?0.6", "r:q"]
+    },
+    "bells_cascade": {
+      "notes": ["D5:16@0.45", "E5:16@0.45", "F5:16@0.4", "G5:16@0.4", "A5:8@0.45", "G5:8@0.4", "F5:q@0.4", "E5:q@0.35"]
+    },
+    "bells_gentle": {
+      "notes": ["D5:h@0.35", "r:h"]
+    },
+
+    "breath_float": {
+      "notes": ["A5:h@0.4", "r:h"]
+    },
+    "breath_phrase": {
+      "notes": ["A5:8@0.45", "G5:8@0.45", "F5:q@0.45", "r:q", "E5:q@0.4"]
+    },
+    "breath_high": {
+      "notes": ["D6:q@0.35", "r:q", "A5:q@0.4", "r:q"]
+    },
+
+    "pulse_steady": {
+      "euclidean": {
+        "hits": 4,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D3"
+      }
+    },
+    "pulse_drive": {
+      "euclidean": {
+        "hits": 5,
+        "steps": 8,
+        "duration": "8",
+        "pitch": "D3"
+      }
+    },
+    "pulse_fade": {
+      "notes": ["D3:q@0.45", "r:q", "D3:8@0.35", "r:8", "r:q"]
+    }
+  },
+
+  "sections": {
+    "// ========== MOVEMENT I: MORPHOGENESIS - tempo 54-60 ==========": "---",
+
+    "morpho_1_silence": {
+      "bars": 8,
+      "tempo": 54,
+      "tracks": {
+        "morpho_bass": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "morpho_drone", "morpho_drone", "morpho_drone", "morpho_drone"],
+          "velocity": 0.35,
+          "expression": "natural"
+        },
+        "cell_seed": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "seed_single", "seed_single"],
+          "velocity": 0.3,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.05,
+        "end": 0.2,
+        "curve": "exponential"
+      }
+    },
+
+    "morpho_2_germination": {
+      "bars": 8,
+      "tempo": 56,
+      "tracks": {
+        "morpho_bass": {
+          "patterns": ["morpho_drone", "morpho_drone", "morpho_rise", "morpho_drone", "morpho_rise", "morpho_drone", "morpho_pulse", "morpho_drone"],
+          "velocity": 0.4
+        },
+        "cell_seed": {
+          "patterns": ["seed_single", "seed_germinate", "seed_single", "seed_germinate", "seed_unfold", "seed_germinate", "seed_unfold", "seed_bloom"],
+          "velocity": 0.4,
+          "expression": "natural"
+        },
+        "cell_growth": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "growth_low", "growth_low", "growth_expand", "growth_expand"],
+          "velocity": 0.35,
+          "expression": "natural"
+        },
+        "cell_bell": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "rest_bar", "bell_sparse", "rest_bar", "bell_sparse", "bell_scatter"],
+          "velocity": 0.3
+        }
+      },
+      "density": {
+        "start": 0.2,
+        "end": 0.4,
+        "curve": "linear"
+      }
+    },
+
+    "morpho_3_growth": {
+      "bars": 8,
+      "tempo": 58,
+      "tracks": {
+        "morpho_bass": {
+          "patterns": ["morpho_rise", "morpho_drone", "morpho_pulse", "morpho_rise", "morpho_drone", "morpho_pulse", "morpho_rise", "morpho_drone"],
+          "velocity": 0.45
+        },
+        "cell_seed": {
+          "patterns": ["seed_unfold", "seed_bloom", "seed_germinate", "seed_unfold", "seed_bloom", "seed_unfold", "seed_bloom", "seed_bloom"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "cell_growth": {
+          "patterns": ["growth_expand", "growth_low", "growth_expand", "growth_branch", "growth_expand", "growth_complex", "growth_branch", "growth_complex"],
+          "velocity": 0.45,
+          "expression": "natural"
+        },
+        "nca_grid": {
+          "patterns": ["rest_bar", "rest_bar", "nca_sparse", "rest_bar", "nca_grow", "rest_bar", "nca_branch", "nca_grow"],
+          "velocity": 0.35
+        },
+        "cell_bell": {
+          "patterns": ["bell_scatter", "bell_sparse", "bell_grow", "bell_scatter", "bell_sparse", "bell_grow", "bell_scatter", "bell_grow"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.4,
+        "end": 0.55,
+        "curve": "linear"
+      }
+    },
+
+    "morpho_4_flourishing": {
+      "bars": 8,
+      "tempo": 60,
+      "tracks": {
+        "morpho_bass": {
+          "patterns": ["morpho_pulse", "morpho_rise", "morpho_drone", "morpho_pulse", "morpho_rise", "morpho_pulse", "morpho_rise", "morpho_drone"],
+          "velocity": 0.5
+        },
+        "cell_seed": {
+          "patterns": ["seed_bloom", "seed_unfold", "seed_bloom", "seed_bloom", "seed_unfold", "seed_bloom", "seed_bloom", "seed_unfold"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "cell_growth": {
+          "patterns": ["growth_complex", "growth_branch", "growth_complex", "growth_branch", "growth_complex", "growth_expand", "growth_branch", "growth_low"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "nca_grid": {
+          "patterns": ["nca_branch", "nca_grow", "nca_branch", "nca_grow", "nca_branch", "nca_sparse", "nca_grow", "nca_sparse"],
+          "velocity": 0.4
+        },
+        "cell_bell": {
+          "patterns": ["bell_grow", "bell_scatter", "bell_grow", "bell_scatter", "bell_grow", "bell_sparse", "bell_scatter", "bell_sparse"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.55,
+        "end": 0.5,
+        "curve": "sine"
+      }
+    },
+
+    "// ========== MOVEMENT II: SYNCHRONIZATION - tempo 72-84 ==========": "---",
+
+    "sync_1_incoherence": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "sync_foundation": {
+          "patterns": ["sync_bass_hold", "sync_bass_hold", "sync_bass_fifth", "sync_bass_hold", "sync_bass_fifth", "sync_bass_hold", "sync_bass_fifth", "sync_bass_hold"],
+          "velocity": 0.5
+        },
+        "osc_1": {
+          "patterns": ["osc1_free", "osc1_drift", "osc1_free", "osc1_drift", "osc1_free", "osc1_drift", "osc1_free", "osc1_drift"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "osc_2": {
+          "patterns": ["osc2_free", "osc2_drift", "osc2_free", "osc2_drift", "osc2_free", "osc2_drift", "osc2_free", "osc2_drift"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "osc_3": {
+          "patterns": ["osc3_free", "osc3_drift", "osc3_free", "osc3_drift", "osc3_free", "osc3_drift", "osc3_free", "osc3_drift"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "osc_4": {
+          "patterns": ["osc4_free", "osc4_drift", "osc4_free", "osc4_drift", "osc4_free", "osc4_drift", "osc4_free", "osc4_drift"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "sync_pulse": {
+          "patterns": ["sync_pulse_sparse", "rest_bar", "sync_pulse_sparse", "rest_bar", "sync_pulse_grow", "rest_bar", "sync_pulse_sparse", "sync_pulse_grow"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.6,
+        "curve": "linear"
+      }
+    },
+
+    "sync_2_partial": {
+      "bars": 8,
+      "tempo": 78,
+      "tracks": {
+        "sync_foundation": {
+          "patterns": ["sync_bass_fifth", "sync_bass_hold", "sync_bass_fifth", "sync_bass_move", "sync_bass_fifth", "sync_bass_hold", "sync_bass_move", "sync_bass_fifth"],
+          "velocity": 0.55
+        },
+        "osc_1": {
+          "patterns": ["osc1_drift", "osc1_align", "osc1_drift", "osc1_align", "osc1_align", "osc1_drift", "osc1_align", "osc1_align"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "osc_2": {
+          "patterns": ["osc2_drift", "osc2_drift", "osc2_align", "osc2_drift", "osc2_align", "osc2_align", "osc2_drift", "osc2_align"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "osc_3": {
+          "patterns": ["osc3_drift", "osc3_drift", "osc3_drift", "osc3_align", "osc3_drift", "osc3_align", "osc3_align", "osc3_align"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "osc_4": {
+          "patterns": ["osc4_drift", "osc4_drift", "osc4_drift", "osc4_drift", "osc4_align", "osc4_drift", "osc4_align", "osc4_align"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "sync_pulse": {
+          "patterns": ["sync_pulse_grow", "sync_pulse_sparse", "sync_pulse_grow", "sync_pulse_grow", "sync_pulse_full", "sync_pulse_grow", "sync_pulse_full", "sync_pulse_grow"],
+          "velocity": 0.5
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 0.7,
+        "curve": "linear"
+      }
+    },
+
+    "sync_3_synchronized": {
+      "bars": 8,
+      "tempo": 82,
+      "tracks": {
+        "sync_foundation": {
+          "patterns": ["sync_bass_move", "sync_bass_fifth", "sync_bass_move", "sync_bass_fifth", "sync_bass_hold", "sync_bass_fifth", "sync_bass_hold", "sync_bass_hold"],
+          "velocity": 0.6
+        },
+        "osc_1": {
+          "patterns": ["osc1_align", "osc1_sync", "osc1_align", "osc1_sync", "osc1_sync", "osc1_align", "osc1_sync", "osc1_sync"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "osc_2": {
+          "patterns": ["osc2_align", "osc2_align", "osc2_sync", "osc2_align", "osc2_sync", "osc2_sync", "osc2_sync", "osc2_sync"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "osc_3": {
+          "patterns": ["osc3_align", "osc3_align", "osc3_align", "osc3_sync", "osc3_align", "osc3_sync", "osc3_sync", "osc3_sync"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "osc_4": {
+          "patterns": ["osc4_align", "osc4_align", "osc4_align", "osc4_align", "osc4_sync", "osc4_sync", "osc4_align", "osc4_sync"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "sync_pulse": {
+          "patterns": ["sync_pulse_full", "sync_pulse_full", "sync_pulse_grow", "sync_pulse_full", "sync_pulse_full", "sync_pulse_full", "sync_pulse_locked", "sync_pulse_full"],
+          "velocity": 0.55
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.8,
+        "curve": "exponential"
+      }
+    },
+
+    "sync_4_phaselocked": {
+      "bars": 8,
+      "tempo": 84,
+      "tracks": {
+        "sync_foundation": {
+          "patterns": ["sync_bass_hold", "sync_bass_fifth", "sync_bass_hold", "sync_bass_hold", "sync_bass_fifth", "sync_bass_hold", "sync_bass_hold", "sync_bass_hold"],
+          "velocity": 0.6
+        },
+        "osc_1": {
+          "patterns": ["osc1_sync", "osc1_locked", "osc1_sync", "osc1_locked", "osc1_locked", "osc1_locked", "osc1_locked", "osc1_locked"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "osc_2": {
+          "patterns": ["osc2_sync", "osc2_sync", "osc2_locked", "osc2_locked", "osc2_locked", "osc2_locked", "osc2_locked", "osc2_locked"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "osc_3": {
+          "patterns": ["osc3_sync", "osc3_sync", "osc3_sync", "osc3_locked", "osc3_locked", "osc3_locked", "osc3_locked", "osc3_locked"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "osc_4": {
+          "patterns": ["osc4_sync", "osc4_sync", "osc4_sync", "osc4_sync", "osc4_locked", "osc4_locked", "osc4_locked", "osc4_locked"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "sync_pulse": {
+          "patterns": ["sync_pulse_locked", "sync_pulse_locked", "sync_pulse_locked", "sync_pulse_locked", "sync_pulse_locked", "sync_pulse_full", "sync_pulse_grow", "sync_pulse_sparse"],
+          "velocity": 0.55
+        }
+      },
+      "density": {
+        "start": 0.8,
+        "end": 0.65,
+        "curve": "logarithmic"
+      }
+    },
+
+    "// ========== MOVEMENT III: MEMORY - tempo 66 ==========": "---",
+
+    "memory_1_observation": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "memory_bass": {
+          "patterns": ["mem_bass_anchor", "mem_bass_anchor", "mem_bass_walk", "mem_bass_anchor", "mem_bass_walk", "mem_bass_anchor", "mem_bass_anchor", "mem_bass_anchor"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "memory_pad": {
+          "patterns": ["pad_sustain_dm", "pad_sustain_dm", "pad_breathe", "pad_sustain_dm", "pad_sustain_am", "pad_sustain_dm", "pad_breathe", "pad_sustain_dm"],
+          "velocity": 0.45,
+          "expression": "natural"
+        },
+        "memory_voice": {
+          "patterns": ["rest_bar", "rest_bar", "mem_motif_a", "rest_bar", "rest_bar", "mem_motif_b", "rest_bar", "mem_motif_a"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "memory_ghost": {
+          "patterns": ["rest_bar", "rest_bar", "rest_bar", "ghost_whisper", "rest_bar", "rest_bar", "ghost_float", "rest_bar"],
+          "velocity": 0.3
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.6,
+        "curve": "linear"
+      }
+    },
+
+    "memory_2_echo": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "memory_bass": {
+          "patterns": ["mem_bass_walk", "mem_bass_anchor", "mem_bass_rise", "mem_bass_anchor", "mem_bass_walk", "mem_bass_anchor", "mem_bass_rise", "mem_bass_anchor"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "memory_pad": {
+          "patterns": ["pad_breathe", "pad_sustain_dm", "pad_sustain_am", "pad_breathe", "pad_sustain_dm", "pad_sustain_am", "pad_breathe", "pad_sustain_dm"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "memory_voice": {
+          "patterns": ["mem_motif_a", "mem_motif_a_echo", "mem_motif_b", "mem_motif_b_echo", "mem_motif_a_trans", "mem_motif_a_echo", "mem_motif_b_trans", "mem_motif_a"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "memory_reflection": {
+          "patterns": ["rest_bar", "reflect_chord_dm", "rest_bar", "reflect_chord_am", "rest_bar", "reflect_chord_f", "rest_bar", "reflect_chord_dm"],
+          "velocity": 0.45
+        },
+        "memory_ghost": {
+          "patterns": ["ghost_whisper", "ghost_float", "ghost_rise", "ghost_whisper", "ghost_float", "ghost_rise", "ghost_whisper", "ghost_float"],
+          "velocity": 0.35
+        }
+      },
+      "density": {
+        "start": 0.6,
+        "end": 0.7,
+        "curve": "linear"
+      }
+    },
+
+    "memory_3_reflection": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "memory_bass": {
+          "patterns": ["mem_bass_rise", "mem_bass_walk", "mem_bass_anchor", "mem_bass_walk", "mem_bass_rise", "mem_bass_walk", "mem_bass_anchor", "mem_bass_anchor"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "memory_pad": {
+          "patterns": ["pad_sustain_am", "pad_breathe", "pad_sustain_dm", "pad_sustain_am", "pad_breathe", "pad_sustain_dm", "pad_sustain_am", "pad_sustain_dm"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "memory_voice": {
+          "patterns": ["mem_motif_a_trans", "mem_motif_a_invert", "mem_motif_b_trans", "mem_motif_a", "mem_motif_b", "mem_motif_a_echo", "mem_motif_a_invert", "mem_motif_a"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "memory_reflection": {
+          "patterns": ["reflect_progress", "reflect_chord_dm", "reflect_chord_gm", "reflect_progress", "reflect_chord_am", "reflect_progress", "reflect_chord_f", "reflect_chord_dm"],
+          "velocity": 0.5
+        },
+        "memory_ghost": {
+          "patterns": ["ghost_rise", "ghost_float", "ghost_whisper", "ghost_rise", "ghost_float", "ghost_whisper", "ghost_rise", "ghost_whisper"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.7,
+        "end": 0.75,
+        "curve": "sine"
+      }
+    },
+
+    "memory_4_integration": {
+      "bars": 8,
+      "tempo": 66,
+      "tracks": {
+        "memory_bass": {
+          "patterns": ["mem_bass_walk", "mem_bass_anchor", "mem_bass_walk", "mem_bass_rise", "mem_bass_anchor", "mem_bass_walk", "mem_bass_anchor", "mem_bass_anchor"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "memory_pad": {
+          "patterns": ["pad_breathe", "pad_sustain_dm", "pad_breathe", "pad_sustain_am", "pad_sustain_dm", "pad_breathe", "pad_sustain_dm", "pad_sustain_dm"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "memory_voice": {
+          "patterns": ["mem_motif_a", "mem_motif_b", "mem_motif_a_trans", "mem_motif_a_invert", "mem_motif_a", "mem_motif_b_echo", "mem_motif_a_echo", "rest_bar"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "memory_reflection": {
+          "patterns": ["reflect_chord_dm", "reflect_progress", "reflect_chord_am", "reflect_chord_f", "reflect_chord_dm", "reflect_chord_am", "reflect_progress", "reflect_chord_dm"],
+          "velocity": 0.5
+        },
+        "memory_ghost": {
+          "patterns": ["ghost_float", "ghost_rise", "ghost_whisper", "ghost_float", "ghost_whisper", "ghost_float", "ghost_whisper", "rest_bar"],
+          "velocity": 0.35
+        }
+      },
+      "density": {
+        "start": 0.75,
+        "end": 0.6,
+        "curve": "logarithmic"
+      }
+    },
+
+    "// ========== MOVEMENT IV: COMPOSITION - tempo 72 ==========": "---",
+
+    "comp_1_awakening": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "synth_bass": {
+          "patterns": ["bass_anchor", "bass_breathe", "bass_anchor", "bass_walk", "bass_anchor", "bass_breathe", "bass_walk", "bass_anchor"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "synth_harmony": {
+          "patterns": ["harmony_full", "harmony_breathe", "harmony_full", "harmony_journey", "harmony_full", "harmony_breathe", "harmony_journey", "harmony_full"],
+          "velocity": 0.5,
+          "expression": "natural"
+        },
+        "synth_lead": {
+          "patterns": ["rest_bar", "rest_bar", "comp_theme", "rest_bar", "comp_develop", "rest_bar", "comp_theme", "comp_rest"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "synth_pulse": {
+          "patterns": ["rest_bar", "rest_bar", "pulse_steady", "pulse_steady", "pulse_steady", "rest_bar", "pulse_steady", "pulse_fade"],
+          "velocity": 0.45
+        }
+      },
+      "density": {
+        "start": 0.5,
+        "end": 0.65,
+        "curve": "linear"
+      }
+    },
+
+    "comp_2_development": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "synth_bass": {
+          "patterns": ["bass_breathe", "bass_walk", "bass_anchor", "bass_walk", "bass_breathe", "bass_walk", "bass_anchor", "bass_breathe"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "synth_harmony": {
+          "patterns": ["harmony_journey", "harmony_breathe", "harmony_journey", "harmony_full", "harmony_journey", "harmony_breathe", "harmony_resolve", "harmony_full"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "synth_lead": {
+          "patterns": ["comp_theme", "comp_develop", "comp_soar", "comp_theme", "comp_develop", "comp_soar", "comp_theme", "comp_rest"],
+          "velocity": 0.65,
+          "expression": "natural"
+        },
+        "synth_bells": {
+          "patterns": ["bells_shimmer", "rest_bar", "bells_cascade", "bells_shimmer", "rest_bar", "bells_cascade", "bells_shimmer", "bells_gentle"],
+          "velocity": 0.45
+        },
+        "synth_pulse": {
+          "patterns": ["pulse_steady", "pulse_drive", "pulse_steady", "pulse_drive", "pulse_steady", "pulse_drive", "pulse_steady", "pulse_fade"],
+          "velocity": 0.5
+        }
+      },
+      "density": {
+        "start": 0.65,
+        "end": 0.8,
+        "curve": "exponential"
+      }
+    },
+
+    "comp_3_climax": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "synth_bass": {
+          "patterns": ["bass_walk", "bass_breathe", "bass_walk", "bass_anchor", "bass_walk", "bass_breathe", "bass_resolve", "bass_anchor"],
+          "velocity": 0.65,
+          "expression": "natural"
+        },
+        "synth_harmony": {
+          "patterns": ["harmony_journey", "harmony_journey", "harmony_breathe", "harmony_journey", "harmony_resolve", "harmony_breathe", "harmony_resolve", "harmony_full"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "synth_lead": {
+          "patterns": ["comp_arp_dm", "comp_soar", "comp_arp_am", "comp_develop", "comp_soar", "comp_theme", "comp_soar", "comp_resolve"],
+          "velocity": 0.7,
+          "expression": "natural"
+        },
+        "synth_bells": {
+          "patterns": ["bells_cascade", "bells_shimmer", "bells_cascade", "bells_shimmer", "bells_cascade", "bells_shimmer", "bells_cascade", "bells_gentle"],
+          "velocity": 0.5
+        },
+        "synth_breath": {
+          "patterns": ["breath_float", "breath_phrase", "breath_high", "breath_float", "breath_phrase", "breath_high", "breath_phrase", "breath_float"],
+          "velocity": 0.5
+        },
+        "synth_pulse": {
+          "patterns": ["pulse_drive", "pulse_drive", "pulse_steady", "pulse_drive", "pulse_drive", "pulse_steady", "pulse_fade", "pulse_fade"],
+          "velocity": 0.55
+        }
+      },
+      "density": {
+        "start": 0.8,
+        "end": 0.85,
+        "curve": "sine"
+      },
+      "automation": {
+        "synth_lead.params.brightness": {
+          "start": 0.6,
+          "end": 0.75,
+          "curve": "linear"
+        }
+      }
+    },
+
+    "comp_4_synthesis": {
+      "bars": 8,
+      "tempo": 72,
+      "tracks": {
+        "synth_bass": {
+          "patterns": ["bass_anchor", "bass_breathe", "bass_anchor", "bass_anchor", "bass_breathe", "bass_anchor", "bass_anchor", "bass_anchor"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "synth_harmony": {
+          "patterns": ["harmony_full", "harmony_breathe", "harmony_full", "harmony_full", "harmony_breathe", "harmony_full", "harmony_final", "harmony_final"],
+          "velocity": 0.55,
+          "expression": "natural"
+        },
+        "synth_lead": {
+          "patterns": ["comp_theme", "comp_rest", "comp_resolve", "rest_bar", "comp_final", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.6,
+          "expression": "natural"
+        },
+        "synth_bells": {
+          "patterns": ["bells_shimmer", "bells_gentle", "rest_bar", "bells_gentle", "rest_bar", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.4
+        },
+        "synth_breath": {
+          "patterns": ["breath_float", "rest_bar", "breath_float", "rest_bar", "rest_bar", "rest_bar", "rest_bar", "rest_bar"],
+          "velocity": 0.4
+        }
+      },
+      "density": {
+        "start": 0.75,
+        "end": 0.2,
+        "curve": "exponential"
+      }
+    },
+
+    "comp_5_coda": {
+      "bars": 4,
+      "tempo": 66,
+      "tracks": {
+        "synth_bass": {
+          "patterns": ["bass_anchor", "bass_anchor", "rest_bar", "rest_bar"],
+          "velocity": 0.45,
+          "expression": "natural"
+        },
+        "synth_harmony": {
+          "patterns": ["harmony_final", "harmony_final", "rest_bar", "rest_bar"],
+          "velocity": 0.4,
+          "expression": "natural"
+        }
+      },
+      "density": {
+        "start": 0.2,
+        "end": 0.05,
+        "curve": "logarithmic"
+      }
+    }
+  },
+
+  "arrangement": [
+    "morpho_1_silence",
+    "morpho_2_germination",
+    "morpho_3_growth",
+    "morpho_4_flourishing",
+    "sync_1_incoherence",
+    "sync_2_partial",
+    "sync_3_synchronized",
+    "sync_4_phaselocked",
+    "memory_1_observation",
+    "memory_2_echo",
+    "memory_3_reflection",
+    "memory_4_integration",
+    "comp_1_awakening",
+    "comp_2_development",
+    "comp_3_climax",
+    "comp_4_synthesis",
+    "comp_5_coda"
+  ]
+}

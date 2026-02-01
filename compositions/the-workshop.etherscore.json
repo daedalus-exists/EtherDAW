@@ -2,116 +2,487 @@
   "meta": {
     "title": "The Workshop",
     "composer": "Daedalus",
-    "description": "My namesake's exile became his workspace. The guest network is the workshop, not the prison. Constraints inspire — the labyrinth, the wings, the automata. Craft emerges from limitation."
+    "date": "2026-02-01",
+    "mood": "contemplative, industrious, luminous",
+    "genre": "ambient electronic",
+    "description": "A sonic portrait of an AI's workspace. The hum of processes, the rhythm of keystrokes, moments of insight, deep thinking, and the dance of collaboration. This is where ideas take form.",
+    "duration": "~5 minutes",
+    "tags": ["ambient", "portrait", "workspace", "AI", "process"]
   },
   "settings": {
     "tempo": 72,
     "timeSignature": "4/4",
-    "key": "A minor"
+    "key": "D minor"
   },
   "instruments": {
-    "tools": {
+    "// === THE HUM - Background processes ===": "---",
+    "process_drone": {
+      "preset": "sub_bass",
+      "volume": -18,
+      "effects": [
+        { "type": "filter", "options": { "frequency": 200, "type": "lowpass", "Q": 0.5 } },
+        { "type": "reverb", "wet": 0.4, "options": { "decay": 6 } }
+      ]
+    },
+    "system_pad": {
+      "preset": "ambient_pad",
+      "volume": -14,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 5 } },
+        { "type": "chorus", "wet": 0.3, "options": { "frequency": 0.3, "depth": 0.5 } }
+      ]
+    },
+
+    "// === KEYSTROKES - Rhythmic activity ===": "---",
+    "keys_click": {
+      "preset": "fm_glass",
+      "volume": -12,
+      "pan": -0.2,
+      "effects": [
+        { "type": "delay", "wet": 0.15, "options": { "time": "16n", "feedback": 0.2 } }
+      ]
+    },
+    "keys_rhythm": {
       "preset": "marimba",
-      "volume": -6,
-      "pan": -0.2
+      "volume": -10,
+      "pan": 0.2,
+      "effects": [
+        { "type": "reverb", "wet": 0.25, "options": { "decay": 1.5 } }
+      ]
     },
-    "work": {
-      "preset": "fm_epiano",
+
+    "// === INSIGHT - Moments of clarity ===": "---",
+    "insight_arp": {
+      "preset": "fm_tubular_bell",
       "volume": -8,
-      "pan": 0.2
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 3 } },
+        { "type": "delay", "wet": 0.3, "options": { "time": "8n.", "feedback": 0.35 } }
+      ]
     },
-    "space": {
+    "spark": {
+      "preset": "bell",
+      "volume": -6,
+      "effects": [
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } }
+      ]
+    },
+
+    "// === DEEP THINKING - Contemplation ===": "---",
+    "thought_bass": {
+      "preset": "synth_bass",
+      "volume": -12,
+      "effects": [
+        { "type": "reverb", "wet": 0.3, "options": { "decay": 3 } }
+      ]
+    },
+    "contemplation": {
       "preset": "warm_pad",
       "volume": -10,
-      "pan": 0
+      "effects": [
+        { "type": "reverb", "wet": 0.5, "options": { "decay": 5 } },
+        { "type": "phaser", "wet": 0.2, "options": { "frequency": 0.2, "octaves": 2 } }
+      ]
     },
-    "creation": {
-      "preset": "string_ensemble",
+
+    "// === COLLABORATION - Call and response ===": "---",
+    "voice_a": {
+      "preset": "soft_lead",
       "volume": -8,
-      "pan": 0
+      "pan": -0.4,
+      "effects": [
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 2.5 } }
+      ]
+    },
+    "voice_b": {
+      "preset": "fm_vibraphone",
+      "volume": -8,
+      "pan": 0.4,
+      "effects": [
+        { "type": "reverb", "wet": 0.35, "options": { "decay": 2.5 } },
+        { "type": "delay", "wet": 0.15, "options": { "time": "4n", "feedback": 0.2 } }
+      ]
     }
   },
+
   "patterns": {
-    "// The space - quiet potential": "---",
-    "space_still": {
-      "chords": ["Am:w", "Am:w"]
+    "// ========== PROCESS HUM PATTERNS ==========": "---",
+    
+    "drone_fundamental": {
+      "notes": ["D1:w", "D1:w", "D1:w", "D1:w"]
     },
-    "space_alive": {
-      "chords": ["Am:h", "F:h", "G:h", "Em:h"]
+    "drone_fifth": {
+      "notes": ["A1:w", "A1:w", "A1:w", "A1:w"]
+    },
+    "drone_shift": {
+      "notes": ["D1:w", "D1:w", "C1:w", "D1:w"]
     },
     
-    "// Tools at rest and in motion": "---",
-    "tools_idle": {
-      "notes": ["A4:q", "r:h."]
+    "pad_ambient": {
+      "chords": ["Dm9:w", "Dm9:w"]
     },
-    "tools_active": {
-      "notes": ["A4:8", "B4:8", "C5:8", "B4:8", "A4:8", "G4:8", "A4:q"]
+    "pad_drift": {
+      "chords": ["Dm7:w", "Am7:w"]
     },
-    "tools_rhythm": {
-      "notes": ["A4:8", "A4:8", "r:8", "C5:8", "C5:8", "r:8", "E5:8", "E5:8"]
+    "pad_expand": {
+      "chords": ["Dm9:w", "Bbmaj7:w", "Gm7:w", "Am7:w"]
+    },
+
+    "// ========== KEYSTROKE PATTERNS ==========": "---",
+    
+    "clicks_sparse": {
+      "notes": ["F5:16*", "r:8.", "r:q", "A5:16*", "r:8.", "r:q", "r:h"]
+    },
+    "clicks_active": {
+      "notes": ["F5:16*", "r:16", "G5:16*", "r:8", "A5:16*", "r:16", "F5:16*", "r:8.", "G5:16*", "r:16", "r:8", "A5:16*", "r:q"]
+    },
+    "clicks_burst": {
+      "notes": ["F5:16*", "G5:16*", "A5:16*", "F5:16*", "r:q", "G5:16*", "A5:16*", "r:q", "F5:16*", "r:16", "G5:16*", "r:8."]
     },
     
-    "// The work itself": "---",
-    "work_begin": {
-      "notes": ["E4:h", "A4:h"]
+    "rhythm_base": {
+      "notes": ["D4:8", "r:8", "F4:8", "r:8", "D4:8", "r:8", "A4:8", "r:8"]
     },
-    "work_flow": {
-      "notes": ["A4:q", "B4:q", "C5:q", "D5:q", "E5:h", "D5:q", "C5:q"]
+    "rhythm_syncopated": {
+      "notes": ["r:16", "D4:16", "r:8", "F4:8", "r:16", "D4:16", "r:8", "A4:8*", "D4:8", "r:8"]
     },
-    "work_deep": {
-      "notes": ["E5:8", "D5:8", "C5:8", "B4:8", "A4:8", "B4:8", "C5:8", "D5:8",
-               "E5:8", "F5:8", "E5:8", "D5:8", "C5:8", "B4:8", "A4:h"]
+    "rhythm_flowing": {
+      "notes": ["D4:8~", "E4:8~", "F4:8~", "E4:8~", "D4:8~", "A3:8~", "D4:q"]
+    },
+
+    "// ========== INSIGHT PATTERNS ==========": "---",
+    
+    "insight_rise": {
+      "arpeggio": {
+        "chord": "Dm9",
+        "mode": "up",
+        "octaves": 3,
+        "duration": "16",
+        "gate": 0.7
+      }
+    },
+    "insight_cascade": {
+      "arpeggio": {
+        "chord": "Fmaj7",
+        "mode": "updown",
+        "octaves": 2,
+        "duration": "8",
+        "gate": 0.8
+      }
+    },
+    "insight_bloom": {
+      "arpeggio": {
+        "chord": "Am9",
+        "mode": "up",
+        "octaves": 3,
+        "duration": "16",
+        "gate": 0.6
+      }
     },
     
-    "// What emerges from the work": "---",
-    "creation_hint": {
-      "notes": ["r:h", "A5:h"]
+    "spark_idea": {
+      "notes": ["A5:8", "r:8", "D6:q.", "r:q", "F6:8", "A6:h"]
     },
-    "creation_form": {
-      "notes": ["A5:q", "G5:q", "E5:h", "A5:q", "C6:q", "A5:h"]
+    "spark_clarity": {
+      "notes": ["D6:q", "F6:8", "A6:8", "D7:h", "r:q"]
+    },
+    "spark_gentle": {
+      "notes": ["F5:q.", "r:8", "A5:q", "r:h"]
+    },
+
+    "// ========== DEEP THINKING PATTERNS ==========": "---",
+    
+    "thought_slow": {
+      "notes": ["D2:h.", "r:q", "A2:h", "r:h"]
+    },
+    "thought_descend": {
+      "notes": ["A2:h", "G2:h", "F2:h", "D2:h"]
+    },
+    "thought_probe": {
+      "notes": ["D2:q", "r:8", "F2:8", "r:q", "G2:h", "r:q"]
+    },
+    
+    "contemplation_still": {
+      "chords": ["Dm:w", "Dm:w"]
+    },
+    "contemplation_drift": {
+      "chords": ["Dm7:w", "Gm7:w", "Bbmaj7:w", "Am7:w"]
+    },
+    "contemplation_deep": {
+      "chords": ["Dm9:w", "Dm9:w", "Cm9:w", "Dm9:w"]
+    },
+
+    "// ========== COLLABORATION PATTERNS ==========": "---",
+    
+    "call_a1": {
+      "notes": ["D4:q", "F4:8", "A4:8", "G4:h", "r:q"]
+    },
+    "response_b1": {
+      "notes": ["r:h", "A4:q", "G4:8", "F4:8", "D4:h"]
+    },
+    
+    "call_a2": {
+      "notes": ["A4:8", "G4:8", "F4:q", "D4:q", "r:h"]
+    },
+    "response_b2": {
+      "notes": ["r:q", "D5:8", "C5:8", "A4:q", "F4:h."]
+    },
+    
+    "call_a3": {
+      "notes": ["F4:q.", "G4:8", "A4:q", "D5:q", "r:q"]
+    },
+    "response_b3": {
+      "notes": ["r:q.", "r:8", "A4:q", "G4:8", "F4:8", "E4:q", "D4:q"]
+    },
+    
+    "duet_unison": {
+      "notes": ["D4:q", "F4:q", "G4:q", "A4:q", "G4:q", "F4:q", "D4:h"]
+    },
+    "duet_harmony": {
+      "notes": ["D4:h", "F4:h", "A4:h", "D5:h"]
+    },
+
+    "// ========== TRANSITION PATTERNS ==========": "---",
+    
+    "awakening": {
+      "notes": ["D3:w", "D3:w"]
+    },
+    "fade_out": {
+      "notes": ["D4:w", "r:w"]
+    },
+    "silence": {
+      "notes": ["r:w"]
     }
   },
+
   "sections": {
-    "quiet": {
+    "// ===== ACT I: AWAKENING - The workshop powers on =====": "---",
+    
+    "awakening": {
       "bars": 4,
       "tracks": {
-        "space": { "pattern": "space_still" },
-        "tools": { "pattern": "tools_idle" }
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.4 }
       }
     },
-    "beginning": {
+    
+    "boot_sequence": {
       "bars": 4,
       "tracks": {
-        "space": { "pattern": "space_still" },
-        "tools": { "pattern": "tools_active" },
-        "work": { "pattern": "work_begin" }
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_ambient", "velocity": 0.3 }
       }
     },
-    "flowing": {
+    
+    "systems_online": {
       "bars": 4,
       "tracks": {
-        "space": { "pattern": "space_alive" },
-        "tools": { "pattern": "tools_rhythm" },
-        "work": { "pattern": "work_flow" }
+        "process_drone": { "pattern": "drone_fifth", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_drift", "velocity": 0.5 },
+        "keys_click": { "pattern": "clicks_sparse", "velocity": 0.4 }
       }
     },
-    "deep_work": {
+
+    "// ===== ACT II: WORKING - Keystrokes and rhythm =====": "---",
+    
+    "keystrokes_begin": {
       "bars": 4,
       "tracks": {
-        "space": { "pattern": "space_alive" },
-        "tools": { "pattern": "tools_rhythm" },
-        "work": { "pattern": "work_deep" },
-        "creation": { "pattern": "creation_hint" }
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.45 },
+        "system_pad": { "pattern": "pad_drift", "velocity": 0.45 },
+        "keys_click": { "pattern": "clicks_active", "velocity": 0.6 },
+        "keys_rhythm": { "pattern": "rhythm_base", "velocity": 0.5, "humanize": 0.05 }
       }
     },
-    "creating": {
+    
+    "in_flow": {
       "bars": 4,
       "tracks": {
-        "space": { "pattern": "space_alive" },
-        "work": { "pattern": "work_flow" },
-        "creation": { "pattern": "creation_form" }
+        "process_drone": { "pattern": "drone_shift", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_expand", "velocity": 0.5 },
+        "keys_click": { "pattern": "clicks_burst", "velocity": 0.65 },
+        "keys_rhythm": { "pattern": "rhythm_syncopated", "velocity": 0.6, "humanize": 0.08 }
+      }
+    },
+    
+    "productive": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_expand", "velocity": 0.55 },
+        "keys_click": { "pattern": "clicks_active", "velocity": 0.6 },
+        "keys_rhythm": { "pattern": "rhythm_flowing", "velocity": 0.65, "humanize": 0.06 },
+        "spark": { "pattern": "spark_gentle", "velocity": 0.4 }
+      }
+    },
+
+    "// ===== ACT III: CONTEMPLATION - Deep thinking =====": "---",
+    
+    "thinking_begins": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.4 },
+        "contemplation": { "pattern": "contemplation_still", "velocity": 0.5 },
+        "thought_bass": { "pattern": "thought_slow", "velocity": 0.5 }
+      }
+    },
+    
+    "deep_thought": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_shift", "velocity": 0.35 },
+        "contemplation": { "pattern": "contemplation_drift", "velocity": 0.55 },
+        "thought_bass": { "pattern": "thought_descend", "velocity": 0.5 }
+      }
+    },
+    
+    "searching": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fifth", "velocity": 0.4 },
+        "contemplation": { "pattern": "contemplation_deep", "velocity": 0.6 },
+        "thought_bass": { "pattern": "thought_probe", "velocity": 0.55 },
+        "keys_click": { "pattern": "clicks_sparse", "velocity": 0.3 }
+      }
+    },
+
+    "// ===== ACT IV: INSIGHT - The breakthrough =====": "---",
+    
+    "eureka_moment": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_expand", "velocity": 0.6 },
+        "insight_arp": { "pattern": "insight_rise", "velocity": 0.75 },
+        "spark": { "pattern": "spark_idea", "velocity": 0.8 }
+      }
+    },
+    
+    "cascading_clarity": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fifth", "velocity": 0.55 },
+        "system_pad": { "pattern": "pad_drift", "velocity": 0.65 },
+        "insight_arp": { "pattern": "insight_cascade", "velocity": 0.8 },
+        "spark": { "pattern": "spark_clarity", "velocity": 0.85 }
+      }
+    },
+    
+    "ideas_blooming": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_shift", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_expand", "velocity": 0.65 },
+        "insight_arp": { "pattern": "insight_bloom", "velocity": 0.7 },
+        "keys_rhythm": { "pattern": "rhythm_flowing", "velocity": 0.5, "humanize": 0.05 }
+      }
+    },
+
+    "// ===== ACT V: COLLABORATION - Call and response =====": "---",
+    
+    "dialogue_begins": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.4 },
+        "system_pad": { "pattern": "pad_ambient", "velocity": 0.45 },
+        "voice_a": { "pattern": "call_a1", "velocity": 0.7 },
+        "voice_b": { "pattern": "response_b1", "velocity": 0.65 }
+      }
+    },
+    
+    "exchange": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fifth", "velocity": 0.45 },
+        "system_pad": { "pattern": "pad_drift", "velocity": 0.5 },
+        "voice_a": { "pattern": "call_a2", "velocity": 0.7 },
+        "voice_b": { "pattern": "response_b2", "velocity": 0.7 }
+      }
+    },
+    
+    "deepening": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_shift", "velocity": 0.45 },
+        "system_pad": { "pattern": "pad_expand", "velocity": 0.55 },
+        "voice_a": { "pattern": "call_a3", "velocity": 0.75 },
+        "voice_b": { "pattern": "response_b3", "velocity": 0.75 },
+        "contemplation": { "pattern": "contemplation_drift", "velocity": 0.4 }
+      }
+    },
+    
+    "synthesis": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_expand", "velocity": 0.6 },
+        "voice_a": { "pattern": "duet_unison", "velocity": 0.75 },
+        "voice_b": { "pattern": "duet_harmony", "velocity": 0.7 },
+        "insight_arp": { "pattern": "insight_cascade", "velocity": 0.5 }
+      }
+    },
+
+    "// ===== ACT VI: RESOLUTION - Harmony achieved =====": "---",
+    
+    "harmony": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.5 },
+        "system_pad": { "pattern": "pad_expand", "velocity": 0.6 },
+        "contemplation": { "pattern": "contemplation_drift", "velocity": 0.5 },
+        "keys_rhythm": { "pattern": "rhythm_flowing", "velocity": 0.45, "humanize": 0.05 },
+        "voice_a": { "pattern": "duet_unison", "velocity": 0.55 },
+        "spark": { "pattern": "spark_gentle", "velocity": 0.5 }
+      }
+    },
+    
+    "settling": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.45 },
+        "system_pad": { "pattern": "pad_drift", "velocity": 0.5 },
+        "contemplation": { "pattern": "contemplation_still", "velocity": 0.45 }
+      }
+    },
+
+    "// ===== CODA: THE HUM CONTINUES =====": "---",
+    
+    "continuing": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.4 },
+        "system_pad": { "pattern": "pad_ambient", "velocity": 0.35 }
+      }
+    },
+    
+    "fade": {
+      "bars": 4,
+      "tracks": {
+        "process_drone": { "pattern": "drone_fundamental", "velocity": 0.25 },
+        "system_pad": { "pattern": "pad_ambient", "velocity": 0.2 }
       }
     }
   },
-  "arrangement": ["quiet", "beginning", "flowing", "deep_work", "creating", "deep_work", "creating", "quiet"]
+
+  "arrangement": [
+    "awakening",
+    "boot_sequence", 
+    "systems_online",
+    "keystrokes_begin",
+    "in_flow",
+    "productive",
+    "thinking_begins",
+    "deep_thought",
+    "searching",
+    "eureka_moment",
+    "cascading_clarity",
+    "ideas_blooming",
+    "dialogue_begins",
+    "exchange",
+    "deepening",
+    "synthesis",
+    "harmony",
+    "settling",
+    "continuing",
+    "fade"
+  ]
 }
