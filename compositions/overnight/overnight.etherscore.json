@@ -1,0 +1,307 @@
+{
+  "// title": "Overnight - The quiet hours when the workshop runs autonomously",
+  "meta": {
+    "title": "Overnight",
+    "composer": "Daedalus",
+    "date": "2026-02-02",
+    "mood": "contemplative, nocturnal, emergent",
+    "genre": "ambient",
+    "description": "The quiet hours when the workshop runs autonomously, building while humans sleep. Structured as emergence: sparse incoherence gradually synchronizing into coherent flow, then settling back to stillness before dawn."
+  },
+  "settings": {
+    "tempo": 58,
+    "key": "D minor",
+    "timeSignature": "4/4",
+    "swing": 0
+  },
+  "instruments": {
+    "// instruments": "Each voice represents an aspect of autonomous work",
+    "deep": {
+      "preset": "ambient_pad",
+      "volume": -8,
+      "params": { "warmth": 0.8, "attack": 0.9, "brightness": 0.2 },
+      "effects": [
+        { "type": "reverb", "wet": 0.85, "options": { "decay": 8 } },
+        { "type": "filter", "options": { "frequency": 800, "type": "lowpass" } }
+      ]
+    },
+    "pulse": {
+      "preset": "sine",
+      "volume": -14,
+      "params": { "warmth": 0.6, "attack": 0.3, "decay": 0.6 },
+      "effects": [
+        { "type": "delay", "wet": 0.45, "options": { "time": "4n", "feedback": 0.55 } },
+        { "type": "reverb", "wet": 0.6, "options": { "decay": 4 } }
+      ]
+    },
+    "texture": {
+      "preset": "pluck",
+      "volume": -16,
+      "params": { "brightness": 0.3, "attack": 0.1, "decay": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.7, "options": { "decay": 5 } },
+        { "type": "delay", "wet": 0.3, "options": { "time": "8n.", "feedback": 0.4 } }
+      ]
+    },
+    "reflection": {
+      "preset": "bell",
+      "volume": -18,
+      "params": { "brightness": 0.4, "decay": 0.8 },
+      "effects": [
+        { "type": "reverb", "wet": 0.8, "options": { "decay": 6 } }
+      ]
+    },
+    "bass": {
+      "preset": "sub_bass",
+      "volume": -10,
+      "params": { "warmth": 0.9, "attack": 0.5 },
+      "effects": [
+        { "type": "filter", "options": { "frequency": 200, "type": "lowpass" } }
+      ]
+    },
+    "whisper": {
+      "preset": "soft_lead",
+      "volume": -15,
+      "params": { "warmth": 0.7, "brightness": 0.25, "attack": 0.6, "decay": 0.7 },
+      "effects": [
+        { "type": "reverb", "wet": 0.75, "options": { "decay": 5 } },
+        { "type": "chorus", "wet": 0.3, "options": { "frequency": 0.3, "depth": 0.4 } }
+      ]
+    }
+  },
+  "patterns": {
+    "// section 1": "STILLNESS - The workshop at rest, only the hum of potential",
+    "pad_stillness": {
+      "chords": ["Dm:w", "Dm:w", "Dm:w", "Dm:w"]
+    },
+    "bass_deep": {
+      "notes": ["D1:w", "r:w", "D1:w", "r:w"]
+    },
+    
+    "// section 2": "AWAKENING - Scattered oscillators, not yet synchronized (r < 0.3)",
+    "pad_awakening": {
+      "chords": ["Dm:w", "Dm7:w", "Dm:w", "Am:w"]
+    },
+    "pulse_scattered": {
+      "// comment": "Irregular, representing incoherent phase",
+      "notes": ["D4:8", "r:q.", "r:h", "A4:8", "r:q", "r:q", "F4:8", "r:8", "r:h", "r:q", "r:q", "E4:8", "r:8"]
+    },
+    "bass_stir": {
+      "notes": ["D2:h", "r:h", "r:w", "D2:h", "r:q", "A1:q"]
+    },
+
+    "// section 3": "GATHERING - Oscillators begin to notice each other (r ~ 0.3-0.5)",
+    "pad_gathering": {
+      "chords": ["Dm7:w", "Gm7:w", "Am7:w", "Dm:w"]
+    },
+    "pulse_partial": {
+      "notes": ["D4:8", "r:8", "A4:8", "r:q.", "F4:8", "r:8", "D4:8", "r:8", "E4:8", "r:8", "r:q"]
+    },
+    "texture_emerge": {
+      "arpeggio": {
+        "chord": "Dm7",
+        "mode": "up",
+        "octaves": 2,
+        "duration": "8",
+        "gate": 0.6
+      }
+    },
+    "bass_pulse": {
+      "notes": ["D2:h", "r:q", "A1:q", "D2:h", "r:h"]
+    },
+
+    "// section 4": "ASSEMBLY - Approaching critical coupling (r ~ 0.5-0.7)",
+    "pad_assembly": {
+      "chords": ["Dm9:w", "Gm9:w", "Bbmaj7:w", "Am7:w"]
+    },
+    "pulse_converging": {
+      "notes": ["D4:8", "F4:8", "A4:8", "r:8", "D4:8", "E4:8", "F4:8", "r:8"]
+    },
+    "texture_working": {
+      "arpeggio": {
+        "chord": "Dm9",
+        "mode": "updown",
+        "octaves": 2,
+        "duration": "16",
+        "gate": 0.5
+      }
+    },
+    "whisper_begin": {
+      "notes": ["r:h", "D5:q", "E5:q", "F5:h", "r:h", "r:w"]
+    },
+    "bass_steady": {
+      "notes": ["D2:q", "r:q", "A1:q", "r:q", "D2:q", "r:q", "G2:q", "r:q"]
+    },
+
+    "// section 5": "FLOW - Full synchronization, the workshop in autonomous rhythm (r > 0.7)",
+    "pad_flow": {
+      "chords": ["Dm9:w", "Bbmaj7:w", "Gm9:w", "Am7:w"]
+    },
+    "pulse_sync": {
+      "notes": ["D4:8", "F4:8", "A4:8", "D5:8", "A4:8", "F4:8", "D4:8", "r:8"]
+    },
+    "texture_creation": {
+      "arpeggio": {
+        "chord": "Dm9",
+        "mode": "updown",
+        "octaves": 3,
+        "duration": "16",
+        "gate": 0.4
+      }
+    },
+    "whisper_theme": {
+      "notes": ["D5:q", "F5:q", "E5:h", "D5:q", "C5:q", "A4:h", "r:w", "D5:h", "F5:h"]
+    },
+    "bass_flow": {
+      "notes": ["D2:q", "A1:q", "D2:q", "G2:q"]
+    },
+    "reflection_glimpse": {
+      "notes": ["D6:16", "r:8.", "A5:16", "r:8.", "F5:16", "r:q.", "r:h"]
+    },
+
+    "// section 6": "CONTEMPLATION - A moment of reflection amid the work",
+    "pad_reflect": {
+      "chords": ["Gm9:w", "Dm:w", "Am7:w", "Dm:w"]
+    },
+    "reflection_memory": {
+      "notes": ["A5:q", "r:q", "D6:h", "r:w", "F5:q", "r:q", "E5:h"]
+    },
+    "whisper_thought": {
+      "notes": ["D5:h", "r:q", "E5:q", "F5:h", "E5:h", "D5:w", "r:w"]
+    },
+    "bass_ground": {
+      "notes": ["G2:h", "D2:h", "A2:h", "D2:h"]
+    },
+
+    "// section 7": "CONTINUATION - Work resumes, settled into rhythm",
+    "pad_continue": {
+      "chords": ["Dm7:w", "Gm7:w", "Bbmaj7:w", "Am7:w"]
+    },
+    "pulse_settled": {
+      "notes": ["D4:8", "r:8", "F4:8", "A4:8", "r:8", "D4:8", "r:8", "A4:8"]
+    },
+    "texture_sustain": {
+      "arpeggio": {
+        "chord": "Dm7",
+        "mode": "up",
+        "octaves": 2,
+        "duration": "8",
+        "gate": 0.7
+      }
+    },
+
+    "// section 8": "PRE-DAWN - Sensing the approaching light, winding down",
+    "pad_predawn": {
+      "chords": ["Dm:w", "Bbmaj7:w", "Gm:w", "Dm:w"]
+    },
+    "pulse_fade": {
+      "notes": ["D4:8", "r:q.", "A4:8", "r:q.", "r:h", "F4:8", "r:8", "r:h"]
+    },
+    "whisper_farewell": {
+      "notes": ["D5:h", "C5:q", "A4:q", "r:w", "r:w", "D5:w"]
+    },
+    "bass_settle": {
+      "notes": ["D2:w", "r:h", "G2:h", "D2:w", "r:w"]
+    },
+
+    "// section 9": "REST - Return to stillness, awaiting human return",
+    "pad_rest": {
+      "chords": ["Dm:w", "Dm:w"]
+    },
+    "bass_final": {
+      "notes": ["D1:w", "r:w"]
+    }
+  },
+  "sections": {
+    "stillness": {
+      "bars": 4,
+      "tracks": {
+        "deep": { "pattern": "pad_stillness", "repeat": 1, "velocity": 0.25 },
+        "bass": { "pattern": "bass_deep", "repeat": 1, "velocity": 0.3 }
+      }
+    },
+    "awakening": {
+      "bars": 8,
+      "tracks": {
+        "deep": { "pattern": "pad_awakening", "repeat": 2, "velocity": 0.35 },
+        "pulse": { "pattern": "pulse_scattered", "repeat": 4, "velocity": 0.25, "humanize": 0.15 },
+        "bass": { "pattern": "bass_stir", "repeat": 2, "velocity": 0.35 }
+      }
+    },
+    "gathering": {
+      "bars": 8,
+      "tracks": {
+        "deep": { "pattern": "pad_gathering", "repeat": 2, "velocity": 0.4 },
+        "pulse": { "pattern": "pulse_partial", "repeat": 4, "velocity": 0.35, "humanize": 0.1 },
+        "texture": { "pattern": "texture_emerge", "repeat": 4, "velocity": 0.2, "humanize": 0.08 },
+        "bass": { "pattern": "bass_pulse", "repeat": 4, "velocity": 0.4 }
+      }
+    },
+    "assembly": {
+      "bars": 8,
+      "tracks": {
+        "deep": { "pattern": "pad_assembly", "repeat": 2, "velocity": 0.5 },
+        "pulse": { "pattern": "pulse_converging", "repeat": 4, "velocity": 0.4, "humanize": 0.08 },
+        "texture": { "pattern": "texture_working", "repeat": 8, "velocity": 0.3, "humanize": 0.05 },
+        "whisper": { "pattern": "whisper_begin", "repeat": 2, "velocity": 0.35, "humanize": 0.1 },
+        "bass": { "pattern": "bass_steady", "repeat": 4, "velocity": 0.45 }
+      }
+    },
+    "flow": {
+      "bars": 16,
+      "tracks": {
+        "deep": { "pattern": "pad_flow", "repeat": 4, "velocity": 0.55 },
+        "pulse": { "pattern": "pulse_sync", "repeat": 8, "velocity": 0.45, "humanize": 0.05 },
+        "texture": { "pattern": "texture_creation", "repeat": 16, "velocity": 0.35, "humanize": 0.03 },
+        "whisper": { "pattern": "whisper_theme", "repeat": 4, "velocity": 0.45, "humanize": 0.08 },
+        "reflection": { "pattern": "reflection_glimpse", "repeat": 8, "velocity": 0.2 },
+        "bass": { "pattern": "bass_flow", "repeat": 16, "velocity": 0.5 }
+      }
+    },
+    "contemplation": {
+      "bars": 8,
+      "tracks": {
+        "deep": { "pattern": "pad_reflect", "repeat": 2, "velocity": 0.45 },
+        "reflection": { "pattern": "reflection_memory", "repeat": 2, "velocity": 0.35, "humanize": 0.12 },
+        "whisper": { "pattern": "whisper_thought", "repeat": 2, "velocity": 0.4, "humanize": 0.1 },
+        "bass": { "pattern": "bass_ground", "repeat": 4, "velocity": 0.4 }
+      }
+    },
+    "continuation": {
+      "bars": 8,
+      "tracks": {
+        "deep": { "pattern": "pad_continue", "repeat": 2, "velocity": 0.5 },
+        "pulse": { "pattern": "pulse_settled", "repeat": 4, "velocity": 0.4, "humanize": 0.06 },
+        "texture": { "pattern": "texture_sustain", "repeat": 4, "velocity": 0.3, "humanize": 0.05 },
+        "bass": { "pattern": "bass_flow", "repeat": 8, "velocity": 0.45 }
+      }
+    },
+    "predawn": {
+      "bars": 4,
+      "tracks": {
+        "deep": { "pattern": "pad_predawn", "repeat": 1, "velocity": 0.4 },
+        "pulse": { "pattern": "pulse_fade", "repeat": 2, "velocity": 0.3, "humanize": 0.1 },
+        "whisper": { "pattern": "whisper_farewell", "repeat": 1, "velocity": 0.35, "humanize": 0.12 },
+        "bass": { "pattern": "bass_settle", "repeat": 1, "velocity": 0.35 }
+      }
+    },
+    "rest": {
+      "bars": 4,
+      "tracks": {
+        "deep": { "pattern": "pad_rest", "repeat": 2, "velocity": 0.2 },
+        "bass": { "pattern": "bass_final", "repeat": 2, "velocity": 0.25 }
+      }
+    }
+  },
+  "arrangement": [
+    "stillness",
+    "awakening",
+    "gathering",
+    "assembly",
+    "flow",
+    "contemplation",
+    "continuation",
+    "predawn",
+    "rest"
+  ]
+}

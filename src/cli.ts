@@ -1532,27 +1532,99 @@ program
   });
 
 /**
- * Import MIDI to EtherScore
+ * Import MIDI or ABC to EtherScore (v0.9.18: added ABC support)
  */
 program
   .command('import <file>')
-  .description('Import a MIDI file and convert to EtherScore JSON')
+  .description('Import a MIDI or ABC file and convert to EtherScore JSON')
+  .option('-f, --format <format>', 'Input format: midi, abc (auto-detected from extension)')
   .option('-o, --output <file>', 'Output JSON file path')
   .option('-q, --quantize <grid>', 'Quantization grid (8, 16, 32, off)', '16')
-  .option('--info', 'Show MIDI file info without converting')
-  .option('--skip-drums', 'Skip drum tracks', true)
+  .option('--info', 'Show file info without converting')
+  .option('--skip-drums', 'Skip drum tracks (MIDI only)', true)
   .option('--max-bars <n>', 'Maximum bars per pattern', '8')
+  .option('--preset <name>', 'Instrument preset (ABC only)', 'acoustic_piano')
   .action(async (file: string, options: {
+    format?: string;
     output?: string;
     quantize: '8' | '16' | '32' | 'off';
     info?: boolean;
     skipDrums: boolean;
     maxBars: string;
+    preset: string;
   }) => {
     try {
       const inputPath = resolve(file);
       const inputName = basename(file, extname(file));
+      const ext = extname(file).toLowerCase();
 
+      // Determine format from option or extension
+      let format = options.format?.toLowerCase();
+      if (!format) {
+        if (ext === '.abc') {
+          format = 'abc';
+        } else if (ext === '.mid' || ext === '.midi') {
+          format = 'midi';
+        } else {
+          console.error(`Unknown file extension: ${ext}`);
+          console.log('Use -f/--format to specify format: midi, abc');
+          process.exit(1);
+        }
+      }
+
+      // ABC format handling
+      if (format === 'abc') {
+        if (options.info) {
+          // Show ABC info
+          const { getAbcInfo } = await import('./import/abc-import.js');
+          const abcText = await readFile(inputPath, 'utf-8');
+          const info = getAbcInfo(abcText);
+
+          console.log(`\n📄 ABC File: ${basename(file)}`);
+          console.log(`   Title: ${info.title}`);
+          console.log(`   Composer: ${info.composer}`);
+          console.log(`   Key: ${info.key}`);
+          console.log(`   Meter: ${info.meter}`);
+          console.log(`   Tempo: ${info.tempo} BPM`);
+          console.log(`   Notes: ${info.noteCount}`);
+          console.log(`   Duration: ${info.durationBeats.toFixed(1)} beats`);
+          console.log(`   Bars: ~${info.estimatedBars}`);
+          console.log('');
+          return;
+        }
+
+        // Import ABC
+        const { importAbcFileToEtherScore } = await import('./import/abc-import.js');
+
+        console.log(`Importing ABC: ${file}`);
+
+        const etherScore = await importAbcFileToEtherScore(inputPath, {
+          maxBarsPerPattern: parseInt(options.maxBars),
+          instrumentPreset: options.preset,
+        });
+
+        const outputPath = options.output || `${inputName}.etherscore.json`;
+        await writeFile(resolve(outputPath), JSON.stringify(etherScore, null, 2));
+
+        // Summary
+        const patternCount = Object.keys(etherScore.patterns).length;
+        const sectionCount = Object.keys(etherScore.sections).length;
+        const totalNotes = Object.values(etherScore.patterns).reduce((sum, p) =>
+          sum + (p.notes?.length || 0), 0
+        );
+
+        console.log(`✓ Converted to EtherScore: ${outputPath}`);
+        console.log(`  Title: ${etherScore.meta?.title}`);
+        console.log(`  Tempo: ${etherScore.settings.tempo} BPM`);
+        console.log(`  Key: ${etherScore.settings.key}`);
+        console.log(`  Time: ${etherScore.settings.timeSignature}`);
+        console.log(`  Patterns: ${patternCount}`);
+        console.log(`  Sections: ${sectionCount}`);
+        console.log(`  Note events: ${totalNotes}`);
+        return;
+      }
+
+      // MIDI format handling (original behavior)
       if (options.info) {
         // Just show info
         const { getMidiFileInfo } = await import('./import/midi-importer.js');
@@ -1578,10 +1650,10 @@ program
         return;
       }
 
-      // Import and convert
+      // Import and convert MIDI
       const { importMidiToEtherScore } = await import('./import/midi-importer.js');
 
-      console.log(`Importing: ${file}`);
+      console.log(`Importing MIDI: ${file}`);
 
       const etherScore = await importMidiToEtherScore(inputPath, {
         quantize: options.quantize,

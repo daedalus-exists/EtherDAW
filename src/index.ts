@@ -12,6 +12,15 @@ export {
   type MidiImportOptions,
 } from './import/midi-importer.js';
 
+// ABC Import (v0.9.18)
+export {
+  importAbcToEtherScore,
+  importAbcFileToEtherScore,
+  getAbcInfo,
+  validateAbc,
+  type AbcImportOptions,
+} from './import/abc-import.js';
+
 // Schema and types
 export type {
   EtherScore,
